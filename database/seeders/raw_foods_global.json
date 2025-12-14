@@ -1,0 +1,1528 @@
+{
+    "items": [
+        {
+            "name": "Abalone",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Achiote (annatto seeds)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Acorn squash",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Adzuki beans",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "African locust bean (iru/dawadawa)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Almonds",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Amaranth (grain)",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Amaranth (leaf)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Anchovy",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Aniseed",
+            "category": "Spice"
+        },
+        {
+            "name": "Apple",
+            "category": "Fruit"
+        },
+        {
+            "name": "Arame",
+            "category": "Seaweed"
+        },
+        {
+            "name": "Arrowroot",
+            "category": "Root / Tuber"
+        },
+        {
+            "name": "Artichoke (globe)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Artichoke (Jerusalem)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Arugula (rocket)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Asparagus",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Avocado",
+            "category": "Fruit"
+        },
+        {
+            "name": "Bamboo shoot (fresh)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Bamboo shoots",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Banana",
+            "category": "Fruit"
+        },
+        {
+            "name": "Baobab fruit (pulp)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Barley",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Barnacles (goose barnacles)",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Basil",
+            "category": "Herb"
+        },
+        {
+            "name": "Basmati rice",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Bass (sea bass)",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Bay leaf",
+            "category": "Herb"
+        },
+        {
+            "name": "Beef",
+            "category": "Meat"
+        },
+        {
+            "name": "Beetroot",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Belacan (shrimp paste)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Bell pepper (capsicum)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Bird's eye chili",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Bison",
+            "category": "Meat"
+        },
+        {
+            "name": "Bitter kola (ogbono)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Black beans",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Black gram (urad dal)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Black pepper (whole)",
+            "category": "Spice"
+        },
+        {
+            "name": "Black-eyed peas (cowpeas)",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Blackberry",
+            "category": "Fruit"
+        },
+        {
+            "name": "Blueberry",
+            "category": "Fruit"
+        },
+        {
+            "name": "Bok choy",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Bone marrow",
+            "category": "Offal"
+        },
+        {
+            "name": "Brain (pork/beef)",
+            "category": "Offal"
+        },
+        {
+            "name": "Brazil nuts",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Breadfruit",
+            "category": "Fruit"
+        },
+        {
+            "name": "Breadfruit (already)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Broad beans (fava)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Broccoli",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Broccolini",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Brussels sprouts",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Buckwheat",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Buffalo (Carabeef)",
+            "category": "Meat"
+        },
+        {
+            "name": "Buffalo milk",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Butter",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Butternut squash",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Button mushroom (white)",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Cabbage (green)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Camel",
+            "category": "Meat"
+        },
+        {
+            "name": "Cannellini beans",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Canola (rapeseed) oil (raw)",
+            "category": "Oil / Fat"
+        },
+        {
+            "name": "Cardamom (black)",
+            "category": "Spice"
+        },
+        {
+            "name": "Cardamom (green)",
+            "category": "Spice"
+        },
+        {
+            "name": "Carp",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Carrot",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Cashews",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Cassava",
+            "category": "Root / Tuber"
+        },
+        {
+            "name": "Cassava (already)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Cassava (manioc)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Catfish",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Cauliflower",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Celeriac (celery root)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Celery (stalk)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Cempedak",
+            "category": "Fruit"
+        },
+        {
+            "name": "Chamomile (flower)",
+            "category": "Edible Flower / Other"
+        },
+        {
+            "name": "Chanterelle",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Chayote",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Chayote (already)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Chia seeds",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Chicken",
+            "category": "Meat"
+        },
+        {
+            "name": "Chickpeas (garbanzo beans)",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Chicory",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Chili flakes (dried)",
+            "category": "Spice"
+        },
+        {
+            "name": "Chili pepper",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Chinese yam (nagaimo)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Chives",
+            "category": "Herb"
+        },
+        {
+            "name": "Cilantro (coriander leaf)",
+            "category": "Herb"
+        },
+        {
+            "name": "Cinnamon (stick)",
+            "category": "Spice"
+        },
+        {
+            "name": "Clams",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Cloves",
+            "category": "Spice"
+        },
+        {
+            "name": "Coconut (meat)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Coconut oil (virgin)",
+            "category": "Oil / Fat"
+        },
+        {
+            "name": "Coconut sugar (raw)",
+            "category": "Sweetener"
+        },
+        {
+            "name": "Cod",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Collard greens",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Condensed milk (raw ingredient)",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Coriander seed",
+            "category": "Spice"
+        },
+        {
+            "name": "Corn (maize)",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Cow milk",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Crab",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Cranberry",
+            "category": "Fruit"
+        },
+        {
+            "name": "Crayfish",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Cream",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Cremini (brown) mushroom",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Cucumber",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Cumin (seed)",
+            "category": "Spice"
+        },
+        {
+            "name": "Curry leaves",
+            "category": "Herb"
+        },
+        {
+            "name": "Cuttlefish",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Daikon",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Date",
+            "category": "Fruit"
+        },
+        {
+            "name": "Date syrup",
+            "category": "Sweetener"
+        },
+        {
+            "name": "Dill",
+            "category": "Herb"
+        },
+        {
+            "name": "Dragonfruit (pitaya)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Duck",
+            "category": "Meat"
+        },
+        {
+            "name": "Dulse",
+            "category": "Seaweed"
+        },
+        {
+            "name": "Durian",
+            "category": "Fruit"
+        },
+        {
+            "name": "Eel",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Egg (chicken)",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Egg (duck)",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Egg (quail)",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Egg white",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Egg yolk",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Eggplant (aubergine)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Elderflower",
+            "category": "Edible Flower / Other"
+        },
+        {
+            "name": "Elk",
+            "category": "Meat"
+        },
+        {
+            "name": "Emu",
+            "category": "Meat"
+        },
+        {
+            "name": "Endive",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Enoki",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Feet / trotters",
+            "category": "Offal"
+        },
+        {
+            "name": "Fennel (bulb)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Fennel seed",
+            "category": "Spice"
+        },
+        {
+            "name": "Fenugreek seed",
+            "category": "Spice"
+        },
+        {
+            "name": "Fig",
+            "category": "Fruit"
+        },
+        {
+            "name": "Flax seeds (linseed)",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Flounder",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Fonio",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Galangal",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Galangal (already)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Garlic",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Ghee (clarified butter)",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Ginger",
+            "category": "Root / Tuber"
+        },
+        {
+            "name": "Ginger (root)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Ginkgo nut",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Gizzard (chicken)",
+            "category": "Offal"
+        },
+        {
+            "name": "Goat",
+            "category": "Meat"
+        },
+        {
+            "name": "Goat milk",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Goose",
+            "category": "Meat"
+        },
+        {
+            "name": "Grape",
+            "category": "Fruit"
+        },
+        {
+            "name": "Grapefruit",
+            "category": "Fruit"
+        },
+        {
+            "name": "Green beans",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Grouper",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Guava",
+            "category": "Fruit"
+        },
+        {
+            "name": "Guinea fowl",
+            "category": "Meat"
+        },
+        {
+            "name": "Haddock",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Halibut",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Hazelnuts (filberts)",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Heart (beef)",
+            "category": "Offal"
+        },
+        {
+            "name": "Heart (chicken)",
+            "category": "Offal"
+        },
+        {
+            "name": "Hemp seeds",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Herring",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Hibiscus (calyces)",
+            "category": "Edible Flower / Other"
+        },
+        {
+            "name": "Hijiki",
+            "category": "Seaweed"
+        },
+        {
+            "name": "Holy basil (tulsi)",
+            "category": "Herb"
+        },
+        {
+            "name": "Hominy",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Honey (raw)",
+            "category": "Sweetener"
+        },
+        {
+            "name": "Horse",
+            "category": "Meat"
+        },
+        {
+            "name": "Horseradish",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Jackfruit",
+            "category": "Fruit"
+        },
+        {
+            "name": "Jasmine rice",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Jerusalem artichoke (sunchoke)",
+            "category": "Root / Tuber"
+        },
+        {
+            "name": "Kabocha",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Kaffir lime leaf",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Kale",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Kamut",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Kangaroo",
+            "category": "Meat"
+        },
+        {
+            "name": "Kefir (milk)",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Kidney (beef)",
+            "category": "Offal"
+        },
+        {
+            "name": "Kidney (lamb)",
+            "category": "Offal"
+        },
+        {
+            "name": "Kidney beans",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Kiwi (kiwifruit)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Kohlrabi",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Kokum (fruit)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Kombu (already)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Kombu (kelp)",
+            "category": "Seaweed"
+        },
+        {
+            "name": "Kudzu root",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Lamb",
+            "category": "Meat"
+        },
+        {
+            "name": "Leek",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Lemon",
+            "category": "Fruit"
+        },
+        {
+            "name": "Lemongrass",
+            "category": "Herb"
+        },
+        {
+            "name": "Lentils (brown)",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Lentils (green)",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Lentils (red)",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Lettuce (various)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Lime",
+            "category": "Fruit"
+        },
+        {
+            "name": "Liver (beef)",
+            "category": "Offal"
+        },
+        {
+            "name": "Liver (chicken)",
+            "category": "Offal"
+        },
+        {
+            "name": "Liver (duck)",
+            "category": "Offal"
+        },
+        {
+            "name": "Liver (goat)",
+            "category": "Offal"
+        },
+        {
+            "name": "Liver (pork)",
+            "category": "Offal"
+        },
+        {
+            "name": "Lobster",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Longan",
+            "category": "Fruit"
+        },
+        {
+            "name": "Lotus root",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Lotus seed",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Lupin beans",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Lychee",
+            "category": "Fruit"
+        },
+        {
+            "name": "Macadamia nuts",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Mackerel",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Maitake (hen of the woods)",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Mandarin (tangerine)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Mango",
+            "category": "Fruit"
+        },
+        {
+            "name": "Maple syrup (pure)",
+            "category": "Sweetener"
+        },
+        {
+            "name": "Marlin",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Millet",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Mint",
+            "category": "Herb"
+        },
+        {
+            "name": "Miso (raw paste)",
+            "category": "Prepared Raw Ingredient"
+        },
+        {
+            "name": "Molasses",
+            "category": "Sweetener"
+        },
+        {
+            "name": "Moose",
+            "category": "Meat"
+        },
+        {
+            "name": "Morel",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Mulberry",
+            "category": "Fruit"
+        },
+        {
+            "name": "Mung beans",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Mussels",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Mustard greens",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Mustard seeds",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Mutton",
+            "category": "Meat"
+        },
+        {
+            "name": "Nameko",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Napa cabbage",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Nasturtium (flower/leaf)",
+            "category": "Edible Flower / Other"
+        },
+        {
+            "name": "Navy beans",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Nori",
+            "category": "Seaweed"
+        },
+        {
+            "name": "Oat groats",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Oats (rolled)",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Octopus",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Okra",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Olive oil (first press)",
+            "category": "Oil / Fat"
+        },
+        {
+            "name": "Onion (red)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Onion (yellow)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Orange",
+            "category": "Fruit"
+        },
+        {
+            "name": "Oregano",
+            "category": "Herb"
+        },
+        {
+            "name": "Ostrich",
+            "category": "Meat"
+        },
+        {
+            "name": "Oxtail",
+            "category": "Offal"
+        },
+        {
+            "name": "Oyster mushroom",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Oysters",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Palm oil (raw)",
+            "category": "Oil / Fat"
+        },
+        {
+            "name": "Pandan leaf",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Papaya",
+            "category": "Fruit"
+        },
+        {
+            "name": "Paprika (dried pepper)",
+            "category": "Spice"
+        },
+        {
+            "name": "Parsley",
+            "category": "Herb"
+        },
+        {
+            "name": "Parsnip",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Passionfruit",
+            "category": "Fruit"
+        },
+        {
+            "name": "Peanuts (groundnut)",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Pear",
+            "category": "Fruit"
+        },
+        {
+            "name": "Pecans",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Perch",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Persimmon",
+            "category": "Fruit"
+        },
+        {
+            "name": "Pigeon (Squab)",
+            "category": "Meat"
+        },
+        {
+            "name": "Pigeon pea (toor/arhar)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Pike",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Pine nuts (pignoli)",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Pineapple",
+            "category": "Fruit"
+        },
+        {
+            "name": "Pinto beans",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Pistachios",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Plant-based meat (raw ingredient, various)",
+            "category": "Prepared Raw Ingredient"
+        },
+        {
+            "name": "Plantain (already)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Plantain (green)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Plantain (ripe)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Polenta (cornmeal)",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Pollock",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Pomegranate",
+            "category": "Fruit"
+        },
+        {
+            "name": "Pomegranate molasses (raw ingredient)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Porcini (cep)",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Pork",
+            "category": "Meat"
+        },
+        {
+            "name": "Portobello",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Potato",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Prune (dried plum)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Pumpkin",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Pumpkin seeds (pepitas)",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Quail",
+            "category": "Meat"
+        },
+        {
+            "name": "Quinoa",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Rabbit",
+            "category": "Meat"
+        },
+        {
+            "name": "Radish",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Raisin (dried grape)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Rambutan",
+            "category": "Fruit"
+        },
+        {
+            "name": "Raspberry",
+            "category": "Fruit"
+        },
+        {
+            "name": "Raw mango (katchumber)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Raw milk (unpasteurized)",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Red cabbage",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Rice (brown)",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Rice (white)",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Rose petals (edible)",
+            "category": "Edible Flower / Other"
+        },
+        {
+            "name": "Rosemary",
+            "category": "Herb"
+        },
+        {
+            "name": "Rutabaga",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Rye",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Sage",
+            "category": "Herb"
+        },
+        {
+            "name": "Salak (snake fruit)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Salmon",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Salsify",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Sapodilla",
+            "category": "Fruit"
+        },
+        {
+            "name": "Sardine",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Scallion (spring onion)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Scallops",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Sea bream",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Sea cucumber",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Sea lettuce (ulva)",
+            "category": "Seaweed"
+        },
+        {
+            "name": "Sea urchin",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Seitan (wheat gluten)",
+            "category": "Prepared Raw Ingredient"
+        },
+        {
+            "name": "Sesame oil (raw pressed)",
+            "category": "Oil / Fat"
+        },
+        {
+            "name": "Sesame seeds",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Shallot",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Sheep milk",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Shiitake",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Shrimp (prawns)",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Sichuan peppercorn",
+            "category": "Spice"
+        },
+        {
+            "name": "Snapper",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Snow peas",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Sole",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Sorghum",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Sour cream",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Soursop (guanábana)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Soybeans (edamame)",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Spelt",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Spinach",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Split peas",
+            "category": "Legume / Pulse"
+        },
+        {
+            "name": "Squash blossoms",
+            "category": "Edible Flower / Other"
+        },
+        {
+            "name": "Squid (calamari)",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Squirrel",
+            "category": "Meat"
+        },
+        {
+            "name": "Star anise",
+            "category": "Spice"
+        },
+        {
+            "name": "Starfruit (carambola)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Strawberry",
+            "category": "Fruit"
+        },
+        {
+            "name": "Sturgeon",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Sugar snap peas",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Sumac",
+            "category": "Spice"
+        },
+        {
+            "name": "Sumac (already)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Sunflower oil (raw)",
+            "category": "Oil / Fat"
+        },
+        {
+            "name": "Sunflower seeds",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Surimi",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Sweet potato",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Sweetbreads",
+            "category": "Offal"
+        },
+        {
+            "name": "Swiss chard",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Swordfish",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Tamarind (fruit)",
+            "category": "Fruit"
+        },
+        {
+            "name": "Tamarind (pulp)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Taro",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Tarragon",
+            "category": "Herb"
+        },
+        {
+            "name": "Teff",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Teff (again included)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Tempeh (raw)",
+            "category": "Prepared Raw Ingredient"
+        },
+        {
+            "name": "Thyme",
+            "category": "Herb"
+        },
+        {
+            "name": "Tilapia",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Tofu (fresh, raw)",
+            "category": "Prepared Raw Ingredient"
+        },
+        {
+            "name": "Tomatillo",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Tomato",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Tongue (beef)",
+            "category": "Offal"
+        },
+        {
+            "name": "Tripe (beef)",
+            "category": "Offal"
+        },
+        {
+            "name": "Trout",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Tuna",
+            "category": "Fish & Seafood"
+        },
+        {
+            "name": "Turkey",
+            "category": "Meat"
+        },
+        {
+            "name": "Turmeric",
+            "category": "Root / Tuber"
+        },
+        {
+            "name": "Turmeric (dried root powder as ingredient)",
+            "category": "Spice"
+        },
+        {
+            "name": "Turmeric (root)",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Turnip",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Ube (purple yam)",
+            "category": "Root / Tuber"
+        },
+        {
+            "name": "Veal",
+            "category": "Meat"
+        },
+        {
+            "name": "Venison",
+            "category": "Meat"
+        },
+        {
+            "name": "Violet (edible)",
+            "category": "Edible Flower / Other"
+        },
+        {
+            "name": "Wakame",
+            "category": "Seaweed"
+        },
+        {
+            "name": "Walnuts",
+            "category": "Nut / Seed"
+        },
+        {
+            "name": "Water chestnut",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Watercress",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Wheat (whole grain)",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Wheat flour (raw ingredient)",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Wild boar",
+            "category": "Meat"
+        },
+        {
+            "name": "Wild rice",
+            "category": "Grain / Cereal"
+        },
+        {
+            "name": "Wood ear",
+            "category": "Fungi / Mushroom"
+        },
+        {
+            "name": "Yacon",
+            "category": "Root / Tuber"
+        },
+        {
+            "name": "Yak",
+            "category": "Meat"
+        },
+        {
+            "name": "Yam",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Yogurt (plain)",
+            "category": "Dairy & Eggs"
+        },
+        {
+            "name": "Yuba (tofu skin)",
+            "category": "Prepared Raw Ingredient"
+        },
+        {
+            "name": "Yuca",
+            "category": "Vegetable"
+        },
+        {
+            "name": "Za'atar (blend ingredient)",
+            "category": "Regional Ingredient"
+        },
+        {
+            "name": "Zucchini (courgette)",
+            "category": "Vegetable"
+        }
+    ]
+}
