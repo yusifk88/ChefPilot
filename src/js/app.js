@@ -17,6 +17,7 @@ import '../css/app.less';
 // Import App Component
 import App from '../components/app.vue';
 import "./bootstrap";
+import routes from "@/js/routes";
 
 // Init Framework7-Vue Plugin
 Framework7.use(Framework7Vue);
