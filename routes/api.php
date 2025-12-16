@@ -15,6 +15,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
      */
 
     Route::get('/items', [ItemsController::class, "index"]);
+    Route::get('/user-items', [ItemsController::class, "userItems"]);
+    Route::post('/items', [ItemsController::class, "store"]);
+    Route::delete('/user-items/{id}', [ItemsController::class, "destroy"]);
+
 
 
 });
