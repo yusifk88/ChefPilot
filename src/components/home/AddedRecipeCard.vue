@@ -12,12 +12,27 @@
   </div>
 
   <f7-block class="no-padding no-margin" v-else @click="showUserItems=true">
+    <f7-list media-list dividers-ios class="no-margin">
 
-    <f7-chip  v-for="item in items" :key="item.id" :text="item.name" media-bg-color="green">
+    <f7-list-item link="#" >
       <template #media>
-        <f7-icon ios="f7:gift" md="material:gift" />
+        <img
+            src="/img/item_samples.svg"
+            width="120"
+        />
       </template>
-    </f7-chip>
+      <template #after>
+        {{items.length}} Items
+      </template>
+    </f7-list-item>
+
+    </f7-list>
+
+<!--    <f7-chip  v-for="item in items" :key="item.id" :text="item.name" media-bg-color="green">-->
+<!--      <template #media>-->
+<!--        <f7-icon ios="f7:gift" md="material:gift" />-->
+<!--      </template>-->
+<!--    </f7-chip>-->
 
 
   </f7-block>
@@ -38,7 +53,7 @@
 
 
   <f7-sheet
-      style="height: 60%"
+      style="height: 70%"
       push
       v-model:opened="showUserItems"  class="user-items-sheet">
     <div class="swipe-handler" style="background-color: transparent"></div>

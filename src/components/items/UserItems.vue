@@ -30,12 +30,10 @@ export default {
   },
   methods: {
     deleted(item) {
-      console.log("deletc item", item)
 
       const URL = "/user-items/" + item.id;
       axios.delete(URL)
           .then(res => {
-            console.log(res.data);
 
             this.$emit("itemDeleted", res.data.data);
           })
