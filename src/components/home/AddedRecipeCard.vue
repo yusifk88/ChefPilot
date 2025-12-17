@@ -12,9 +12,9 @@
   </div>
 
   <f7-block class="no-padding no-margin" v-else @click="showUserItems=true">
-    <f7-list media-list dividers-ios class="no-margin">
+    <f7-list media-list dividers-ios class="no-margin no-padding">
 
-    <f7-list-item link="#" >
+    <f7-list-item link="#" style="padding-left: 0!important; margin-left: 0!important;" >
       <template #media>
         <img
             src="/img/item_samples.svg"

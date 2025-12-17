@@ -2,10 +2,10 @@ import {createStore} from 'framework7/lite';
 
 const store = createStore({
     state: {
-
+        selectedRecipe: null,
         user: null,
-        showLogin:true,
-        loginState:true,
+        showLogin: true,
+        loginState: true,
         products: [
             {
                 id: '1',
@@ -28,22 +28,28 @@ const store = createStore({
         products({state}) {
             return state.products;
         },
-        loginState({state}){
+        loginState({state}) {
             return state.loginState;
+        },
+        selectedItem({state}) {
+            return state.selectedRecipe;
         }
 
     },
     actions: {
-        initUser({state}){
+        setRecipeItem({state}, item) {
+            state.selectedRecipe = item;
+        },
+        initUser({state}) {
             axios.get("/user")
-                .then(res=>{
+                .then(res => {
                     state.user = res.data.data;
-                    state.loginState=false
+                    state.loginState = false
 
                 })
-                .catch(error=>{
-                    state.user=null;
-                    state.loginState=true;
+                .catch(error => {
+                    state.user = null;
+                    state.loginState = true;
 
                 })
         },

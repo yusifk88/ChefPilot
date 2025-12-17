@@ -1,5 +1,5 @@
 <template>
-  <f7-chip :text="label" :color="colors[label.toLowerCase()].color"></f7-chip>
+  <f7-chip v-if="label" :text="label" :color="colors[label.toLowerCase()].color"></f7-chip>
 </template>
 
 <script>

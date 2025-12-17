@@ -9,6 +9,7 @@ import DynamicRoutePage from '../pages/dynamic-route.vue';
 import RequestAndLoad from '../pages/request-and-load.vue';
 import NotFoundPage from '../pages/404.vue';
 import additem from "@/pages/additem.vue";
+import selectRecipe from "@/pages/SelectRecipe.vue";
 
 var routes = [
     {
@@ -30,6 +31,10 @@ var routes = [
     {
         path: '/product/:id/',
         component: ProductPage,
+    },
+    {
+      path: '/recipe/:id',
+        component: selectRecipe
     },
     {
         path: '/settings/',
