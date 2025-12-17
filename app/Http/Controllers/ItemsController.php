@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\MakeRecipeJob;
 use App\Models\FoodItem;
+use App\Models\Recipe;
 use App\Models\UserItem;
 use App\Services\ResponseService;
 use Illuminate\Http\Request;
@@ -28,7 +30,6 @@ class ItemsController extends Controller
 
         $user = $request->user();
 
-        $dataToInsert = [];
 
         foreach ($request->items as $item) {
 
@@ -55,6 +56,7 @@ class ItemsController extends Controller
 
         $userItems = UserItem::where("user_id", $user->id)->get();
 
+        MakeRecipeJob::dispatch($user->id);
 
         return ResponseService::SuccessResponse($userItems, "Items added successfully");
 
@@ -65,7 +67,6 @@ class ItemsController extends Controller
     {
 
         $userItems = UserItem::where("user_id", auth()->id())->get();
-
         return ResponseService::SuccessResponse($userItems, "Items retrieved successfully");
 
     }
@@ -81,6 +82,15 @@ class ItemsController extends Controller
         $userItems = UserItem::where("user_id", $user->id)->get();
 
         return ResponseService::SuccessResponse($userItems, "Item deleted successfully");
+
+    }
+
+
+    public function recipesToday()
+    {
+        $user = auth()->user();;
+        $recipes = Recipe::where("user_id", $user->id)->whereDate("created_at", date("Y-m-d"))->get();
+        return ResponseService::SuccessResponse($recipes, "Recipes retrieved successfully");
 
     }
 
