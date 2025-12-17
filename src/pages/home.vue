@@ -12,13 +12,18 @@
 
     </f7-navbar>
 
+
+    <f7-block-title>Your Food Inventory</f7-block-title>
+
     <f7-block strong inset style="background-color: #00FF9F62">
 
       <added-recipe-card></added-recipe-card>
-
     </f7-block>
+    <recipes></recipes>
+
   </f7-page>
 </template>
 <script setup>
 import AddedRecipeCard from "@/components/home/AddedRecipeCard.vue";
+import Recipes from "@/components/recipe/Recipes.vue";
 </script>

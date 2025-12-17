@@ -22,7 +22,7 @@
         />
       </template>
       <template #after>
-        {{items.length}} Items
+        {{items.length}} Food Items
       </template>
     </f7-list-item>
 
