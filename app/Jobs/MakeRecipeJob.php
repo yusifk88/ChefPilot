@@ -33,8 +33,6 @@ class MakeRecipeJob implements ShouldQueue
 
         foreach ($response as $recipe) {
 
-            Log::info("found items",["recipe" => $recipe]);
-
             Recipe::create([
                 "user_id" => $this->userID,
                 "name" => $recipe->name,
@@ -44,7 +42,8 @@ class MakeRecipeJob implements ShouldQueue
                 "images" => implode(",",$recipe->images),
                 "difficulty" => $recipe->difficulty,
                 "estimatedTimeMinutes" => $recipe->estimatedTimeMinutes,
-                "tag"=>implode(",",$recipe->dietaryTags)
+                "tag"=>implode(",",$recipe->dietaryTags),
+                "instructions"=>implode(",",$recipe->instructions),
 
             ]);
         }

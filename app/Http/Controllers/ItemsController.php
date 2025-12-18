@@ -94,5 +94,17 @@ class ItemsController extends Controller
 
     }
 
+    public function bookmark(int $id)
+    {
+
+        $user = auth()->user();
+
+
+        $item =Recipe::where("id", $id)->where("user_id", $user->id)->firstOrFail();
+
+        $item->update(["bookmarked" => !$item->bookmarked]);
+
+    }
+
 
 }
