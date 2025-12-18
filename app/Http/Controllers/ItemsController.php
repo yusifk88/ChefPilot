@@ -106,5 +106,23 @@ class ItemsController extends Controller
 
     }
 
+    public function recentBookmarks()
+    {
+     $bookmarks = Recipe::where("user_id", auth()->id())
+         ->where("bookmarked",true)
+         ->limit(5)
+         ->orderBy("updated_at","DESC")->get();
+     return ResponseService::SuccessResponse($bookmarks,"Bookmarks retrieved successfully");
+
+    }
+
+    public function bookmarks()
+    {
+     $bookmarks = Recipe::where("user_id", auth()->id())
+         ->where("bookmarked",true)->get();
+     return ResponseService::SuccessResponse($bookmarks,"Bookmarks retrieved successfully");
+
+    }
+
 
 }

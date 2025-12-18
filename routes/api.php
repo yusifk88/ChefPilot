@@ -26,4 +26,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get("/recipes", [ItemsController::class, "recipesToday"]);
     Route::patch("/recipes/{id}/bookmark", [ItemsController::class, "bookmark"]);
 
+
+    /**
+     * bookmark routes
+     */
+    Route::get("/bookmarks", [ItemsController::class, "bookmarks"]);
+    Route::get("/recent-bookmarks", [ItemsController::class, "recentBookmarks"]);
+
 });
