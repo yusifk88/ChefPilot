@@ -29,6 +29,7 @@
     "@capacitor/splash-screen": "^8.0.0",
     "@capacitor/status-bar": "^8.0.0",
     "axios": "^1.13.2",
+    "dayjs": "^1.11.19",
     "dom7": "^4.0.6",
     "framework7": "^9.0.2",
     "framework7-icons": "^5.0.5",

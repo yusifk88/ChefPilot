@@ -3,6 +3,7 @@
 
   <f7-navbar class="no-padding" title="Bookmarks"></f7-navbar>
 
+
   <f7-list style="margin-top: 0!important;" strong inset dividers-ios media-list class="skeleton-text" v-if="loading">
     <f7-list-item
         v-for="i in loaderCount"
@@ -18,6 +19,14 @@
 
   </f7-list>
 
+  <span v-else>
+
+     <empty-state
+         v-if="items.length==0"
+         title="You Have No Bookmarks Yet"
+         details="No bookmarks to show, your most recent bookmarked recipes will show here."
+     ></empty-state>
+
   <f7-list media-list dividers-ios strong-ios inset v-else >
     <list-item
         v-for="item in items"
@@ -26,16 +35,18 @@
     ></list-item>
 
   </f7-list>
+  </span>
 
 </f7-page>
 </template>
 
 <script>
 import ListItem from "@/components/recipe/ListItem.vue";
+import EmptyState from "@/components/empty/EmptyState.vue";
 
 export default {
   name: "BookMarks",
-  components: {ListItem},
+  components: {EmptyState, ListItem},
   data(){
     return{
       items:[],

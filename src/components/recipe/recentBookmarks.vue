@@ -1,5 +1,6 @@
 <template>
   <f7-block-title>Recent Bookmarks</f7-block-title>
+
   <f7-list strong inset dividers-ios media-list class="skeleton-text" v-if="loading">
     <f7-list-item
         title="Title rrrrrgrgwgwdgdfgfdgffgfgfgfgffgfg"
@@ -36,7 +37,16 @@
     </f7-list-item>
 
   </f7-list>
-  <f7-list media-list dividers-ios strong-ios inset v-else >
+  <span v-else>
+
+
+     <empty-state
+         v-if="items.length==0"
+         title="You Have No Bookmarks Yet"
+         details="No bookmarks to show, your most recent bookmarked recipes will show here."
+     ></empty-state>
+
+  <f7-list media-list dividers-ios strong-ios inset  >
 
     <list-item
     v-for="item in items"
@@ -44,21 +54,20 @@
     :item="item"
     ></list-item>
 
-    <f7-list-item class="text-center">
-      <f7-link>All Bookmarks</f7-link>
-    </f7-list-item>
-
   </f7-list>
+  </span>
+
 </template>
 
 <script>
 import ListItem from "@/components/recipe/ListItem.vue";
 import {useStore} from "framework7-vue";
 import store from "@/js/store";
+import EmptyState from "@/components/empty/EmptyState.vue";
 
 export default {
   name: "recentBookmarks",
-  components: {ListItem},
+  components: {EmptyState, ListItem},
   data() {
     return {
       items: [],

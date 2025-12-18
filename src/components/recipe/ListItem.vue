@@ -3,7 +3,7 @@
   <f7-list-item
       :link="`/recipe/${item.id}`"
       :title="item.name"
-      :subtitle="item.difficulty"
+      :subtitle="item.difficulty + ' . ETA:'+item.estimatedTimeMinutes+'Min'"
       :text="item.description"
       @click="setItem"
   >
@@ -29,6 +29,7 @@
 <script>
 import store from "@/js/store";
 import {useStore} from "framework7-vue";
+import {timeFromNow} from "@/js/utility";
 
 export default {
   props: {
@@ -36,6 +37,7 @@ export default {
   },
   name: "ListItem",
   methods:{
+    timeFromNow,
     setItem(){
       store.dispatch("setRecipeItem",this.item)
     },
