@@ -27,7 +27,7 @@
          details="No bookmarks to show, your most recent bookmarked recipes will show here."
      ></empty-state>
 
-  <f7-list media-list dividers-ios strong-ios inset v-else >
+  <f7-list media-list dividers-ios strong-ios inset v-else class="no-margin-top" >
     <list-item
         v-for="item in items"
         :key="item.id"

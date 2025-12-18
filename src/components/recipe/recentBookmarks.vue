@@ -1,7 +1,8 @@
 <template>
-  <f7-block-title>Recent Bookmarks</f7-block-title>
+  <f7-block-title style="margin-top: 0!important;" class="no-margin-bottom no-padding-bottom">Recent Bookmarks</f7-block-title>
 
-  <f7-list strong inset dividers-ios media-list class="skeleton-text" v-if="loading">
+  <f7-list strong inset dividers-ios media-list class="skeleton-text"
+           v-if="loading">
     <f7-list-item
         title="Title rrrrrgrgwgwdgdfgfdgffgfgfgfgffgfg"
         subtitle="Subtitle"
@@ -46,7 +47,7 @@
          details="No bookmarks to show, your most recent bookmarked recipes will show here."
      ></empty-state>
 
-  <f7-list media-list dividers-ios strong-ios inset  >
+  <f7-list media-list dividers-ios strong-ios inset class="no-margin-top" style="margin-top: 10px!important;"  >
 
     <list-item
     v-for="item in items"
