@@ -6,6 +6,7 @@ const store = createStore({
         user: null,
         showLogin: true,
         loginState: true,
+        refresh: false,
         products: [
             {
                 id: '1',
@@ -33,10 +34,21 @@ const store = createStore({
         },
         selectedItem({state}) {
             return state.selectedRecipe;
+        },
+        getUser({state}) {
+            return state.user;
+        },
+        getRefresh({state}) {
+            return state.refresh;
         }
 
     },
     actions: {
+
+        changeRefreshState({state}, refresh) {
+            state.refresh = refresh;
+        },
+
         setRecipeItem({state}, item) {
             state.selectedRecipe = item;
         },

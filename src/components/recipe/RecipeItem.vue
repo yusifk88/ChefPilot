@@ -4,7 +4,7 @@
     <!--        valign="top"-->
     <!--    >{{item.name}}</f7-card-header-->
     <!--    >-->
-    <f7-card-content style="padding-top: 0!important;">
+    <f7-card-content style="padding-top: 0!important; padding-bottom: 0!important; margin-bottom: 0!important;">
 
       <f7-link :href="`/recipe/${item.id}`" @click="setItem">
 
@@ -34,7 +34,8 @@
       </p>
       </f7-link>
     </f7-card-content>
-    <f7-card-footer>
+
+    <f7-card-footer style="padding-top: 0!important;margin-top: 0!important;">
       <p class="date">
         ETA:{{ item.estimatedTimeMinutes }}Min <difficulty-chip :label="item.difficulty"></difficulty-chip>
       </p>

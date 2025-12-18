@@ -1,6 +1,6 @@
 <template>
   <f7-page class="no-padding">
-    <f7-navbar class="no-padding" :title="item?.name" back-link></f7-navbar>
+    <f7-navbar class="no-padding" :title="item?.name ? item.name : '' " back-link></f7-navbar>
 
 
     <f7-card flat class="no-margin" style="margin-top: -80px!important;">
@@ -14,7 +14,7 @@
 
       <f7-card-content style="padding-top: 0!important;">
 
-        <p>
+        <p style="margin-top: 5px">
           <f7-breadcrumbs>
             <template v-for="tag in item?.tag?.split(',')">
 

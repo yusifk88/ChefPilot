@@ -10,6 +10,7 @@ import RequestAndLoad from '../pages/request-and-load.vue';
 import NotFoundPage from '../pages/404.vue';
 import additem from "@/pages/additem.vue";
 import selectRecipe from "@/pages/SelectRecipe.vue";
+import BookMarks from "@/pages/BookMarks.vue";
 
 var routes = [
     {
@@ -25,8 +26,8 @@ var routes = [
         component: FormPage,
     },
     {
-        path: '/catalog/',
-        component: CatalogPage,
+        path: '/bookmarks/',
+        component: BookMarks,
     },
     {
         path: '/product/:id/',

@@ -16,7 +16,7 @@
     <f7-toolbar tabbar icons bottom>
       <f7-toolbar-pane>
         <f7-link tab-link="#view-home" tab-link-active icon-ios="f7:house" icon-md="material:home" text="Home"></f7-link>
-        <f7-link tab-link="#view-favorites" icon-ios="f7:bookmark" icon-md="material:bookmark" text="Bookmarks"></f7-link>
+        <f7-link tab-link="#view-bookmarks" icon-ios="f7:bookmark" icon-md="material:bookmark" text="Bookmarks"></f7-link>
         <f7-link tab-link="#view-settings" icon-ios="f7:square_list" icon-md="material:view_list" text="Explore"></f7-link>
       </f7-toolbar-pane>
     </f7-toolbar>
@@ -24,7 +24,7 @@
     <f7-view id="view-home" main tab tab-active url="/"></f7-view>
 
 
-    <f7-view id="view-favorites" name="favorites" tab url="/favorites/"></f7-view>
+    <f7-view id="view-bookmarks" name="favorites" tab url="/bookmarks/"></f7-view>
 
     <f7-view id="view-settings" name="settings" tab url="/settings/"></f7-view>
 
