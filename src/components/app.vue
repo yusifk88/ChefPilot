@@ -99,7 +99,7 @@
             capacitorApp.init(f7);
           }
 
-          store.dispatch("initUser")
+          //store.dispatch("initUser")
 
         });
       });
