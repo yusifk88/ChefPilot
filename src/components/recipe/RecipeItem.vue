@@ -39,10 +39,9 @@
       <p class="date">
         ETA:{{ item.estimatedTimeMinutes }}Min <difficulty-chip :label="item.difficulty"></difficulty-chip>
       </p>
-      <f7-button color="black">
-        <f7-icon f7="square_arrow_up_on_square">
+
+        <f7-icon f7="square_arrow_up_on_square" style="margin-left: auto" class="margin-right">
         </f7-icon>
-      </f7-button>
 
       <f7-icon
           @click="bookMark"
@@ -95,6 +94,8 @@ export default {
             });
 
             successToast.open();
+
+            store.dispatch("changeBookmarkState");
 
 
           })

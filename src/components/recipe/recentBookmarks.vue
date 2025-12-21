@@ -74,6 +74,7 @@ export default {
       items: [],
       loading: false,
       shouldRefresh: useStore(store, "getRefresh"),
+      bookmarkChanged:useStore(store,"bookMarkState")
     }
   },
   watch: {
@@ -81,11 +82,14 @@ export default {
     shouldRefresh() {
       this.getItems();
 
+    },
+    bookmarkChanged(){
+      this.getItems(false)
     }
   },
   methods: {
-    getItems() {
-      this.loading = true;
+    getItems(state=true) {
+      this.loading = state;
       axios.get("/recent-bookmarks")
           .then(res => {
 

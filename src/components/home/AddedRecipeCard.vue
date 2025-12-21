@@ -74,7 +74,8 @@
 <script>
 import Additem from "@/components/items/additem.vue";
 import UserItems from "@/components/items/UserItems.vue";
-import {f7} from "framework7-vue";
+import {f7, useStore} from "framework7-vue";
+import store from "@/js/store";
 
 export default {
   components: {UserItems, Additem},
@@ -86,13 +87,13 @@ export default {
     return {
       sheetOpened: false,
       showUserItems:false,
-      items: []
+      items: [],
+      shouldRefresh: useStore(store, "getRefresh")
+
     }
   },
   methods: {
-    toggleSwipeStep() {
-      f7.sheet.stepToggle('.user-items-sheet');
-    },
+
     getItems() {
       axios.get("/user-items")
           .then(res => {
@@ -102,6 +103,11 @@ export default {
     itemsSaved(items) {
       this.sheetOpened = false;
       this.items = items.data;
+    }
+  },
+  computed:{
+    shouldRefresh(){
+      this.getItems();
     }
   },
   mounted() {

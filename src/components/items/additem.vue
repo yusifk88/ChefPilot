@@ -1,5 +1,5 @@
 <template>
-  <f7-page>
+  <f7-page ptr :ptr-mousewheel="true" @ptr:refresh="getItems">
 
     <f7-navbar>
       <f7-subnavbar :inner="false">
@@ -138,9 +138,12 @@ export default {
     theme() {
       return theme
     },
-    getItems() {
+    getItems(done=null) {
       axios.get("/items")
           .then(res => {
+            if (done){
+              done();
+            }
             this.items = res.data.data.items;
           })
     },

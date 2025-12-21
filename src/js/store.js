@@ -7,6 +7,7 @@ const store = createStore({
         showLogin: true,
         loginState: true,
         refresh: false,
+        bookmarkChanged: false,
         products: [
             {
                 id: '1',
@@ -40,10 +41,17 @@ const store = createStore({
         },
         getRefresh({state}) {
             return state.refresh;
+        },
+        bookMarkState({state}) {
+            return state.bookmarkChanged;
         }
 
     },
     actions: {
+
+        changeBookmarkState({state}) {
+            state.bookmarkChanged = !state.bookmarkChanged;
+        },
 
         changeRefreshState({state}, refresh) {
             state.refresh = refresh;
@@ -57,6 +65,7 @@ const store = createStore({
                 .then(res => {
                     state.user = res.data.data;
                     state.loginState = false
+                    state.refresh = !state.refresh;
 
                 })
                 .catch(error => {

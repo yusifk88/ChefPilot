@@ -59,16 +59,32 @@ export default {
         },
       });
 
-      if (response.provider && response.result) {
+      if (response.result.profile) {
 
-        alert(response.result.serverAuthCode);
 
-        axios.post("/google-login",{code:response.result.serverAuthCode})
-            .then(res=>{
-              console.log(res.data.data)
+        const payload = response.result.profile;
+
+        axios.post("/signup", payload)
+            .then(res => {
+
+              console.log(res.data.data);
+
+              localStorage.setItem("token",res.data.data.token);
+              store.dispatch("initUser");
+
             })
 
+      }else if (response.result.idToken) {
+
+        console.log("results from client:",response.result);
+
+        axios.post("/google-login", {code: response.result.idToken})
+            .then(res => {
+              console.log("response from server:",res.data.data)
+            })
       }
+
+
 
 
     },
@@ -79,7 +95,7 @@ export default {
           webClientId: '51432255365-qpaejpm0gsli0mo76gkbtf4a0apejfhi.apps.googleusercontent.com',
           iOSClientId: '786205750128-6ea445ctatsomsh9qhknl36tmi0ldmdq.apps.googleusercontent.com',        // Required for iOS
           iOSServerClientId: '786205750128-c0tpsm1hgffmjeum8u9ee4kfgclch4jn.apps.googleusercontent.com',  // Required for iOS offline mode and server authorization (same as webClientId)
-          mode: 'offline',  // 'online' or 'offline'
+          mode: 'online',  // 'online' or 'offline'
         }
       })
 

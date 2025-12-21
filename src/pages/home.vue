@@ -4,7 +4,7 @@
     <f7-navbar :sliding="false">
       <f7-nav-left>
         <f7-link panel-open="left">
-          <div class="message-avatar" style="background-image:url(/img/dp.png)"></div>
+        <img v-if="user?.user" class="message-avatar" :src="user.user.image_url">
         </f7-link>
       </f7-nav-left>
 
@@ -48,6 +48,8 @@ import RecentBookmarks from "@/components/recipe/recentBookmarks.vue";
 const user = useStore(store, "getUser")
 
 const showRefresh = ref(useStore(store,"getRefresh"));
+
+const image_url = user?.user ? user.user.image_url : '/img/dp.png';
 const refresh = (done) => {
 
   const newState = !showRefresh.value;
