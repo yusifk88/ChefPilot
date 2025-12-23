@@ -1,5 +1,6 @@
 <template>
-  <f7-page name="selectrecipe" class="no-padding">
+  <f7-page name="selectrecipe" class="no-padding" ptr :ptr-mousewheel="true"
+           @ptr:refresh="reload">
     <f7-navbar class="no-padding" back-link>
       {{ item?.name }}
     </f7-navbar>
@@ -50,6 +51,7 @@
         <f7-icon f7="square_arrow_up_on_square" style="margin-left: auto" class="margin-right">
         </f7-icon>
         <f7-icon
+            v-if="item"
             @click="bookMark(item.id)"
             :color="bookmarked ? 'blue' : ''"
             :ios="bookmarked ? 'f7:bookmark_filled' : 'f7:bookmark'"
@@ -103,6 +105,7 @@ export default {
 
   data() {
     return {
+      itemID:this.f7route.params.id,
       loadingUpdate:false,
       bookmarked: this.item?.bookmarked,
       photos: [{
@@ -124,13 +127,11 @@ export default {
       return this.item?.instructions?.split(",");
 
     },
-    itemID() {
-      return this.f7route.params.id;
-    }
   },
 
   watch: {
-    item() {
+    itemID() {
+      alert("changed")
       this.showInfinite(true);
       axios.get("/recipes/" + this.itemID)
           .then(res => {
@@ -142,6 +143,32 @@ export default {
   },
 
   methods: {
+
+    reload(done=null){
+      this.showInfinite(true);
+      axios.get("/recipes/" + this.itemID)
+          .then(res => {
+            store.dispatch("setRecipeItem",res.data.data)
+            f7.progressbar.hide()
+
+            if (done){
+              done()
+            }
+
+          })
+
+    },
+
+    updateRecipe(id){
+      this.showInfinite(true);
+      axios.get("/recipes/" + id)
+          .then(res => {
+            store.dispatch("setRecipeItem",res.data.data)
+            f7.progressbar.hide()
+
+          })
+    },
+
     bookMark(id) {
 
       this.bookmarked = !this.bookmarked;
@@ -156,6 +183,7 @@ export default {
             });
 
             successToast.open();
+
 
 
           })
@@ -175,6 +203,9 @@ export default {
 
 
     if (!this.item) {
+
+
+      this.updateRecipe(this.itemID);
       /**
        * get the item from the backend and block the screen until you get it
        */

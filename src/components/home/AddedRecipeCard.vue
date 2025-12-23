@@ -92,6 +92,11 @@ export default {
 
     }
   },
+  watch:{
+    shouldRefresh(){
+      this.getItems();
+    }
+  },
   methods: {
 
     getItems() {

@@ -37,6 +37,7 @@
     "framework7-icons": "^5.0.5",
     "framework7-vue": "^9.0.2",
     "material-icons": "^1.13.14",
+    "onesignal-cordova-plugin": "^5.2.19",
     "skeleton-elements": "^4.0.1",
     "swiper": "^12.0.3",
     "update": "^0.7.4",
