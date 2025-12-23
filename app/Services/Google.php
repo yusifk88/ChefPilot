@@ -28,6 +28,7 @@ class Google
         ];
     }
 
+
     public static function refreshToken(string $refresh_token): ?object
     {
         $client_id = config("services.google.client_id");
@@ -40,4 +41,6 @@ class Google
 
         return $test->object();
     }
+
+
 }

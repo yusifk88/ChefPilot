@@ -88,7 +88,7 @@ class ItemsController extends Controller
 
     public function recipesToday()
     {
-        $user = auth()->user();;
+        $user = auth()->user();
         $recipes = Recipe::where("user_id", $user->id)->whereDate("created_at", date("Y-m-d"))->get();
         return ResponseService::SuccessResponse($recipes, "Recipes retrieved successfully");
 
@@ -100,7 +100,7 @@ class ItemsController extends Controller
         $user = auth()->user();
 
 
-        $item =Recipe::where("id", $id)->where("user_id", $user->id)->firstOrFail();
+        $item = Recipe::where("id", $id)->where("user_id", $user->id)->firstOrFail();
 
         $item->update(["bookmarked" => !$item->bookmarked]);
 
@@ -108,19 +108,26 @@ class ItemsController extends Controller
 
     public function recentBookmarks()
     {
-     $bookmarks = Recipe::where("user_id", auth()->id())
-         ->where("bookmarked",true)
-         ->limit(5)
-         ->orderBy("updated_at","DESC")->get();
-     return ResponseService::SuccessResponse($bookmarks,"Bookmarks retrieved successfully");
+        $bookmarks = Recipe::where("user_id", auth()->id())
+            ->where("bookmarked", true)
+            ->limit(5)
+            ->orderBy("updated_at", "DESC")->get();
+        return ResponseService::SuccessResponse($bookmarks, "Bookmarks retrieved successfully");
 
     }
 
     public function bookmarks()
     {
-     $bookmarks = Recipe::where("user_id", auth()->id())
-         ->where("bookmarked",true)->get();
-     return ResponseService::SuccessResponse($bookmarks,"Bookmarks retrieved successfully");
+        $bookmarks = Recipe::where("user_id", auth()->id())
+            ->where("bookmarked", true)->get();
+        return ResponseService::SuccessResponse($bookmarks, "Bookmarks retrieved successfully");
+
+    }
+
+    public function show(string $id)
+    {
+        $recipe = Recipe::where("id", $id)->where('user_id', auth()->id())->firstOrFail();
+        return ResponseService::SuccessResponse($recipe, "Recipe retrieved successfully");
 
     }
 

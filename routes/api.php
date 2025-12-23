@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::post('/signup', [AuthController::class, 'singUp']);
     Route::post('/google-login', [AuthController::class, 'googleLogin']);
     Route::get('/user', [AuthController::class, "user"]);
 
@@ -25,6 +26,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
      * recipes routes
      */
     Route::get("/recipes", [ItemsController::class, "recipesToday"]);
+    Route::get("/recipes/{id}", [ItemsController::class, "show"]);
     Route::patch("/recipes/{id}/bookmark", [ItemsController::class, "bookmark"]);
 
 
