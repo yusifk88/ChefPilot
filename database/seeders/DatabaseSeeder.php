@@ -16,14 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //User::factory(1)->create();
+        User::factory(1)->create();
 
-        User::factory()->create([
-            'name' => 'Yusif katulie',
-            'email' => 'test@example.com',
-            "password" => Hash::make('password'),
-            "image_url" => "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/avatar.webp",
-        ]);
+//        User::factory()->create([
+//            'name' => 'Yusif katulie',
+//            'email' => 'test@example.com',
+//            "password" => Hash::make('password'),
+//            "image_url" => "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/avatar.webp"
+//        ]);
 
         $this->call(FoodStuffSeeder::class);
     }

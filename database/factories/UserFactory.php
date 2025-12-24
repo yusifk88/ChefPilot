@@ -24,11 +24,12 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'name' => 'Yusif katulie',
+            'email' => 'test@example.com',
+            "password" => Hash::make('password'),
+            "image_url" => "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/avatar.webp"
         ];
     }
 
