@@ -101,7 +101,7 @@ class AuthController extends Controller
                 "email"=>$user->email,
                 "google_user_id"=>$user->sub,
                 "image_url"=>$user->picture,
-                "password" => bcrypt($user->sub),
+                "password" => Hash::make($user->sub),
             ]);
             $foundUser->save();
 
