@@ -40,7 +40,7 @@ export default {
   components: {GoogleLogo, AppLogo},
   data() {
     return {
-      email: "okon.lonny@example.org",
+      email: "test@example.com",
       password: "password",
       loading: false
     }
@@ -52,12 +52,18 @@ export default {
 
     async login() {
 
+
+      await this.initAuth();
+
+
       const response = await SocialLogin.login({
         provider: 'google',
         options: {
           scopes: ['email', 'profile'],
+          offline: true
         },
       });
+
 
       if (response.result.profile) {
 
@@ -67,12 +73,11 @@ export default {
         axios.post("/signup", payload)
             .then(res => {
 
-              console.log(res.data.data);
-
               localStorage.setItem("token",res.data.data.token);
               store.dispatch("initUser");
 
             })
+
 
       }else if (response.result.idToken) {
 
@@ -95,7 +100,7 @@ export default {
           webClientId: '51432255365-qpaejpm0gsli0mo76gkbtf4a0apejfhi.apps.googleusercontent.com',
           iOSClientId: '786205750128-6ea445ctatsomsh9qhknl36tmi0ldmdq.apps.googleusercontent.com',        // Required for iOS
           iOSServerClientId: '786205750128-c0tpsm1hgffmjeum8u9ee4kfgclch4jn.apps.googleusercontent.com',  // Required for iOS offline mode and server authorization (same as webClientId)
-          mode: 'online',  // 'online' or 'offline'
+          mode: 'offline',  // 'online' or 'offline'
         }
       })
 
