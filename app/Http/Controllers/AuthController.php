@@ -65,15 +65,65 @@ class AuthController extends Controller
 
         $client_secret = config("services.google.client_secret");
 
-        $url = "https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=$code";
+        $url = "https://oauth2.googleapis.com/token?code=$code&client_id=$client_id&client_secret=$client_secret&grant_type=authorization_code";
 
-        $test = Http::get($url);
+        $accessCodeRequest = Http::withHeader("Content-Type","application/x-www-form-urlencoded")->post($url);
 
-        $user = $test->object();
+        if ($accessCodeRequest->successful()) {
 
-        Log::info("found user", ["user" => $user]);
+            $response = $accessCodeRequest->object();
 
-        return ResponseService::SuccessResponse($user, "User logged in successfully");
+            $userInfo = Http::withHeaders(["Authorization" => "Bearer $response->access_token"])
+                ->get("https://openidconnect.googleapis.com/v1/userinfo");
+
+            $user = $userInfo->object();
+
+            $existingUser = User::where('email', $user->email)->where("google_user_id",$user->sub)->first();
+
+
+            $foundUser = null;
+
+            if ($existingUser) {
+
+                $existingUser->update([
+                    "name"=>$user->name,
+                ]);
+
+
+                $foundUser = $existingUser;
+
+
+            }else{
+
+
+            $foundUser = new User([
+                "name"=>$user->name,
+                "email"=>$user->email,
+                "google_user_id"=>$user->sub,
+                "image_url"=>$user->picture,
+            ]);
+            $foundUser->save();
+
+
+            }
+
+
+            $token = $foundUser->createToken($request->userAgent())->plainTextToken;
+
+            return ResponseService::SuccessResponse([
+                'token' => $token,
+                'user' => $foundUser,
+            ],
+                "User logged in successfully"
+            );
+
+
+        }
+
+
+        return ResponseService::FailedResponse("Login failed , try again");
+
+
 
 
     }
