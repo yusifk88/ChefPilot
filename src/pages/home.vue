@@ -4,12 +4,12 @@
     <f7-navbar :sliding="false">
       <f7-nav-left>
         <f7-link panel-open="left">
-        <img v-if="user?.user" class="message-avatar" :src="user.user.image_url">
+        <img v-if="user" class="message-avatar" :src="user.image_url">
         </f7-link>
       </f7-nav-left>
 
       <f7-nav-title sliding>ChefPilot</f7-nav-title>
-      <f7-nav-title-large> 👋🏻 {{ user?.user.name ? "Hi " + user?.user.name + "," : "" }}</f7-nav-title-large>
+      <f7-nav-title-large> 👋🏻 {{ user?.name ? "Hi " + user?.name + "," : "" }}</f7-nav-title-large>
       <f7-nav-right>
         <f7-link href="#">
           <f7-icon

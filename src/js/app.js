@@ -18,7 +18,6 @@ import '../css/app.less';
 import App from '../components/app.vue';
 import "./bootstrap";
 import routes from "@/js/routes";
-import {initOneSignal} from "@/js/onsignal";
 
 // Init Framework7-Vue Plugin
 Framework7.use(Framework7Vue);
@@ -26,9 +25,6 @@ Framework7.use(Framework7Vue);
 // Init App
 const app = createApp(App);
 
-document.addEventListener('deviceready', () => {
-    initOneSignal();
-});
 
 // Register Framework7 Vue components
 registerComponents(app);

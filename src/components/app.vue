@@ -53,7 +53,6 @@
 
     setup() {
 
-      const loginScreenOpened = ref(false);
 
       const showLogin = useStore(store,"loginState");
 
@@ -99,14 +98,13 @@
             capacitorApp.init(f7);
           }
 
-          //store.dispatch("initUser")
+          store.dispatch("initUser")
 
 
         });
       });
 
       return {
-        loginScreenOpened,
         f7params,
         username,
         password,

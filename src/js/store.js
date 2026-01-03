@@ -1,4 +1,5 @@
 import {createStore} from 'framework7/lite';
+import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 
 const store = createStore({
     state: {
@@ -49,30 +50,60 @@ const store = createStore({
     },
     actions: {
 
+        hideLogin({state}){
+          state.loginState=false;
+        },
+
         changeBookmarkState({state}) {
             state.bookmarkChanged = !state.bookmarkChanged;
         },
 
-        changeRefreshState({state}, refresh) {
-            state.refresh = refresh;
+        changeRefreshState({state}) {
+            state.refresh = !state.refresh;
         },
 
         setRecipeItem({state}, item) {
             state.selectedRecipe = item;
         },
+
+        setUser({state}, user) {
+
+            state.user = user;
+        },
+
         initUser({state}) {
-            axios.get("/user")
-                .then(res => {
-                    state.user = res.data.data;
-                    state.loginState = false
-                    state.refresh = !state.refresh;
+
+
+            CapacitorPersistentAccount.readAccount()
+                .then(account=>{
+                    if (account.data){
+
+                        axios.get("/user",{headers:{Authorization:"Bearer "+account.data.token}})
+                            .then(res => {
+                                state.user = res.data.data.user;
+                                state.loginState = false
+                                state.refresh = !state.refresh;
+
+                            })
+                            .catch(error => {
+                                state.user = null;
+                                state.loginState = true;
+
+                                console.log(error);
+
+
+                            })
+
+                    }else {
+
+                        state.loginState = true;
+
+
+                    }
 
                 })
-                .catch(error => {
-                    state.user = null;
-                    state.loginState = true;
 
-                })
+
         },
         addProduct({state}, product) {
             state.products = [...state.products, product];

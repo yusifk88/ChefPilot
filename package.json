@@ -28,6 +28,7 @@
     "@capacitor/keyboard": "^8.0.0",
     "@capacitor/splash-screen": "^8.0.0",
     "@capacitor/status-bar": "^8.0.0",
+    "@capgo/capacitor-persistent-account": "^8.0.5",
     "@capgo/capacitor-social-login": "^8.2.1",
     "axios": "^1.13.2",
     "dayjs": "^1.11.19",

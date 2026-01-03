@@ -10,13 +10,29 @@
       <p class="fade-in-up">Let AI plan your next meal with your preferences and the food in your home,
         discover new recipes, learn how to make them and share your experience with others</p>
 
-      <f7-button @click="testLogin" class="fade-in-up" large fill color="black">Continue with &nbsp;
-        <app-logo></app-logo>
-      </f7-button>
-      <f7-button @click="login" large fill color="red" class="margin-top fade-in-up">Continue with &nbsp;<google-logo></google-logo>
+      <!--      <f7-button @click="testLogin" class="fade-in-up" large fill color="black">Continue with &nbsp;-->
+      <!--        <app-logo></app-logo>-->
+      <!--      </f7-button>-->
+      <!--      -->
+      <f7-button preloader v-if="!currentAccount" :loading="loading" @click="login" large fill color="red"
+                 class="margin-top fade-in-up">
+        Continue with &nbsp;<google-logo></google-logo>
       </f7-button>
 
-      <f7-button url="/" large color="black" class="margin-top fade-in-up">Explore</f7-button>
+      <f7-button v-if="!currentAccount" url="/" large color="black" class="margin-top fade-in-up">Explore</f7-button>
+
+      <f7-list v-else media-list dividers-ios strong style="border-radius: 15px !important;">
+        <f7-list-item @click="setUser" link :title="currentAccount.user.name" :subtitle="currentAccount.user.email">
+          <template #media>
+            <img
+                style="border-radius: 8px"
+                :src="currentAccount.user.image_url"
+                width="44"
+            />
+          </template>
+        </f7-list-item>
+      </f7-list>
+
 
     </f7-block>
 
@@ -29,6 +45,7 @@ import GoogleLogo from "@/components/googleLogo.vue";
 import store from "../../js/store";
 import {useStore} from "framework7-vue";
 import {SocialLogin} from "@capgo/capacitor-social-login";
+import {CapacitorPersistentAccount} from '@capgo/capacitor-persistent-account';
 
 export default {
   name: "login",
@@ -42,7 +59,8 @@ export default {
     return {
       email: "test@example.com",
       password: "password",
-      loading: false
+      loading: false,
+      currentAccount: null
     }
   },
   methods: {
@@ -52,6 +70,7 @@ export default {
 
     async login() {
 
+      this.loading = true;
 
       await this.initAuth();
 
@@ -65,31 +84,30 @@ export default {
       });
 
 
-      if (response.result.profile) {
+      if (response.result.responseType === "offline") {
+
+        axios.post("/google-login", {code: response.result.serverAuthCode})
+            .then(async res => {
+
+              const account = {
+                user: res.data.data.user,
+                token: res.data.data.token
+              };
 
 
-        const payload = response.result.profile;
+              await CapacitorPersistentAccount.saveAccount({data: account})
 
-        axios.post("/signup", payload)
-            .then(res => {
-
-              localStorage.setItem("token",res.data.data.token);
-              store.dispatch("initUser");
+              await store.dispatch("initUser")
 
             })
-
-
-      }else if (response.result.idToken) {
-
-        console.log("results from client:",response.result);
-
-        axios.post("/google-login", {code: response.result.idToken})
-            .then(res => {
-              console.log("response from server:",res.data.data)
+            .catch(error => {
+              console.log(error);
+              this.loading = false;
             })
+
       }
 
-
+      this.loading = false;
 
 
     },
@@ -106,21 +124,33 @@ export default {
 
     },
 
-    testLogin() {
+    async getPersistentAccount() {
 
-      axios.post("/login", {
-        email: this.email,
-        password: this.password
-      })
-          .then(res => {
-            localStorage.setItem("token", res.data.data.token);
-            store.dispatch("initUser")
-          })
+      this.loading = true;
+
+      const account = await CapacitorPersistentAccount.readAccount();
+      if (account.data) {
+        this.currentAccount = account.data;
+      }
+      this.loading = false;
+
+
+    },
+
+
+    setUser() {
+
+      store.dispatch("setUser", this.currentAccount.user);
+      store.dispatch("hideLogin");
+      store.dispatch("changeRefreshState");
+
+
+
     }
   },
   mounted() {
 
-    this.initAuth();
+    this.getPersistentAccount();
 
   }
 }
