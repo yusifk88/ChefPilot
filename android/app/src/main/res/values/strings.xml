@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ChefPilot</string>
+    <string name="title_activity_main">ChefPilot</string>
+    <string name="package_name">com.chefpilot.app</string>
+    <string name="custom_url_scheme">com.chefpilot.app</string>
+</resources>

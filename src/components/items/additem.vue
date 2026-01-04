@@ -2,13 +2,22 @@
   <f7-page ptr :ptr-mousewheel="true" @ptr:refresh="getItems">
 
     <f7-navbar>
-      <f7-subnavbar :inner="false">
+
+      <f7-subnavbar v-if="Capacitor().getPlatform().toLowerCase()==='ios'">
         <f7-searchbar
             placeholder="Search in items"
             @input="searchSubmit"
             @searchbar:search="searchSubmit"
         ></f7-searchbar>
       </f7-subnavbar>
+
+      <f7-searchbar
+          v-else
+          placeholder="Search in items"
+          @input="searchSubmit"
+          @searchbar:search="searchSubmit"
+      ></f7-searchbar>
+
     </f7-navbar>
 
     <f7-block strong inset style="margin-top: 0!important;">
@@ -63,6 +72,7 @@
 
 <script>
 import {f7, f7Block, f7List, f7ListItem, f7Navbar, f7Page, f7Searchbar, f7Subnavbar, theme,} from 'framework7-vue';
+import {Capacitor} from "@capacitor/core";
 
 export default {
   name: "additem",
@@ -103,6 +113,9 @@ export default {
     }
   },
   methods: {
+    Capacitor() {
+      return Capacitor
+    },
 
 
 

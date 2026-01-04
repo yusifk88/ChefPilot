@@ -1,5 +1,7 @@
 import {createStore} from 'framework7/lite';
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
+import {Capacitor} from "@capacitor/core";
+
 
 const store = createStore({
     state: {
@@ -73,35 +75,57 @@ const store = createStore({
 
         initUser({state}) {
 
+            if (Capacitor.getPlatform().toLowerCase()==='web'){
 
-            CapacitorPersistentAccount.readAccount()
-                .then(account=>{
-                    if (account.data){
+                axios.get("/user")
+                    .then(res => {
+                        state.user = res.data.data.user;
+                        state.loginState = false
+                        state.refresh = !state.refresh;
 
-                        axios.get("/user",{headers:{Authorization:"Bearer "+account.data.token}})
-                            .then(res => {
-                                state.user = res.data.data.user;
-                                state.loginState = false
-                                state.refresh = !state.refresh;
-
-                            })
-                            .catch(error => {
-                                state.user = null;
-                                state.loginState = true;
-
-                                console.log(error);
-
-
-                            })
-
-                    }else {
-
+                    })
+                    .catch(error => {
+                        state.user = null;
                         state.loginState = true;
 
+                        console.log(error);
 
-                    }
 
-                })
+                    })
+
+
+            }else {
+
+
+                CapacitorPersistentAccount.readAccount()
+                    .then(account => {
+                        if (account.data) {
+
+                            axios.get("/user", {headers: {Authorization: "Bearer " + account.data.token}})
+                                .then(res => {
+                                    state.user = res.data.data.user;
+                                    state.loginState = false
+                                    state.refresh = !state.refresh;
+
+                                })
+                                .catch(error => {
+                                    state.user = null;
+                                    state.loginState = true;
+
+                                    console.log(error);
+
+
+                                })
+
+                        } else {
+
+                            state.loginState = true;
+
+
+                        }
+
+                    })
+            }
 
 
         },
