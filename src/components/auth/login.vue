@@ -28,9 +28,8 @@
       </f7-button>
 
 
-      <f7-button v-if="!currentAccount" url="/" large color="black" class="margin-top fade-in-up">Explore</f7-button>
 
-      <f7-list v-else media-list dividers-ios strong style="border-radius: 15px !important;">
+      <f7-list :disabled="accountInitializing" v-else media-list dividers-ios strong style="border-radius: 15px !important;">
         <f7-list-item @click="setUser" link :title="currentAccount.user.name" :subtitle="currentAccount.user.email">
           <template #media>
             <img
@@ -70,7 +69,8 @@ export default {
       email: "test@example.com",
       password: "password",
       loading: false,
-      currentAccount: null
+      currentAccount: null,
+      accountInitializing:useStore(store,"getInitState")
     }
   },
   methods: {

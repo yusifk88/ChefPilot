@@ -1,6 +1,7 @@
 import {createStore} from 'framework7/lite';
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {Capacitor} from "@capacitor/core";
+import {f7} from "framework7-vue";
 
 
 const store = createStore({
@@ -11,6 +12,7 @@ const store = createStore({
         loginState: true,
         refresh: false,
         bookmarkChanged: false,
+        initializingAccount:false,
         products: [
             {
                 id: '1',
@@ -47,6 +49,9 @@ const store = createStore({
         },
         bookMarkState({state}) {
             return state.bookmarkChanged;
+        },
+        getInitState({state}){
+            return state.initializingAccount;
         }
 
     },
@@ -79,6 +84,8 @@ const store = createStore({
 
         initUser({state}) {
 
+            state.initializingAccount=true;
+
             if (Capacitor.getPlatform().toLowerCase()==='web'){
 
                 axios.get("/user")
@@ -86,13 +93,15 @@ const store = createStore({
                         state.user = res.data.data.user;
                         state.loginState = false
                         state.refresh = !state.refresh;
+                        state.initializingAccount=false;
+
 
                     })
                     .catch(error => {
                         state.user = null;
                         state.loginState = true;
+                        state.initializingAccount=false;
 
-                        console.log(error);
 
 
                     })
@@ -100,6 +109,7 @@ const store = createStore({
 
             }else {
 
+                state.initializingAccount=true;
 
                 CapacitorPersistentAccount.readAccount()
                     .then(account => {
@@ -110,14 +120,16 @@ const store = createStore({
                                     state.user = res.data.data.user;
                                     state.loginState = false
                                     state.refresh = !state.refresh;
+                                    state.initializingAccount=false;
+
 
                                 })
-                                .catch(error => {
+                                .catch(async error => {
                                     state.user = null;
                                     state.loginState = true;
-
-                                    console.log(error);
-
+                                    state.initializingAccount=false;
+                                   /// await CapacitorPersistentAccount.saveAccount({data:null});
+                                    window.location.reload();
 
                                 })
 

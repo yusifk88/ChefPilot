@@ -1,14 +1,11 @@
 import HomePage from '../pages/home.vue';
 import AboutPage from '../pages/about.vue';
 import FormPage from '../pages/form.vue';
-import CatalogPage from '../pages/catalog.vue';
 import ProductPage from '../pages/product.vue';
 import SettingsPage from '../pages/settings.vue';
-
 import DynamicRoutePage from '../pages/dynamic-route.vue';
 import RequestAndLoad from '../pages/request-and-load.vue';
 import NotFoundPage from '../pages/404.vue';
-import additem from "@/pages/additem.vue";
 import selectRecipe from "@/pages/SelectRecipe.vue";
 import BookMarks from "@/pages/BookMarks.vue";
 
@@ -42,10 +39,6 @@ var routes = [
         component: SettingsPage,
     },
 
-    {
-        path: "/additems/",
-        component: additem
-    },
     {
         path: '/dynamic-route/blog/:blogId/post/:postId/',
         component: DynamicRoutePage,
