@@ -6,6 +6,12 @@
       <div class="grid grid-cols-3 grid-gap">
       <f7-button>Change</f7-button>
       </div>
+
+      <f7-list-item
+          :title="user.name ?? 'You have no bio'"
+          subtitle="Bio"
+      >
+      </f7-list-item>
     </f7-block>
 
     <f7-block v-if="user" inset strong>
