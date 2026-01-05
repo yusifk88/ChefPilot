@@ -8,7 +8,6 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -40,15 +39,6 @@ class AuthController extends Controller
 
     }
 
-
-    public function user()
-    {
-        return ResponseService::SuccessResponse([
-            "user" => \request()->user()
-        ], "Current user retrieved successfully");
-    }
-
-
     /**
      * @throws ConnectionException
      */
@@ -67,7 +57,7 @@ class AuthController extends Controller
 
         $url = "https://oauth2.googleapis.com/token?code=$code&client_id=$client_id&client_secret=$client_secret&grant_type=authorization_code";
 
-        $accessCodeRequest = Http::withHeader("Content-Type","application/x-www-form-urlencoded")->post($url);
+        $accessCodeRequest = Http::withHeader("Content-Type", "application/x-www-form-urlencoded")->post($url);
 
         if ($accessCodeRequest->successful()) {
 
@@ -78,7 +68,7 @@ class AuthController extends Controller
 
             $user = $userInfo->object();
 
-            $existingUser = User::where('email', $user->email)->where("google_user_id",$user->sub)->first();
+            $existingUser = User::where('email', $user->email)->where("google_user_id", $user->sub)->first();
 
 
             $foundUser = null;
@@ -86,24 +76,24 @@ class AuthController extends Controller
             if ($existingUser) {
 
                 $existingUser->update([
-                    "name"=>$user->name,
+                    "name" => $user->name,
                 ]);
 
 
                 $foundUser = $existingUser;
 
 
-            }else{
+            } else {
 
 
-            $foundUser = new User([
-                "name"=>$user->name,
-                "email"=>$user->email,
-                "google_user_id"=>$user->sub,
-                "image_url"=>$user->picture,
-                "password" => Hash::make($user->sub),
-            ]);
-            $foundUser->save();
+                $foundUser = new User([
+                    "name" => $user->name,
+                    "email" => $user->email,
+                    "google_user_id" => $user->sub,
+                    "image_url" => $user->picture,
+                    "password" => Hash::make($user->sub),
+                ]);
+                $foundUser->save();
 
 
             }
@@ -125,10 +115,7 @@ class AuthController extends Controller
         return ResponseService::FailedResponse("Login failed , try again");
 
 
-
-
     }
-
 
     public function singUp(Request $request)
     {
@@ -141,7 +128,7 @@ class AuthController extends Controller
 
 
         $existingUser = User::where('email', $request->email)
-            ->where("google_user_id",$request->id)->first();
+            ->where("google_user_id", $request->id)->first();
 
         /**
          * if the user already exist
@@ -181,6 +168,28 @@ class AuthController extends Controller
         );
     }
 
+    public function updateUser(Request $request)
+    {
+        $request->validate([
+            "name" => "required|string"
+        ]);
+        $user = $request->user();
+
+        $user->update([
+            "name" => $request->name,
+            "bio" => $request->bio
+        ]);
+
+        return ResponseService::SuccessResponse([], "User updated successfully");
+
+    }
+
+    public function user()
+    {
+        return ResponseService::SuccessResponse([
+            "user" => \request()->user()
+        ], "Current user retrieved successfully");
+    }
 
 
 }

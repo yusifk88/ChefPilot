@@ -13,7 +13,7 @@ Route::post('/signup', [AuthController::class, 'singUp']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/user', [AuthController::class, "user"]);
-
+    Route::post("update-user", [AuthController::class, "updateUser"]);
     /**
      * items routes
      */
