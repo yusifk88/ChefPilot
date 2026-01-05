@@ -56,6 +56,10 @@ const store = createStore({
           state.loginState=false;
         },
 
+        showLogin({state}){
+          state.loginState=true;
+        },
+
         changeBookmarkState({state}) {
             state.bookmarkChanged = !state.bookmarkChanged;
         },

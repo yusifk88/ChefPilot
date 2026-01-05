@@ -2,13 +2,15 @@
   <f7-app v-bind="f7params" :store="{store}">
 
     <!-- Left panel with cover effect-->
-    <f7-panel left cover floating>
+    <f7-panel left cover floating id="main-panel">
       <f7-view>
         <f7-page>
           <f7-navbar class="no-padding">
 
-            <f7-list class="no-margin" inset-ios v-if="user" media-list dividers-ios strong style="border-radius: 15px !important; width: 100%!important; margin-top: 35px">
-              <f7-list-item :title="user.name" :subtitle="user.email">
+            <f7-list class="no-margin" inset-ios v-if="user" media-list dividers-ios strong
+                     style="border-radius: 15px !important; width: 100%!important; margin-top: 35px">
+              <f7-list-item @click="sheetOpened=true" panel-close="#main-panel" link href="/profile" :title="user.name"
+                            :subtitle="user.email">
                 <template #media>
                   <img
                       style="border-radius: 8px"
@@ -23,7 +25,7 @@
 
           <f7-block class="no-padding" inset strong>
 
-            <f7-list inset-ios media-list dividers-ios  strong style="border-radius: 15px !important;">
+            <f7-list inset-ios media-list dividers-ios strong style="border-radius: 15px !important;">
               <f7-list-item
                   link
                   title="About"
@@ -42,10 +44,20 @@
               >
               </f7-list-item>
 
+
+              <f7-list-item
+                  link
+                  title="Privacy Policy"
+              >
+              </f7-list-item>
+
+
               <f7-list-item
                   link
                   color="red"
 
+                  @click="showLogOutDialog"
+                  panel-close="#main-panel"
               >
                 <template #title>
                   <span style="color: red">Log Out</span>
@@ -87,6 +99,19 @@
       <login></login>
     </f7-login-screen>
 
+
+    <f7-sheet v-model:opened="sheetOpened" style="height: 95%">
+      <f7-toolbar>
+        <div class="left"></div>
+        Profile
+        <div class="right">
+          <f7-link sheet-close><i class="icon icon-close"></i></f7-link>
+        </div>
+      </f7-toolbar>
+      <profile></profile>
+
+    </f7-sheet>
+
   </f7-app>
 </template>
 <script>
@@ -98,13 +123,16 @@ import capacitorApp from '../js/capacitor-app.js';
 import routes from '../js/routes.js';
 import store from '../js/store';
 import Login from "@/components/auth/login.vue";
+import Profile from "@/components/account/profile.vue";
+import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 
 export default {
-  components: {Login},
+  components: {Profile, Login},
 
 
   setup() {
 
+    const sheetOpened = ref(false);
 
     const showLogin = useStore(store, "loginState");
     const user = useStore(store, "getUser");
@@ -144,6 +172,24 @@ export default {
         f7.loginScreen.close();
       });
     }
+    const  showLogOutDialog = () => {
+
+      f7.dialog.confirm('Do you want to log out?', async() => {
+
+        f7.dialog.preloader('Please wait..');
+
+       await CapacitorPersistentAccount.saveAccount({data:null});
+
+        f7.dialog.close();
+
+        store.dispatch("showLogin");
+        window.location.reload();
+
+
+
+      });
+    };
+
     onMounted(() => {
       f7ready(() => {
 
@@ -163,7 +209,9 @@ export default {
       password,
       showLogin,
       user,
+      sheetOpened,
       alertLoginData,
+      showLogOutDialog,
       store
     }
   }

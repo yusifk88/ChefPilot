@@ -7,7 +7,12 @@ const timeFromNow = (dateTime) => {
     return dayjs().to(dayjs(dateTime));
 }
 
+const formatDateTIme = (dateTime)=>{
+    return dayjs(dateTime).format("MMM D, YYYY HH:mA")
+}
+
 
 export {
-    timeFromNow
+    timeFromNow,
+    formatDateTIme
 }

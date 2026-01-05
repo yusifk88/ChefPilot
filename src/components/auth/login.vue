@@ -138,6 +138,8 @@ export default {
 
                 await store.dispatch("initUser")
 
+                window.location.reload();
+
               })
               .catch(error => {
                 console.log(error);
@@ -180,6 +182,8 @@ export default {
                 await CapacitorPersistentAccount.saveAccount({data: account})
 
                 await store.dispatch("initUser")
+
+                window.location.reload();
 
 
               })
