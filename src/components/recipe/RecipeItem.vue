@@ -36,14 +36,17 @@
     </f7-card-content>
 
     <f7-card-footer style="padding-top: 0!important;margin-top: 0!important;">
-      <p class="date">
+      <p class="date" style="width: 70%!important;">
         ETA:{{ item.estimatedTimeMinutes }}Min <difficulty-chip :label="item.difficulty"></difficulty-chip>
       </p>
 
-        <f7-icon f7="square_arrow_up_on_square" style="margin-left: auto" class="margin-right">
+        <f7-icon size="20" f7="arrow_2_squarepath" style="margin-left: auto !important;">
+        </f7-icon>
+ <f7-icon size="20" f7="square_arrow_up" style="margin-left: auto" class="margin-right">
         </f7-icon>
 
       <f7-icon
+          size="20"
           @click="bookMark"
           :color="bookmarked ? 'blue' : ''"
           :ios="bookmarked ? 'f7:bookmark_filled' : 'f7:bookmark'"

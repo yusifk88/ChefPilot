@@ -22,6 +22,7 @@
 
     <f7-block strong inset style="margin-top: 0!important;">
       <f7-list
+          v-if="items.length>0"
           strong
           inset
           dividers-ios
@@ -54,6 +55,7 @@
         </ul>
 
       </f7-list>
+      <empty-state type="items" v-else title="No items here" details="There are no items to show, you can pull to refresh to reload new items"></empty-state>
     </f7-block>
 
 
@@ -73,11 +75,13 @@
 <script>
 import {f7, f7Block, f7List, f7ListItem, f7Navbar, f7Page, f7Searchbar, f7Subnavbar, theme,} from 'framework7-vue';
 import {Capacitor} from "@capacitor/core";
+import EmptyState from "@/components/empty/EmptyState.vue";
 
 export default {
   name: "additem",
   emits:["saved"],
   components: {
+    EmptyState,
     f7Navbar,
     f7Page,
     f7List,

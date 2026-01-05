@@ -47,6 +47,13 @@
 
               <f7-list-item
                   link
+                  title="Share"
+              >
+              </f7-list-item>
+
+
+              <f7-list-item
+                  link
                   title="Privacy Policy"
               >
               </f7-list-item>
