@@ -17,6 +17,6 @@ class Recipe extends Model
         "ingredients" => "array",
         "nutrition" => "array",
         "extra" => "array",
-        "bookmarked" => "boolean"
+        "bookmarked" => "bool"
     ];
 }
