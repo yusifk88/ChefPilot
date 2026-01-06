@@ -10,7 +10,7 @@ class Recipe extends Model
     protected $fillable = [
         "user_id", "name", "description", "ingredients",
         "ingredientMatchScore", "tag", "instructions", "difficulty",
-        "estimatedTimeMinutes", "nutrition", "images", "extra","bookmarked"
+        "estimatedTimeMinutes", "nutrition", "images", "extra","bookmarked,ulid"
     ];
 
     protected $casts = [

@@ -7,6 +7,7 @@ use app\Services\AI;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class MakeRecipeJob implements ShouldQueue
 {
@@ -44,6 +45,7 @@ class MakeRecipeJob implements ShouldQueue
                 "estimatedTimeMinutes" => $recipe->estimatedTimeMinutes,
                 "tag"=>implode(",",$recipe->dietaryTags),
                 "instructions"=>implode(",",$recipe->instructions),
+                "ulid"=>Str::ulid()
 
             ]);
         }
