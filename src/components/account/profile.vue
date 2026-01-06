@@ -4,19 +4,18 @@
 
       <img :src="user.image_url" style="border-radius: 15px">
       <div class="grid grid-cols-3 grid-gap">
-      <f7-button>Change</f7-button>
+        <f7-button>Change</f7-button>
       </div>
 
-      <f7-list-item
-          :title="user.name ?? 'You have no bio'"
-          subtitle="Bio"
-      >
-      </f7-list-item>
     </f7-block>
 
     <f7-block v-if="user" inset strong>
       <f7-list inset-ios media-list dividers strong>
-
+        <f7-list-item
+            :title="user.bio ?? 'You have no bio'"
+            subtitle="Bio"
+        >
+        </f7-list-item>
         <f7-list-item
             :title="user.name"
             subtitle="Name"
@@ -40,25 +39,104 @@
       </f7-list>
 
       <div class="grid grid-cols-3 grid-gap">
-        <f7-button>Update</f7-button>
+        <f7-button @click="setUser" sheet-open=".update-profile-sheet">Update</f7-button>
       </div>
     </f7-block>
+
+    <f7-sheet class="update-profile-sheet" style="height: auto" swipe-to-close backdrop>
+      <div class="swipe-handler"></div>
+
+      <f7-page-content>
+        <f7-block-title class="padding-left">Update your profile</f7-block-title>
+        <f7-block>
+          <f7-list strong-ios dividers-ios inset-ios>
+
+            <f7-list-input
+                label="Name"
+                type="text"
+                placeholder="Your name"
+                required
+                outline
+                :value="name"
+                @input="nameChanged"
+            ></f7-list-input>
+
+            <f7-list-input
+                outline
+                :value="bio"
+                label="Bio"
+                type="textarea"
+                placeholder="Your short bio"
+                required
+                autofocus
+                @input="bioChanged"
+                clear-button></f7-list-input>
+
+          </f7-list>
+          <f7-button @click="savedChanges" preloader :loading="loading" :disabled="loading" class="margin-right margin-left" fill>Update
+          </f7-button>
+        </f7-block>
+      </f7-page-content>
+
+    </f7-sheet>
+
   </f7-page>
 </template>
 
 <script>
-import {useStore} from "framework7-vue";
+import {f7, useStore} from "framework7-vue";
 import store from "@/js/store";
 import {formatDateTIme} from "@/js/utility";
 
 export default {
   name: "profile",
-  methods: {formatDateTIme},
-  data(){
-    return{
-      user:useStore(store,"getUser")
+  data() {
+    return {
+      user: useStore(store, "getUser"),
+      name: null,
+      bio: null,
+      loading: false
+    }
+  },
+  methods: {
+    formatDateTIme,
+    bioChanged(e) {
+      this.bio = e.target.value;
+      console.log(e.target.value);
+    },
+    nameChanged(e) {
+      this.name = e.target.value;
+    },
+    setUser() {
+      this.name = this.user.name;
+      this.bio = this.user.bio;
+    },
+    savedChanges() {
+      const payload = {
+        name: this.name,
+        bio: this.bio
+      };
+
+      this.loading = true;
+      axios.post("/update-user", payload)
+          .then(res => {
+
+            this.loading=false;
+            const successToast = f7.toast.create({
+              text: 'User profile updated',
+              closeButton: true,
+            });
+
+            successToast.open();
+            store.dispatch("initUser")
+
+          })
+          .catch(error => {
+            this.loading = false;
+          })
     }
   }
+
 }
 </script>
 

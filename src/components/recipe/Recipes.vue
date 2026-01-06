@@ -1,6 +1,8 @@
 <template>
   <f7-block>
     <f7-block-title>Dishes of the day</f7-block-title>
+
+
     <f7-card
         v-if="loading"
 
@@ -11,12 +13,13 @@
         style="height: 400px"
     ></f7-card>
 
+
     <swiper-container
-        v-else
         :pagination="false"
         class="no-padding no-margin"
         :space-between="15"
         :speed="900"
+        v-else-if="items && items.length>0"
     >
       <swiper-slide class=" no-padding"
                     v-for="(item,index) in items" :key="item.id">
@@ -25,6 +28,13 @@
 
     </swiper-container>
 
+    <empty-state
+        v-else
+        type="recipes"
+        title="No dishes or recipes yet"
+        details="Recipes suggested by chefpilot using your food inventory will show here"
+    ></empty-state>
+
   </f7-block>
 </template>
 
@@ -32,31 +42,32 @@
 import RecipeItem from "@/components/recipe/RecipeItem.vue";
 import {useStore} from "framework7-vue";
 import store from "@/js/store";
+import EmptyState from "@/components/empty/EmptyState.vue";
 
 export default {
   name: "Recipes",
-  components: {RecipeItem},
+  components: {EmptyState, RecipeItem},
   data() {
     return {
       items: [],
       shouldRefresh: useStore(store, "getRefresh"),
-      loading:false,
+      loading: false,
     }
   },
   watch: {
 
     shouldRefresh() {
-   this.getItems();
+      this.getItems();
 
     }
   },
   methods: {
     getItems() {
-      this.loading=true;
+      this.loading = true;
       axios.get("/recipes")
           .then(res => {
             this.items = res.data.data;
-            this.loading=false;
+            this.loading = false;
 
           })
     }

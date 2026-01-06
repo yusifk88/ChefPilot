@@ -31,7 +31,8 @@ export default {
     return{
       types:{
         bookmarks:"/img/empty/no_bookmarks.svg",
-        items:"/img/empty/empty_items.svg"
+        items:"/img/empty/empty_items.svg",
+        recipes:"/img/empty/empty_recipes.svg"
       }
     }
   }

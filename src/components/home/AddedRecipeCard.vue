@@ -1,7 +1,7 @@
 <template>
 
   <span v-if="!loading">
-  <div class="grid grid-cols-2 grid-gap no-padding" v-if="!items.length">
+  <div class="grid grid-cols-2 grid-gap no-padding" v-if="items && !items.length">
     <div>
       <h3>Add your food store</h3>
       <p>Add raw food food stuff to get personalised meal recipes </p>

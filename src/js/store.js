@@ -128,7 +128,7 @@ const store = createStore({
                                     state.user = null;
                                     state.loginState = true;
                                     state.initializingAccount=false;
-                                   /// await CapacitorPersistentAccount.saveAccount({data:null});
+                                   // await CapacitorPersistentAccount.saveAccount({data:null});
                                     window.location.reload();
 
                                 })

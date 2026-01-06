@@ -42,7 +42,7 @@
 
 
      <empty-state
-         v-if="items.length==0"
+         v-if="items && items.length==0"
          title="You Have No Bookmarks Yet"
          details="No bookmarks to show, your most recent bookmarked recipes will show here."
      ></empty-state>

@@ -224,3 +224,9 @@ export default {
   }
 }
 </script>
+<style>
+.toast-red{
+  background-color: red!important;
+  color: #FFFFFF!important;
+}
+</style>

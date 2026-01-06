@@ -15,6 +15,7 @@
         <app-logo></app-logo>
       </f7-button>
 
+
       <f7-button
           preloader
           v-if="!currentAccount"
@@ -30,11 +31,11 @@
 
 
       <f7-list :disabled="accountInitializing" v-else media-list dividers-ios strong style="border-radius: 15px !important;">
-        <f7-list-item @click="setUser" link :title="currentAccount.user.name" :subtitle="currentAccount.user.email">
+        <f7-list-item @click="setUser" link :title="currentAccount.user?.name" :subtitle="currentAccount.user?.email">
           <template #media>
             <img
                 style="border-radius: 8px"
-                :src="currentAccount.user.image_url"
+                :src="currentAccount.user?.image_url"
                 width="44"
             />
           </template>
@@ -224,7 +225,7 @@ export default {
 
       const account = await CapacitorPersistentAccount.readAccount();
       if (account.data) {
-        this.currentAccount = account.data;
+        this.currentAccount = account.data.data;
       }
       this.loading = false;
 
