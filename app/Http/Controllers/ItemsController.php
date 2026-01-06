@@ -8,6 +8,7 @@ use App\Models\Recipe;
 use App\Models\UserItem;
 use App\Services\ResponseService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ItemsController extends Controller
 {
@@ -101,6 +102,8 @@ class ItemsController extends Controller
 
 
         $item = Recipe::where("id", $id)->where("user_id", $user->id)->firstOrFail();
+
+        Log::info("found data",["user_id" => $user->id, "item_id" => $item->id,"item" => $item]);
 
         $item->update(["bookmarked" => !$item->bookmarked]);
 
