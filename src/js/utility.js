@@ -11,8 +11,14 @@ const formatDateTIme = (dateTime)=>{
     return dayjs(dateTime).format("MMM D, YYYY HH:mA")
 }
 
+const BASE_URL = "https://cpapi.flobaze.com";
+const BASE_URLA = "http://localhost:8000";
+
+
+
 
 export {
     timeFromNow,
-    formatDateTIme
+    formatDateTIme,
+    BASE_URL
 }

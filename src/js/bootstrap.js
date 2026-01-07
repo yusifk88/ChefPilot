@@ -3,6 +3,7 @@ import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {Capacitor} from "@capacitor/core";
 import store from "@/js/store";
 import {f7} from "framework7-vue";
+import {BASE_URL} from "@/js/utility";
 
 
 if (Capacitor.getPlatform().toLowerCase()==='web') {
@@ -21,7 +22,7 @@ if (Capacitor.getPlatform().toLowerCase()==='web') {
 
 }
 
-axios.defaults.baseURL = 'https://cpapi.flobaze.com/api';
+axios.defaults.baseURL =BASE_URL+ '/api';
 axios.defaults.headers.common['Accept'] = "application/json";
 axios.defaults.headers.post['Content-Type']="application/json";
 

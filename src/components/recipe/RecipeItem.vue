@@ -42,8 +42,8 @@
 
         <f7-icon size="20" f7="arrow_2_squarepath" style="margin-left: auto !important;">
         </f7-icon>
- <f7-icon size="20" f7="square_arrow_up" style="margin-left: auto" class="margin-right">
-        </f7-icon>
+
+      <share-button :item="item"></share-button>
 
       <f7-icon
           size="20"
@@ -62,9 +62,10 @@
 import DifficultyChip from "@/components/recipe/difficultyChip.vue";
 import {f7, useStore} from "framework7-vue";
 import store from "@/js/store";
+import ShareButton from "@/components/recipe/ShareButton.vue";
 
 export default {
-  components: {DifficultyChip},
+  components: {ShareButton, DifficultyChip},
   props: {
     item: {
       type: Object
