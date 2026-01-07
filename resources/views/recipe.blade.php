@@ -103,7 +103,7 @@
         </div>
 
         <!-- Overlay for the fade-out effect button area -->
-        <div class=" bottom-0 left-0 right-0 pt-2 pb-4 text-center bg-green-100 rounded-3xl">
+        <div class=" bottom-0 left-0 right-0 pt-2 pb-4 text-center bg-green-50 rounded-3xl">
             <div class="bg-gradient-to-t from-white via-white/95 to-transparent h-40 absolute bottom-0 left-0 right-0 -z-10"></div>
 
             <p class="text-sm font-semibold text-green-500 mb-6 px-4">Download ChefPilot to see the full recipe and discover 1,000+ more.</p>
