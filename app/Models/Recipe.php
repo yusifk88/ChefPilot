@@ -20,4 +20,9 @@ class Recipe extends Model
         "extra" => "array",
         "bookmarked" => "bool"
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

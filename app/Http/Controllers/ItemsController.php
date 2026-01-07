@@ -8,7 +8,6 @@ use App\Models\Recipe;
 use App\Models\UserItem;
 use App\Services\ResponseService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class ItemsController extends Controller
 {
@@ -129,6 +128,17 @@ class ItemsController extends Controller
     {
         $recipe = Recipe::where("id", $id)->where('user_id', auth()->id())->firstOrFail();
         return ResponseService::SuccessResponse($recipe, "Recipe retrieved successfully");
+
+    }
+
+
+    public function publicPost(string $ulid)
+    {
+        $recipe = Recipe::with("user")->where("ulid", $ulid)->firstOrFail();
+
+
+        return \view("recipe", ["recipe" => $recipe]);
+
 
     }
 
