@@ -2,6 +2,12 @@
   <f7-page name="SharedRecipe">
     <f7-navbar class="no-padding" back-link>
       {{ item ? item.name : ""}}
+
+      <f7-nav-right >
+        <f7-link >
+          <img v-if="item" class="message-avatar" :src="item.user.image_url">
+        </f7-link>
+      </f7-nav-right>
     </f7-navbar>
     <shared-recipe-loading-component v-if="loading"></shared-recipe-loading-component>
 

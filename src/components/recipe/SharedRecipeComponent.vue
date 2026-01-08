@@ -44,13 +44,13 @@
 
       <share-button :item="item"></share-button>
 
-      <f7-icon
-          size="20"
-          @click="bookMark"
-          :color="bookmarked ? 'blue' : ''"
-          :ios="bookmarked ? 'f7:bookmark_filled' : 'f7:bookmark'"
-          :md="bookmarked?'material:bookmark_filled' : 'material:bookmark'"
-      ></f7-icon>
+<!--      <f7-icon-->
+<!--          size="20"-->
+<!--          @click="bookMark"-->
+<!--          :color="bookmarked ? 'blue' : ''"-->
+<!--          :ios="bookmarked ? 'f7:bookmark_filled' : 'f7:bookmark'"-->
+<!--          :md="bookmarked?'material:bookmark_filled' : 'material:bookmark'"-->
+<!--      ></f7-icon>-->
 
     </f7-card-footer>
 
