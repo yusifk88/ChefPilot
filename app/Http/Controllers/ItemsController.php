@@ -8,6 +8,7 @@ use App\Models\Recipe;
 use App\Models\UserItem;
 use App\Services\ResponseService;
 use Illuminate\Http\Request;
+use function view;
 
 class ItemsController extends Controller
 {
@@ -137,8 +138,19 @@ class ItemsController extends Controller
         $recipe = Recipe::with("user")->where("ulid", $ulid)->firstOrFail();
 
 
-        return \view("recipe", ["recipe" => $recipe]);
+        return view("recipe", ["recipe" => $recipe]);
 
+
+    }
+
+
+
+    public function publicRecipe(string $ulid)
+    {
+
+        $recipe = Recipe::with("user")->where("ulid", $ulid)->firstOrFail();
+
+        return ResponseService::SuccessResponse($recipe, "Recipe retrieved successfully");
 
     }
 
