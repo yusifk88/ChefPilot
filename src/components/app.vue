@@ -132,6 +132,8 @@ import store from '../js/store';
 import Login from "@/components/auth/login.vue";
 import Profile from "@/components/account/profile.vue";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
+import { App } from '@capacitor/app';
+
 
 export default {
   components: {Profile, Login},
@@ -208,6 +210,15 @@ export default {
 
 
       });
+
+      App.addListener('appUrlOpen', (event) => {
+        const url = event.url;
+
+        const path = url.split('://')[1];
+        alert(path)
+
+      });
+
     });
 
     return {
