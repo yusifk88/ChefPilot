@@ -37,25 +37,31 @@
 
   </f7-page>
 </template>
-<script setup>
+<script>
 import AddedRecipeCard from "@/components/home/AddedRecipeCard.vue";
 import Recipes from "@/components/recipe/Recipes.vue";
 import {f7, useStore} from "framework7-vue";
 import store from "@/js/store";
-import {ref} from "vue";
 import RecentBookmarks from "@/components/recipe/recentBookmarks.vue";
 
-const user = useStore(store, "getUser")
-
-const showRefresh = ref(useStore(store,"getRefresh"));
-
-const image_url = user?.user ? user.user.image_url : '/img/dp.png';
-const refresh = (done) => {
-
-  const newState = !showRefresh.value;
-
-  store.dispatch("changeRefreshState",newState)
-  done();
-
+export default {
+  components:{
+    RecentBookmarks,AddedRecipeCard,Recipes
+  },
+  data(){
+    return{
+      user:useStore(store, "getUser"),
+      showRefresh:useStore(store,"getRefresh")
+    }
+  },
+  methods:{
+    refresh(done){
+      const newState = !showRefresh.value;
+      store.dispatch("changeRefreshState",newState)
+      done();
+    }
+  }
 }
+
+
 </script>

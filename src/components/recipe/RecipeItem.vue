@@ -88,10 +88,14 @@ export default {
     },
     bookMark() {
       this.bookmarked = !this.bookmarked;
+
+
       const URL = "/recipes/" + this.item.id + "/bookmark";
+
+
+
       axios.patch(URL)
           .then(res => {
-
             const successToast = f7.toast.create({
               text: this.bookmarked ? 'Dish bookmarked' : "Dish removed from your bookmarks",
               closeTimeout: 2000

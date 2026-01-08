@@ -44,15 +44,18 @@
 
       </f7-card-content>
       <f7-card-footer>
-        <p class="date">
-          ETA:{{ item?.estimatedTimeMinutes }}Min
-          <difficulty-chip :label="item?.difficulty"></difficulty-chip>
+        <p class="date" style="width: 70%!important;">
+          ETA:{{ item?.estimatedTimeMinutes }}Min <difficulty-chip :label="item?.difficulty"></difficulty-chip>
         </p>
-        <f7-icon f7="square_arrow_up_on_square" style="margin-left: auto" class="margin-right">
+
+        <f7-icon size="20" f7="arrow_2_squarepath" style="margin-left: auto !important;">
         </f7-icon>
+
+        <share-button :item="item"></share-button>
+
         <f7-icon
-            v-if="item"
-            @click="bookMark(item.id)"
+            size="20"
+            @click="bookMark"
             :color="bookmarked ? 'blue' : ''"
             :ios="bookmarked ? 'f7:bookmark_filled' : 'f7:bookmark'"
             :md="bookmarked?'material:bookmark_filled' : 'material:bookmark'"
@@ -94,6 +97,7 @@
 import store from "@/js/store";
 import {f7, useStore} from "framework7-vue";
 import DifficultyChip from "@/components/recipe/difficultyChip.vue";
+import ShareButton from "@/components/recipe/ShareButton.vue";
 
 export default {
   props: {
@@ -101,13 +105,12 @@ export default {
     f7router: Object,
   },
   name: "SelectRecipe",
-  components: {DifficultyChip},
+  components: {ShareButton, DifficultyChip},
 
   data() {
     return {
       itemID:this.f7route.params.id,
       loadingUpdate:false,
-      bookmarked: this.item?.bookmarked,
       photos: [{
         url: "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_phib9nphib9nphib.png",
         caption: this.item?.name
@@ -119,6 +122,11 @@ export default {
 
   },
   computed: {
+    bookmarked(){
+
+      return this.item ? this.item.bookmarked : false;
+    },
+
     tags() {
       return this.item?.tag?.split(",");
     },
@@ -169,14 +177,16 @@ export default {
           })
     },
 
-    bookMark(id) {
+    bookMark() {
 
       this.bookmarked = !this.bookmarked;
 
-      const URL = "/recipes/" + id + "/bookmark";
+
+      const URL = "/recipes/" + this.item.id + "/bookmark";
+
+
       axios.patch(URL)
           .then(res => {
-
             const successToast = f7.toast.create({
               text: this.bookmarked ? 'Dish bookmarked' : "Dish removed from your bookmarks",
               closeTimeout: 2000
@@ -184,9 +194,12 @@ export default {
 
             successToast.open();
 
+            store.dispatch("changeBookmarkState");
+            this.reload()
 
 
           })
+
     },
     showInfinite(multiColor) {
       const self = this;

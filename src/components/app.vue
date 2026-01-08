@@ -132,7 +132,7 @@ import store from '../js/store';
 import Login from "@/components/auth/login.vue";
 import Profile from "@/components/account/profile.vue";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
-import { App } from '@capacitor/app';
+import {App} from '@capacitor/app';
 
 
 export default {
@@ -142,6 +142,7 @@ export default {
   setup() {
 
     const sheetOpened = ref(false);
+    const sharedUlid = ref(null);
 
     const showLogin = useStore(store, "loginState");
     const user = useStore(store, "getUser");
@@ -181,19 +182,18 @@ export default {
         f7.loginScreen.close();
       });
     }
-    const  showLogOutDialog = () => {
+    const showLogOutDialog = () => {
 
-      f7.dialog.confirm('Do you want to log out?', async() => {
+      f7.dialog.confirm('Do you want to log out?', async () => {
 
         f7.dialog.preloader('Please wait..');
 
-       await CapacitorPersistentAccount.saveAccount({data:null});
+        await CapacitorPersistentAccount.saveAccount({data: null});
 
         f7.dialog.close();
 
         store.dispatch("showLogin");
         window.location.reload();
-
 
 
       });
@@ -206,7 +206,7 @@ export default {
           capacitorApp.init(f7);
         }
 
-        store.dispatch("initUser")
+        store.dispatch("initUser");
 
 
       });
@@ -215,7 +215,17 @@ export default {
         const url = event.url;
 
         const path = url.split('://')[1];
-        alert(path)
+
+        const pathArr = path.split("/")
+
+        const ulid = pathArr[pathArr.length - 1];
+
+        sharedUlid.value = "/shared-recipe/"+ulid;
+
+        f7.views.main.router.navigate(sharedUlid.value);
+
+
+       // alert(sharedUlid.value)
 
       });
 
@@ -236,8 +246,8 @@ export default {
 }
 </script>
 <style>
-.toast-red{
-  background-color: red!important;
-  color: #FFFFFF!important;
+.toast-red {
+  background-color: red !important;
+  color: #FFFFFF !important;
 }
 </style>

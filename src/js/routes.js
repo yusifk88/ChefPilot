@@ -8,6 +8,7 @@ import RequestAndLoad from '../pages/request-and-load.vue';
 import NotFoundPage from '../pages/404.vue';
 import selectRecipe from "@/pages/SelectRecipe.vue";
 import BookMarks from "@/pages/BookMarks.vue";
+import sharedRecipe from "@/pages/SharedRecipe.vue";
 
 var routes = [
     {
@@ -42,6 +43,10 @@ var routes = [
     {
         path: '/dynamic-route/blog/:blogId/post/:postId/',
         component: DynamicRoutePage,
+    },
+    {
+      path: "/shared-recipe/:ulid",
+      component: sharedRecipe
     },
     {
         path: '/request-and-load/user/:userId/',

@@ -15,10 +15,9 @@
         <app-logo></app-logo>
       </f7-button>
 
-
       <f7-button
           preloader
-          v-if="!currentAccount"
+          v-if="!currentAccount && !accountInitializing"
           :loading="loading"
           @click="login"
           large
