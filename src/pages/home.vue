@@ -56,7 +56,7 @@ export default {
   },
   methods:{
     refresh(done){
-      const newState = !showRefresh.value;
+      const newState = !this.showRefresh;
       store.dispatch("changeRefreshState",newState)
       done();
     }

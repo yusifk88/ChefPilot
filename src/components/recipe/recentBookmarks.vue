@@ -1,5 +1,7 @@
 <template>
-  <f7-block-title style="margin-top: 0!important;" class="no-margin-bottom no-padding-bottom">Recent Bookmarks</f7-block-title>
+  <f7-block-title style="margin-top: 0!important;" class="  no-margin-top">Recent Bookmarks</f7-block-title>
+
+  <f7-block strong inset class="">
 
   <f7-list strong inset dividers-ios media-list class="skeleton-text"
            v-if="loading">
@@ -38,6 +40,8 @@
     </f7-list-item>
 
   </f7-list>
+
+
   <span v-else>
 
 
@@ -57,7 +61,7 @@
 
   </f7-list>
   </span>
-
+  </f7-block>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <f7-page name="selectrecipe" class="no-padding" ptr :ptr-mousewheel="true"
+  <f7-page name="selectrecipe" ptr :ptr-mousewheel="true"
            @ptr:refresh="reload">
     <f7-navbar class="no-padding" back-link>
       {{ item?.name }}
@@ -43,8 +43,8 @@
         <f7-chip outline :text="'Protein:'+item?.nutrition?.protein"></f7-chip>
 
       </f7-card-content>
-      <f7-card-footer>
-        <p class="date" style="width: 70%!important;">
+      <f7-card-footer style="padding-top: 0!important;margin: 0!important;">
+        <p class="date" style="width: 70%" >
           ETA:{{ item?.estimatedTimeMinutes }}Min <difficulty-chip :label="item?.difficulty"></difficulty-chip>
         </p>
 
@@ -54,9 +54,9 @@
         <share-button :item="item"></share-button>
 
         <f7-icon
+            :color="bookmarkedColor"
             size="20"
             @click="bookMark"
-            :color="bookmarked ? 'blue' : ''"
             :ios="bookmarked ? 'f7:bookmark_filled' : 'f7:bookmark'"
             :md="bookmarked?'material:bookmark_filled' : 'material:bookmark'"
         ></f7-icon>
@@ -109,6 +109,7 @@ export default {
 
   data() {
     return {
+      bookmarked:this.item ? this.item.bookmarked : false,
       itemID:this.f7route.params.id,
       loadingUpdate:false,
       photos: [{
@@ -122,9 +123,9 @@ export default {
 
   },
   computed: {
-    bookmarked(){
 
-      return this.item ? this.item.bookmarked : false;
+    bookmarkedColor(){
+     return  this.bookmarked ? "blue" :'';
     },
 
     tags() {
@@ -195,7 +196,6 @@ export default {
             successToast.open();
 
             store.dispatch("changeBookmarkState");
-            this.reload()
 
 
           })

@@ -61,6 +61,14 @@
 
               <f7-list-item
                   link
+                  title="Theme"
+                  actions-open="#actions-two-groups"
+              >
+              </f7-list-item>
+
+
+              <f7-list-item
+                  link
                   color="red"
 
                   @click="showLogOutDialog"
@@ -119,6 +127,18 @@
 
     </f7-sheet>
 
+
+    <f7-actions id="actions-two-groups">
+      <f7-actions-group>
+        <f7-actions-label>Choose A Theme</f7-actions-label>
+        <f7-actions-button strong @click="setDarkTheme(true)">Dark</f7-actions-button>
+        <f7-actions-button @click="setDarkTheme(false)">Light</f7-actions-button>
+      </f7-actions-group>
+      <f7-actions-group>
+        <f7-actions-button color="red">Cancel</f7-actions-button>
+      </f7-actions-group>
+    </f7-actions>
+
   </f7-app>
 </template>
 <script>
@@ -146,6 +166,8 @@ export default {
 
     const showLogin = useStore(store, "loginState");
     const user = useStore(store, "getUser");
+
+    const currentTheme = ref(f7?.darkMode);
 
     const device = getDevice();
     // Framework7 Parameters
@@ -182,6 +204,10 @@ export default {
         f7.loginScreen.close();
       });
     }
+
+    const setDarkTheme = (mode=true) => {
+      f7.setDarkMode(mode)
+    };
     const showLogOutDialog = () => {
 
       f7.dialog.confirm('Do you want to log out?', async () => {
@@ -220,12 +246,10 @@ export default {
 
         const ulid = pathArr[pathArr.length - 1];
 
-        sharedUlid.value = "/shared-recipe/"+ulid;
+        sharedUlid.value = "/shared-recipe/" + ulid;
 
         f7.views.main.router.navigate(sharedUlid.value);
 
-
-       // alert(sharedUlid.value)
 
       });
 
@@ -238,8 +262,10 @@ export default {
       showLogin,
       user,
       sheetOpened,
+      currentTheme,
       alertLoginData,
       showLogOutDialog,
+      setDarkTheme,
       store
     }
   }
