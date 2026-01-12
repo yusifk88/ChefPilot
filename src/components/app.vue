@@ -153,6 +153,7 @@ import Login from "@/components/auth/login.vue";
 import Profile from "@/components/account/profile.vue";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {App} from '@capacitor/app';
+import OneSignal from "onesignal-cordova-plugin";
 
 
 export default {
@@ -231,6 +232,26 @@ export default {
         if (device.capacitor) {
           capacitorApp.init(f7);
         }
+
+
+        OneSignal.initialize("104eb6bd-20ec-4d84-a426-b076741fb531");
+
+        OneSignal.Notifications.requestPermission(true).then((success) => {
+
+          console.log("Notification permission status:", success);
+        });
+
+        OneSignal.Notifications.addEventListener('click', (event) => {
+          //alert('Notification clicked:'+ JSON.stringify(event.notification.additionalData));
+
+          const recipeRoute = "/recipe/"+event.notification.additionalData.recipe_id;
+
+          f7.views.main.router.navigate(recipeRoute);
+
+
+        });
+
+
 
         store.dispatch("initUser");
 

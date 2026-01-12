@@ -9,6 +9,7 @@ import NotFoundPage from '../pages/404.vue';
 import selectRecipe from "@/pages/SelectRecipe.vue";
 import BookMarks from "@/pages/BookMarks.vue";
 import sharedRecipe from "@/pages/SharedRecipe.vue";
+import notifications from "@/pages/notifications.vue";
 
 var routes = [
     {
@@ -33,11 +34,15 @@ var routes = [
     },
     {
       path: '/recipe/:id',
-        component: selectRecipe
+      component: selectRecipe
+    },
+    {
+      path: '/notifications',
+      component: notifications
     },
     {
         path: '/settings/',
-        component: SettingsPage,
+        component: SettingsPage
     },
 
     {

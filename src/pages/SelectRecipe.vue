@@ -80,7 +80,7 @@
         <div class="timeline-item-date " style="color: forestgreen"><small>Step</small> {{ index + 1 }}</div>
         <div class="timeline-item-divider"></div>
         <div class="timeline-item-content">
-          <div class="timeline-item-inner" style="background-color: #00ff9f">{{ instruction }}</div>
+          <div class="timeline-item-inner" style="background-color: #00ff9f; color: #000000!important;">{{ instruction }}</div>
         </div>
       </div>
 

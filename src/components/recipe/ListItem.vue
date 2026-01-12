@@ -6,6 +6,7 @@
       :subtitle="item.difficulty + ' . ETA:'+item.estimatedTimeMinutes+'Min'"
       :text="item.description"
       @click="setItem"
+      class="no-padding no-margin"
   >
     <template #media>
       <img

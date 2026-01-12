@@ -1,7 +1,7 @@
 import {createStore} from 'framework7/lite';
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {Capacitor} from "@capacitor/core";
-
+import OneSignal from "onesignal-cordova-plugin";
 
 const store = createStore({
     state: {
@@ -11,7 +11,12 @@ const store = createStore({
         loginState: true,
         refresh: false,
         bookmarkChanged: false,
-        initializingAccount:false
+        initializingAccount: false,
+        unreadNotificationsCount: 0,
+        notifications: {
+            all: [],
+            unread: []
+        }
     },
     getters: {
         products({state}) {
@@ -32,19 +37,26 @@ const store = createStore({
         bookMarkState({state}) {
             return state.bookmarkChanged;
         },
-        getInitState({state}){
+        getInitState({state}) {
             return state.initializingAccount;
+        },
+        getUnreadNotificationsCount({state}) {
+
+            return state.unreadNotificationsCount;
+        },
+        getNotifications({state}) {
+            return state.notifications;
         }
 
     },
     actions: {
 
-        hideLogin({state}){
-          state.loginState=false;
+        hideLogin({state}) {
+            state.loginState = false;
         },
 
-        showLogin({state}){
-          state.loginState=true;
+        showLogin({state}) {
+            state.loginState = true;
         },
 
         changeBookmarkState({state}) {
@@ -66,32 +78,44 @@ const store = createStore({
 
         initUser({state}) {
 
-            state.initializingAccount=true;
+            state.initializingAccount = true;
 
-            if (Capacitor.getPlatform().toLowerCase()==='web'){
+            if (Capacitor.getPlatform().toLowerCase() === 'web') {
 
                 axios.get("/user")
                     .then(res => {
                         state.user = res.data.data.user;
                         state.loginState = false
                         state.refresh = !state.refresh;
-                        state.initializingAccount=false;
+                        state.initializingAccount = false;
+
+                        //get number of unread notifications
+
+                        axios.get("/notifications/count")
+                            .then(res => {
+                                state.unreadNotificationsCount = res.data.data.unread;
+                            })
+
+                        //get all and unread notifications
+                        axios.get("/notifications")
+                            .then(res => {
+                                state.notifications = res.data.data;
+                            })
 
 
                     })
                     .catch(error => {
                         state.user = null;
                         state.loginState = true;
-                        state.initializingAccount=false;
-
+                        state.initializingAccount = false;
 
 
                     })
 
 
-            }else {
+            } else {
 
-                state.initializingAccount=true;
+                state.initializingAccount = true;
 
                 CapacitorPersistentAccount.readAccount()
                     .then(account => {
@@ -102,16 +126,18 @@ const store = createStore({
                                     state.user = res.data.data.user;
                                     state.loginState = false
                                     state.refresh = !state.refresh;
-                                    state.initializingAccount=false;
+                                    state.initializingAccount = false;
+
+                                    OneSignal.login(state.user.id.toString());
 
 
                                 })
                                 .catch(async error => {
                                     state.user = null;
                                     state.loginState = true;
-                                    state.initializingAccount=false;
-                                   // await CapacitorPersistentAccount.saveAccount({data:null});
-                                  //  window.location.reload();
+                                    state.initializingAccount = false;
+                                    // await CapacitorPersistentAccount.saveAccount({data:null});
+                                    //  window.location.reload();
 
                                 })
 

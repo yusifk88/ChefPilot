@@ -11,13 +11,13 @@
       <f7-nav-title sliding>ChefPilot</f7-nav-title>
       <f7-nav-title-large> 👋🏻 {{ user?.name ? "Hi " + user?.name + "," : "" }}</f7-nav-title-large>
       <f7-nav-right>
-        <f7-link href="#">
+        <f7-link href="/notifications">
           <f7-icon
               ios="f7:bell"
               md="f7:bell"
               f7="bell"
           >
-            <f7-badge color="red">5</f7-badge>
+            <f7-badge v-if="unreadNotifications" color="red">{{unreadNotifications}}</f7-badge>
           </f7-icon>
         </f7-link>
       </f7-nav-right>
@@ -51,7 +51,8 @@ export default {
   data(){
     return{
       user:useStore(store, "getUser"),
-      showRefresh:useStore(store,"getRefresh")
+      showRefresh:useStore(store,"getRefresh"),
+      unreadNotifications:useStore(store,"getUnreadNotificationsCount")
     }
   },
   methods:{
