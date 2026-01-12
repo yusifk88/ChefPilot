@@ -191,5 +191,29 @@ class AuthController extends Controller
         ], "Current user retrieved successfully");
     }
 
+    public function notifications()
+    {
+
+        return ResponseService::SuccessResponse([
+            "unread"=>request()->user()->unreadNotifications,
+            "all"=>request()->user()->notifications()->paginate(50),
+        ], "Current user retrieved successfully");
+
+    }
+
+
+    public function markNotificationsAsRead(Request $request){
+        $request->user()->unreadNotifications->markAsRead();
+    }
+
+    public function notificationCount()
+    {
+        return ResponseService::SuccessResponse([
+            "all"=>request()->user()->notifications->count(),
+            "unread"=>request()->user()->unreadNotifications->count(),
+        ], "Current user notification count");
+
+    }
+
 
 }

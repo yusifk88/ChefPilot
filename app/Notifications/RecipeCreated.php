@@ -4,8 +4,6 @@ namespace App\Notifications;
 
 use App\Models\Recipe;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\OneSignal\OneSignalChannel;
 use NotificationChannels\OneSignal\OneSignalMessage;
@@ -16,6 +14,7 @@ class RecipeCreated extends Notification
     use Queueable;
 
     public Recipe $recipe;
+
     /**
      * Create a new notification instance.
      */
@@ -31,7 +30,7 @@ class RecipeCreated extends Notification
      */
     public function via(object $notifiable): array
     {
-        return [OneSignalChannel::class];
+        return [OneSignalChannel::class, "database"];
     }
 
     /**
@@ -44,14 +43,28 @@ class RecipeCreated extends Notification
             ->setBody($this->recipe->name)
             ->setData('recipe_id', $this->recipe->id) // Custom data for the app to use
             ->setIcon('https://flobaze.atl1.cdn.digitaloceanspaces.com/public/chefpilot_icon.png')
-           ->setImageAttachments('https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_ansabjansabjansa.png') // Rich notification image
+            ->setImageAttachments('https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_ansabjansabjansa.png') // Rich notification image
             ->webButton(
                 OneSignalWebButton::create('view-recipe-details')
                     ->text('View Details')
                     ->icon('https://flobaze.atl1.cdn.digitaloceanspaces.com/public/chefpilot_icon.png')
-                    ->url(route("recipe.publicPost",$this->recipe->ulid))
+                    ->url(route("recipe.publicPost", $this->recipe->ulid))
             );
     }
+
+
+    public function toDatabase(object $notifiable): array
+    {
+        return [
+            "recipe_id" => $this->recipe->id,
+            "message" => $this->recipe->name,
+            "description" => $this->recipe->description,
+            "image_url"=>"https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_ansabjansabjansa.png",
+            "route"=>"/recipes/{$this->recipe->id}",
+        ];
+
+    }
+
 
     /**
      * Get the array representation of the notification.
