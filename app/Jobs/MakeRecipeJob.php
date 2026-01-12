@@ -5,10 +5,10 @@ namespace App\Jobs;
 use App\Mail\DailyRecipes;
 use App\Models\Recipe;
 use App\Models\User;
+use App\Notifications\RecipeCreated;
 use app\Services\AI;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -40,24 +40,29 @@ class MakeRecipeJob implements ShouldQueue
 
         foreach ($response as $recipe) {
 
-         $recipes[]=  Recipe::create([
+            $recipeItem = Recipe::create([
                 "user_id" => $this->userID,
                 "name" => $recipe->name,
                 "description" => $recipe->description,
                 "ingredients" => $recipe->ingredients,
                 "nutrition" => $recipe->nutrition,
-                "images" => implode(",",$recipe->images),
+                "images" => implode(",", $recipe->images),
                 "difficulty" => $recipe->difficulty,
                 "estimatedTimeMinutes" => $recipe->estimatedTimeMinutes,
-                "tag"=>implode(",",$recipe->dietaryTags),
-                "instructions"=>implode(",",$recipe->instructions),
-                "ulid"=>Str::ulid()
+                "tag" => implode(",", $recipe->dietaryTags),
+                "instructions" => implode(",", $recipe->instructions),
+                "ulid" => Str::ulid()
 
             ]);
+
+            $recipes[]=$recipeItem;
+
+            $user->notify(new RecipeCreated($recipeItem));
+
         }
 
 
-        Mail::to($user)->queue(new DailyRecipes(collect($recipes),$user));
+        Mail::to($user)->queue(new DailyRecipes(collect($recipes), $user));
 
 
     }

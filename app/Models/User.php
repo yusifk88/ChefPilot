@@ -51,4 +51,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function routeNotificationForOneSignal(): array
+    {
+        return ['include_external_user_ids' => [(string)$this->id]];
+    }
+
 }
