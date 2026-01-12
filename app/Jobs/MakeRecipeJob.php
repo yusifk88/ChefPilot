@@ -2,11 +2,14 @@
 
 namespace App\Jobs;
 
+use App\Mail\DailyRecipes;
 use App\Models\Recipe;
+use App\Models\User;
 use app\Services\AI;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class MakeRecipeJob implements ShouldQueue
@@ -30,11 +33,14 @@ class MakeRecipeJob implements ShouldQueue
     {
         $response = AI::MakeRecipe($this->userID);
 
+        $user = User::find($this->userID);
+        $recipes = [];
+
         Recipe::where("user_id", $this->userID)->whereDate("created_at", date("Y-m-d"))->delete();
 
         foreach ($response as $recipe) {
 
-            Recipe::create([
+         $recipes[]=  Recipe::create([
                 "user_id" => $this->userID,
                 "name" => $recipe->name,
                 "description" => $recipe->description,
@@ -49,6 +55,9 @@ class MakeRecipeJob implements ShouldQueue
 
             ]);
         }
+
+
+        Mail::to($user)->queue(new DailyRecipes(collect($recipes),$user));
 
 
     }
