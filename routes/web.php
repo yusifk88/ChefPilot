@@ -24,11 +24,3 @@ Route::get("/.well-known/assetlinks.json", function () {
 
 });
 
-
-Route::get("/test-email", function () {
-
-    $recipes = Recipe::all();
-    $user = User::find(1);
-    return new DailyRecipes($recipes, $user);
-
-});
