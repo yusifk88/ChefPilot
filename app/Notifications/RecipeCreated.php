@@ -42,7 +42,7 @@ class RecipeCreated extends Notification
             ->setSubject("Checkout out this recipe")
             ->setBody($this->recipe->name)
             ->setData('recipe_id', $this->recipe->id) // Custom data for the app to use
-            ->setIcon('https://flobaze.atl1.cdn.digitaloceanspaces.com/public/chefpilot_icon.png')
+            ->setIcon('ic_stat_onesignal_default')
             ->setImageAttachments('https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_ansabjansabjansa.png') // Rich notification image
             ->webButton(
                 OneSignalWebButton::create('view-recipe-details')
