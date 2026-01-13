@@ -51,6 +51,10 @@ const store = createStore({
     },
     actions: {
 
+        setUnreadNotificationCount({state},count=0){
+            state.unreadNotificationsCount=count;
+        },
+
         hideLogin({state}) {
             state.loginState = false;
         },
@@ -94,12 +98,10 @@ const store = createStore({
                         axios.get("/notifications/count")
                             .then(res => {
                                 state.unreadNotificationsCount = res.data.data.unread;
+                                alert(state.unreadNotificationsCount)
                             })
-
-                        //get all and unread notifications
-                        axios.get("/notifications")
-                            .then(res => {
-                                state.notifications = res.data.data;
+                            .catch(error=>{
+                                alert("count failed")
                             })
 
 

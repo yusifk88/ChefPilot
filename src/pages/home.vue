@@ -11,15 +11,7 @@
       <f7-nav-title sliding>ChefPilot</f7-nav-title>
       <f7-nav-title-large> 👋🏻 {{ user?.name ? "Hi " + user?.name + "," : "" }}</f7-nav-title-large>
       <f7-nav-right>
-        <f7-link href="/notifications">
-          <f7-icon
-              ios="f7:bell"
-              md="f7:bell"
-              f7="bell"
-          >
-            <f7-badge v-if="unreadNotifications" color="red">{{unreadNotifications}}</f7-badge>
-          </f7-icon>
-        </f7-link>
+    <notification-bell-button></notification-bell-button>
       </f7-nav-right>
     </f7-navbar>
 
@@ -43,9 +35,11 @@ import Recipes from "@/components/recipe/Recipes.vue";
 import {f7, useStore} from "framework7-vue";
 import store from "@/js/store";
 import RecentBookmarks from "@/components/recipe/recentBookmarks.vue";
+import NotificationBellButton from "@/components/notifications/NotificationBellButton.vue";
 
 export default {
   components:{
+    NotificationBellButton,
     RecentBookmarks,AddedRecipeCard,Recipes
   },
   data(){
@@ -56,12 +50,15 @@ export default {
     }
   },
   methods:{
+
+
     refresh(done){
       const newState = !this.showRefresh;
       store.dispatch("changeRefreshState",newState)
       done();
     }
   }
+
 }
 
 
