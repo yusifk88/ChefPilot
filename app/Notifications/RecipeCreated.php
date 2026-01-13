@@ -39,8 +39,8 @@ class RecipeCreated extends Notification
     public function toOneSignal(object $notifiable): OneSignalMessage
     {
         return OneSignalMessage::create()
-            ->setSubject("Checkout out this recipe")
-            ->setBody($this->recipe->name)
+            ->setSubject($this->recipe->name)
+            ->setBody($this->recipe->description)
             ->setData('recipe_id', $this->recipe->id) // Custom data for the app to use
             ->setIcon('ic_stat_onesignal_default')
             ->setImageAttachments('https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_ansabjansabjansa.png') // Rich notification image
