@@ -16,7 +16,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(["prefix" => "notifications"], function () {
         Route::get("/", [AuthController::class, 'notifications']);
         Route::get("/count", [AuthController::class, 'notificationCount']);
-        Route::get("/mark-as-read", [AuthController::class, 'markNotificationsAsRead']);
+        Route::post("/mark-as-read", [AuthController::class, 'markNotificationsAsRead']);
     });
 
     Route::get('/user', [AuthController::class, "user"]);
