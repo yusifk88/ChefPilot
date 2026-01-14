@@ -36,7 +36,7 @@ class MakeRecipeJob implements ShouldQueue
         $user = User::find($this->userID);
         $recipes = [];
 
-        Recipe::where("user_id", $this->userID)->whereDate("created_at", date("Y-m-d"))->delete();
+       // Recipe::where("user_id", $this->userID)->whereDate("created_at", date("Y-m-d"))->delete();
 
         foreach ($response as $recipe) {
 
