@@ -3,15 +3,5 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../chef-backend" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ios/DerivedData/E8EE16D2-DDA6-4E1B-AD0F-C4377F67F778/SourcePackages/checkouts/Alamofire" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ios/DerivedData/E8EE16D2-DDA6-4E1B-AD0F-C4377F67F778/SourcePackages/checkouts/AppAuth-iOS" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ios/DerivedData/E8EE16D2-DDA6-4E1B-AD0F-C4377F67F778/SourcePackages/checkouts/GTMAppAuth" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ios/DerivedData/E8EE16D2-DDA6-4E1B-AD0F-C4377F67F778/SourcePackages/checkouts/GoogleSignIn-iOS" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ios/DerivedData/E8EE16D2-DDA6-4E1B-AD0F-C4377F67F778/SourcePackages/checkouts/GoogleUtilities" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ios/DerivedData/E8EE16D2-DDA6-4E1B-AD0F-C4377F67F778/SourcePackages/checkouts/app-check" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ios/DerivedData/E8EE16D2-DDA6-4E1B-AD0F-C4377F67F778/SourcePackages/checkouts/capacitor-swift-pm" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ios/DerivedData/E8EE16D2-DDA6-4E1B-AD0F-C4377F67F778/SourcePackages/checkouts/facebook-ios-sdk" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ios/DerivedData/E8EE16D2-DDA6-4E1B-AD0F-C4377F67F778/SourcePackages/checkouts/gtm-session-fetcher" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ios/DerivedData/E8EE16D2-DDA6-4E1B-AD0F-C4377F67F778/SourcePackages/checkouts/promises" vcs="Git" />
   </component>
 </project>

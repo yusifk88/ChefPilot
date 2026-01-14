@@ -91,12 +91,12 @@
     <f7-views tabs class="safe-areas">
       <f7-toolbar tabbar icons bottom>
         <f7-toolbar-pane>
-          <f7-link tab-link="#view-home" tab-link-active icon-ios="f7:house" icon-md="material:home"
+          <f7-link tab-link="#view-home" tab-link-active icon-ios="f7:house-outline" icon-md="f7:house-outline"
                    text="Home"></f7-link>
-          <f7-link tab-link="#view-bookmarks" icon-ios="f7:bookmark" icon-md="material:bookmark"
+          <f7-link tab-link="#view-bookmarks" icon-ios="f7:bookmark-outline" icon-md="f7:bookmark-outline"
                    text="Bookmarks"></f7-link>
-          <f7-link tab-link="#view-settings" icon-ios="f7:square_list" icon-md="material:view_list"
-                   text="Explore"></f7-link>
+          <f7-link tab-link="#view-settings" icon-ios="f7:person_2" icon-md="f7:person_2"
+                   text="Discover"></f7-link>
         </f7-toolbar-pane>
       </f7-toolbar>
 
@@ -153,7 +153,10 @@ import Login from "@/components/auth/login.vue";
 import Profile from "@/components/account/profile.vue";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {App} from '@capacitor/app';
+
 import OneSignal from "onesignal-cordova-plugin";
+
+import {Capacitor} from "@capacitor/core";
 
 
 export default {
@@ -206,7 +209,7 @@ export default {
       });
     }
 
-    const setDarkTheme = (mode=true) => {
+    const setDarkTheme = (mode = true) => {
       f7.setDarkMode(mode)
     };
     const showLogOutDialog = () => {
@@ -233,24 +236,30 @@ export default {
           capacitorApp.init(f7);
         }
 
+        if (Capacitor.getPlatform() === 'android') {
 
-        OneSignal.initialize("104eb6bd-20ec-4d84-a426-b076741fb531");
+          OneSignal.initialize("104eb6bd-20ec-4d84-a426-b076741fb531");
 
-        OneSignal.Notifications.requestPermission(true).then((success) => {
+          OneSignal.Notifications.requestPermission(true).then((success) => {
 
-          console.log("Notification permission status:", success);
-        });
+            console.log("Notification permission status:", success);
+          });
 
-        OneSignal.Notifications.addEventListener('click', (event) => {
-          //alert('Notification clicked:'+ JSON.stringify(event.notification.additionalData));
+          OneSignal.Notifications.addEventListener('click', (event) => {
+            //alert('Notification clicked:'+ JSON.stringify(event.notification.additionalData));
 
-          const recipeRoute = "/recipe/"+event.notification.additionalData.recipe_id;
+            const recipeRoute = "/recipe/" + event.notification.additionalData.recipe_id;
 
-          f7.views.main.router.navigate(recipeRoute);
+            f7.views.main.router.navigate(recipeRoute);
 
 
-        });
+          });
+        }
 
+
+        const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        f7.setDarkMode(isDarkMode)
 
 
         store.dispatch("initUser");

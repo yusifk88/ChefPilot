@@ -1,7 +1,9 @@
 import {createStore} from 'framework7/lite';
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {Capacitor} from "@capacitor/core";
+
 import OneSignal from "onesignal-cordova-plugin";
+
 
 const store = createStore({
     state: {
@@ -51,8 +53,8 @@ const store = createStore({
     },
     actions: {
 
-        setUnreadNotificationCount({state},count=0){
-            state.unreadNotificationsCount=count;
+        setUnreadNotificationCount({state}, count = 0) {
+            state.unreadNotificationsCount = count;
         },
 
         hideLogin({state}) {
@@ -98,9 +100,8 @@ const store = createStore({
                         axios.get("/notifications/count")
                             .then(res => {
                                 state.unreadNotificationsCount = res.data.data.unread;
-                                alert(state.unreadNotificationsCount)
                             })
-                            .catch(error=>{
+                            .catch(error => {
                                 alert("count failed")
                             })
 
@@ -130,8 +131,11 @@ const store = createStore({
                                     state.refresh = !state.refresh;
                                     state.initializingAccount = false;
 
-                                    OneSignal.login(state.user.id.toString());
+                                    if (Capacitor.getPlatform() === 'android') {
 
+                                        OneSignal.login(state.user.id.toString());
+
+                                    }
 
                                 })
                                 .catch(async error => {
@@ -148,6 +152,7 @@ const store = createStore({
                             state.loginState = true;
 
 
+                            console.log(account.data);
                         }
 
                     })

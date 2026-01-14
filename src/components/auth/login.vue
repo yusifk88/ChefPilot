@@ -10,6 +10,9 @@
       <p class="fade-in-up">Let AI plan your next meal with your preferences and the food in your home,
         discover new recipes, learn how to make them and share your experience with others</p>
 
+      {{ deviceInfo }}
+
+
       <f7-button v-if="Capacitor().getPlatform().toLowerCase()==='web'" @click="testLogin" class="fade-in-up" large fill
                  color="black">Continue with &nbsp;
         <app-logo></app-logo>
@@ -28,8 +31,8 @@
       </f7-button>
 
 
-
-      <f7-list :disabled="accountInitializing" v-else media-list dividers-ios strong style="border-radius: 15px !important;">
+      <f7-list :disabled="accountInitializing" v-else media-list dividers-ios strong
+               style="border-radius: 15px !important;">
         <f7-list-item @click="setUser" link :title="currentAccount.user?.name" :subtitle="currentAccount.user?.email">
           <template #media>
             <img
@@ -55,6 +58,7 @@ import {useStore} from "framework7-vue";
 import {SocialLogin} from "@capgo/capacitor-social-login";
 import {CapacitorPersistentAccount} from '@capgo/capacitor-persistent-account';
 import {Capacitor} from "@capacitor/core";
+import {Device} from "@capacitor/device";
 
 export default {
   name: "login",
@@ -70,7 +74,8 @@ export default {
       password: "password",
       loading: false,
       currentAccount: null,
-      accountInitializing:useStore(store,"getInitState")
+      accountInitializing: useStore(store, "getInitState"),
+      deviceInfo: null
     }
   },
   methods: {
@@ -81,7 +86,7 @@ export default {
       return store
     },
 
-   async testLogin() {
+    async testLogin() {
 
       if (!this.currentAccount) {
 
@@ -100,10 +105,10 @@ export default {
               await store.dispatch("initUser")
 
             })
-      }else {
+      } else {
         await store.dispatch("initUser")
       }
-   },
+    },
 
 
     async login() {
@@ -112,6 +117,7 @@ export default {
 
 
       const OS = Capacitor.getPlatform().toLowerCase();
+      const deviceInfo = await this.getDeviceInfo();
 
       if (OS === 'ios') {
 
@@ -126,9 +132,20 @@ export default {
           },
         });
 
+
         if (response.result.serverAuthCode) {
 
-          axios.post("/google-login", {code: response.result.serverAuthCode})
+
+          axios.post("/google-login", {
+            code: response.result.serverAuthCode,
+            device_name:deviceInfo.name,
+            device_model:deviceInfo.model,
+            device_os:deviceInfo.os,
+            country:deviceInfo.country,
+            timezone:deviceInfo.timeZone
+
+
+          })
               .then(async res => {
 
                 const account = {
@@ -169,7 +186,12 @@ export default {
             name: profile.name,
             email: profile.email,
             id: profile.id,
-            imageUrl: profile.imageUrl
+            imageUrl: profile.imageUrl,
+            device_name:deviceInfo.name,
+            device_model:deviceInfo.model,
+            device_os:deviceInfo.os,
+            country:deviceInfo.country,
+            timezone:deviceInfo.timeZone
           };
 
 
@@ -241,6 +263,20 @@ export default {
       store.dispatch("hideLogin");
       store.dispatch("changeRefreshState");
 
+
+    },
+    async getDeviceInfo() {
+      const info = await Device.getInfo();
+
+      const options = Intl.DateTimeFormat().resolvedOptions();
+
+      return {
+        timeZone: options.timeZone,
+        name: info.name,
+        model: info.model,
+        os: info.operatingSystem,
+        country: options.locale?.split('-')[1] ?? null,
+      };
 
     }
   },

@@ -32,7 +32,10 @@ export default {
       types:{
         bookmarks:"/img/empty/no_bookmarks.svg",
         items:"/img/empty/empty_items.svg",
-        recipes:"/img/empty/empty_recipes.svg"
+        recipes:"/img/empty/empty_recipes.svg",
+        notifications:"/img/empty/no_notifications.svg",
+        activities:"/img/empty/no_activities.svg",
+
       }
     }
   }

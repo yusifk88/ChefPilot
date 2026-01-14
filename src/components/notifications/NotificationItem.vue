@@ -1,6 +1,6 @@
 <template>
   <f7-list-item
-      :link="notification.data.route"
+      :link="'/recipe/'+notification.data.recipe_id"
       :title="notification.data.message"
       :text="notification.data.description"
   >
