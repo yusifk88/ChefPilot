@@ -41,7 +41,7 @@ class RecipeCreated extends Notification
         return OneSignalMessage::create()
             ->setSubject($this->recipe->name)
             ->setBody($this->recipe->description)
-            ->setData('recipe_id', $this->recipe->id) // Custom data for the app to use
+            ->setData('recipe_id', $this->recipe->id)
             ->setIcon('ic_stat_onesignal_default')
             ->setImageAttachments('https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_ansabjansabjansa.png') // Rich notification image
             ->webButton(
@@ -60,7 +60,8 @@ class RecipeCreated extends Notification
             "message" => $this->recipe->name,
             "description" => $this->recipe->description,
             "image_url"=>"https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_ansabjansabjansa.png",
-            "route"=>"/recipes/{$this->recipe->id}",
+            "route"=>"/recipe/{$this->recipe->id}",
+            "type"=>"recipe",
         ];
 
     }

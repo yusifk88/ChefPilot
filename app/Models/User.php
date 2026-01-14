@@ -26,6 +26,12 @@ class User extends Authenticatable
         "image_url",
         "bio",
         "google_user_id",
+        "device_name",
+        "device_model",
+        "ip_address",
+        "timezone",
+        "country",
+        "device_os"
     ];
 
     /**
@@ -36,8 +42,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'google_user_id'
+        'google_user_id',
+        "device_name",
+        "device_model",
+        "ip_address",
+        "timezone",
+        "country",
+        "device_os"
     ];
+
+    public function routeNotificationForOneSignal(): array
+    {
+        return ['include_external_user_ids' => [(string)$this->id]];
+    }
 
     /**
      * Get the attributes that should be cast.
@@ -50,11 +67,6 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function routeNotificationForOneSignal(): array
-    {
-        return ['include_external_user_ids' => [(string)$this->id]];
     }
 
 }

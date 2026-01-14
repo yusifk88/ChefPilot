@@ -28,6 +28,15 @@ class AuthController extends Controller
             ]);
         }
 
+        $user->update([
+            "device_name" => $request->device_name,
+            "device_model" => $request->device_model,
+            "ip_address" => $request->ip(),
+            "timezone" => $request->timezone,
+            "country" => $request->country,
+            "device_os" => $request->device_os,
+        ]);
+
         $token = $user->createToken($request->userAgent())->plainTextToken;
 
         return ResponseService::SuccessResponse([
@@ -77,6 +86,12 @@ class AuthController extends Controller
 
                 $existingUser->update([
                     "name" => $user->name,
+                    "device_name"=> $request->device_name,
+                    "device_model"=> $request->device_model,
+                    "ip_address"=>$request->ip(),
+                    "timezone"=>$request->timezone,
+                    "country"=>$request->country,
+                    "device_os"=>$request->device_os,
                 ]);
 
 
@@ -92,6 +107,12 @@ class AuthController extends Controller
                     "google_user_id" => $user->sub,
                     "image_url" => $user->picture,
                     "password" => Hash::make($user->sub),
+                    "device_name"=> $request->device_name,
+                    "device_model"=> $request->device_model,
+                    "ip_address"=>$request->ip(),
+                    "timezone"=>$request->timezone,
+                    "country"=>$request->country,
+                    "device_os"=>$request->device_os,
                 ]);
                 $foundUser->save();
 
@@ -156,6 +177,13 @@ class AuthController extends Controller
             "google_user_id" => $request->id,
             "image_url" => $request->imageUrl,
             "password" => Hash::make($request->password),
+            "device_name" => $request->device_name,
+            "device_model" => $request->device_model,
+            "ip_address" => $request->ip(),
+            "timezone" => $request->timezone,
+            "country" => $request->country,
+            "device_os" => $request->device_os,
+
         ]);
 
         $token = $newUser->createToken($request->userAgent())->plainTextToken;
@@ -195,22 +223,23 @@ class AuthController extends Controller
     {
 
         return ResponseService::SuccessResponse([
-            "unread"=>request()->user()->unreadNotifications,
-            "all"=>request()->user()->notifications()->paginate(50),
+            "unread" => request()->user()->unreadNotifications,
+            "all" => request()->user()->notifications()->paginate(50),
         ], "Current user retrieved successfully");
 
     }
 
 
-    public function markNotificationsAsRead(Request $request){
+    public function markNotificationsAsRead(Request $request)
+    {
         $request->user()->unreadNotifications->markAsRead();
     }
 
     public function notificationCount()
     {
         return ResponseService::SuccessResponse([
-            "all"=>request()->user()->notifications->count(),
-            "unread"=>request()->user()->unreadNotifications->count(),
+            "all" => request()->user()->notifications->count(),
+            "unread" => request()->user()->unreadNotifications->count(),
         ], "Current user notification count");
 
     }
