@@ -60,8 +60,6 @@ class AuthController extends Controller
         ]);
 
 
-        Log::info("device info", $request->all());
-
         $code = $request->code;
         $client_id = config("services.google.client_id");
 
@@ -150,7 +148,6 @@ class AuthController extends Controller
             "name" => "required|string",
         ]);
 
-        Log::info("device info", $request->all());
 
         $existingUser = User::where('email', $request->email)
             ->where("google_user_id", $request->id)->first();
@@ -162,6 +159,15 @@ class AuthController extends Controller
         if ($existingUser) {
 
             $token = $existingUser->createToken($request->userAgent())->plainTextToken;
+
+            $existingUser->update([
+                "device_name" => $request->device_name,
+                "device_model" => $request->device_model,
+                "ip_address" => $request->ip(),
+                "timezone" => $request->timezone,
+                "country" => $request->country,
+                "device_os" => $request->device_os,
+            ]);
 
             return ResponseService::SuccessResponse([
                 'token' => $token,
