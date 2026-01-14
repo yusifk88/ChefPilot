@@ -150,6 +150,7 @@ class AuthController extends Controller
             "name" => "required|string",
         ]);
 
+        Log::info("device info", $request->all());
 
         $existingUser = User::where('email', $request->email)
             ->where("google_user_id", $request->id)->first();
