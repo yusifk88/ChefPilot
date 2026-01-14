@@ -8,6 +8,7 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -58,6 +59,8 @@ class AuthController extends Controller
             "code" => "required"
         ]);
 
+
+        Log::info("device info", $request->all());
 
         $code = $request->code;
         $client_id = config("services.google.client_id");
