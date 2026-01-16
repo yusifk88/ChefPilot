@@ -263,6 +263,8 @@ class AuthController extends Controller
         $user = request()->user();
 
         $user->update(["theme" => $request->theme]);
+
+        return ResponseService::SuccessResponse($user, "Theme updated successfully");
     }
 
 
