@@ -31,7 +31,8 @@ class User extends Authenticatable
         "ip_address",
         "timezone",
         "country",
-        "device_os"
+        "device_os",
+        "theme"
     ];
 
     /**

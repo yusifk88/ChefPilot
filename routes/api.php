@@ -19,7 +19,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post("/mark-as-read", [AuthController::class, 'markNotificationsAsRead']);
     });
 
+    /**
+     * user toutes
+     */
     Route::get('/user', [AuthController::class, "user"]);
+    Route::post('/set-user-theme', [AuthController::class, "setUserTheme"]);
     Route::post("update-user", [AuthController::class, "updateUser"]);
     /**
      * items routes

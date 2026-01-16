@@ -254,5 +254,16 @@ class AuthController extends Controller
 
     }
 
+    public function setUserTheme(request $request)
+    {
+        $request->validate([
+            "theme" => "required|string|in:light,dark,system",
+        ]);
+
+        $user = request()->user();
+
+        $user->update(["theme" => $request->theme]);
+    }
+
 
 }
