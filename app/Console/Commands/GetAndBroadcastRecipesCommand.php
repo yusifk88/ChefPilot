@@ -448,7 +448,7 @@ class GetAndBroadcastRecipesCommand extends Command
 
             $sevenAm = $currentDate." 07:00:00";
 
-           if ($timeInstanceInTimeZone->greaterThanOrEqualTo($sevenAm)) {
+           if ($timeInstanceInTimeZone->equalTo($sevenAm)) {
 
                 $usersAtSevenAm = User::where("timezone", $timezone)->get();
 
@@ -463,9 +463,6 @@ class GetAndBroadcastRecipesCommand extends Command
                     }
 
                 }
-
-
-
 
 
            }
