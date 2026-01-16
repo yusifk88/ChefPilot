@@ -341,7 +341,6 @@ class GetAndBroadcastRecipesCommand extends Command
         "Europe/Helsinki",
         "Europe/Istanbul",
         "Europe/Kaliningrad",
-        "Europe/Kiev",
         "Europe/Kirov",
         "Europe/Lisbon",
         "Europe/London",
