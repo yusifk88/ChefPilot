@@ -386,7 +386,6 @@ class GetAndBroadcastRecipesCommand extends Command
         "Pacific/Chuuk",
         "Pacific/Easter",
         "Pacific/Efate",
-        "Pacific/Enderbury",
         "Pacific/Fakaofo",
         "Pacific/Fiji",
         "Pacific/Funafuti",
