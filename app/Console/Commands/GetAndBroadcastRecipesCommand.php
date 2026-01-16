@@ -448,13 +448,15 @@ class GetAndBroadcastRecipesCommand extends Command
 
         foreach ($this->timeZones as $timezone) {
 
-            $timeInstanceInTimeZone= Carbon::timezone($timezone);
+            $timeInstanceInTimeZone= Carbon::now($timezone);
+
             $currentDate = Carbon::now()->toDateString();
+
             $sevenAm = $currentDate." 07:00:00";
 
            if ($timeInstanceInTimeZone->greaterThanOrEqualTo($sevenAm)) {
 
-                $usersAtSevenAm = User::where("time_zone", $timezone)->get();
+                $usersAtSevenAm = User::where("timezone", $timezone)->get();
 
                 if (count($usersAtSevenAm) > 0) {
 
@@ -467,6 +469,10 @@ class GetAndBroadcastRecipesCommand extends Command
                     }
 
                 }
+
+
+
+
 
            }
 
