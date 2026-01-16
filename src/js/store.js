@@ -58,6 +58,10 @@ const store = createStore({
     },
     actions: {
 
+        endAccountInitState({state}){
+
+            state.initializingAccount=false;
+        },
 
         setMainPanelEffect({state}, effect = 'push') {
             state.mainPanelEffect = effect;
@@ -147,7 +151,7 @@ const store = createStore({
                                     }
 
                                 })
-                                .catch(async error => {
+                                .catch(error => {
                                     state.user = null;
                                     state.loginState = true;
                                     state.initializingAccount = false;
@@ -160,8 +164,6 @@ const store = createStore({
 
                             state.loginState = true;
 
-
-                            console.log(account.data);
                         }
 
                     })

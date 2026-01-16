@@ -21,7 +21,8 @@
       <f7-button
           preloader
           v-if="!currentAccount"
-          :loading="loading"
+          :loading="loading || accountInitializing"
+          :disabled="accountInitializing"
           @click="login"
           large
           fill

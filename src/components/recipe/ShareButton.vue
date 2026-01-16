@@ -2,6 +2,7 @@
   <f7-icon
       size="20"
       f7="square_arrow_up"
+      md="material:share"
       style="margin-left: auto"
       class="margin-right"
       @click="openShareSheet"

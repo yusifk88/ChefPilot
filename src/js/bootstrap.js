@@ -33,7 +33,6 @@ axios.interceptors.response.use(
         return response;
     },
     (error) => {
-        // ❌ Handle errors globally
         if (error.response) {
             console.error("API Error:", error.response.status);
 
@@ -42,6 +41,8 @@ axios.interceptors.response.use(
                 console.warn("Unauthorized – redirecting to login");
 
                 store.dispatch("showLogin")
+                store.dispatch("endAccountInitState")
+
             }else if (error.response.status === 422) {
 
                 console.log(error.response.data);
