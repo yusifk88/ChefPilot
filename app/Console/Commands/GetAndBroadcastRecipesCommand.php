@@ -116,7 +116,6 @@ class GetAndBroadcastRecipesCommand extends Command
         "America/El_Salvador",
         "America/Fortaleza",
         "America/Glace_Bay",
-        "America/Godthab",
         "America/Goose_Bay",
         "America/Grand_Turk",
         "America/Grenada",
