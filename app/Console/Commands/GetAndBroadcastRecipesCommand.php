@@ -367,7 +367,6 @@ class GetAndBroadcastRecipesCommand extends Command
         "Europe/Vilnius",
         "Europe/Volgograd",
         "Europe/Warsaw",
-        "Europe/Zaporozhye",
         "Europe/Zurich",
         "Indian/Antananarivo",
         "Indian/Chagos",
