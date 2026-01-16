@@ -16,7 +16,6 @@ class GetAndBroadcastRecipesCommand extends Command
         "Africa/Addis_Ababa",
         "Africa/Algiers",
         "Africa/Asmara",
-        "Africa/Asmera",
         "Africa/Bamako",
         "Africa/Bangui",
         "Africa/Banjul",
