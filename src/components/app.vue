@@ -2,15 +2,15 @@
   <f7-app v-bind="f7params" :store="{store}">
 
     <!-- Left panel with cover effect-->
-    <f7-panel left cover floating id="main-panel">
+    <f7-panel swipe left cover floating id="main-panel" :effect="effect" :class="{'panel-fullscreen':effect==='cover'}">
       <f7-view>
         <f7-page>
           <f7-navbar class="no-padding">
 
             <f7-list class="no-margin" inset-ios v-if="user" media-list dividers-ios strong
                      style="border-radius: 15px !important; width: 100%!important; margin-top: 35px">
-              <f7-list-item @click="sheetOpened=true" panel-close="#main-panel" link href="/profile" :title="user.name"
-                            :subtitle="user.email">
+              <f7-list-item @click="expand" link="/profile" :title="user.name"
+                            :subtitle="user.bio">
                 <template #media>
                   <img
                       style="border-radius: 8px"
@@ -27,8 +27,10 @@
 
             <f7-list inset-ios media-list dividers-ios strong style="border-radius: 15px !important;">
               <f7-list-item
+
                   link
                   title="About"
+
               >
               </f7-list-item>
 
@@ -114,25 +116,12 @@
       <login></login>
     </f7-login-screen>
 
-
-    <f7-sheet v-model:opened="sheetOpened" style="height: 95%">
-      <f7-toolbar>
-        <div class="left"></div>
-        Profile
-        <div class="right">
-          <f7-link sheet-close><i class="icon icon-close"></i></f7-link>
-        </div>
-      </f7-toolbar>
-      <profile></profile>
-
-    </f7-sheet>
-
-
     <f7-actions id="actions-two-groups">
       <f7-actions-group>
         <f7-actions-label>Choose A Theme</f7-actions-label>
-        <f7-actions-button strong @click="setDarkTheme(true)">Dark</f7-actions-button>
-        <f7-actions-button @click="setDarkTheme(false)">Light</f7-actions-button>
+        <f7-actions-button :strong="currentTheme==='system'" @click="setDarkTheme('system')">System</f7-actions-button>
+        <f7-actions-button :strong="currentTheme==='dark'" @click="setDarkTheme('dark')">Dark</f7-actions-button>
+        <f7-actions-button :strong="currentTheme==='light'" @click="setDarkTheme('light')">Light</f7-actions-button>
       </f7-actions-group>
       <f7-actions-group>
         <f7-actions-button color="red">Cancel</f7-actions-button>
@@ -150,13 +139,16 @@ import capacitorApp from '../js/capacitor-app.js';
 import routes from '../js/routes.js';
 import store from '../js/store';
 import Login from "@/components/auth/login.vue";
-import Profile from "@/components/account/profile.vue";
+import Profile from "@/pages/profile.vue";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {App} from '@capacitor/app';
+
 
 import OneSignal from "onesignal-cordova-plugin";
 
 import {Capacitor} from "@capacitor/core";
+
+import {SystemThemeColor} from 'system-theme-color';
 
 
 export default {
@@ -171,7 +163,8 @@ export default {
     const showLogin = useStore(store, "loginState");
     const user = useStore(store, "getUser");
 
-    const currentTheme = ref(f7?.darkMode);
+    const currentTheme = ref(user.theme);
+
 
     const device = getDevice();
     // Framework7 Parameters
@@ -202,6 +195,7 @@ export default {
     // Login screen data
     const username = ref('');
     const password = ref('');
+    const effect = ref(useStore(store, 'mainPanelEffect'));
 
     const alertLoginData = () => {
       f7.dialog.alert('Username: ' + username.value + '<br>Password: ' + password.value, () => {
@@ -209,8 +203,47 @@ export default {
       });
     }
 
-    const setDarkTheme = (mode = true) => {
-      f7.setDarkMode(mode)
+    const setDarkTheme = (mode = 'system') => {
+
+      let value = false;
+
+      if (mode === 'system') {
+
+        value = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      if (mode === 'dark') {
+        value = true;
+      }
+
+      f7.setDarkMode(value)
+
+      if (mode) {
+
+        currentTheme.value = mode;
+
+        axios.post("/set-user-theme", {theme: mode})
+            .then(res => {
+              CapacitorPersistentAccount.readAccount()
+                  .then(account => {
+                        if (account.data) {
+
+                          const NewData = {
+                            user: res.data.data,
+                            token: account.data.token
+                          };
+
+
+                          CapacitorPersistentAccount.saveAccount({data: NewData})
+
+
+                        }
+                      }
+                  )
+            })
+      }
+
+
     };
     const showLogOutDialog = () => {
 
@@ -229,6 +262,48 @@ export default {
       });
     };
 
+
+    const handleThemeChange = (e) => {
+
+      CapacitorPersistentAccount.readAccount()
+          .then(account => {
+            if (account.data) {
+
+              const themeMode = account.data.user.theme;
+              if (themeMode === 'system') {
+                f7.setDarkMode(e.matches)
+              }
+            }
+          })
+
+
+    }
+
+    const expand = () => {
+      store.dispatch("setMainPanelEffect", 'cover')
+
+    };
+
+    const setThemeColor = () => {
+
+      if (Capacitor.getPlatform() === 'android') {
+
+        SystemThemeColor.getMaterialColors()
+            .then(colors => {
+
+              f7.setColorTheme(colors.primary);
+
+
+            })
+            .catch(error => {
+              console.log(error);
+              alert(error);
+            })
+
+      }
+
+    };
+
     onMounted(() => {
       f7ready(() => {
 
@@ -237,6 +312,9 @@ export default {
         }
 
         if (Capacitor.getPlatform() === 'android') {
+
+          setThemeColor();
+
 
           OneSignal.initialize("104eb6bd-20ec-4d84-a426-b076741fb531");
 
@@ -267,6 +345,7 @@ export default {
 
       });
 
+
       App.addListener('appUrlOpen', (event) => {
         const url = event.url;
 
@@ -283,6 +362,30 @@ export default {
 
       });
 
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      mediaQuery.addEventListener('change', handleThemeChange);
+
+
+      /**
+       * apply user set dark theme mode
+       * @type {string}
+       */
+
+      CapacitorPersistentAccount.readAccount()
+          .then(account => {
+                if (account.data) {
+
+                  const themeMode = account.data.user.theme;
+
+                  setDarkTheme(themeMode);
+
+
+                }
+              }
+          )
+
+
     });
 
     return {
@@ -293,9 +396,14 @@ export default {
       user,
       sheetOpened,
       currentTheme,
+      effect,
+      currentTheme,
+      expand,
       alertLoginData,
       showLogOutDialog,
       setDarkTheme,
+      setThemeColor,
+      handleThemeChange,
       store
     }
   }
@@ -305,5 +413,12 @@ export default {
 .toast-red {
   background-color: red !important;
   color: #FFFFFF !important;
+}
+
+
+.panel-fullscreen {
+
+  width: 95% !important;
+
 }
 </style>

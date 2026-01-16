@@ -28,3 +28,6 @@ project(':capgo-capacitor-persistent-account').projectDir = new File('../node_mo
 
 include ':capgo-capacitor-social-login'
 project(':capgo-capacitor-social-login').projectDir = new File('../node_modules/@capgo/capacitor-social-login/android')
+
+include ':system-theme-color'
+project(':system-theme-color').projectDir = new File('../system-theme-color/android')

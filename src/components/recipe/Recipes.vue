@@ -1,6 +1,7 @@
 <template>
-  <f7-block>
-    <f7-block-title>Dishes of the day</f7-block-title>
+  <f7-block-title>Dishes of the day</f7-block-title>
+
+  <f7-block strong>
 
 
     <f7-card
@@ -28,12 +29,15 @@
 
     </swiper-container>
 
+    <span v-else>
+
     <empty-state
-        v-else
+
         type="recipes"
         title="No dishes or recipes yet"
         details="Recipes suggested by chefpilot using your food inventory will show here"
     ></empty-state>
+    </span>
 
   </f7-block>
 </template>

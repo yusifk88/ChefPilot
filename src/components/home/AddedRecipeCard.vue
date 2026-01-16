@@ -8,7 +8,7 @@
       <f7-button large @click="sheetOpened=true" fill style="color: #000000!important;">Add Food</f7-button>
     </div>
     <div>
-      <img width="100%" src="/img/add_food_image.svg">
+      <img width="100%" src="/img/chef_hat_food.png">
     </div>
   </div>
 

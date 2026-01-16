@@ -1,5 +1,7 @@
 <template>
   <f7-page>
+    <f7-navbar @click:back="backClick" title="Profile" back-link></f7-navbar>
+
     <f7-block inset strong v-if="user">
 
       <img :src="user.image_url" style="border-radius: 15px">
@@ -100,6 +102,11 @@ export default {
   },
   methods: {
     formatDateTIme,
+    backClick(){
+
+      store.dispatch("setMainPanelEffect", 'push')
+
+    },
     bioChanged(e) {
       this.bio = e.target.value;
       console.log(e.target.value);

@@ -20,7 +20,7 @@
 
       <f7-button
           preloader
-          v-if="!currentAccount || !accountInitializing"
+          v-if="!currentAccount"
           :loading="loading"
           @click="login"
           large

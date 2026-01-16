@@ -3,6 +3,7 @@
 
   <f7-navbar class="no-padding" title="Bookmarks"></f7-navbar>
 
+<f7-block strong>
 
   <f7-list style="margin-top: 0!important;" strong inset dividers-ios media-list class="skeleton-text" v-if="loading">
     <f7-list-item
@@ -36,6 +37,7 @@
 
   </f7-list>
   </span>
+</f7-block>
 
 </f7-page>
 </template>

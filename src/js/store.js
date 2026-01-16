@@ -12,6 +12,7 @@ const store = createStore({
         showLogin: true,
         loginState: true,
         refresh: false,
+        mainPanelEffect: 'push',
         bookmarkChanged: false,
         initializingAccount: false,
         unreadNotificationsCount: 0,
@@ -48,11 +49,19 @@ const store = createStore({
         },
         getNotifications({state}) {
             return state.notifications;
+        },
+        mainPanelEffect({state}) {
+
+            return state.mainPanelEffect;
         }
 
     },
     actions: {
 
+
+        setMainPanelEffect({state}, effect = 'push') {
+            state.mainPanelEffect = effect;
+        },
         setUnreadNotificationCount({state}, count = 0) {
             state.unreadNotificationsCount = count;
         },

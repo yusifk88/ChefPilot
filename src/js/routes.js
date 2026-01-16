@@ -10,6 +10,7 @@ import selectRecipe from "@/pages/SelectRecipe.vue";
 import BookMarks from "@/pages/BookMarks.vue";
 import sharedRecipe from "@/pages/SharedRecipe.vue";
 import notifications from "@/pages/notifications.vue";
+import profile from "@/pages/profile.vue";
 
 var routes = [
     {
@@ -35,6 +36,10 @@ var routes = [
     {
       path: '/recipe/:id',
       component: selectRecipe
+    },
+    {
+      path: '/profile',
+      component: profile
     },
     {
       path: '/notifications',

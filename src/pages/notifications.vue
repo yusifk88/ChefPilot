@@ -4,7 +4,14 @@
 
 
     <notifications-loading v-if="loading"></notifications-loading>
-    <empty-state v-else-if="showAll && notifications.all.data.length===0" type="notifications" title="No notifications yet" details="Notifications on new recipes and account activities will show here."></empty-state>
+    <f7-block strong v-else-if="showAll && notifications.all.data.length===0">
+    <empty-state
+
+        type="notifications"
+        title="No notifications yet"
+        details="Notifications on new recipes and account activities will show here."
+    ></empty-state>
+    </f7-block>
 
     <f7-block-title v-if="!loading && notifications.unread.length>0">Unread</f7-block-title>
 
@@ -23,7 +30,7 @@
 
     <f7-block-title v-if="showAll && !loading && notifications.all.data.length>0">All</f7-block-title>
 
-    <f7-block strong v-if="showAll && !loading">
+    <f7-block strong v-if="showAll && !loading && notifications.all.data.length>0">
       <f7-list media-list dividers strong>
         <notification-item v-for="item in notifications.all.data" :key="item.id"
                            :notification="item"></notification-item>
