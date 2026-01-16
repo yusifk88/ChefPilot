@@ -363,7 +363,6 @@ class GetAndBroadcastRecipesCommand extends Command
         "Europe/Tallinn",
         "Europe/Tirane",
         "Europe/Ulyanovsk",
-        "Europe/Uzhgorod",
         "Europe/Vienna",
         "Europe/Vilnius",
         "Europe/Volgograd",
