@@ -399,7 +399,6 @@ export default {
       sheetOpened,
       currentTheme,
       effect,
-      currentTheme,
       expand,
       alertLoginData,
       showLogOutDialog,

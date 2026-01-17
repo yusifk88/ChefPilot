@@ -1,5 +1,5 @@
 <template>
-  <f7-page style="background-color: #00ff9f">
+  <f7-page :class="{'bg-green':platformOS!='android'}">
 
 
     <img width="80%" class="margin fade-in-up" src="/img/chef_cartoon.webp">
@@ -66,6 +66,9 @@ export default {
   computed: {
     useStore() {
       return useStore
+    },
+    platformOS(){
+      return Capacitor.getPlatform().toLowerCase();
     }
   },
   components: {GoogleLogo, AppLogo},
@@ -306,6 +309,9 @@ export default {
 /* Apply the animation */
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
+}
+.bg-green{
+  background-color: #00ff9f;
 }
 
 </style>
