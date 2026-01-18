@@ -5,14 +5,14 @@
     <div>
       <h3>Add your food store</h3>
       <p>Add raw food food stuff to get personalised meal recipes </p>
-      <f7-button large @click="sheetOpened=true" fill style="color: #000000!important;">Add Food</f7-button>
+      <f7-button large @click="sheetOpened=true; refreshItems=!refreshItems" fill style="color: #000000!important;">Add Food</f7-button>
     </div>
     <div>
       <img width="100%" src="/img/chef_hat_food.png">
     </div>
   </div>
 
-  <f7-block class="no-padding no-margin" v-else @click="showUserItems=true">
+  <f7-block class="no-padding no-margin" v-else @click="showUserItems=true; refreshItems=!refreshItems">
     <f7-list media-list dividers-ios class="no-margin no-padding">
 
     <f7-list-item link="#" style="padding-left: 0!important; margin-left: 0!important;">
@@ -55,7 +55,7 @@
       </div>
     </f7-toolbar>
 
-    <additem @saved="itemsSaved"></additem>
+    <additem :refresh-items="refreshItems" @saved="itemsSaved"></additem>
 
   </f7-sheet>
 
@@ -97,7 +97,8 @@ export default {
       showUserItems: false,
       items: [],
       shouldRefresh: useStore(store, "getRefresh"),
-      loading: true
+      loading: true,
+      refreshItems:false
 
     }
   },

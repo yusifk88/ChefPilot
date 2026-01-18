@@ -11,6 +11,7 @@ import BookMarks from "@/pages/BookMarks.vue";
 import sharedRecipe from "@/pages/SharedRecipe.vue";
 import notifications from "@/pages/notifications.vue";
 import profile from "@/pages/profile.vue";
+import discover from "@/pages/discover.vue";
 
 var routes = [
     {
@@ -40,6 +41,10 @@ var routes = [
     {
       path: '/profile',
       component: profile
+    },
+    {
+      path:"/discover",
+      component: discover
     },
     {
       path: '/notifications',

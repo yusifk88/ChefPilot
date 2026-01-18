@@ -106,7 +106,6 @@ const store = createStore({
                         state.user = res.data.data.user;
                         state.loginState = false
                         state.refresh = !state.refresh;
-                        state.initializingAccount = false;
 
                         //get number of unread notifications
 
@@ -123,7 +122,7 @@ const store = createStore({
                     .catch(error => {
                         state.user = null;
                         state.loginState = true;
-                        state.initializingAccount = false;
+                      //  state.initializingAccount = false;
 
 
                     })
@@ -142,7 +141,6 @@ const store = createStore({
                                     state.user = res.data.data.user;
                                     state.loginState = false
                                     state.refresh = !state.refresh;
-                                    state.initializingAccount = false;
 
                                     if (Capacitor.getPlatform() === 'android') {
 
@@ -154,7 +152,7 @@ const store = createStore({
                                 .catch(error => {
                                     state.user = null;
                                     state.loginState = true;
-                                    state.initializingAccount = false;
+                                  //  state.initializingAccount = false;
                                     // await CapacitorPersistentAccount.saveAccount({data:null});
                                     //  window.location.reload();
 

@@ -99,7 +99,7 @@
                    text="Home"></f7-link>
           <f7-link tab-link="#view-bookmarks" icon-ios="f7:bookmark-outline" icon-md="f7:bookmark-outline"
                    text="Bookmarks"></f7-link>
-          <f7-link tab-link="#view-settings" icon-ios="f7:person_2" icon-md="f7:person_2"
+          <f7-link tab-link="#view-discover" icon-ios="f7:person_2" icon-md="f7:person_2"
                    text="Discover"></f7-link>
         </f7-toolbar-pane>
       </f7-toolbar>
@@ -109,7 +109,7 @@
 
       <f7-view id="view-bookmarks" name="favorites" tab url="/bookmarks/"></f7-view>
 
-      <f7-view id="view-settings" name="settings" tab url="/settings/"></f7-view>
+      <f7-view id="view-discover" name="settings" tab url="/discover/"></f7-view>
 
     </f7-views>
 
@@ -121,9 +121,9 @@
     <f7-actions id="actions-two-groups">
       <f7-actions-group>
         <f7-actions-label>Choose A Theme</f7-actions-label>
-        <f7-actions-button :strong="currentTheme==='system'" @click="setDarkTheme('system')">System</f7-actions-button>
         <f7-actions-button :strong="currentTheme==='dark'" @click="setDarkTheme('dark')">Dark</f7-actions-button>
         <f7-actions-button :strong="currentTheme==='light'" @click="setDarkTheme('light')">Light</f7-actions-button>
+        <f7-actions-button :strong="currentTheme==='system'" @click="setDarkTheme('system')">System Default</f7-actions-button>
       </f7-actions-group>
       <f7-actions-group>
         <f7-actions-button color="red">Cancel</f7-actions-button>

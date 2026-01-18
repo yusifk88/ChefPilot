@@ -35,6 +35,7 @@ export default {
         recipes:"/img/empty/empty_recipes.svg",
         notifications:"/img/empty/no_notifications.svg",
         activities:"/img/empty/no_activities.svg",
+        discover:"/img/empty/empty_discover.svg"
 
       }
     }
