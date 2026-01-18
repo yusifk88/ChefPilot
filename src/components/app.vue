@@ -3,8 +3,7 @@
 
     <!-- Left panel with cover effect-->
     <f7-panel
-        swipe-active-area="5px"
-        swipe left id="main-panel" :effect="effect" :class="{'panel-fullscreen':effect==='cover'}">
+        left id="main-panel" :effect="effect" :class="{'panel-fullscreen':effect==='cover'}">
       <f7-view>
         <f7-page>
           <f7-navbar class="no-padding">
