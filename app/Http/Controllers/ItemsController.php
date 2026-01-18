@@ -7,6 +7,7 @@ use App\Models\FoodItem;
 use App\Models\Recipe;
 use App\Models\UserItem;
 use App\Services\ResponseService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use function view;
 
@@ -90,7 +91,14 @@ class ItemsController extends Controller
     public function recipesToday()
     {
         $user = auth()->user();
-        $recipes = Recipe::where("user_id", $user->id)->whereDate("created_at", date("Y-m-d"))->get();
+
+        if ($user->timezone){
+            $today = Carbon::now($user->timezone)->utc();
+        }else{
+            $today = Carbon::now();
+        }
+
+        $recipes = Recipe::where("user_id", $user->id)->whereDate("created_at", $today->toDateString())->get();
         return ResponseService::SuccessResponse($recipes, "Recipes retrieved successfully");
 
     }

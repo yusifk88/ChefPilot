@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\ItemsController;
-use App\Mail\DailyRecipes;
-use App\Models\Recipe;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/res/{ulid}', [ItemsController::class, 'publicPost'])->name('recipe.publicPost');
@@ -24,3 +21,21 @@ Route::get("/.well-known/assetlinks.json", function () {
 
 });
 
+
+Route::get("/.well-known/apple-app-site-association", function () {
+
+    return json_decode(
+        '{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.com.myapp.app",
+        "paths": ["*"]
+      }
+    ]
+  }
+}'
+    );
+
+});
