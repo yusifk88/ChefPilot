@@ -6,6 +6,7 @@ use App\Jobs\MakeRecipeJob;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class GetAndBroadcastRecipesCommand extends Command
 {
@@ -442,13 +443,14 @@ class GetAndBroadcastRecipesCommand extends Command
 
         foreach ($this->timeZones as $timezone) {
 
-            $timeInstanceInTimeZone= Carbon::now($timezone);
+            $timeInstanceInTimeZone = Carbon::now($timezone);
 
             $currentDate = Carbon::now()->toDateString();
 
-            $sevenAm = $currentDate." 07:00:00";
+            $sevenAm = $currentDate . " 07:00:00";
+//            $afterSevenAm = $currentDate." 07:05:00";
 
-           if ($timeInstanceInTimeZone->equalTo($sevenAm)) {
+            if ($timeInstanceInTimeZone->greaterThanOrEqualTo($sevenAm)) {
 
                 $usersAtSevenAm = User::where("timezone", $timezone)->get();
 
@@ -457,7 +459,13 @@ class GetAndBroadcastRecipesCommand extends Command
                     foreach ($usersAtSevenAm as $user) {
 
 
-                        MakeRecipeJob::dispatch($user->id);
+                        $userNotified = DB::table("notifications")->where("notifiable_type", User::class)
+                            ->where("notifiable_id", $user->id)
+                            ->exists();
+
+                        if ($userNotified) {
+                            MakeRecipeJob::dispatch($user->id);
+                        }
 
 
                     }
@@ -465,7 +473,7 @@ class GetAndBroadcastRecipesCommand extends Command
                 }
 
 
-           }
+            }
 
         }
     }
