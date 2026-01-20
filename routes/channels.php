@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Broadcast;
 
-Broadcast::channel('recipes-created_.{id}', function ($user, $id) {
+Broadcast::channel('recipes-created_{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
