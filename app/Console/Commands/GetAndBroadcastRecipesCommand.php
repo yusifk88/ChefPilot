@@ -461,10 +461,13 @@ class GetAndBroadcastRecipesCommand extends Command
 
                         $userNotified = DB::table("notifications")->where("notifiable_type", User::class)
                             ->where("notifiable_id", $user->id)
+                            ->whereDate("created_at",Carbon::now($timezone)->utc()->toDateString())
                             ->exists();
 
                         if (!$userNotified) {
+
                             MakeRecipeJob::dispatch($user->id);
+
                         }
 
 

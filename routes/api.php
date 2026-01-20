@@ -1,7 +1,9 @@
 <?php
 
+use App\Events\RecipeCreatedEvent;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemsController;
+use App\Models\Recipe;
 use Illuminate\Support\Facades\Route;
 
 
@@ -10,6 +12,15 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/google-login', [AuthController::class, 'googleLogin']);
 Route::post('/signup', [AuthController::class, 'singUp']);
 
+Route::get("test-socket", function () {
+
+
+    $all = Recipe::where("user_id",1)->limit(1)->get()->toArray();
+
+
+    broadcast(new RecipeCreatedEvent(channelName: "recipes-created"));
+
+});
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
 
