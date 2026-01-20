@@ -463,7 +463,7 @@ class GetAndBroadcastRecipesCommand extends Command
                             ->where("notifiable_id", $user->id)
                             ->exists();
 
-                        if ($userNotified) {
+                        if (!$userNotified) {
                             MakeRecipeJob::dispatch($user->id);
                         }
 
