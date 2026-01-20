@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Events\RecipeCreatedEvent;
 use App\Mail\DailyRecipes;
 use App\Models\Recipe;
 use App\Models\User;
@@ -11,7 +12,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use function PHPUnit\Framework\countOf;
 
 class MakeRecipeJob implements ShouldQueue
 {
@@ -37,7 +37,7 @@ class MakeRecipeJob implements ShouldQueue
         $user = User::find($this->userID);
         $recipes = [];
 
-       // Recipe::where("user_id", $this->userID)->whereDate("created_at", date("Y-m-d"))->delete();
+        // Recipe::where("user_id", $this->userID)->whereDate("created_at", date("Y-m-d"))->delete();
 
         foreach ($response as $recipe) {
 
@@ -56,9 +56,9 @@ class MakeRecipeJob implements ShouldQueue
 
             ]);
 
-            $recipes[]=$recipeItem;
+            $recipes[] = $recipeItem;
 
-            if (count($recipes)>0){
+            if (count($recipes) > 0) {
                 $user->notify(new RecipeCreated($recipeItem));
 
             }
@@ -66,12 +66,11 @@ class MakeRecipeJob implements ShouldQueue
 
         }
 
-        if (count($recipes)>0){
+        if (count($recipes) > 0) {
             Mail::to($user)->queue(new DailyRecipes(collect($recipes), $user));
 
+            broadcast(new RecipeCreatedEvent($user));
         }
-
-
 
 
     }

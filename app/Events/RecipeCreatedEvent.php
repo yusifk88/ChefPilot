@@ -2,28 +2,29 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class RecipeCreatedEvent implements ShouldBroadcastNow
+class RecipeCreatedEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public string $chanelName = "recipes-created";
+    public User $user;
     public array $message;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(string $channelName = "recipes-created")
+    public function __construct(User $user)
     {
-        $this->chanelName = $channelName;
+        $this->user = $user;
         $this->message = [
-            "items"=>"Recipes created",
+            "items" => "Recipes created",
         ];
     }
 
@@ -35,7 +36,7 @@ class RecipeCreatedEvent implements ShouldBroadcastNow
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel(name: $this->chanelName),
+            new PrivateChannel(name: "recipes-created_" . $this->user->id),
         ];
     }
 }
