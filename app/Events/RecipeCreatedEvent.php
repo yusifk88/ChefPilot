@@ -14,7 +14,7 @@ class RecipeCreatedEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public User $user;
+    private User $user;
     public array $message;
 
     /**
