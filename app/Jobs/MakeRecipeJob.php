@@ -11,6 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use function PHPUnit\Framework\countOf;
 
 class MakeRecipeJob implements ShouldQueue
 {
@@ -57,12 +58,20 @@ class MakeRecipeJob implements ShouldQueue
 
             $recipes[]=$recipeItem;
 
-            $user->notify(new RecipeCreated($recipeItem));
+            if (count($recipes)>0){
+                $user->notify(new RecipeCreated($recipeItem));
+
+            }
+
+
+        }
+
+        if (count($recipes)>0){
+            Mail::to($user)->queue(new DailyRecipes(collect($recipes), $user));
 
         }
 
 
-        Mail::to($user)->queue(new DailyRecipes(collect($recipes), $user));
 
 
     }
