@@ -48,7 +48,6 @@ class User extends Authenticatable
         "device_model",
         "ip_address",
         "timezone",
-        "country",
         "device_os"
     ];
 
