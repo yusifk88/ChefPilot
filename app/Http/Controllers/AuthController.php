@@ -271,14 +271,14 @@ class AuthController extends Controller
     public function changeAvatar(Request $request)
     {
 
-        Log::info("test info",["data"=>$request->all()]);
+        Log::info("test info",["data"=>$request->avatar]);
 
         $request->validate([
-            "avatar" => "required|file|image|mimes:jpeg,jpg|max:2000",
+            "avatar" => "required",
         ]);
 
         $url = Storage::disk("spaces")
-            ->put("chefpilot/{$request->user->id}", $request->avatar);
+            ->put("chefpilot/{$request->user->id}", $request->file("avatar"));
 
         $user = $request->user();
 
