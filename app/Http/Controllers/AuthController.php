@@ -285,8 +285,10 @@ class AuthController extends Controller
         if ($imageData === false) {
             return ResponseService::FailedResponse(message: "Invalid image data");
         }
+        $user = $request->user();
 
-        $filename = 'images/' . Str::uuid() . '.jpg';
+
+        $filename = "chefpilot/$user->id/avatar/" . Str::uuid() . ".jpg";
 
         Storage::disk('spaces')->put(
             $filename,
