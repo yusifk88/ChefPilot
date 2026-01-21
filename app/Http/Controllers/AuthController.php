@@ -278,7 +278,7 @@ class AuthController extends Controller
         ]);
 
         $url = Storage::disk("spaces")
-            ->put("chefpilot/{$request->user->id}", $request->file("avatar"));
+            ->put("chefpilot/{$request->user()->id}", $request->file("avatar"));
 
         $user = $request->user();
 
