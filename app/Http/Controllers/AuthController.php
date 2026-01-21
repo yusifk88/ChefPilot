@@ -8,7 +8,7 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -87,12 +87,12 @@ class AuthController extends Controller
 
                 $existingUser->update([
                     "name" => $user->name,
-                    "device_name"=> $request->device_name,
-                    "device_model"=> $request->device_model,
-                    "ip_address"=>$request->ip(),
-                    "timezone"=>$request->timezone,
-                    "country"=>$request->country,
-                    "device_os"=>$request->device_os,
+                    "device_name" => $request->device_name,
+                    "device_model" => $request->device_model,
+                    "ip_address" => $request->ip(),
+                    "timezone" => $request->timezone,
+                    "country" => $request->country,
+                    "device_os" => $request->device_os,
                 ]);
 
 
@@ -108,12 +108,12 @@ class AuthController extends Controller
                     "google_user_id" => $user->sub,
                     "image_url" => $user->picture,
                     "password" => Hash::make($user->sub),
-                    "device_name"=> $request->device_name,
-                    "device_model"=> $request->device_model,
-                    "ip_address"=>$request->ip(),
-                    "timezone"=>$request->timezone,
-                    "country"=>$request->country,
-                    "device_os"=>$request->device_os,
+                    "device_name" => $request->device_name,
+                    "device_model" => $request->device_model,
+                    "ip_address" => $request->ip(),
+                    "timezone" => $request->timezone,
+                    "country" => $request->country,
+                    "device_os" => $request->device_os,
                 ]);
                 $foundUser->save();
 
@@ -265,6 +265,23 @@ class AuthController extends Controller
         $user->update(["theme" => $request->theme]);
 
         return ResponseService::SuccessResponse($user, "Theme updated successfully");
+    }
+
+    public function changeAvatar(Request $request)
+    {
+        $request->validate([
+            "avatar" => "required|file|image|mimes:jpeg,jpg|max:2000",
+        ]);
+
+        $url = Storage::disk("spaces")
+            ->put("chefpilot/{$request->user->id}", $request->avatar);
+
+        $user = $request->user();
+
+        $user->update(["image_url" => $url]);
+
+        return ResponseService::SuccessResponse(["user" => $user], "User avatar updated successfully");
+
     }
 
 

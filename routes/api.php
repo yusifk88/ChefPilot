@@ -22,11 +22,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
 
     /**
-     * user toutes
+     * user routes
      */
     Route::get('/user', [AuthController::class, "user"]);
     Route::post('/set-user-theme', [AuthController::class, "setUserTheme"]);
     Route::post("update-user", [AuthController::class, "updateUser"]);
+    Route::post("change-avatar",[AuthController::class, "changeAvatar"]);
     /**
      * items routes
      */
