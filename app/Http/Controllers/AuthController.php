@@ -276,7 +276,7 @@ class AuthController extends Controller
         ]);
 
 
-        if (str_contains($request->avatar, "/", ',')) {
+        if (str_contains($request->avatar, "/")) {
             [$meta, $base64] = explode(',', $request->avatar, 2);
         }
 
