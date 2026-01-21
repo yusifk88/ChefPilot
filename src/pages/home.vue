@@ -20,7 +20,7 @@
 
     <f7-block strong inset style="background-color: #00FF9F62">
 
-      <added-recipe-card></added-recipe-card>
+      <added-recipe-card v-if="user"></added-recipe-card>
     </f7-block>
 
     <recipes></recipes>

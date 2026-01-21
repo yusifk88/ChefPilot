@@ -4,9 +4,13 @@
 
     <f7-block inset strong v-if="user">
 
-      <img :src="user.image_url" style="border-radius: 15px">
+      <img :src="user.image_url" style="border-radius: 15px; width: 120px">
       <div class="grid grid-cols-3 grid-gap">
-        <f7-button>Change</f7-button>
+        <f7-button
+            preloader
+            :loading="loadingAvatar"
+            :disabled="loadingAvatar" @click="triggerSelect">Change</f7-button>
+
       </div>
 
     </f7-block>
@@ -22,6 +26,16 @@
             :title="user.name"
             subtitle="Name"
         >
+        </f7-list-item>
+
+        <f7-list-item
+            subtitle="Location"
+        >
+          <template #title>
+            <FlagIcon v-if="user.country" :code="user.country" :title="user.country"/>
+            <span v-else>Not Available</span>
+          </template>
+
         </f7-list-item>
 
         <f7-list-item
@@ -75,7 +89,8 @@
                 clear-button></f7-list-input>
 
           </f7-list>
-          <f7-button @click="savedChanges" preloader :loading="loading" :disabled="loading" class="margin-right margin-left" fill>Update
+          <f7-button @click="savedChanges" preloader :loading="loading" :disabled="loading"
+                     class="margin-right margin-left" fill>Update
           </f7-button>
         </f7-block>
       </f7-page-content>
@@ -89,20 +104,67 @@
 import {f7, useStore} from "framework7-vue";
 import store from "@/js/store";
 import {formatDateTIme} from "@/js/utility";
+import 'vue3-flag-icons/styles'
+import FlagIcon from 'vue3-flag-icons'
+import {FileCompressor} from "@capgo/capacitor-file-compressor";
+import {Camera} from '@capacitor/camera';
+import { Filesystem } from '@capacitor/filesystem';
 
 export default {
   name: "profile",
+  components: {
+    FlagIcon
+  },
   data() {
     return {
       user: useStore(store, "getUser"),
       name: null,
       bio: null,
-      loading: false
+      loading: false,
+      selectedPhoto: null,
+      loadingAvatar:false
     }
   },
   methods: {
     formatDateTIme,
-    backClick(){
+    async triggerSelect() {
+
+
+      const photo = await Camera.getPhoto({
+        quality: 100,
+        allowEditing: false,
+        resultType: 'uri'
+      });
+
+      const result = await FileCompressor.compressImage({
+        path: photo.path,
+        quality: 0.8,
+        width: 720,
+        mimeType: 'image/jpeg'
+      });
+
+      const readFile = await Filesystem.readFile({
+        path: result.path
+      });
+
+      const base64Data = readFile.data;
+
+      this.loadingAvatar=true;
+
+      axios.post("/change-avatar", {
+        avatar:base64Data
+      })
+          .then(res => {
+            this.loadingAvatar=false;
+            store.dispatch("initUser");
+
+          })
+          .catch(error=>{
+            this.loadingAvatar=false;
+
+          })
+    },
+    backClick() {
 
       store.dispatch("setMainPanelEffect", 'push')
 
@@ -128,7 +190,7 @@ export default {
       axios.post("/update-user", payload)
           .then(res => {
 
-            this.loading=false;
+            this.loading = false;
             const successToast = f7.toast.create({
               text: 'User profile updated',
               closeButton: true,

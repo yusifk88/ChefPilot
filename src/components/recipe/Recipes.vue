@@ -55,11 +55,25 @@ export default {
     return {
       items: [],
       shouldRefresh: useStore(store, "getRefresh"),
+      currentUser: useStore(store, "getUser"),
       loading: false,
     }
   },
   watch: {
 
+    currentUser() {
+      if (this.currentUser){
+      const CHANNEL = `recipes-created_${this.currentUser.id}`;
+
+      echo.private(CHANNEL)
+          .listen('RecipeCreatedEvent', (e) => {
+
+            alert(JSON.stringify(e))
+
+          });
+
+    }
+      },
     shouldRefresh() {
       this.getItems();
 
@@ -78,6 +92,7 @@ export default {
   },
   mounted() {
     this.getItems();
+
   }
 }
 </script>

@@ -4,18 +4,59 @@ import {Capacitor} from "@capacitor/core";
 import store from "@/js/store";
 import {f7} from "framework7-vue";
 import {BASE_URL} from "@/js/utility";
+import Echo from 'laravel-echo';
+import Pusher from 'pusher-js';
+
+let TOKEN = null;
+
+if (Capacitor.getPlatform().toLowerCase()==='web') {
+
+    TOKEN= localStorage.getItem("token");
+}else {
+
+    CapacitorPersistentAccount.readAccount()
+        .then(account => {
+
+            if (account.data) {
+                TOKEN= account.data.token;
+
+            }
+        })
+
+}
+
+window.Pusher = Pusher;
+
+ window.echo = new Echo({
+    broadcaster: 'ably',
+    key: 'U-PY8A.iHQrzQ', // Only the part before the colon
+    wsHost: 'realtime-pusher.ably.io',
+    wsPort: 443,
+    disableStats: true,
+    encrypted: true,
+    forceTLS: true,
+    authEndpoint: BASE_URL+'/broadcasting/auth',
+     enabledTransports: ['ws', 'wss'],
+    auth: {
+        headers: {
+            Authorization: `Bearer ${TOKEN}`,
+            Accept: 'application/json',
+            "Content-Type":'application/json'
+        },
+    },
+});
 
 
 if (Capacitor.getPlatform().toLowerCase()==='web') {
 
-    axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem("token")
+    axios.defaults.headers.common['Authorization'] = "Bearer " + TOKEN
 
 }else {
     CapacitorPersistentAccount.readAccount()
         .then(account => {
 
             if (account.data) {
-                axios.defaults.headers.common['Authorization'] = "Bearer " + account.data.token;
+                axios.defaults.headers.common['Authorization'] = "Bearer " + TOKEN;
 
             }
         })
