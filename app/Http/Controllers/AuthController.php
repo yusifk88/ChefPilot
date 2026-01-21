@@ -8,6 +8,7 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
@@ -269,6 +270,9 @@ class AuthController extends Controller
 
     public function changeAvatar(Request $request)
     {
+
+        Log::info("test info",["data"=>$request->all()]);
+
         $request->validate([
             "avatar" => "required|file|image|mimes:jpeg,jpg|max:2000",
         ]);
