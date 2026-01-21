@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -270,15 +271,30 @@ class AuthController extends Controller
 
     public function changeAvatar(Request $request)
     {
-
-        Log::info("test info",["data"=>$request->avatar]);
-
         $request->validate([
-            "avatar" => "required",
+            "avatar" => "required|string",
         ]);
 
-        $url = Storage::disk("spaces")
-            ->put("chefpilot/{$request->user()->id}", $request->file("avatar"));
+
+        if (str_contains($request->avatar, "/", ',')) {
+            [$meta, $base64] = explode(',', $request->avatar, 2);
+        }
+
+        $imageData = base64_decode($request->avatar);
+
+        if ($imageData === false) {
+            return ResponseService::FailedResponse(message: "Invalid image data");
+        }
+
+        $filename = 'images/' . Str::uuid() . '.jpg';
+
+        Storage::disk('spaces')->put(
+            $filename,
+            $imageData,
+            'public'
+        );
+
+        $url= Storage::disk('spaces')->url($filename);
 
         $user = $request->user();
 
