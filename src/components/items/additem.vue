@@ -45,23 +45,25 @@
         height: theme().ios ? 63 : theme.md ? 73 : 77,
       }"
       >
-
-        <ul>
-
           <f7-list-item
               checkbox
               v-for="foodItem in filteredItems"
               :key="foodItem.id"
               :title="foodItem.name"
               :subtitle="foodItem.category"
-              media-item
               :virtual-list-index="foodItem.id"
               :style="`top: ${filteredItems.topPosition}px`"
               checkbox-icon="end"
               @click="foodItem.checked=!foodItem.checked"
           >
+
+            <template #media>
+              <span v-if="foodItem.image_type==='emoji'" style="font-size: 28px">
+              {{foodItem.image}}
+              </span>
+              <img :src="foodItem.image" width="28px" v-else>
+            </template>
           </f7-list-item>
-        </ul>
 
       </f7-list>
       <empty-state
@@ -114,8 +116,8 @@ export default {
       items: [],
       searchKey: "",
       SavingItems: false,
-      loading:false,
-      loaderCount:15
+      loading: false,
+      loaderCount: 15
     }
   },
   watch: {
@@ -182,19 +184,19 @@ export default {
       return theme
     },
     getItems(done = null) {
-      this.loading=true;
+      this.loading = true;
       axios.get("/items")
           .then(res => {
             if (done) {
               done();
             }
-            this.items = res.data.data.items.map(item=> {
+            this.items = res.data.data.items.map(item => {
 
-              item.checked=false;
+              item.checked = false;
               return item;
             })
 
-            this.loading=false;
+            this.loading = false;
 
           })
     },
