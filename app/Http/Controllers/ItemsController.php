@@ -68,7 +68,7 @@ class ItemsController extends Controller
     public function userItems()
     {
 
-        $userItems = UserItem::where("user_id", auth()->id())->get();
+        $userItems = UserItem::with("item")->where("user_id", auth()->id())->get();
         return ResponseService::SuccessResponse($userItems, "Items retrieved successfully");
 
     }
