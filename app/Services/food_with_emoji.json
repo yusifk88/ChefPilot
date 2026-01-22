@@ -9,26 +9,26 @@
         {
             "name": "Achiote (annatto seeds)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(1).svg",
             "image_type": "svg"
         },
         {
             "name": "Acorn squash",
             "category": "Vegetable",
-            "image": "🎃",
+            "image": "🌰",
             "image_type": "emoji"
         },
         {
             "name": "Adzuki beans",
             "category": "Legume / Pulse",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🫘",
+            "image_type": "emoji"
         },
         {
             "name": "African locust bean (iru/dawadawa)",
             "category": "Regional Ingredient",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🫘",
+            "image_type": "emoji"
         },
         {
             "name": "Almonds",
@@ -57,7 +57,7 @@
         {
             "name": "Aniseed",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Anise-Star-580x386.svg",
             "image_type": "svg"
         },
         {
@@ -75,7 +75,7 @@
         {
             "name": "Arrowroot",
             "category": "Root / Tuber",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/6531381.svg",
             "image_type": "svg"
         },
         {
@@ -87,7 +87,7 @@
         {
             "name": "Artichoke (Jerusalem)",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/artichoke2.svg",
             "image_type": "svg"
         },
         {
@@ -111,13 +111,13 @@
         {
             "name": "Bamboo shoot (fresh)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/bamboo-shoots-or-bamboo-sprouts-flat-design-illustration-isolated-on-white-background-vector.svg",
             "image_type": "svg"
         },
         {
             "name": "Bamboo shoots",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/bamboo-shoots-or-bamboo-sprouts-flat-design-illustration-isolated-on-white-background-vector.svg",
             "image_type": "svg"
         },
         {
@@ -129,7 +129,7 @@
         {
             "name": "Baobab fruit (pulp)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/illustration-whole-and-halved-baobab-fruit-scientific-name-adansonia-digitata-with-green-leaves-isolated-on-white-background-vector%20(1).svg",
             "image_type": "svg"
         },
         {
@@ -207,31 +207,31 @@
         {
             "name": "Bitter kola (ogbono)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/illustration-garcinia-kola-or-bitter-kola-isolated-on-white-background-vector.svg",
             "image_type": "svg"
         },
         {
             "name": "Black beans",
             "category": "Legume / Pulse",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/black-beans-vector-illustration_931262-526.svg",
             "image_type": "svg"
         },
         {
             "name": "Black gram (urad dal)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/blackberry-bowl-icon-isometric-blackberry-bowl-vector-icon-web-design-isolated-white-background_96318-54885.svg",
             "image_type": "svg"
         },
         {
             "name": "Black pepper (whole)",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/illustration-logo-clipart-black-pepper-or-peppercorns-on-a-wooden-bowl-vector.svg",
             "image_type": "svg"
         },
         {
             "name": "Black-eyed peas (cowpeas)",
             "category": "Legume / Pulse",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/360_F_1764099684_VejohEaOLTnnwNCo9Ml31tAdD3PAGxk4.svg",
             "image_type": "svg"
         },
         {
@@ -261,8 +261,8 @@
         {
             "name": "Brain (pork/beef)",
             "category": "Offal",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🥩",
+            "image_type": "emoji"
         },
         {
             "name": "Brazil nuts",
@@ -273,20 +273,20 @@
         {
             "name": "Breadfruit",
             "category": "Fruit",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector.svg",
             "image_type": "svg"
         },
         {
             "name": "Breadfruit (already)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector.svg",
             "image_type": "svg"
         },
         {
             "name": "Broad beans (fava)",
             "category": "Vegetable",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🫛",
+            "image_type": "emoji"
         },
         {
             "name": "Broccoli",
@@ -357,8 +357,8 @@
         {
             "name": "Cannellini beans",
             "category": "Legume / Pulse",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🫛",
+            "image_type": "emoji"
         },
         {
             "name": "Canola (rapeseed) oil (raw)",
@@ -369,13 +369,13 @@
         {
             "name": "Cardamom (black)",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(2).svg",
             "image_type": "svg"
         },
         {
             "name": "Cardamom (green)",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(3).svg",
             "image_type": "svg"
         },
         {
@@ -399,19 +399,19 @@
         {
             "name": "Cassava",
             "category": "Root / Tuber",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(4).svg",
             "image_type": "svg"
         },
         {
             "name": "Cassava (already)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(4).svg",
             "image_type": "svg"
         },
         {
             "name": "Cassava (manioc)",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(4).svg",
             "image_type": "svg"
         },
         {
@@ -429,7 +429,7 @@
         {
             "name": "Celeriac (celery root)",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(5).svg",
             "image_type": "svg"
         },
         {
@@ -441,7 +441,7 @@
         {
             "name": "Cempedak",
             "category": "Fruit",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(6).svg",
             "image_type": "svg"
         },
         {
@@ -471,7 +471,7 @@
         {
             "name": "Chia seeds",
             "category": "Nut / Seed",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(8).svg",
             "image_type": "svg"
         },
         {
@@ -483,7 +483,7 @@
         {
             "name": "Chickpeas (garbanzo beans)",
             "category": "Legume / Pulse",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(9).svg",
             "image_type": "svg"
         },
         {
@@ -507,7 +507,7 @@
         {
             "name": "Chinese yam (nagaimo)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(10).svg",
             "image_type": "svg"
         },
         {
@@ -537,7 +537,7 @@
         {
             "name": "Cloves",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(11).svg",
             "image_type": "svg"
         },
         {
@@ -579,7 +579,7 @@
         {
             "name": "Coriander seed",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(12).svg",
             "image_type": "svg"
         },
         {
@@ -603,7 +603,7 @@
         {
             "name": "Cranberry",
             "category": "Fruit",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(13).svg",
             "image_type": "svg"
         },
         {
@@ -615,7 +615,7 @@
         {
             "name": "Cream",
             "category": "Dairy & Eggs",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(14).svg",
             "image_type": "svg"
         },
         {
@@ -633,7 +633,7 @@
         {
             "name": "Cumin (seed)",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(16).svg",
             "image_type": "svg"
         },
         {
@@ -651,7 +651,7 @@
         {
             "name": "Daikon",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(17).svg",
             "image_type": "svg"
         },
         {
@@ -663,7 +663,7 @@
         {
             "name": "Date syrup",
             "category": "Sweetener",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(19).svg",
             "image_type": "svg"
         },
         {
@@ -693,7 +693,7 @@
         {
             "name": "Durian",
             "category": "Fruit",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(20).svg",
             "image_type": "svg"
         },
         {
@@ -771,37 +771,37 @@
         {
             "name": "Feet / trotters",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(21).svg",
             "image_type": "svg"
         },
         {
             "name": "Fennel (bulb)",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/image2vector%20(22).svg",
             "image_type": "svg"
         },
         {
             "name": "Fennel seed",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/FennelSeedWhole.webp",
             "image_type": "svg"
         },
         {
             "name": "Fenugreek seed",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/fenugreek-seeds100000023211-606425.webp",
             "image_type": "svg"
         },
         {
             "name": "Fig",
             "category": "Fruit",
-            "image": "� fig",
-            "image_type": "emoji"
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/OK-Newsletter-Shevat-5785-Email-Assets2.webp",
+            "image_type": "svg"
         },
         {
             "name": "Flax seeds (linseed)",
             "category": "Nut / Seed",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/7504_Organic+Golden+-m3eqk7ao-zoom.avif",
             "image_type": "svg"
         },
         {
@@ -825,8 +825,8 @@
         {
             "name": "Galangal (already)",
             "category": "Regional Ingredient",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🫚",
+            "image_type": "emoji"
         },
         {
             "name": "Garlic",
@@ -855,13 +855,13 @@
         {
             "name": "Ginkgo nut",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/il_fullxfull.1976041596_6wa7.webp",
             "image_type": "svg"
         },
         {
             "name": "Gizzard (chicken)",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/1722450153616481.webp",
             "image_type": "svg"
         },
         {
@@ -951,7 +951,7 @@
         {
             "name": "Hemp seeds",
             "category": "Nut / Seed",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/hemp-seeds.webp",
             "image_type": "svg"
         },
         {
@@ -999,7 +999,7 @@
         {
             "name": "Horseradish",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/GettyImages-1063423988-2000-a0e1eb23af5941f7b63e120365c3ed99.png",
             "image_type": "svg"
         },
         {
@@ -1059,13 +1059,13 @@
         {
             "name": "Kidney (beef)",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/beef-kidney.webp",
             "image_type": "svg"
         },
         {
             "name": "Kidney (lamb)",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/beef-kidney.webp",
             "image_type": "svg"
         },
         {
@@ -1089,13 +1089,13 @@
         {
             "name": "Kokum (fruit)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Kokum-Pictures.webp",
             "image_type": "svg"
         },
         {
             "name": "Kombu (already)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/kombu-scaled.webp",
             "image_type": "svg"
         },
         {
@@ -1107,7 +1107,7 @@
         {
             "name": "Kudzu root",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Blog_images_1_ef8088a5-804f-4719-8e26-5dc9093cea20_480x480.webp",
             "image_type": "svg"
         },
         {
@@ -1167,31 +1167,31 @@
         {
             "name": "Liver (beef)",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/beef-liver.webp",
             "image_type": "svg"
         },
         {
             "name": "Liver (chicken)",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/ChickenLiver_2048x%20copy.webp",
             "image_type": "svg"
         },
         {
             "name": "Liver (duck)",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/ChickenLiver_2048x%20copy.webp",
             "image_type": "svg"
         },
         {
             "name": "Liver (goat)",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/beef-liver.webp",
             "image_type": "svg"
         },
         {
             "name": "Liver (pork)",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/beef-liver.webp",
             "image_type": "svg"
         },
         {
@@ -1215,7 +1215,7 @@
         {
             "name": "Lotus seed",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/1_BxegEpuJc5tYLVp2aNcEXA.webp",
             "image_type": "svg"
         },
         {
@@ -1287,7 +1287,7 @@
         {
             "name": "Miso (raw paste)",
             "category": "Prepared Raw Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Miso_001%20(1).webp",
             "image_type": "svg"
         },
         {
@@ -1335,7 +1335,7 @@
         {
             "name": "Mustard seeds",
             "category": "Nut / Seed",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/MustardSeedYellow.webp",
             "image_type": "svg"
         },
         {
@@ -1437,7 +1437,7 @@
         {
             "name": "Oxtail",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/oxtailcropped_x1920_eeaf0e6f-bcda-4806-903f-f050db2025ef.webp",
             "image_type": "svg"
         },
         {
@@ -1701,7 +1701,7 @@
         {
             "name": "Raw mango (katchumber)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/12568.webp",
             "image_type": "svg"
         },
         {
@@ -1731,37 +1731,37 @@
         {
             "name": "Rose petals (edible)",
             "category": "Edible Flower / Other",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/61EWT2KoIdL._AC_UF894,1000_QL80_.webp",
             "image_type": "svg"
         },
         {
             "name": "Rosemary",
             "category": "Herb",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/RM01_2048x.webp",
             "image_type": "svg"
         },
         {
             "name": "Rutabaga",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Rutabaga-1.webp",
             "image_type": "svg"
         },
         {
             "name": "Rye",
             "category": "Grain / Cereal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/ryeelb1-scaled.webp",
             "image_type": "svg"
         },
         {
             "name": "Sage",
             "category": "Herb",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/mu0udPjSieifmoQr5YC9_Sage.webp",
             "image_type": "svg"
         },
         {
             "name": "Salak (snake fruit)",
             "category": "Fruit",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/12842.webp",
             "image_type": "svg"
         },
         {
@@ -1773,13 +1773,13 @@
         {
             "name": "Salsify",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/salsify-root-vegetable.webp",
             "image_type": "svg"
         },
         {
             "name": "Sapodilla",
             "category": "Fruit",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/sapodilla.webp",
             "image_type": "svg"
         },
         {
@@ -1791,20 +1791,20 @@
         {
             "name": "Scallion (spring onion)",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/green-scallions-google.webp",
             "image_type": "svg"
         },
         {
             "name": "Scallops",
             "category": "Fish & Seafood",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/3403490186_43e8a60fc8_k.webp",
             "image_type": "svg"
         },
         {
             "name": "Sea bream",
             "category": "Fish & Seafood",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🐟",
+            "image_type": "emoji"
         },
         {
             "name": "Sea cucumber",
@@ -1821,31 +1821,31 @@
         {
             "name": "Sea urchin",
             "category": "Fish & Seafood",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/shutterstock_216680479.webp",
             "image_type": "svg"
         },
         {
             "name": "Seitan (wheat gluten)",
             "category": "Prepared Raw Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/how-to-make-seitan-9%20copy.webp",
             "image_type": "svg"
         },
         {
             "name": "Sesame oil (raw pressed)",
             "category": "Oil / Fat",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/GUEST_50f10716-9e8a-4fc7-a6fe-d930f821d0bf.avif",
             "image_type": "svg"
         },
         {
             "name": "Sesame seeds",
             "category": "Nut / Seed",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/SD160-Sesame-Seeds-Natural-580h.webp",
             "image_type": "svg"
         },
         {
             "name": "Shallot",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/00000000046626_1.webp",
             "image_type": "svg"
         },
         {
@@ -1857,7 +1857,7 @@
         {
             "name": "Shiitake",
             "category": "Fungi / Mushroom",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/FreshOrganicShiitakeMushrooms.webp",
             "image_type": "svg"
         },
         {
@@ -1869,26 +1869,26 @@
         {
             "name": "Sichuan peppercorn",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/szechuan-sichuan-peppercorns-myfavouritepastime-com_9975.webp",
             "image_type": "svg"
         },
         {
             "name": "Snapper",
             "category": "Fish & Seafood",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🐟",
+            "image_type": "emoji"
         },
         {
             "name": "Snow peas",
             "category": "Vegetable",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🫛",
+            "image_type": "emoji"
         },
         {
             "name": "Sole",
             "category": "Fish & Seafood",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🐟",
+            "image_type": "emoji"
         },
         {
             "name": "Sorghum",
@@ -1899,13 +1899,13 @@
         {
             "name": "Sour cream",
             "category": "Dairy & Eggs",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/k_Edit_2022-07-How-To-Make-Sour-Cream_Sour_Cream-5_636a8d-cropped.webp",
             "image_type": "svg"
         },
         {
             "name": "Soursop (guanábana)",
             "category": "Fruit",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/61kioyxpkgl_sl1100_.webp",
             "image_type": "svg"
         },
         {
@@ -1917,111 +1917,115 @@
         {
             "name": "Spelt",
             "category": "Grain / Cereal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/spelt.webp",
             "image_type": "svg"
         },
         {
             "name": "Spinach",
             "category": "Vegetable",
-            "image": "🥬", "image_type": "emoji"
+            "image": "🥬",
+            "image_type": "emoji"
         },
         {
             "name": "Split peas",
             "category": "Legume / Pulse",
-            "image": "🫛", "image_type": "emoji"
+            "image": "🫛",
+            "image_type": "emoji"
         },
         {
             "name": "Squash blossoms",
             "category": "Edible Flower / Other",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/bfa09f51527adf9f190a4f6227119134812cdc1e.webp",
             "image_type": "svg"
         },
         {
             "name": "Squid (calamari)",
             "category": "Fish & Seafood",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🦑",
+            "image_type": "emoji"
         },
         {
             "name": "Squirrel",
             "category": "Meat",
-            "image": "🐿️", "image_type": "emoji"
-
+            "image": "🐿️",
+            "image_type": "emoji"
         },
         {
             "name": "Star anise",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/star-anise.webp",
             "image_type": "svg"
         },
         {
             "name": "Starfruit (carambola)",
             "category": "Fruit",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/M2MPO7PILJ2OYRZGEEINARUM.webp",
             "image_type": "svg"
         },
         {
             "name": "Strawberry",
             "category": "Fruit",
-            "image": "🍓", "image_type": "emoji"
+            "image": "🍓",
+            "image_type": "emoji"
         },
         {
             "name": "Sturgeon",
             "category": "Fish & Seafood",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🐟",
+            "image_type": "emoji"
         },
         {
             "name": "Sugar snap peas",
             "category": "Vegetable",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🫛",
+            "image_type": "emoji"
         },
         {
             "name": "Sumac",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Sumac.webp",
             "image_type": "svg"
         },
         {
             "name": "Sumac (already)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Sumac.webp",
             "image_type": "svg"
         },
         {
             "name": "Sunflower oil (raw)",
             "category": "Oil / Fat",
-            "image": "🌻",
-            "image_type": "emoji"
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/617F27buyJL._AC_UF894,1000_QL80_.webp",
+            "image_type": "svg"
         },
         {
             "name": "Sunflower seeds",
             "category": "Nut / Seed",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/61EuHk70+oL._AC_UF894,1000_QL80_.webp",
             "image_type": "svg"
         },
         {
             "name": "Surimi",
             "category": "Fish & Seafood",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/High-Quality-Frozen-Stick-Meat-Surimi-Imitation-Crab-Sticks.avif",
             "image_type": "svg"
         },
         {
             "name": "Sweet potato",
             "category": "Vegetable",
-            "image": "🍠", "image_type": "emoji"
+            "image": "🍠",
+            "image_type": "emoji"
         },
         {
             "name": "Sweetbreads",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Sweetbreads.webp",
             "image_type": "svg"
         },
         {
             "name": "Swiss chard",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Depositphotos_31672627_original-e1523467588980-1024x750.webp",
             "image_type": "svg"
         },
         {
@@ -2033,224 +2037,230 @@
         {
             "name": "Tamarind (fruit)",
             "category": "Fruit",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Tamarind.webp",
             "image_type": "svg"
         },
         {
             "name": "Tamarind (pulp)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Untitled-design.webp",
             "image_type": "svg"
         },
         {
             "name": "Taro",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/what-is-taro-1667340125.webp",
             "image_type": "svg"
         },
         {
             "name": "Tarragon",
             "category": "Herb",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/freshpoint-tarragon.webp",
             "image_type": "svg"
         },
         {
             "name": "Teff",
             "category": "Grain / Cereal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/GettyImages-1280544376-e1613760831165.webp",
             "image_type": "svg"
         },
         {
             "name": "Teff (again included)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/GettyImages-1280544376-e1613760831165.webp",
             "image_type": "svg"
         },
         {
             "name": "Tempeh (raw)",
             "category": "Prepared Raw Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Tempeh_raw.webp",
             "image_type": "svg"
         },
         {
             "name": "Thyme",
             "category": "Herb",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Thyme_plant_1200x960_ffe2c21e-136d-4986-bcea-c9ed18f4e63b.webp",
             "image_type": "svg"
         },
         {
             "name": "Tilapia",
             "category": "Fish & Seafood",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🐟",
+            "image_type": "emoji"
         },
         {
             "name": "Tofu (fresh, raw)",
             "category": "Prepared Raw Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/BPT-Articles-tofu-cru-tinyjpg.webp",
             "image_type": "svg"
         },
         {
             "name": "Tomatillo",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/5b83279c-6239-4223-b040-130dd7063aac.f7b42fef443ea705873baaff350e5269.webp",
             "image_type": "svg"
         },
         {
             "name": "Tomato",
             "category": "Vegetable",
-            "image": "🍅", "image_type": "emoji"
+            "image": "🍅",
+            "image_type": "emoji"
         },
         {
             "name": "Tongue (beef)",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/cow-tongue-scaled-scaled.webp",
             "image_type": "svg"
         },
         {
             "name": "Tripe (beef)",
             "category": "Offal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/beef-tripe-cow-stomach.webp",
             "image_type": "svg"
         },
         {
             "name": "Trout",
             "category": "Fish & Seafood",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🐟",
+            "image_type": "emoji"
         },
         {
             "name": "Tuna",
             "category": "Fish & Seafood",
-            "image": "🐟", "image_type": "emoji"
+            "image": "🐟",
+            "image_type": "emoji"
         },
         {
             "name": "Turkey",
             "category": "Meat",
-            "image": "🦃", "image_type": "emoji"
+            "image": "🦃",
+            "image_type": "emoji"
         },
         {
             "name": "Turmeric",
             "category": "Root / Tuber",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/turmeric.webp",
             "image_type": "svg"
         },
         {
             "name": "Turmeric (dried root powder as ingredient)",
             "category": "Spice",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/images.webp",
             "image_type": "svg"
         },
         {
             "name": "Turmeric (root)",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/turmeric.webp",
             "image_type": "svg"
         },
         {
             "name": "Turnip",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/4812-001.webp",
             "image_type": "svg"
         },
         {
             "name": "Ube (purple yam)",
             "category": "Root / Tuber",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/health-benefits-of-ube.webp",
             "image_type": "svg"
         },
         {
             "name": "Veal",
             "category": "Meat",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🥩",
+            "image_type": "emoji"
         },
         {
             "name": "Venison",
             "category": "Meat",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🥩",
+            "image_type": "emoji"
         },
         {
             "name": "Violet (edible)",
             "category": "Edible Flower / Other",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Purple-Violets-in-a-Glass-Bowl.webp",
             "image_type": "svg"
         },
         {
             "name": "Wakame",
             "category": "Seaweed",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/WakameThumbnail.webp",
             "image_type": "svg"
         },
         {
             "name": "Walnuts",
             "category": "Nut / Seed",
-            "image": "🌰", "image_type": "emoji"
+            "image": "🌰",
+            "image_type": "emoji"
         },
         {
             "name": "Water chestnut",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/thequint_2024-11-07_vviuyf5j_Benefits-of-Water-Chestnuts.webp",
             "image_type": "svg"
         },
         {
             "name": "Watercress",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/c51d011344e276207da9ca2171c49dcabf4014fa-515x438.avif",
             "image_type": "svg"
         },
         {
             "name": "Wheat (whole grain)",
             "category": "Grain / Cereal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Kialla-Organic-Wheat-Grain-technical.webp",
             "image_type": "svg"
         },
         {
             "name": "Wheat flour (raw ingredient)",
             "category": "Grain / Cereal",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/81-lDIn6D8L._AC_UF894,1000_QL80_.webp",
             "image_type": "svg"
         },
         {
             "name": "Wild boar",
             "category": "Meat",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🥩",
+            "image_type": "emoji"
         },
         {
             "name": "Wild rice",
             "category": "Grain / Cereal",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🍚",
+            "image_type": "emoji"
         },
         {
             "name": "Wood ear",
             "category": "Fungi / Mushroom",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/2-Black-woodear-8141.webp",
             "image_type": "svg"
         },
         {
             "name": "Yacon",
             "category": "Root / Tuber",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Yacon_root%20copy.tiff",
             "image_type": "svg"
         },
         {
             "name": "Yak",
             "category": "Meat",
-            "image": "none",
-            "image_type": "svg"
+            "image": "🥩",
+            "image_type": "emoji"
         },
         {
             "name": "Yam",
             "category": "Vegetable",
-            "image": "🍠", "image_type": "emoji"
+            "image": "🍠",
+            "image_type": "emoji"
         },
         {
             "name": "Yogurt (plain)",
             "category": "Dairy & Eggs",
-            "image": "🥛", "image_type": "emoji"
+            "image": "🥛",
+            "image_type": "emoji"
         },
         {
             "name": "Yuba (tofu skin)",
@@ -2261,19 +2271,20 @@
         {
             "name": "Yuca",
             "category": "Vegetable",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Yuba.avif",
             "image_type": "svg"
         },
         {
             "name": "Za'atar (blend ingredient)",
             "category": "Regional Ingredient",
-            "image": "none",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Sullivan41zaatar.webp",
             "image_type": "svg"
         },
         {
             "name": "Zucchini (courgette)",
             "category": "Vegetable",
-            "image": "🥒", "image_type": "emoji"
+            "image": "🥒",
+            "image_type": "emoji"
         }
     ]
 }
