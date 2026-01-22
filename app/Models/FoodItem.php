@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class FoodItem extends Model
 {
-    //
+    protected $table = 'food_items';
+    protected $fillable = ["name","category","image","image_type"];
+
+
 }

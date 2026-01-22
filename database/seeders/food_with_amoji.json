@@ -1,0 +1,2279 @@
+{
+    "items": [
+        {
+            "name": "Abalone",
+            "category": "Fish & Seafood",
+            "image": "🐚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Achiote (annatto seeds)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Acorn squash",
+            "category": "Vegetable",
+            "image": "🎃",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Adzuki beans",
+            "category": "Legume / Pulse",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "African locust bean (iru/dawadawa)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Almonds",
+            "category": "Nut / Seed",
+            "image": "🌰",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Amaranth (grain)",
+            "category": "Grain / Cereal",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Amaranth (leaf)",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Anchovy",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Aniseed",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Apple",
+            "category": "Fruit",
+            "image": "🍎",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Arame",
+            "category": "Seaweed",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Arrowroot",
+            "category": "Root / Tuber",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Artichoke (globe)",
+            "category": "Vegetable",
+            "image": "🌱",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Artichoke (Jerusalem)",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Arugula (rocket)",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Asparagus",
+            "category": "Vegetable",
+            "image": "🥦",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Avocado",
+            "category": "Fruit",
+            "image": "🥑",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Bamboo shoot (fresh)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Bamboo shoots",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Banana",
+            "category": "Fruit",
+            "image": "🍌",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Baobab fruit (pulp)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Barley",
+            "category": "Grain / Cereal",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Barnacles (goose barnacles)",
+            "category": "Fish & Seafood",
+            "image": "🐚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Basil",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Basmati rice",
+            "category": "Grain / Cereal",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Bass (sea bass)",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Bay leaf",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Beef",
+            "category": "Meat",
+            "image": "🥩",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Beetroot",
+            "category": "Vegetable",
+            "image": "🍠",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Belacan (shrimp paste)",
+            "category": "Regional Ingredient",
+            "image": "🦐",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Bell pepper (capsicum)",
+            "category": "Vegetable",
+            "image": "🫑",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Bird's eye chili",
+            "category": "Regional Ingredient",
+            "image": "🌶️",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Bison",
+            "category": "Meat",
+            "image": "🍖",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Bitter kola (ogbono)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Black beans",
+            "category": "Legume / Pulse",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Black gram (urad dal)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Black pepper (whole)",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Black-eyed peas (cowpeas)",
+            "category": "Legume / Pulse",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Blackberry",
+            "category": "Fruit",
+            "image": "🫐",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Blueberry",
+            "category": "Fruit",
+            "image": "🫐",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Bok choy",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Bone marrow",
+            "category": "Offal",
+            "image": "🍖",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Brain (pork/beef)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Brazil nuts",
+            "category": "Nut / Seed",
+            "image": "🌰",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Breadfruit",
+            "category": "Fruit",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Breadfruit (already)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Broad beans (fava)",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Broccoli",
+            "category": "Vegetable",
+            "image": "🥦",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Broccolini",
+            "category": "Vegetable",
+            "image": "🥦",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Brussels sprouts",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Buckwheat",
+            "category": "Grain / Cereal",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Buffalo (Carabeef)",
+            "category": "Meat",
+            "image": "🍖",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Buffalo milk",
+            "category": "Dairy & Eggs",
+            "image": "🥛",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Butter",
+            "category": "Dairy & Eggs",
+            "image": "🧈",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Butternut squash",
+            "category": "Vegetable",
+            "image": "🎃",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Button mushroom (white)",
+            "category": "Fungi / Mushroom",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cabbage (green)",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Camel",
+            "category": "Meat",
+            "image": "🍖",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cannellini beans",
+            "category": "Legume / Pulse",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Canola (rapeseed) oil (raw)",
+            "category": "Oil / Fat",
+            "image": "🫒",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cardamom (black)",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Cardamom (green)",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Carp",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Carrot",
+            "category": "Vegetable",
+            "image": "🥕",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cashews",
+            "category": "Nut / Seed",
+            "image": "🌰",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cassava",
+            "category": "Root / Tuber",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Cassava (already)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Cassava (manioc)",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Catfish",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cauliflower",
+            "category": "Vegetable",
+            "image": "🥦",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Celeriac (celery root)",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Celery (stalk)",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cempedak",
+            "category": "Fruit",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Chamomile (flower)",
+            "category": "Edible Flower / Other",
+            "image": "🌼",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Chanterelle",
+            "category": "Fungi / Mushroom",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Chayote",
+            "category": "Vegetable",
+            "image": "🥒",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Chayote (already)",
+            "category": "Regional Ingredient",
+            "image": "🥒",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Chia seeds",
+            "category": "Nut / Seed",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Chicken",
+            "category": "Meat",
+            "image": "🍗",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Chickpeas (garbanzo beans)",
+            "category": "Legume / Pulse",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Chicory",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Chili flakes (dried)",
+            "category": "Spice",
+            "image": "🌶️",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Chili pepper",
+            "category": "Vegetable",
+            "image": "🌶️",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Chinese yam (nagaimo)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Chives",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cilantro (coriander leaf)",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cinnamon (stick)",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Clams",
+            "category": "Fish & Seafood",
+            "image": "🐚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cloves",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Coconut (meat)",
+            "category": "Fruit",
+            "image": "🥥",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Coconut oil (virgin)",
+            "category": "Oil / Fat",
+            "image": "🥥",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Coconut sugar (raw)",
+            "category": "Sweetener",
+            "image": "🥥",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cod",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Collard greens",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Condensed milk (raw ingredient)",
+            "category": "Dairy & Eggs",
+            "image": "🥛",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Coriander seed",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Corn (maize)",
+            "category": "Grain / Cereal",
+            "image": "🌽",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cow milk",
+            "category": "Dairy & Eggs",
+            "image": "🥛",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Crab",
+            "category": "Fish & Seafood",
+            "image": "🦀",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cranberry",
+            "category": "Fruit",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Crayfish",
+            "category": "Fish & Seafood",
+            "image": "🦐",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cream",
+            "category": "Dairy & Eggs",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Cremini (brown) mushroom",
+            "category": "Fungi / Mushroom",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cucumber",
+            "category": "Vegetable",
+            "image": "🥒",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cumin (seed)",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Curry leaves",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Cuttlefish",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Daikon",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Date",
+            "category": "Fruit",
+            "image": "🌴",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Date syrup",
+            "category": "Sweetener",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Dill",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Dragonfruit (pitaya)",
+            "category": "Fruit",
+            "image": "🐉",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Duck",
+            "category": "Meat",
+            "image": "🍖",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Dulse",
+            "category": "Seaweed",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Durian",
+            "category": "Fruit",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Eel",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Egg (chicken)",
+            "category": "Dairy & Eggs",
+            "image": "🥚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Egg (duck)",
+            "category": "Dairy & Eggs",
+            "image": "🥚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Egg (quail)",
+            "category": "Dairy & Eggs",
+            "image": "🥚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Egg white",
+            "category": "Dairy & Eggs",
+            "image": "🥚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Egg yolk",
+            "category": "Dairy & Eggs",
+            "image": "🥚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Eggplant (aubergine)",
+            "category": "Vegetable",
+            "image": "🍆",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Elderflower",
+            "category": "Edible Flower / Other",
+            "image": "🌼",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Elk",
+            "category": "Meat",
+            "image": "🥩",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Emu",
+            "category": "Meat",
+            "image": "🦃",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Endive",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Enoki",
+            "category": "Fungi / Mushroom",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Feet / trotters",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Fennel (bulb)",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Fennel seed",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Fenugreek seed",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Fig",
+            "category": "Fruit",
+            "image": "� fig",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Flax seeds (linseed)",
+            "category": "Nut / Seed",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Flounder",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Fonio",
+            "category": "Regional Ingredient",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Galangal",
+            "category": "Vegetable",
+            "image": "🫚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Galangal (already)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Garlic",
+            "category": "Vegetable",
+            "image": "🧄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Ghee (clarified butter)",
+            "category": "Dairy & Eggs",
+            "image": "🧈",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Ginger",
+            "category": "Root / Tuber",
+            "image": "🫚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Ginger (root)",
+            "category": "Vegetable",
+            "image": "🫚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Ginkgo nut",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Gizzard (chicken)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Goat",
+            "category": "Meat",
+            "image": "🥩",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Goat milk",
+            "category": "Dairy & Eggs",
+            "image": "🥛",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Goose",
+            "category": "Meat",
+            "image": "🍖",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Grape",
+            "category": "Fruit",
+            "image": "🍇",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Grapefruit",
+            "category": "Fruit",
+            "image": "🍊",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Green beans",
+            "category": "Vegetable",
+            "image": "🫛",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Grouper",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Guava",
+            "category": "Fruit",
+            "image": "🥭",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Guinea fowl",
+            "category": "Meat",
+            "image": "🐔",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Haddock",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Halibut",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Hazelnuts (filberts)",
+            "category": "Nut / Seed",
+            "image": "🌰",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Heart (beef)",
+            "category": "Offal",
+            "image": "🥩",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Heart (chicken)",
+            "category": "Offal",
+            "image": "🥩",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Hemp seeds",
+            "category": "Nut / Seed",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Herring",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Hibiscus (calyces)",
+            "category": "Edible Flower / Other",
+            "image": "🌺",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Hijiki",
+            "category": "Seaweed",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Holy basil (tulsi)",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Hominy",
+            "category": "Grain / Cereal",
+            "image": "🌽",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Honey (raw)",
+            "category": "Sweetener",
+            "image": "🍯",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Horse",
+            "category": "Meat",
+            "image": "🥩",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Horseradish",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Jackfruit",
+            "category": "Fruit",
+            "image": "🥭",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Jasmine rice",
+            "category": "Grain / Cereal",
+            "image": "🍚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Jerusalem artichoke (sunchoke)",
+            "category": "Root / Tuber",
+            "image": "🥔",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kabocha",
+            "category": "Vegetable",
+            "image": "🎃",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kaffir lime leaf",
+            "category": "Regional Ingredient",
+            "image": "🍃",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kale",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kamut",
+            "category": "Grain / Cereal",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kangaroo",
+            "category": "Meat",
+            "image": "🦘",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kefir (milk)",
+            "category": "Dairy & Eggs",
+            "image": "🥛",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kidney (beef)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Kidney (lamb)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Kidney beans",
+            "category": "Legume / Pulse",
+            "image": "🫘",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kiwi (kiwifruit)",
+            "category": "Fruit",
+            "image": "🥝",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kohlrabi",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kokum (fruit)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Kombu (already)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Kombu (kelp)",
+            "category": "Seaweed",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Kudzu root",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Lamb",
+            "category": "Meat",
+            "image": "🐑",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Leek",
+            "category": "Vegetable",
+            "image": "🧅",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Lemon",
+            "category": "Fruit",
+            "image": "🍋",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Lemongrass",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Lentils (brown)",
+            "category": "Legume / Pulse",
+            "image": "🫘",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Lentils (green)",
+            "category": "Legume / Pulse",
+            "image": "🫘",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Lentils (red)",
+            "category": "Legume / Pulse",
+            "image": "🫘",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Lettuce (various)",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Lime",
+            "category": "Fruit",
+            "image": "🍋",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Liver (beef)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Liver (chicken)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Liver (duck)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Liver (goat)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Liver (pork)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Lobster",
+            "category": "Fish & Seafood",
+            "image": "🦞",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Longan",
+            "category": "Fruit",
+            "image": "🍒",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Lotus root",
+            "category": "Vegetable",
+            "image": "🥔",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Lotus seed",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Lupin beans",
+            "category": "Legume / Pulse",
+            "image": "🫘",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Lychee",
+            "category": "Fruit",
+            "image": "🍒",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Macadamia nuts",
+            "category": "Nut / Seed",
+            "image": "🥜",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Mackerel",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Maitake (hen of the woods)",
+            "category": "Fungi / Mushroom",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Mandarin (tangerine)",
+            "category": "Fruit",
+            "image": "🍊",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Mango",
+            "category": "Fruit",
+            "image": "🥭",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Maple syrup (pure)",
+            "category": "Sweetener",
+            "image": "🍁",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Marlin",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Millet",
+            "category": "Grain / Cereal",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Mint",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Miso (raw paste)",
+            "category": "Prepared Raw Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Molasses",
+            "category": "Sweetener",
+            "image": "🍯",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Moose",
+            "category": "Meat",
+            "image": "🦌",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Morel",
+            "category": "Fungi / Mushroom",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Mulberry",
+            "category": "Fruit",
+            "image": "🫐",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Mung beans",
+            "category": "Legume / Pulse",
+            "image": "🫘",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Mussels",
+            "category": "Fish & Seafood",
+            "image": "🦪",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Mustard greens",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Mustard seeds",
+            "category": "Nut / Seed",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Mutton",
+            "category": "Meat",
+            "image": "🐑",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Nameko",
+            "category": "Fungi / Mushroom",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Napa cabbage",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Nasturtium (flower/leaf)",
+            "category": "Edible Flower / Other",
+            "image": "🌼",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Navy beans",
+            "category": "Legume / Pulse",
+            "image": "🫘",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Nori",
+            "category": "Seaweed",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Oat groats",
+            "category": "Grain / Cereal",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Oats (rolled)",
+            "category": "Grain / Cereal",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Octopus",
+            "category": "Fish & Seafood",
+            "image": "🐙",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Okra",
+            "category": "Vegetable",
+            "image": "🥒",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Olive oil (first press)",
+            "category": "Oil / Fat",
+            "image": "🫒",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Onion (red)",
+            "category": "Vegetable",
+            "image": "🧅",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Onion (yellow)",
+            "category": "Vegetable",
+            "image": "🧅",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Orange",
+            "category": "Fruit",
+            "image": "🍊",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Oregano",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Ostrich",
+            "category": "Meat",
+            "image": "🦤",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Oxtail",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Oyster mushroom",
+            "category": "Fungi / Mushroom",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Oysters",
+            "category": "Fish & Seafood",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Palm oil (raw)",
+            "category": "Oil / Fat",
+            "image": "🛢️",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pandan leaf",
+            "category": "Regional Ingredient",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Papaya",
+            "category": "Fruit",
+            "image": "🥭",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Paprika (dried pepper)",
+            "category": "Spice",
+            "image": "🌶️",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Parsley",
+            "category": "Herb",
+            "image": "🌿",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Parsnip",
+            "category": "Vegetable",
+            "image": "🥕",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Passionfruit",
+            "category": "Fruit",
+            "image": "🍈",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Peanuts (groundnut)",
+            "category": "Nut / Seed",
+            "image": "🥜",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pear",
+            "category": "Fruit",
+            "image": "🍐",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pecans",
+            "category": "Nut / Seed",
+            "image": "🌰",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Perch",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Persimmon",
+            "category": "Fruit",
+            "image": "🍊",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pigeon (Squab)",
+            "category": "Meat",
+            "image": "🍗",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pigeon pea (toor/arhar)",
+            "category": "Regional Ingredient",
+            "image": "🫘",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pike",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pine nuts (pignoli)",
+            "category": "Nut / Seed",
+            "image": "🌰",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pineapple",
+            "category": "Fruit",
+            "image": "🍍",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pinto beans",
+            "category": "Legume / Pulse",
+            "image": "🫘",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pistachios",
+            "category": "Nut / Seed",
+            "image": "🌰",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Plant-based meat (raw ingredient, various)",
+            "category": "Prepared Raw Ingredient",
+            "image": "🌱",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Plantain (already)",
+            "category": "Regional Ingredient",
+            "image": "🍌",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Plantain (green)",
+            "category": "Vegetable",
+            "image": "🍌",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Plantain (ripe)",
+            "category": "Fruit",
+            "image": "🍌",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Polenta (cornmeal)",
+            "category": "Grain / Cereal",
+            "image": "🌽",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pollock",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pomegranate",
+            "category": "Fruit",
+            "image": "🍎",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pomegranate molasses (raw ingredient)",
+            "category": "Regional Ingredient",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Porcini (cep)",
+            "category": "Fungi / Mushroom",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pork",
+            "category": "Meat",
+            "image": "🐖",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Portobello",
+            "category": "Fungi / Mushroom",
+            "image": "🍄",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Potato",
+            "category": "Vegetable",
+            "image": "🥔",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Prune (dried plum)",
+            "category": "Fruit",
+            "image": "🍇",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pumpkin",
+            "category": "Vegetable",
+            "image": "🎃",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Pumpkin seeds (pepitas)",
+            "category": "Nut / Seed",
+            "image": "🌰",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Quail",
+            "category": "Meat",
+            "image": "🍗",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Quinoa",
+            "category": "Grain / Cereal",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Rabbit",
+            "category": "Meat",
+            "image": "🐇",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Radish",
+            "category": "Vegetable",
+            "image": "🥕",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Raisin (dried grape)",
+            "category": "Fruit",
+            "image": "🍇",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Rambutan",
+            "category": "Fruit",
+            "image": "🍒",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Raspberry",
+            "category": "Fruit",
+            "image": "🍓",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Raw mango (katchumber)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Raw milk (unpasteurized)",
+            "category": "Dairy & Eggs",
+            "image": "🍶",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Red cabbage",
+            "category": "Vegetable",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Rice (brown)",
+            "category": "Grain / Cereal",
+            "image": "🍚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Rice (white)",
+            "category": "Grain / Cereal",
+            "image": "🍚",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Rose petals (edible)",
+            "category": "Edible Flower / Other",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Rosemary",
+            "category": "Herb",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Rutabaga",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Rye",
+            "category": "Grain / Cereal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sage",
+            "category": "Herb",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Salak (snake fruit)",
+            "category": "Fruit",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Salmon",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Salsify",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sapodilla",
+            "category": "Fruit",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sardine",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Scallion (spring onion)",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Scallops",
+            "category": "Fish & Seafood",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sea bream",
+            "category": "Fish & Seafood",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sea cucumber",
+            "category": "Fish & Seafood",
+            "image": "🥒",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Sea lettuce (ulva)",
+            "category": "Seaweed",
+            "image": "🥬",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Sea urchin",
+            "category": "Fish & Seafood",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Seitan (wheat gluten)",
+            "category": "Prepared Raw Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sesame oil (raw pressed)",
+            "category": "Oil / Fat",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sesame seeds",
+            "category": "Nut / Seed",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Shallot",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sheep milk",
+            "category": "Dairy & Eggs",
+            "image": "🍶",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Shiitake",
+            "category": "Fungi / Mushroom",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Shrimp (prawns)",
+            "category": "Fish & Seafood",
+            "image": "🦐",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Sichuan peppercorn",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Snapper",
+            "category": "Fish & Seafood",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Snow peas",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sole",
+            "category": "Fish & Seafood",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sorghum",
+            "category": "Grain / Cereal",
+            "image": "🌾",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Sour cream",
+            "category": "Dairy & Eggs",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Soursop (guanábana)",
+            "category": "Fruit",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Soybeans (edamame)",
+            "category": "Legume / Pulse",
+            "image": "🫘",
+            "image_type": "svg"
+        },
+        {
+            "name": "Spelt",
+            "category": "Grain / Cereal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Spinach",
+            "category": "Vegetable",
+            "image": "🥬", "image_type": "emoji"
+        },
+        {
+            "name": "Split peas",
+            "category": "Legume / Pulse",
+            "image": "🫛", "image_type": "emoji"
+        },
+        {
+            "name": "Squash blossoms",
+            "category": "Edible Flower / Other",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Squid (calamari)",
+            "category": "Fish & Seafood",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Squirrel",
+            "category": "Meat",
+            "image": "🐿️", "image_type": "emoji"
+
+        },
+        {
+            "name": "Star anise",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Starfruit (carambola)",
+            "category": "Fruit",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Strawberry",
+            "category": "Fruit",
+            "image": "🍓", "image_type": "emoji"
+        },
+        {
+            "name": "Sturgeon",
+            "category": "Fish & Seafood",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sugar snap peas",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sumac",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sumac (already)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sunflower oil (raw)",
+            "category": "Oil / Fat",
+            "image": "🌻",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Sunflower seeds",
+            "category": "Nut / Seed",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Surimi",
+            "category": "Fish & Seafood",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Sweet potato",
+            "category": "Vegetable",
+            "image": "🍠", "image_type": "emoji"
+        },
+        {
+            "name": "Sweetbreads",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Swiss chard",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Swordfish",
+            "category": "Fish & Seafood",
+            "image": "🐟",
+            "image_type": "emoji"
+        },
+        {
+            "name": "Tamarind (fruit)",
+            "category": "Fruit",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Tamarind (pulp)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Taro",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Tarragon",
+            "category": "Herb",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Teff",
+            "category": "Grain / Cereal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Teff (again included)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Tempeh (raw)",
+            "category": "Prepared Raw Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Thyme",
+            "category": "Herb",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Tilapia",
+            "category": "Fish & Seafood",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Tofu (fresh, raw)",
+            "category": "Prepared Raw Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Tomatillo",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Tomato",
+            "category": "Vegetable",
+            "image": "🍅", "image_type": "emoji"
+        },
+        {
+            "name": "Tongue (beef)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Tripe (beef)",
+            "category": "Offal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Trout",
+            "category": "Fish & Seafood",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Tuna",
+            "category": "Fish & Seafood",
+            "image": "🐟", "image_type": "emoji"
+        },
+        {
+            "name": "Turkey",
+            "category": "Meat",
+            "image": "🦃", "image_type": "emoji"
+        },
+        {
+            "name": "Turmeric",
+            "category": "Root / Tuber",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Turmeric (dried root powder as ingredient)",
+            "category": "Spice",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Turmeric (root)",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Turnip",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Ube (purple yam)",
+            "category": "Root / Tuber",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Veal",
+            "category": "Meat",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Venison",
+            "category": "Meat",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Violet (edible)",
+            "category": "Edible Flower / Other",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Wakame",
+            "category": "Seaweed",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Walnuts",
+            "category": "Nut / Seed",
+            "image": "🌰", "image_type": "emoji"
+        },
+        {
+            "name": "Water chestnut",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Watercress",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Wheat (whole grain)",
+            "category": "Grain / Cereal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Wheat flour (raw ingredient)",
+            "category": "Grain / Cereal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Wild boar",
+            "category": "Meat",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Wild rice",
+            "category": "Grain / Cereal",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Wood ear",
+            "category": "Fungi / Mushroom",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Yacon",
+            "category": "Root / Tuber",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Yak",
+            "category": "Meat",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Yam",
+            "category": "Vegetable",
+            "image": "🍠", "image_type": "emoji"
+        },
+        {
+            "name": "Yogurt (plain)",
+            "category": "Dairy & Eggs",
+            "image": "🥛", "image_type": "emoji"
+        },
+        {
+            "name": "Yuba (tofu skin)",
+            "category": "Prepared Raw Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Yuca",
+            "category": "Vegetable",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Za'atar (blend ingredient)",
+            "category": "Regional Ingredient",
+            "image": "none",
+            "image_type": "svg"
+        },
+        {
+            "name": "Zucchini (courgette)",
+            "category": "Vegetable",
+            "image": "🥒", "image_type": "emoji"
+        }
+    ]
+}
