@@ -1341,7 +1341,7 @@
         {
             "name": "Mutton",
             "category": "Meat",
-            "image": "🐑",
+            "image": "🥩",
             "image_type": "emoji"
         },
         {
@@ -2241,7 +2241,7 @@
         {
             "name": "Yacon",
             "category": "Root / Tuber",
-            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Yacon_root%20copy.tiff",
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Yacon_root%20copy.webp",
             "image_type": "svg"
         },
         {
