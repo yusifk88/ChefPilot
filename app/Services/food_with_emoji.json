@@ -753,7 +753,7 @@
         {
             "name": "Emu",
             "category": "Meat",
-            "image": "🦃",
+            "image": "🥩",
             "image_type": "emoji"
         },
         {
@@ -765,8 +765,8 @@
         {
             "name": "Enoki",
             "category": "Fungi / Mushroom",
-            "image": "🥬",
-            "image_type": "emoji"
+            "image": "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/1-16.webp",
+            "image_type": "svg"
         },
         {
             "name": "Feet / trotters",
@@ -1113,7 +1113,7 @@
         {
             "name": "Lamb",
             "category": "Meat",
-            "image": "🐑",
+            "image": "🥩",
             "image_type": "emoji"
         },
         {
