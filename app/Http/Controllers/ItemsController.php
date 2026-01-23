@@ -63,6 +63,9 @@ class ItemsController extends Controller
         }
 
 
+        $key = "foodItemsCachekey_".$user->id;
+        Cache::forget($key);
+
         $userItems = UserItem::where("user_id", $user->id)->get();
 
         MakeRecipeJob::dispatch($user->id);
@@ -75,7 +78,14 @@ class ItemsController extends Controller
     public function userItems()
     {
 
-        $userItems = UserItem::with("item")->where("user_id", auth()->id())->get();
+        $key = "foodItemsCachekey_".auth()->id();
+
+        $userItems = Cache::remember($key, 60 * 120 * 24, function () {
+
+            return UserItem::with("item")->where("user_id", auth()->id())->get();
+
+        });
+
         return ResponseService::SuccessResponse($userItems, "Items retrieved successfully");
 
     }
@@ -84,9 +94,13 @@ class ItemsController extends Controller
     {
         $user = auth()->user();
 
+        $key = "foodItemsCachekey_".$user->id;
+        Cache::forget($key);
+
         $item = UserItem::where("id", $id)->where("user_id", $user->id)->firstOrFail();
 
         $item->delete();
+
 
         $userItems = UserItem::where("user_id", $user->id)->get();
 
