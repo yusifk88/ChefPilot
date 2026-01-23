@@ -5,9 +5,14 @@
       <f7-list strong inset dividers-ios>
         <f7-list-item @swipeout:deleted="deleted(item)" v-for="item in items" :key="item.id"
                       swipeout :title="item.name">
-          <template #media>
-            <f7-icon icon="icon-gift"/>
-          </template>
+
+            <template #media>
+              <span v-if="item.item.image_type==='emoji'" style="font-size: 30px">
+              {{ item.item.image }}
+              </span>
+              <img :src="item.item.image" width="30px;" style="border-radius: 8px;" v-else>
+            </template>
+
           <f7-swipeout-actions right>
             <f7-swipeout-button delete confirm-text="Are you sure you want to delete this item?">Delete
             </f7-swipeout-button>
@@ -21,7 +26,7 @@
 
 <script>
 export default {
-  emits:["itemDeleted"],
+  emits: ["itemDeleted"],
   name: "UserItems",
   props: {
     items: {

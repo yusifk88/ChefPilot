@@ -58,10 +58,10 @@
           >
 
             <template #media>
-              <span v-if="foodItem.image_type==='emoji'" style="font-size: 28px">
+              <span v-if="foodItem.image_type==='emoji'" style="font-size: 30px">
               {{foodItem.image}}
               </span>
-              <img :src="foodItem.image" width="28px" v-else>
+              <img :src="foodItem.image" width="30px;" style="border-radius: 8px;" v-else>
             </template>
           </f7-list-item>
 
