@@ -9,13 +9,20 @@ use App\Models\UserItem;
 use App\Services\ResponseService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use function view;
 
 class ItemsController extends Controller
 {
     public function index()
     {
-        $items = FoodItem::where("id", ">", 0)->orderBy("name")->get();
+        $items = Cache::remember("foodItemsCachekey", 60 * 120 * 24, function () {
+
+            return FoodItem::where("id", ">", 0)->orderBy("name")->get();
+
+        });
+
+
         return ResponseService::SuccessResponse(["items" => $items], "Items List retrieved successfully");
     }
 
@@ -92,9 +99,9 @@ class ItemsController extends Controller
     {
         $user = auth()->user();
 
-        if ($user->timezone){
+        if ($user->timezone) {
             $today = Carbon::now($user->timezone)->utc();
-        }else{
+        } else {
             $today = Carbon::now();
         }
 
@@ -150,7 +157,6 @@ class ItemsController extends Controller
 
 
     }
-
 
 
     public function publicRecipe(string $ulid)
