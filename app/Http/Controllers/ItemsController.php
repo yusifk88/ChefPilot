@@ -121,7 +121,7 @@ class ItemsController extends Controller
 
         $key = "foodRecipesTodayKey_".$user->id;
 
-        $recipes = collect(Cache::remember($key, 60 * 60 * 24, function () use ($user) {
+        $recipes = collect(Cache::remember($key, 60 * 60 * 24, function () use ($user,$today) {
 
             return Recipe::where("user_id", $user->id)->whereDate("created_at", $today->toDateString())->get();
 
