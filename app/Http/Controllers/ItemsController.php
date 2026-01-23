@@ -119,7 +119,14 @@ class ItemsController extends Controller
             $today = Carbon::now();
         }
 
-        $recipes = Recipe::where("user_id", $user->id)->whereDate("created_at", $today->toDateString())->get();
+        $key = "foodRecipesTodayKey_".$user->id;
+
+        $recipes = collect(Cache::remember($key, 60 * 60 * 24, function () use ($user) {
+
+            return Recipe::where("user_id", $user->id)->whereDate("created_at", $today->toDateString())->get();
+
+        }));
+
         return ResponseService::SuccessResponse($recipes, "Recipes retrieved successfully");
 
     }
@@ -128,7 +135,9 @@ class ItemsController extends Controller
     {
 
         $user = auth()->user();
+        $key = "bookmarkedRecipesKey_".$user->id;
 
+        Cache::forget($key);
 
         $item = Recipe::where("id", $id)->where("user_id", $user->id)->firstOrFail();
 
@@ -138,18 +147,28 @@ class ItemsController extends Controller
 
     public function recentBookmarks()
     {
-        $bookmarks = Recipe::where("user_id", auth()->id())
-            ->where("bookmarked", true)
-            ->limit(5)
-            ->orderBy("updated_at", "DESC")->get();
+        $key = "bookmarkedRecipesKey_".auth()->id();
+
+        $bookmarks =  Cache::remember($key, 60 * 60 * 24, function () {
+            return Recipe::where("user_id", auth()->id())
+                ->where("bookmarked", true)
+                ->limit(5)
+                ->orderBy("updated_at", "DESC")->get();
+        });
+
         return ResponseService::SuccessResponse($bookmarks, "Bookmarks retrieved successfully");
 
     }
 
     public function bookmarks()
     {
-        $bookmarks = Recipe::where("user_id", auth()->id())
-            ->where("bookmarked", true)->get();
+        $key = "bookmarkedRecipesKey_".auth()->id();
+
+        $bookmarks =  Cache::remember($key, 60 * 60 * 24, function () {
+            return Recipe::where("user_id", auth()->id())
+                ->where("bookmarked", true)->get();
+        });
+
         return ResponseService::SuccessResponse($bookmarks, "Bookmarks retrieved successfully");
 
     }
@@ -164,8 +183,8 @@ class ItemsController extends Controller
 
     public function publicPost(string $ulid)
     {
-        $recipe = Recipe::with("user")->where("ulid", $ulid)->firstOrFail();
 
+        $recipe = Recipe::with("user")->where("ulid", $ulid)->firstOrFail();
 
         return view("recipe", ["recipe" => $recipe]);
 
