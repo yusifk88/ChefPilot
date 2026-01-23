@@ -80,7 +80,7 @@ class ItemsController extends Controller
 
         $key = "foodItemsCachekey_".auth()->id();
 
-        $userItems = Cache::remember($key, 60 * 120 * 24, function () {
+        $userItems = Cache::remember($key, 60 * 60 * 24, function () {
 
             return UserItem::with("item")->where("user_id", auth()->id())->get();
 

@@ -10,6 +10,7 @@ use App\Notifications\RecipeCreated;
 use app\Services\AI;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -35,6 +36,10 @@ class MakeRecipeJob implements ShouldQueue
         $response = AI::MakeRecipe($this->userID);
 
         $user = User::find($this->userID);
+
+        $key = "foodRecipesTodayKey_".$user->id;
+        Cache::forget($key);
+
         $recipes = [];
 
         // Recipe::where("user_id", $this->userID)->whereDate("created_at", date("Y-m-d"))->delete();
