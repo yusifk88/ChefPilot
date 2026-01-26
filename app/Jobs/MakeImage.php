@@ -44,7 +44,7 @@ class MakeImage implements ShouldQueue
 
         } else {
 
-            $prompt = Utility::makeImagePrompt($this->recipe->name);
+            $prompt = Utility::makeImagePrompt($this->recipe->description);
 
             $response = Http::withHeaders([
                 "content-type" => "application/json",
