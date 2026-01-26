@@ -8,11 +8,11 @@
     <meta property="og:title" content="{{$recipe->name}}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{route("recipe.publicPost",$recipe->ulid)}}" />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=1000" />
+    <meta property="og:image" content="{{$recipe->photos[0]->url}}" />
     <meta property="og:description" content="{{$recipe->description}}">
     <meta name="twitter:title" content="{{$recipe->name}}">
     <meta name="twitter:description" content="{{$recipe->description}}">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=1000">
+    <meta name="twitter:image" content="{{$recipe->photos[0]->url}}">
     <meta name="twitter:card" content="summary_large_image">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -51,10 +51,10 @@
 <!-- Recipe Hero Image -->
 <div class="relative">
     <img
-        src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=1000"
+        src="{{$recipe->photos[0]->url}}"
         alt="Pan-Seared Lemon Garlic Salmon"
         class="recipe-image"
-        onerror="this.src='https://via.placeholder.com/1000x800?text=Delicious+Salmon'"
+        onerror="this.src='https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.png'"
     >
 {{--    <div class="absolute top-4 left-4">--}}
 {{--        <button class="bg-white/90 backdrop-blur p-2 rounded-full shadow-lg">--}}
