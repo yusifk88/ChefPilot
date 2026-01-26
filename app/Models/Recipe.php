@@ -10,19 +10,23 @@ class Recipe extends Model
     protected $fillable = [
         "user_id", "name", "description", "ingredients",
         "ingredientMatchScore", "tag", "instructions", "difficulty",
-        "estimatedTimeMinutes", "nutrition", "images", "extra", "bookmarked",
-        "ulid"
+        "estimatedTimeMinutes", "nutrition", "images", "extra", "bookmarked", "photo_id","ulid"
     ];
 
     protected $casts = [
         "ingredients" => "array",
         "nutrition" => "array",
         "extra" => "array",
-        "bookmarked" => "bool"
+        "bookmarked" => "bool",
+        "photo_id"
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function photos(){
+        return $this->hasMany(Photo::class,"id","photo_id");
     }
 }

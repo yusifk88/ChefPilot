@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Events\RecipeCreatedEvent;
 use App\Mail\DailyRecipes;
+use App\Models\Photo;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Notifications\RecipeCreated;
@@ -42,6 +43,9 @@ class MakeRecipeJob implements ShouldQueue
 
         $recipes = [];
 
+        $defaultPhoto = Photo::where("name","default")->first();
+
+
         // Recipe::where("user_id", $this->userID)->whereDate("created_at", date("Y-m-d"))->delete();
 
         foreach ($response as $recipe) {
@@ -57,9 +61,18 @@ class MakeRecipeJob implements ShouldQueue
                 "estimatedTimeMinutes" => $recipe->estimatedTimeMinutes,
                 "tag" => implode(",", $recipe->dietaryTags),
                 "instructions" => implode(",", $recipe->instructions),
-                "ulid" => Str::ulid()
+                "ulid" => Str::ulid(),
+                "photo_id" => $defaultPhoto?->id,
 
             ]);
+
+
+            /**
+             * generate an image for this food
+             */
+
+            MakeImage::dispatch($recipeItem)->delay(now()->addSeconds(5));
+
 
             $recipes[] = $recipeItem;
 

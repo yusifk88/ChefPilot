@@ -123,7 +123,7 @@ class ItemsController extends Controller
 
         $recipes = collect(Cache::remember($key, 60 * 60 * 24, function () use ($user,$today) {
 
-            return Recipe::where("user_id", $user->id)->whereDate("created_at", $today->toDateString())->get();
+            return Recipe::with("photos")->where("user_id", $user->id)->whereDate("created_at", $today->toDateString())->get();
 
         }));
 
@@ -150,7 +150,7 @@ class ItemsController extends Controller
         $key = "bookmarkedRecipesKey_".auth()->id();
 
         $bookmarks =  Cache::remember($key, 60 * 60 * 24, function () {
-            return Recipe::where("user_id", auth()->id())
+            return Recipe::with("photos")->where("user_id", auth()->id())
                 ->where("bookmarked", true)
                 ->limit(5)
                 ->orderBy("updated_at", "DESC")->get();
@@ -165,7 +165,7 @@ class ItemsController extends Controller
         $key = "bookmarkedRecipesKey_".auth()->id();
 
         $bookmarks =  Cache::remember($key, 60 * 60 * 24, function () {
-            return Recipe::where("user_id", auth()->id())
+            return Recipe::with("photos")->where("user_id", auth()->id())
                 ->where("bookmarked", true)->get();
         });
 
@@ -175,7 +175,7 @@ class ItemsController extends Controller
 
     public function show(string $id)
     {
-        $recipe = Recipe::where("id", $id)->where('user_id', auth()->id())->firstOrFail();
+        $recipe = Recipe::with("photos")->where("id", $id)->where('user_id', auth()->id())->firstOrFail();
         return ResponseService::SuccessResponse($recipe, "Recipe retrieved successfully");
 
     }
@@ -184,7 +184,7 @@ class ItemsController extends Controller
     public function publicPost(string $ulid)
     {
 
-        $recipe = Recipe::with("user")->where("ulid", $ulid)->firstOrFail();
+        $recipe = Recipe::with("photos")->with("user")->where("ulid", $ulid)->firstOrFail();
 
         return view("recipe", ["recipe" => $recipe]);
 
@@ -195,7 +195,7 @@ class ItemsController extends Controller
     public function publicRecipe(string $ulid)
     {
 
-        $recipe = Recipe::with("user")->where("ulid", $ulid)->firstOrFail();
+        $recipe = Recipe::with("photos")->with("user")->where("ulid", $ulid)->firstOrFail();
 
         return ResponseService::SuccessResponse($recipe, "Recipe retrieved successfully");
 
