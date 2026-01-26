@@ -35,7 +35,7 @@
     </f7-card-content>
     <f7-card-footer>
       <p class="date" style="width: 70%!important;">
-        ETA:{{ item.estimatedTimeMinutes }}Min
+        PREP:{{ item.estimatedTimeMinutes }}Min
         <difficulty-chip :label="item.difficulty"></difficulty-chip>
       </p>
 

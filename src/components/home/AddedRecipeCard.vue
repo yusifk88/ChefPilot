@@ -84,6 +84,7 @@ import Additem from "@/components/items/additem.vue";
 import UserItems from "@/components/items/UserItems.vue";
 import {useStore} from "framework7-vue";
 import store from "@/js/store";
+import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 
 export default {
   components: {UserItems, Additem},
@@ -109,9 +110,15 @@ export default {
   },
   methods: {
 
-    getItems() {
+
+    async getItems() {
+
+      const account = await CapacitorPersistentAccount.readAccount()
+
+      const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
+
       this.loading = true;
-      axios.get("/user-items")
+      axios.get("/user-items",requestHeaders)
           .then(res => {
             this.items = res.data.data;
             this.loading = false;

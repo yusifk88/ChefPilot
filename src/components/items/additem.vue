@@ -153,6 +153,7 @@ export default {
 
     saveItems() {
 
+      this.searchKey=null;
       f7.dialog.preloader("Saving your food items...")
       const data = {
         items: this.selectedItem

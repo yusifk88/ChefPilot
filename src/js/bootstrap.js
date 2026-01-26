@@ -2,23 +2,23 @@ import axios from "axios";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {Capacitor} from "@capacitor/core";
 import store from "@/js/store";
-import {f7} from "framework7-vue";
+import {f7, useStore} from "framework7-vue";
 import {BASE_URL} from "@/js/utility";
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 
 let TOKEN = null;
 
-if (Capacitor.getPlatform().toLowerCase()==='web') {
+if (Capacitor.getPlatform().toLowerCase() === 'web') {
 
-    TOKEN= localStorage.getItem("token");
-}else {
+    TOKEN = localStorage.getItem("token");
+} else {
 
     CapacitorPersistentAccount.readAccount()
         .then(account => {
 
             if (account.data) {
-                TOKEN= account.data.token;
+                TOKEN = account.data.token;
 
             }
         })
@@ -27,7 +27,7 @@ if (Capacitor.getPlatform().toLowerCase()==='web') {
 
 window.Pusher = Pusher;
 
- window.echo = new Echo({
+window.echo = new Echo({
     broadcaster: 'ably',
     key: 'U-PY8A.iHQrzQ', // Only the part before the colon
     wsHost: 'realtime-pusher.ably.io',
@@ -35,39 +35,42 @@ window.Pusher = Pusher;
     disableStats: true,
     encrypted: true,
     forceTLS: true,
-    authEndpoint: BASE_URL+'/broadcasting/auth',
-     enabledTransports: ['ws', 'wss'],
+    authEndpoint: BASE_URL + '/broadcasting/auth',
+    enabledTransports: ['ws', 'wss'],
     auth: {
         headers: {
             Authorization: `Bearer ${TOKEN}`,
             Accept: 'application/json',
-            "Content-Type":'application/json'
+            "Content-Type": 'application/json'
         },
     },
 });
 
 
-if (Capacitor.getPlatform().toLowerCase()==='web') {
+if (Capacitor.getPlatform().toLowerCase() === 'web') {
 
     axios.defaults.headers.common['Authorization'] = "Bearer " + TOKEN
 
-}else {
-    CapacitorPersistentAccount.readAccount()
-        .then(account => {
+} else {
 
-            if (account.data) {
-                axios.defaults.headers.common['Authorization'] = "Bearer " + TOKEN;
+        CapacitorPersistentAccount.readAccount()
+            .then(account => {
 
-            }
-        })
+                if (account.data) {
+                    axios.defaults.headers.common['Authorization'] = "Bearer " + TOKEN;
+
+                }
+            })
+
+
 
 }
 
-axios.defaults.baseURL =BASE_URL+ '/api';
+axios.defaults.baseURL = BASE_URL + '/api';
 axios.defaults.headers.common['Accept'] = "application/json";
-axios.defaults.headers.post['Content-Type']="application/json";
+axios.defaults.headers.post['Content-Type'] = "application/json";
 
-window.axios=axios;
+window.axios = axios;
 
 axios.interceptors.response.use(
     (response) => {
@@ -84,27 +87,27 @@ axios.interceptors.response.use(
                 store.dispatch("showLogin")
                 store.dispatch("endAccountInitState")
 
-            }else if (error.response.status === 422) {
+            } else if (error.response.status === 422) {
 
                 console.log(error.response.data);
 
-               const errorToast = f7.toast.create({
+                const errorToast = f7.toast.create({
                     text: error.response.data.message,
                     closeButton: true,
-                   cssClass:"toast-red",
-                   closeButtonColor: 'white',
+                    cssClass: "toast-red",
+                    closeButtonColor: 'white',
                 });
 
-               errorToast.open()
+                errorToast.open()
 
 
-            }else {
+            } else {
 
 
                 const errorToast = f7.toast.create({
                     text: "Something went wrong, please pull to refresh or try again later",
                     closeButton: true,
-                    cssClass:"toast-red",
+                    cssClass: "toast-red",
                     closeButtonColor: 'white',
                 });
 

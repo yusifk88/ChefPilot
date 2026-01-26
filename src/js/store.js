@@ -3,6 +3,7 @@ import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {Capacitor} from "@capacitor/core";
 
 import OneSignal from "onesignal-cordova-plugin";
+import axios from "axios";
 
 
 const store = createStore({
@@ -10,12 +11,13 @@ const store = createStore({
         selectedRecipe: null,
         user: null,
         showLogin: true,
-        loginState: true,
+        loginState: false,
         refresh: false,
         mainPanelEffect: 'push',
         bookmarkChanged: false,
         initializingAccount: false,
         unreadNotificationsCount: 0,
+        token:null,
         notifications: {
             all: [],
             unread: []
@@ -53,6 +55,9 @@ const store = createStore({
         mainPanelEffect({state}) {
 
             return state.mainPanelEffect;
+        },
+        getToken({state}){
+            return state.token;
         }
 
     },
@@ -136,27 +141,40 @@ const store = createStore({
                     .then(account => {
                         if (account.data) {
 
-                            axios.get("/user", {headers: {Authorization: "Bearer " + account.data.token}})
-                                .then(res => {
-                                    state.user = res.data.data.user;
-                                    state.loginState = false
-                                    state.refresh = !state.refresh;
 
-                                    if (Capacitor.getPlatform() === 'android') {
+                            state.user = account.data.user;
+                            state.loginState = false
+                            state.refresh = !state.refresh;
 
-                                        OneSignal.login(state.user.id.toString());
+                            if (Capacitor.getPlatform() === 'android') {
 
-                                    }
+                                OneSignal.login(state.user.id.toString());
 
-                                })
-                                .catch(error => {
-                                    state.user = null;
-                                    state.loginState = true;
-                                  //  state.initializingAccount = false;
-                                    // await CapacitorPersistentAccount.saveAccount({data:null});
-                                    //  window.location.reload();
+                            }
 
-                                })
+
+
+                            // axios.get("/user", {headers: {Authorization: "Bearer " + account.data.token}})
+                            //     .then(res => {
+                            //         state.user = res.data.data.user;
+                            //         state.loginState = false
+                            //         state.refresh = !state.refresh;
+                            //
+                            //         if (Capacitor.getPlatform() === 'android') {
+                            //
+                            //             OneSignal.login(state.user.id.toString());
+                            //
+                            //         }
+                            //
+                            //     })
+                            //     .catch(error => {
+                            //         state.user = null;
+                            //         state.loginState = true;
+                            //       //  state.initializingAccount = false;
+                            //         // await CapacitorPersistentAccount.saveAccount({data:null});
+                            //         //  window.location.reload();
+                            //
+                            //     })
 
                         } else {
 

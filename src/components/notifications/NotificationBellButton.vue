@@ -29,14 +29,25 @@ export default {
     }
   },
   methods: {
-    getCount() {
-      axios.get("/notifications/count")
+    async getCount() {
+
+      const account = await CapacitorPersistentAccount.readAccount()
+
+      const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
+
+
+      axios.get("/notifications/count",requestHeaders)
           .then(res => {
             store.dispatch("setUnreadNotificationCount", res.data.data.unread)
           })
     },
-    MarkAsRead() {
-      axios.post("/notifications/mark-as-read")
+   async MarkAsRead() {
+
+      const account = await CapacitorPersistentAccount.readAccount()
+
+      const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
+
+      axios.post("/notifications/mark-as-read",requestHeaders)
           .then(res => {
 
             store.dispatch("setUnreadNotificationCount", 0)
