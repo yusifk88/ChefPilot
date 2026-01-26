@@ -80,7 +80,8 @@ class MakeRecipeJob implements ShouldQueue
         }
 
         if (count($recipes) > 0) {
-            Mail::to($user)->queue(new DailyRecipes(collect($recipes), $user));
+
+            Mail::to($user)->queue(new DailyRecipes(collect($recipes), $user))->delay(now()->addSeconds(25));
 
             broadcast(new RecipeCreatedEvent($user));
         }

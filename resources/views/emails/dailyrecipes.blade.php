@@ -18,7 +18,7 @@ style="border: 1px solid rgba(2,209,12,0.29); border-radius: 12px; overflow: hid
 <tr>
 <td>
 <img
-src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&h=400&q=80"
+src="{{isset($item?->photos[0]) ? $item->photos[0]->url : 'https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.png'}}"
 alt="Mediterranean Bowl"
 class="recipe-image"
 style="width: 100%; height: 300px; object-fit: cover;">

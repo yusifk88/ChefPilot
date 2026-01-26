@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -15,7 +16,7 @@ class DailyRecipes extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public Collection $recipes;
+    public Collection $newRecipes;
     public User $user;
 
     /**
@@ -23,7 +24,10 @@ class DailyRecipes extends Mailable
      */
     public function __construct(Collection $recipes,User $user)
     {
-        $this->recipes = $recipes;
+        $IDs = $recipes->select("id")->pluck("id")->toArray();
+
+
+        $this->newRecipes = Recipe::with("photos")->whereIn("id", $IDs)->get();
         $this->user = $user;
     }
 
@@ -44,7 +48,7 @@ class DailyRecipes extends Mailable
     {
         return new Content(
             markdown: 'emails.dailyrecipes',
-            with: ["recipes"=>$this->recipes,"user"=>$this->user]
+            with: ["recipes"=>$this->newRecipes,"user"=>$this->user]
         );
     }
 
