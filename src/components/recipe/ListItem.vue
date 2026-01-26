@@ -11,7 +11,7 @@
     <template #media>
       <img
           style="border-radius: 8px"
-          src="https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_phib9nphib9nphib.png"
+          :src="item.photos && item.photos.length>0 ? item.photos[0].url : PHOTO_PLACEHOLDER()"
           width="80"
       />
     </template>
@@ -30,7 +30,7 @@
 <script>
 import store from "@/js/store";
 import {useStore} from "framework7-vue";
-import {timeFromNow} from "@/js/utility";
+import {PHOTO_PLACEHOLDER, timeFromNow} from "@/js/utility";
 
 export default {
   props: {
@@ -38,6 +38,9 @@ export default {
   },
   name: "ListItem",
   methods:{
+    PHOTO_PLACEHOLDER() {
+      return PHOTO_PLACEHOLDER
+    },
     timeFromNow,
     setItem(){
       store.dispatch("setRecipeItem",this.item)

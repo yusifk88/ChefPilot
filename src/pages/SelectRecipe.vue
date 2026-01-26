@@ -9,8 +9,7 @@
     <f7-card flat class="no-margin" style="margin-top: -80px!important;">
       <f7-card-header
           valign="bottom"
-          style="background-image: url(https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_phib9nphib9nphib.png); background-size: cover;
-               height: 40vh;"
+          :style="'background-image: url('+photo_url+'); background-size: cover; height: 40vh;'"
           @click="$refs.standalone.open()"
       >
       </f7-card-header>
@@ -98,6 +97,7 @@ import store from "@/js/store";
 import {f7, useStore} from "framework7-vue";
 import DifficultyChip from "@/components/recipe/difficultyChip.vue";
 import ShareButton from "@/components/recipe/ShareButton.vue";
+import {PHOTO_PLACEHOLDER} from "@/js/utility";
 
 export default {
   props: {
@@ -112,17 +112,28 @@ export default {
       bookmarked:this.item ? this.item.bookmarked : false,
       itemID:this.f7route.params.id,
       loadingUpdate:false,
-      photos: [{
-        url: "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_phib9nphib9nphib.png",
-        caption: this.item?.name
-      }],
-      item: useStore(store, "selectedItem"),
-      thumbs: ["https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_phib9nphib9nphib.png"]
-
+      item: useStore(store, "selectedItem")
     }
 
   },
   computed: {
+
+    photos(){
+      return [{
+        url: this.photo_url,
+        caption: this.item?.name
+      }];
+
+    },
+    thumbs(){
+      return [this.photo_url];
+    },
+
+    photo_url(){
+
+    return this.item?.photos && this.item?.photos.length>0 ? this.item.photos[0].url : PHOTO_PLACEHOLDER
+
+    },
 
     bookmarkedColor(){
      return  this.bookmarked ? "blue" :'';

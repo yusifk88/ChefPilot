@@ -106,31 +106,35 @@ const store = createStore({
 
             if (Capacitor.getPlatform().toLowerCase() === 'web') {
 
-                axios.get("/user")
-                    .then(res => {
-                        state.user = res.data.data.user;
-                        state.loginState = false
-                        state.refresh = !state.refresh;
+                CapacitorPersistentAccount.readAccount()
+                    .then(account => {
 
-                        //get number of unread notifications
-
-                        axios.get("/notifications/count")
+                        axios.get("/user",{headers: {Authorization: "Bearer " + localStorage.getItem("token")}})
                             .then(res => {
-                                state.unreadNotificationsCount = res.data.data.unread;
+                                state.user = res.data.data.user;
+                                state.loginState = false
+                                state.refresh = !state.refresh;
+
+                                //get number of unread notifications
+
+                                axios.get("/notifications/count")
+                                    .then(res => {
+                                        state.unreadNotificationsCount = res.data.data.unread;
+                                    })
+                                    .catch(error => {
+                                        alert("count failed")
+                                    })
+
+
                             })
                             .catch(error => {
-                                alert("count failed")
+                                state.user = null;
+                                state.loginState = true;
+                                //  state.initializingAccount = false;
+
+
                             })
-
-
-                    })
-                    .catch(error => {
-                        state.user = null;
-                        state.loginState = true;
-                      //  state.initializingAccount = false;
-
-
-                    })
+                    });
 
 
             } else {

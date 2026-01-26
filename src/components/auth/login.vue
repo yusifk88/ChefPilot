@@ -74,7 +74,7 @@ export default {
   components: {GoogleLogo, AppLogo},
   data() {
     return {
-      email: "okon.lonny@example.org",
+      email: "test@example.com",
       password: "password",
       loading: false,
       currentAccount: null,
@@ -92,16 +92,17 @@ export default {
 
     async testLogin() {
 
-      if (!this.currentAccount) {
+     // if (!this.currentAccount) {
 
         axios.post("/login", {email: this.email, password: this.password})
             .then(async res => {
+
+              localStorage.setItem("token",res.data.data.token)
 
               const account = {
                 user: res.data.data.user,
                 token: res.data.data.token
               };
-
 
               await CapacitorPersistentAccount.saveAccount({data: null})
               await CapacitorPersistentAccount.saveAccount({data: account})
@@ -109,9 +110,9 @@ export default {
               await store.dispatch("initUser")
 
             })
-      } else {
-        await store.dispatch("initUser")
-      }
+      // } else {
+      //   await store.dispatch("initUser")
+      // }
     },
 
 

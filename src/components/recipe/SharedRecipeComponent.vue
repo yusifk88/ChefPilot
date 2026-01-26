@@ -2,8 +2,7 @@
   <f7-card flat class="no-margin" style="margin-top: -80px!important;">
     <f7-card-header
         valign="bottom"
-        style="background-image: url(https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_phib9nphib9nphib.png); background-size: cover;
-               height: 40vh;"
+        :style="'background-image: url('+photo_url+'); background-size: cover; height: 40vh;'"
         @click="$refs.standalone.open()"
     >
     </f7-card-header>
@@ -83,6 +82,7 @@ import DifficultyChip from "@/components/recipe/difficultyChip.vue";
 import {f7} from "framework7-vue";
 import store from "@/js/store";
 import ShareButton from "@/components/recipe/ShareButton.vue";
+import {PHOTO_PLACEHOLDER} from "@/js/utility";
 
 export default {
   props: {
@@ -94,16 +94,26 @@ export default {
     return {
       loadingUpdate: false,
       bookmarked: this.item?.bookmarked,
-      photos: [{
-        url: "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_phib9nphib9nphib.png",
-        caption: this.item?.name
-      }],
-      thumbs: ["https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_phib9nphib9nphib.png"]
-
     }
 
   },
   computed: {
+    photos(){
+      return [{
+        url: this.photo_url,
+        caption: this.item?.name
+      }];
+
+    },
+    thumbs(){
+      return [this.photo_url];
+    },
+
+    photo_url(){
+
+      return this.item?.photos && this.item?.photos.length>0 ? this.item.photos[0].url : PHOTO_PLACEHOLDER
+
+    },
     tags() {
       return this.item?.tag?.split(",");
     },

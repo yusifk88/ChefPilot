@@ -14,11 +14,14 @@ const formatDateTIme = (dateTime)=>{
 const BASE_URL = "https://cpapi.flobaze.com";
 const BASE_URLA = "http://localhost:8000";
 
+const PHOTO_PLACEHOLDER="https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.png";
+
 
 
 
 export {
     timeFromNow,
     formatDateTIme,
-    BASE_URL
+    BASE_URL,
+    PHOTO_PLACEHOLDER
 }

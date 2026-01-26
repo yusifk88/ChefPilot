@@ -11,7 +11,7 @@
       <img
 
           style="width: 100%; border-radius: 15px"
-           src="https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_phib9nphib9nphib.png"
+           :src="item.photos && item.photos.length>0 ? item.photos[0].url : PHOTO_PLACEHOLDER"
       />
       </f7-link>
 
@@ -63,6 +63,7 @@ import DifficultyChip from "@/components/recipe/difficultyChip.vue";
 import {f7, useStore} from "framework7-vue";
 import store from "@/js/store";
 import ShareButton from "@/components/recipe/ShareButton.vue";
+import {PHOTO_PLACEHOLDER} from "@/js/utility";
 
 export default {
   components: {ShareButton, DifficultyChip},
@@ -74,7 +75,8 @@ export default {
   name: "RecipeItem",
   data() {
     return {
-      bookmarked: this.item.bookmarked
+      bookmarked: this.item.bookmarked,
+      PHOTO_PLACEHOLDER:PHOTO_PLACEHOLDER
     }
   },
   computed: {
@@ -83,6 +85,7 @@ export default {
     }
   },
   methods: {
+
     setItem(){
      store.dispatch("setRecipeItem",this.item)
     },
