@@ -4,6 +4,8 @@ namespace App\Jobs;
 
 use App\Models\Photo;
 use App\Models\Recipe;
+use App\Models\User;
+use App\Notifications\RecipeCreated;
 use app\Services\Utility;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -66,6 +68,12 @@ class MakeImage implements ShouldQueue
                 $this->recipe->update(["photo_id" => $newPhoto->id]);
 
             }
+
+
+            $user = User::find($this->recipe->user_id);
+
+            $user->notify(new RecipeCreated($this->recipe));
+
 
         }
     }

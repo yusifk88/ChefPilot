@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Photo;
 use App\Models\Recipe;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -38,12 +39,15 @@ class RecipeCreated extends Notification
      */
     public function toOneSignal(object $notifiable): OneSignalMessage
     {
+
+        $photo = $this->getPhoto($this->recipe);
+
         return OneSignalMessage::create()
             ->setSubject($this->recipe->name)
             ->setBody($this->recipe->description)
             ->setData('recipe_id', $this->recipe->id)
             ->setIcon('ic_stat_onesignal_default')
-            ->setImageAttachments('https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_ansabjansabjansa.png') // Rich notification image
+            ->setImageAttachments($photo->url) // Rich notification image
             ->webButton(
                 OneSignalWebButton::create('view-recipe-details')
                     ->text('View Details')
@@ -55,13 +59,15 @@ class RecipeCreated extends Notification
 
     public function toDatabase(object $notifiable): array
     {
+        $photo = $this->getPhoto($this->recipe);
+
         return [
             "recipe_id" => $this->recipe->id,
             "message" => $this->recipe->name,
             "description" => $this->recipe->description,
-            "image_url"=>"https://flobaze.atl1.cdn.digitaloceanspaces.com/public/Gemini_Generated_Image_ansabjansabjansa.png",
-            "route"=>"/recipe/{$this->recipe->id}",
-            "type"=>"recipe",
+            "image_url" => $photo->url,
+            "route" => "/recipe/{$this->recipe->id}",
+            "type" => "recipe",
         ];
 
     }
@@ -77,5 +83,18 @@ class RecipeCreated extends Notification
         return [
             //
         ];
+    }
+
+
+    private function getPhoto(Recipe $recipe): Photo
+    {
+        $photo = Photo::find($recipe->photo_id);
+
+        if ($photo) {
+            return $photo;
+        }
+
+        return Photo::where("name","default")->first();
+
     }
 }

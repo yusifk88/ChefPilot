@@ -76,11 +76,6 @@ class MakeRecipeJob implements ShouldQueue
 
             $recipes[] = $recipeItem;
 
-            if (count($recipes) > 0) {
-                $user->notify(new RecipeCreated($recipeItem));
-
-            }
-
 
         }
 
