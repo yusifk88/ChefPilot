@@ -66,7 +66,7 @@ class ItemsController extends Controller
         $key = "foodItemsCachekey_".$user->id;
         Cache::forget($key);
 
-        $userItems = UserItem::where("user_id", $user->id)->get();
+        $userItems = UserItem::with("item")->where("user_id", $user->id)->get();
 
         MakeRecipeJob::dispatch($user->id);
 
