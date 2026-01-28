@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import {db} from "@/js/db";
+
 export default {
   emits: ["itemDeleted"],
   name: "UserItems",
@@ -36,11 +38,13 @@ export default {
   methods: {
     deleted(item) {
 
+      db.userItems.delete(item.id);
+
       const URL = "/user-items/" + item.id;
       axios.delete(URL)
           .then(res => {
 
-            this.$emit("itemDeleted", res.data.data);
+            //this.$emit("itemDeleted", res.data.data);
           })
     }
   }

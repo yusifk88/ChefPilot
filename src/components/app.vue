@@ -151,6 +151,10 @@ import {Capacitor} from "@capacitor/core";
 
 import {SystemThemeColor} from 'system-theme-color';
 
+import { initPostHog } from '@/js/posthog'
+import posthog from "posthog-js";
+import {db} from "@/js/db";
+
 
 export default {
   components: {Profile, Login},
@@ -253,6 +257,11 @@ export default {
         f7.dialog.preloader('Please wait..');
 
         await CapacitorPersistentAccount.saveAccount({data: null});
+        db.delete();
+        // db.recentBookmarks.clear();
+        // db.recipes.clear();
+        // db.items.clear();
+
 
         f7.dialog.close();
 
@@ -306,7 +315,15 @@ export default {
     };
 
     onMounted(() => {
+
+      initPostHog();
+
       f7ready(() => {
+
+
+        posthog.capture('$screen', {
+          screen_name: 'Home'
+        });
 
         if (device.capacitor) {
           capacitorApp.init(f7);

@@ -3,7 +3,6 @@
 
   <f7-block strong>
 
-
     <f7-card
         v-if="loading"
 
@@ -48,50 +47,76 @@ import {useStore} from "framework7-vue";
 import store from "@/js/store";
 import EmptyState from "@/components/empty/EmptyState.vue";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
+import {liveQuery} from "dexie";
+import {useObservable} from "@vueuse/rxjs";
+import {db} from "@/js/db";
 
 export default {
   name: "Recipes",
   components: {EmptyState, RecipeItem},
   data() {
     return {
-      items: [],
+      items: useObservable(liveQuery(() =>  db.recipes.toArray())),
       shouldRefresh: useStore(store, "getRefresh"),
-      currentUser: useStore(store, "getUser"),
       loading: false,
+    }
+  },
+
+  computed: {
+
+    startOfDay() {
+      const startOfToday = new Date();
+      startOfToday.setHours(0, 0, 0, 0);
+
+      return startOfToday;
+    },
+    endOfDay() {
+      const endOfToday = new Date();
+      endOfToday.setHours(23, 59, 59, 999);
+      return endOfToday;
+    },
+
+    currentUser() {
+      return useStore(store, "getUser");
     }
   },
   watch: {
 
     currentUser() {
-      if (this.currentUser){
-      const CHANNEL = `recipes-created_${this.currentUser.id}`;
+      if (this.currentUser) {
+        const CHANNEL = `recipes-created_${this.currentUser.id}`;
 
-      echo.private(CHANNEL)
-          .listen('RecipeCreatedEvent', (e) => {
+        echo.private(CHANNEL)
+            .listen('RecipeCreatedEvent', (e) => {
 
-            alert(JSON.stringify(e))
+              alert(JSON.stringify(e))
 
-          });
+            });
 
-    }
-      },
+      }
+    },
     shouldRefresh() {
       this.getItems();
 
     }
   },
   methods: {
-   async getItems() {
-
-      this.loading = true;
+    async getItems() {
 
       const account = await CapacitorPersistentAccount.readAccount()
 
+
+      this.loading = db.recipes.count()>0;
+
+
       const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
 
-      axios.get("/recipes",requestHeaders)
+      axios.get("/recipes", requestHeaders)
           .then(res => {
-            this.items = res.data.data;
+            const items = res.data.data;
+
+            db.recipes.bulkPut(items)
+
             this.loading = false;
 
           })

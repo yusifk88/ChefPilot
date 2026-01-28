@@ -4,6 +4,7 @@ import {Capacitor} from "@capacitor/core";
 
 import OneSignal from "onesignal-cordova-plugin";
 import axios from "axios";
+import posthog from "posthog-js";
 
 
 const store = createStore({
@@ -189,6 +190,13 @@ const store = createStore({
                     })
             }
 
+
+            if (state.user) {
+                posthog.identify(state.user.id, {
+                    email: state.user.email,
+                    name: state.user.name,
+                })
+            }
 
         },
         addProduct({state}, product) {

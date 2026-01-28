@@ -1,48 +1,48 @@
 <template>
   <f7-block-title style="margin-top: 0!important;" class=" no-margin-top">Recent Bookmarks</f7-block-title>
 
-  <f7-block strong  class="">
+  <f7-block strong class="">
 
-  <f7-list strong inset dividers-ios media-list class="skeleton-text"
-           v-if="loading">
-    <f7-list-item
-        title="Title rrrrrgrgwgwdgdfgfdgffgfgfgfgffgfg"
-        subtitle="Subtitle"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum."
-        class="skeleton-effect-pulse"
-    >
-      <template #media>
-        <f7-skeleton-block style="width: 80px; height: 80px; border-radius: 8px" />
-      </template>
-    </f7-list-item>
-    <f7-list-item
-        title="Title rrrrrgrgwgwdgdfgfdgffgfgfgfgffgfg"
-        subtitle="Subtitle"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum."
-        class="skeleton-effect-pulse"
+    <f7-list strong inset dividers-ios media-list class="skeleton-text"
+             v-if="loading">
+      <f7-list-item
+          title="Title rrrrrgrgwgwdgdfgfdgffgfgfgfgffgfg"
+          subtitle="Subtitle"
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum."
+          class="skeleton-effect-pulse"
+      >
+        <template #media>
+          <f7-skeleton-block style="width: 80px; height: 80px; border-radius: 8px"/>
+        </template>
+      </f7-list-item>
+      <f7-list-item
+          title="Title rrrrrgrgwgwdgdfgfdgffgfgfgfgffgfg"
+          subtitle="Subtitle"
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum."
+          class="skeleton-effect-pulse"
 
-    >
-      <template #media>
-        <f7-skeleton-block style="width: 80px; height: 80px; border-radius: 8px" />
-      </template>
-    </f7-list-item>
+      >
+        <template #media>
+          <f7-skeleton-block style="width: 80px; height: 80px; border-radius: 8px"/>
+        </template>
+      </f7-list-item>
 
       <f7-list-item
-        title="Title rrrrrgrgwgwdgdfgfdgffgfgfgfgffgfg"
-        subtitle="Subtitle"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum."
-        class="skeleton-effect-pulse"
+          title="Title rrrrrgrgwgwdgdfgfdgffgfgfgfgffgfg"
+          subtitle="Subtitle"
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum."
+          class="skeleton-effect-pulse"
 
-    >
-      <template #media>
-        <f7-skeleton-block style="width: 80px; height: 80px; border-radius: 8px" />
-      </template>
-    </f7-list-item>
+      >
+        <template #media>
+          <f7-skeleton-block style="width: 80px; height: 80px; border-radius: 8px"/>
+        </template>
+      </f7-list-item>
 
-  </f7-list>
+    </f7-list>
 
 
-  <span v-else>
+    <span v-else>
 
 
      <empty-state
@@ -51,12 +51,12 @@
          details="No bookmarks to show, your most recent bookmarked recipes will show here."
      ></empty-state>
 
-  <f7-list media-list dividers-ios strong-ios inset class="no-margin no-padding" style="margin-top: 10px!important;"  >
+  <f7-list media-list dividers-ios strong-ios inset class="no-margin no-padding" style="margin-top: 10px!important;">
 
     <list-item
-    v-for="item in items"
-    :key="item.id"
-    :item="item"
+        v-for="item in items"
+        :key="item.id"
+        :item="item"
     ></list-item>
 
   </f7-list>
@@ -70,16 +70,19 @@ import {useStore} from "framework7-vue";
 import store from "@/js/store";
 import EmptyState from "@/components/empty/EmptyState.vue";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
+import {useObservable} from "@vueuse/rxjs";
+import {liveQuery} from "dexie";
+import {db} from "@/js/db";
 
 export default {
   name: "recentBookmarks",
   components: {EmptyState, ListItem},
   data() {
     return {
-      items: [],
+      items: useObservable(liveQuery(() => db.recentBookmarks.orderBy("name").toArray())),
       loading: false,
       shouldRefresh: useStore(store, "getRefresh"),
-      bookmarkChanged:useStore(store,"bookMarkState")
+      bookmarkChanged: useStore(store, "bookMarkState")
     }
   },
   watch: {
@@ -88,24 +91,27 @@ export default {
       this.getItems();
 
     },
-    bookmarkChanged(){
-      this.getItems(false)
+    bookmarkChanged() {
+      this.getItems()
     }
   },
   methods: {
-    async getItems(state=true) {
+    async getItems() {
 
-      this.loading = state;
+      this.loading = db.recentBookmarks.count() > 0;
 
       const account = await CapacitorPersistentAccount.readAccount()
 
       const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
 
-      axios.get("/recent-bookmarks",requestHeaders)
+      axios.get("/recent-bookmarks", requestHeaders)
           .then(res => {
 
-            this.items = res.data.data
-            this.loading=false
+            const items = res.data.data
+
+            db.recentBookmarks.bulkPut(items);
+
+            this.loading = false
           })
     }
   },

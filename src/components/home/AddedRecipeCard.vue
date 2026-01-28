@@ -18,7 +18,7 @@
     <f7-list-item link="#" style="padding-left: 0!important; margin-left: 0!important;">
       <template #media>
         <img
-            src="/img/item_samples.svg"
+            src="/img/item_samples.webp"
             width="120"
         />
       </template>
@@ -62,7 +62,6 @@
 
   <f7-sheet
       style="height: 70%"
-      push
       v-model:opened="showUserItems" class="user-items-sheet">
     <div class="swipe-handler" style="background-color: transparent"></div>
     <f7-toolbar>
@@ -74,7 +73,7 @@
       </div>
     </f7-toolbar>
 
-    <user-items :items="items" @item-deleted="i=>items=i">
+    <user-items :items="items">
     </user-items>
   </f7-sheet>
 </template>
@@ -85,6 +84,9 @@ import UserItems from "@/components/items/UserItems.vue";
 import {useStore} from "framework7-vue";
 import store from "@/js/store";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
+import {useObservable} from "@vueuse/rxjs";
+import {liveQuery} from "dexie";
+import {db} from "@/js/db";
 
 export default {
   components: {UserItems, Additem},
@@ -96,9 +98,9 @@ export default {
     return {
       sheetOpened: false,
       showUserItems: false,
-      items: [],
+      items: useObservable(liveQuery(() =>  db.userItems.orderBy("name").toArray())),
       shouldRefresh: useStore(store, "getRefresh"),
-      loading: true,
+      loading: false,
       refreshItems:false
 
     }
@@ -117,10 +119,14 @@ export default {
 
       const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
 
-      this.loading = true;
+      this.loading = db.userItems.count()>0;
+
       axios.get("/user-items",requestHeaders)
           .then(res => {
-            this.items = res.data.data;
+           const items = res.data.data;
+
+           db.userItems.bulkPut(items)
+
             this.loading = false;
           })
           .catch(error => {
@@ -128,9 +134,8 @@ export default {
 
           })
     },
-    itemsSaved(items) {
+    itemsSaved() {
       this.sheetOpened = false;
-      this.items = items.data;
     }
   },
   computed: {
