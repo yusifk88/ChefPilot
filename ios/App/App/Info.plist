@@ -58,14 +58,5 @@
       </dict>
     </array>
     
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>chefpilot</string>
-        </array>
-      </dict>
-    </array>
 </dict>
 </plist>

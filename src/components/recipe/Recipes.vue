@@ -56,7 +56,7 @@ export default {
   components: {EmptyState, RecipeItem},
   data() {
     return {
-      items: useObservable(liveQuery(() =>  db.recipes.toArray())),
+      items: useObservable(liveQuery(() =>  db.recipes.orderBy("id").reverse().toArray())),
       shouldRefresh: useStore(store, "getRefresh"),
       loading: false,
     }

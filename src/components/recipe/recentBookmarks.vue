@@ -79,7 +79,7 @@ export default {
   components: {EmptyState, ListItem},
   data() {
     return {
-      items: useObservable(liveQuery(() => db.recentBookmarks.orderBy("name").toArray())),
+      items: useObservable(liveQuery(() => db.recentBookmarks.orderBy("id").reverse().limit(5).toArray())),
       loading: false,
       shouldRefresh: useStore(store, "getRefresh"),
       bookmarkChanged: useStore(store, "bookMarkState")
