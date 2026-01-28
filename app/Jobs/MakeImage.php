@@ -9,6 +9,7 @@ use App\Notifications\RecipeCreated;
 use app\Services\Utility;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -69,6 +70,9 @@ class MakeImage implements ShouldQueue
 
             }
 
+
+            $key = "foodRecipesTodayKey_".$this->recipe->user_id;
+            Cache::forget($key);
 
             $user = User::find($this->recipe->user_id);
 
