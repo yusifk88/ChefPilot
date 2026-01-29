@@ -6,6 +6,8 @@ import {f7, useStore} from "framework7-vue";
 import {BASE_URL} from "@/js/utility";
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
+import * as Ably from 'ably';
+
 
 let TOKEN = null;
 
@@ -25,26 +27,25 @@ if (Capacitor.getPlatform().toLowerCase() === 'web') {
 
 }
 
-window.Pusher = Pusher;
 
-window.echo = new Echo({
-    broadcaster: 'ably',
-    key: 'U-PY8A.iHQrzQ', // Only the part before the colon
-    wsHost: 'realtime-pusher.ably.io',
-    wsPort: 443,
-    disableStats: true,
-    encrypted: true,
-    forceTLS: true,
-    authEndpoint: BASE_URL + '/broadcasting/auth',
-    enabledTransports: ['ws', 'wss'],
-    auth: {
-        headers: {
-            Authorization: `Bearer ${TOKEN}`,
-            Accept: 'application/json',
-            "Content-Type": 'application/json'
-        },
+window.ablyClient = new Ably.Realtime({
+
+    authCallback: async (_params, callback) => {
+        try {
+            const res = await fetch(`${BASE_URL}/api/ably/token`, {
+                headers: {
+                    Authorization: `Bearer ${TOKEN}`,
+                },
+            });
+
+            callback(null, await res.json());
+
+        } catch (err) {
+            callback(err, null);
+        }
     },
 });
+
 
 
 if (Capacitor.getPlatform().toLowerCase() === 'web') {

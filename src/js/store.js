@@ -14,17 +14,22 @@ const store = createStore({
         showLogin: true,
         loginState: false,
         refresh: false,
+        loadingRecipes: false,
         mainPanelEffect: 'push',
         bookmarkChanged: false,
         initializingAccount: false,
         unreadNotificationsCount: 0,
-        token:null,
+        token: null,
         notifications: {
             all: [],
             unread: []
         }
     },
     getters: {
+
+        loadingRecipesState({state}) {
+            return state.loadingRecipes;
+        },
         products({state}) {
             return state.products;
         },
@@ -57,16 +62,23 @@ const store = createStore({
 
             return state.mainPanelEffect;
         },
-        getToken({state}){
+        getToken({state}) {
             return state.token;
         }
 
     },
     actions: {
 
-        endAccountInitState({state}){
+        stopLoadingRecipe({state}){
+            state.loadingRecipes=false;
+        },
+        startLoadingRecipe({state}){
+            state.loadingRecipes=true;
+        },
 
-            state.initializingAccount=false;
+        endAccountInitState({state}) {
+
+            state.initializingAccount = false;
         },
 
         setMainPanelEffect({state}, effect = 'push') {
@@ -110,7 +122,7 @@ const store = createStore({
                 CapacitorPersistentAccount.readAccount()
                     .then(account => {
 
-                        axios.get("/user",{headers: {Authorization: "Bearer " + localStorage.getItem("token")}})
+                        axios.get("/user", {headers: {Authorization: "Bearer " + localStorage.getItem("token")}})
                             .then(res => {
                                 state.user = res.data.data.user;
                                 state.loginState = false
@@ -156,7 +168,6 @@ const store = createStore({
                                 OneSignal.login(state.user.id.toString());
 
                             }
-
 
 
                             // axios.get("/user", {headers: {Authorization: "Bearer " + account.data.token}})

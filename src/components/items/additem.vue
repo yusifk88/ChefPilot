@@ -94,6 +94,7 @@ import EmptyState from "@/components/empty/EmptyState.vue";
 import {useObservable} from "@vueuse/rxjs";
 import {liveQuery} from "dexie";
 import {db} from "@/js/db";
+import store from "@/js/store";
 
 export default {
   name: "additem",
@@ -166,7 +167,8 @@ export default {
           .then(res => {
 
             f7.dialog.close();
-            db.userItems.bulkPut(res.data)
+
+            db.userItems.bulkPut(res.data.data)
 
             this.$emit("saved");
 

@@ -20,10 +20,11 @@
         <img
             src="/img/item_samples.webp"
             width="120"
+            fetchpriority="high"
         />
       </template>
       <template #after>
-        {{ items.length }} Food Items
+        {{ ItemCount }} Food Items
       </template>
     </f7-list-item>
 
@@ -139,6 +140,11 @@ export default {
     }
   },
   computed: {
+
+    ItemCount(){
+      return useObservable(liveQuery(() =>  db.userItems.count()));
+    },
+
     shouldRefresh() {
       this.getItems();
     }

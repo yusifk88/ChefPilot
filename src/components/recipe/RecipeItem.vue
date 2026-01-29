@@ -1,5 +1,9 @@
 <template>
-  <f7-card flat class="no-margin" :title="item.name">
+  <f7-card flat class="no-margin">
+
+    <f7-card-header class="card-title">
+      {{item.name}}
+    </f7-card-header>
     <!--    <f7-card-header-->
     <!--        valign="top"-->
     <!--    >{{item.name}}</f7-card-header-->
@@ -7,12 +11,16 @@
     <f7-card-content style="padding-top: 0!important; padding-bottom: 0!important; margin-bottom: 0!important;">
 
       <f7-link :href="`/recipe/${item.id}`" @click="setItem">
+<div class="image-wrapper">
+  <img
+      fetchpriority="high"
+      loading="lazy"
+      style="border-radius: 15px;"
+      :src="item.photos && item.photos.length>0 ? item.photos[0].url : PHOTO_PLACEHOLDER"
+  />
+</div>
 
-      <img
 
-          style="width: 100%; border-radius: 15px"
-           :src="item.photos && item.photos.length>0 ? item.photos[0].url : PHOTO_PLACEHOLDER"
-      />
       </f7-link>
 
       <p>
@@ -111,11 +119,49 @@ export default {
 
           })
     }
+  },
+  mounted() {
+    const img = document.querySelector('img')
+    img.onload = () => img.classList.add('loaded')
   }
 }
 </script>
 
 
-<style scoped>
+<style>
+.image-wrap {
+  position: relative;
+}
 
+.image-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      120deg,
+      rgba(255,255,255,0.15),
+      rgba(255,255,255,0.35),
+      rgba(255,255,255,0.15)
+  );
+  animation: shimmer 1.4s infinite;
+}
+
+.image-wrap img {
+  filter: blur(20px);
+  transition: filter 0.4s ease;
+}
+
+.image-wrap img.loaded {
+  filter: blur(0);
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>

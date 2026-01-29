@@ -144,6 +144,10 @@ export default {
     },
     instructions() {
 
+      if (Array.isArray(this.item?.instructions)){
+        return this.item?.instructions;
+      }
+
       return this.item?.instructions?.split(",");
 
     },
