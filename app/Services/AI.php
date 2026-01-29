@@ -107,9 +107,9 @@ PROMPT;
 
         $object = $response->object();
 
-        Log::info("AI responses",["value"=>$object]);
+        $content = json_decode($object->choices[0]->message->content);
 
-        return json_decode($object->choices[0]->message->content);
+        return $content;
 
     }
 

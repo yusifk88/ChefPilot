@@ -12,6 +12,7 @@ use app\Services\AI;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -35,6 +36,8 @@ class MakeRecipeJob implements ShouldQueue
     public function handle(): void
     {
         $response = AI::MakeRecipe($this->userID);
+
+        Log::info("response from AI CLass",["value"=>$response]);
 
         $user = User::find($this->userID);
 
