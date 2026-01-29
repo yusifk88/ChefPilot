@@ -56,7 +56,7 @@ class MakeRecipeJob implements ShouldQueue
                 "description" => $recipe->description,
                 "ingredients" => $recipe->ingredients,
                 "nutrition" => $recipe->nutrition,
-                "images" => implode(",", $recipe->images),
+                "images" =>$recipe?->images? implode(",", $recipe->images) : null,
                 "difficulty" => $recipe->difficulty,
                 "estimatedTimeMinutes" => $recipe->estimatedTimeMinutes,
                 "tag" => implode(",", $recipe->dietaryTags),

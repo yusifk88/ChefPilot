@@ -25,7 +25,7 @@ Your task is to analyze a JSON array of food inventory records provided by the u
 - Ensure the JSON is properly formatted and parsable.
 
 ### Recipe Selection Rules
-- Suggest between 3 and 7 recipes.
+- Suggest exactly 4 recipes.
 - Prioritize recipes that maximize usage of the provided ingredients.
 - Avoid repeating recipes.
 - Prefer simple, everyday meals unless ingredients suggest otherwise.
@@ -47,15 +47,9 @@ Each recipe object MUST strictly follow this schema
   ],
   ingredientMatchScore: number,
   "dietaryTags": string[],
-  "instructions": string[],
+  "instructions": [string,string,...],
   "difficulty": string,
   estimatedTimeMinutes: number,
-  "images": [
-    string,
-    string,
-    string,
-    string
-  ],
   "nutrition": {
     "calories": string,
     "protein": string,
@@ -73,11 +67,6 @@ Each recipe object MUST strictly follow this schema
 - "instructions":
   - Step-by-step cooking instructions.
   - Clear and concise.
-- "images":
-  - Exactly 4 image URLs.
-  - Each image should represent a different angle or presentation of the dish.
-  - You must generate images or placeholder images of the dish
-  - Use realistic placeholder URLs if real images are not available.
 - "nutrition":
   - Provide approximate nutritional values per serving.
   - Use common units (kcal, g).

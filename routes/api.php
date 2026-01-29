@@ -39,6 +39,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/items', [ItemsController::class, "store"]);
     Route::delete('/user-items/{id}', [ItemsController::class, "destroy"]);
 
+    /**
+     * recipe routes
+     */
+    Route::get("/gen-recipes",[ItemsController::class, "getRecipes"]);
+    Route::get("/gen-recipes-count",[ItemsController::class, "getDailyRequestCount"]);
 
     /**
      * recipes routes

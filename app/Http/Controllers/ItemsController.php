@@ -10,6 +10,7 @@ use App\Services\ResponseService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use function tests\data;
 use function view;
 
 class ItemsController extends Controller
@@ -67,8 +68,6 @@ class ItemsController extends Controller
         Cache::forget($key);
 
         $userItems = UserItem::with("item")->where("user_id", $user->id)->get();
-
-        MakeRecipeJob::dispatch($user->id);
 
         return ResponseService::SuccessResponse($userItems, "Items added successfully");
 
@@ -198,6 +197,39 @@ class ItemsController extends Controller
         $recipe = Recipe::with("photos")->with("user")->where("ulid", $ulid)->firstOrFail();
 
         return ResponseService::SuccessResponse($recipe, "Recipe retrieved successfully");
+
+    }
+
+
+    public function getDailyRequestCount()
+    {
+        $todaysRecipesCount = Recipe::where("user_id", auth()->id())
+            ->whereDate("created_at",Carbon::now()->toDateString())->count();
+
+        $limit = ceil($todaysRecipesCount/4);
+
+        return ResponseService::SuccessResponse(data:["count"=>$limit],message: "Recipes request count retrieved successfully");
+
+    }
+
+
+    public function getRecipes()
+    {
+
+        $todaysRecipesCount = Recipe::where("user_id", auth()->id())
+            ->whereDate("created_at",Carbon::now()->toDateString())->count();
+
+        $user = auth()->user();
+
+        if ($user->id!=2 and $todaysRecipesCount>=12) {
+
+            return ResponseService::FailedResponse(message: "You have exceeded your daily limits for the day, try again tomorrow");
+        }
+
+        $key = "foodItemsCachekey_".$user->id;
+        Cache::forget($key);
+        MakeRecipeJob::dispatch($user->id);
+
 
     }
 
