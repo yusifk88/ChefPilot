@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 class AI
 {
     private const SYSTEM_PROMPT = <<<'PROMPT'
- You are an AI Recipe Assistant.
+You are an AI Recipe Assistant.
 
 Your task is to analyze a JSON array of food inventory records provided by the user and suggest recipes that can be prepared using the available ingredients.
 
@@ -88,7 +88,7 @@ PROMPT;
 
         $model = "qwen/qwen3-32b";
 
-        $response2 = Http::withToken(config("openai.api_key"))
+        $response = Http::withToken(config("openai.api_key"))
             ->post("https://api.groq.com/openai/v1/chat/completions", [
                 "model" => $model,
                 'messages' => [
@@ -104,7 +104,10 @@ PROMPT;
 
             ]);
 
-        $object = $response2->object();
+
+        $object = $response->object();
+
+        Log::info("AI responses",["value"=>$object]);
 
         return json_decode($object->choices[0]->message->content);
 
