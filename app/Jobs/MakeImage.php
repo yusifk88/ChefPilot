@@ -6,9 +6,11 @@ use App\Models\Photo;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Notifications\RecipeCreated;
+use app\Services\ScaleDrone;
 use app\Services\Utility;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -29,6 +31,7 @@ class MakeImage implements ShouldQueue
 
     /**
      * Execute the job.
+     * @throws ConnectionException
      */
     public function handle(): void
     {
@@ -76,7 +79,12 @@ class MakeImage implements ShouldQueue
 
             $user = User::find($this->recipe->user_id);
 
+
             $user->notify(new RecipeCreated($this->recipe));
+
+            $recipeWithPhoto = Recipe::with("photos")->find($this->recipe->id);
+
+            ScaleDrone::recipeCreated(user: $user, recipe: $recipeWithPhoto);
 
 
         }
