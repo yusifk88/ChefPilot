@@ -14,7 +14,7 @@ class ScaleDrone
     {
         $ID = "Yh4KOdyE8eyesTXu";
 
-        $url = config("scale_drone.url") . $ID . "/RecipeCreated_" . $user->id . "/publish";
+        $url = config("scale_drone.url") ."/". $ID . "/RecipeCreated_" . $user->id . "/publish";
 
         $response = Http::withToken(config("scale_drone.key"))->post($url, (array)$recipe);
 
