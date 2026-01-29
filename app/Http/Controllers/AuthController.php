@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Ably\AblyRest;
+use Ably\Exceptions\AblyException;
 use App\Models\User;
 use App\Services\ResponseService;
 use Illuminate\Http\Client\ConnectionException;
@@ -304,6 +306,23 @@ class AuthController extends Controller
 
         return ResponseService::SuccessResponse(["user" => $user], "User avatar updated successfully");
 
+    }
+
+
+    /**
+     * @throws AblyException
+     */
+    public function ablyToken(Request $request)
+    {
+        $ably = new AblyRest(config('broadcasting.connections.ably.key'));
+
+        $tokenRequest = $ably->auth->createTokenRequest([
+            'capability' => [
+                'workflow:*' => ['subscribe']
+            ]
+        ]);
+
+        return response()->json($tokenRequest);
     }
 
 

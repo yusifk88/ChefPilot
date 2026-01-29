@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/set-user-theme', [AuthController::class, "setUserTheme"]);
     Route::post("update-user", [AuthController::class, "updateUser"]);
     Route::post("change-avatar",[AuthController::class, "changeAvatar"]);
+    Route::get('/ably/token', [AuthController::class, 'ablyToken']);
+
     /**
      * items routes
      */
