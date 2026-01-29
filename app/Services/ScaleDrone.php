@@ -27,7 +27,7 @@ class ScaleDrone
         $response = Http::withHeaders([
             "Authorization" => "Basic $authToken",
             "Content-Type" => "application/json"
-        ])->post($url, (array)$recipe);
+        ])->post($url, $recipe->toArray());
 
         Log::info("scaledrone response", ["response" => $response->body()]);
         return $response->status();
