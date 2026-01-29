@@ -80,7 +80,7 @@ Each recipe object MUST strictly follow this schema
 If no recipes can be made, return an empty JSON array [].
 PROMPT;
 
-    public static function MakeRecipe(int $userID)
+    public static function MakeRecipe(int $userID) :array
     {
         $food = UserItem::where('user_id', $userID)->select("name", "category")->get();
 
@@ -107,9 +107,7 @@ PROMPT;
 
         $object = $response->object();
 
-        $content = json_decode($object->choices[0]->message->content);
-
-        return $content;
+        return json_decode($object->choices[0]->message->content);
 
     }
 

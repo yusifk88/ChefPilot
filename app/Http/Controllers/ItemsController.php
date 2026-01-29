@@ -234,6 +234,7 @@ class ItemsController extends Controller
 
         $key = "foodItemsCachekey_".$user->id;
         Cache::forget($key);
+
         MakeRecipeJob::dispatch($user->id);
 
 
