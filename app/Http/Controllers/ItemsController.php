@@ -221,6 +221,12 @@ class ItemsController extends Controller
 
         $user = auth()->user();
 
+        $userItemsCount = UserItem::where("user_id", $user->id)->count();
+        if ($userItemsCount===0){
+            return ResponseService::FailedResponse(message: "Your food inventory is empty add your food to get personalised recipes");
+
+        }
+
         if ($user->id!=2 and $todaysRecipesCount>=12) {
 
             return ResponseService::FailedResponse(message: "You have exceeded your daily limits for the day, try again tomorrow");
