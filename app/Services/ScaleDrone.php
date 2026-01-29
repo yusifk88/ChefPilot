@@ -19,7 +19,7 @@ class ScaleDrone
         $response = Http::withToken(config("scale_drone.key"))->post($url, (array)$recipe);
 
         Log::info("scaledrone response", ["response" => $response->body()]);
-        return $response->object();
+        return $response->status();
     }
 
 }
