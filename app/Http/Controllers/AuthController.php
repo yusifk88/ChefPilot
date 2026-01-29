@@ -318,7 +318,8 @@ class AuthController extends Controller
 
         $tokenRequest = $ably->auth->createTokenRequest([
             'capability' => [
-                'workflow:*' => ['subscribe']
+                'private:*' => ['subscribe'],
+                '*' => ['subscribe']
             ]
         ]);
 
