@@ -1,3 +1,4 @@
+@php use App\Models\Photo; @endphp
 <x-mail::message>
 
 <div style="text-align: center; margin-bottom: 60px;">
@@ -12,13 +13,17 @@ Happy cooking!
 </div>
 
 @foreach($recipes as $item)
+
+<?php
+$photo = Photo::find($item->photo_id);
+?>
 <a href="https://google.com">
 <table border="0" cellpadding="0" cellspacing="0" width="100%"
 style="border: 1px solid rgba(2,209,12,0.29); border-radius: 12px; overflow: hidden; margin-top: 25px">
 <tr>
 <td>
 <img
-src="{{$item->photos[0]->url}}"
+src="{{$photo->url}}"
 alt="Mediterranean Bowl"
 class="recipe-image"
 style="width: 100%; height: 300px; object-fit: cover;">
