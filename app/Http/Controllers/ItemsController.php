@@ -7,6 +7,7 @@ use App\Models\FoodItem;
 use App\Models\Recipe;
 use App\Models\UserItem;
 use App\Services\ResponseService;
+use app\Services\Utility;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -203,12 +204,9 @@ class ItemsController extends Controller
 
     public function getDailyRequestCount()
     {
-        $todaysRecipesCount = Recipe::where("user_id", auth()->id())
-            ->whereDate("created_at",Carbon::now()->toDateString())->count();
+        $requestCredit = Utility::getLimit(auth()->id());
 
-        $limit = ceil($todaysRecipesCount/4);
-
-        return ResponseService::SuccessResponse(data:["count"=>$limit],message: "Recipes request count retrieved successfully");
+        return ResponseService::SuccessResponse(data:["count"=>$requestCredit],message: "Recipes request count retrieved successfully");
 
     }
 
@@ -216,18 +214,18 @@ class ItemsController extends Controller
     public function getRecipes()
     {
 
-        $todaysRecipesCount = Recipe::where("user_id", auth()->id())
-            ->whereDate("created_at",Carbon::now()->toDateString())->count();
-
         $user = auth()->user();
 
         $userItemsCount = UserItem::where("user_id", $user->id)->count();
         if ($userItemsCount===0){
-            return ResponseService::FailedResponse(message: "Your food inventory is empty add your food to get personalised recipes");
+            return ResponseService::FailedResponse(message: "Your food inventory is empty add food to get personalised recipes");
 
         }
 
-        if ($user->id!=2 and $todaysRecipesCount>=12) {
+        $requestCredit = Utility::getLimit(auth()->id());
+
+
+        if ($user->id!=2 and $requestCredit<=0) {
 
             return ResponseService::FailedResponse(message: "You have exceeded your daily limits for the day, try again tomorrow");
         }
