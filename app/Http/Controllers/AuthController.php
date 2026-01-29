@@ -312,7 +312,7 @@ class AuthController extends Controller
     /**
      * @throws AblyException
      */
-    public function ablyToken(Request $request)
+    public function ablyToken()
     {
         $ably = new AblyRest(config('broadcasting.connections.ably.key'));
 
