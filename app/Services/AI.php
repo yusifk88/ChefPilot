@@ -86,7 +86,7 @@ PROMPT;
 
         $userPrompt = "Here is my food inventory for the week:" . $food->toJson() . "suggest some recipes for me";
 
-        $model = "openai/gpt-oss-120b";
+        $model = "openai/gpt-oss-20b";
 
         $response2 = Http::withToken(config("openai.api_key"))
             ->post("https://api.groq.com/openai/v1/chat/completions", [
@@ -105,8 +105,6 @@ PROMPT;
             ]);
 
         $object = $response2->object();
-
-        Log::info("response",["value"=>$object]);
 
         return json_decode($object->choices[0]->message->content);
 
