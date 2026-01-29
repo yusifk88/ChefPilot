@@ -63,7 +63,6 @@ class MakeRecipeJob implements ShouldQueue
                 "instructions" => implode(",", $recipe->instructions),
                 "ulid" => Str::ulid(),
                 "photo_id" => $defaultPhoto?->id,
-
             ]);
 
 

@@ -4,6 +4,7 @@ namespace app\Services;
 
 use App\Models\UserItem;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class AI
 {
@@ -103,7 +104,11 @@ PROMPT;
 
             ]);
 
-        return json_decode($response2->object()->choices[0]->message->content);
+        $object = $response2->object();
+
+        Log::info("response",["value"=>$object]);
+
+        return json_decode($object->choices[0]->message->content);
 
     }
 
