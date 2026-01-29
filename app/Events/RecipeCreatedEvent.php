@@ -36,7 +36,13 @@ class RecipeCreatedEvent implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel(name: "recipes-created_" . $this->user->id),
+            new PrivateChannel(name: "recipeEvent_" . $this->user->id),
         ];
+    }
+
+    public function broadcastAs(): string
+    {
+        return 'recipe-created';
+
     }
 }
