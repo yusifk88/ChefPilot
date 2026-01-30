@@ -6,6 +6,7 @@ use App\Models\Photo;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Notifications\RecipeCreated;
+use app\Services\AI;
 use app\Services\ScaleDrone;
 use app\Services\Utility;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -48,31 +49,34 @@ class MakeImage implements ShouldQueue
 
         } else {
 
-            $prompt = Utility::makeImagePrompt($this->recipe->description);
+//            $prompt = Utility::makeImagePrompt($this->recipe->description);
+//
+//            $response = Http::withHeaders([
+//                "content-type" => "application/json",
+//                "Ocp-Apim-Subscription-Key" => config("pixazo.api_key")
+//            ])->post(config("pixazo.api_url"), [
+//                "prompt" => $prompt,
+//                "num_steps" => 8,
+//                "seed" => 60,
+//                "height" => 512,
+//                "width" => 512,
+//            ]);
+//
+//
+//            if ($response->successful()) {
+//
+//                $newPhoto = Photo::create([
+//                    "name" => $trimmedName,
+//                    "url" => $response->object()->output
+//                ]);
+//
+//                $this->recipe->update(["photo_id" => $newPhoto->id]);
+//
+//            }
 
-            $response = Http::withHeaders([
-                "content-type" => "application/json",
-                "Ocp-Apim-Subscription-Key" => config("pixazo.api_key")
-            ])->post(config("pixazo.api_url"), [
-                "prompt" => $prompt,
-                "num_steps" => 8,
-                "seed" => 60,
-                "height" => 512,
-                "width" => 512,
-            ]);
 
-
-            if ($response->successful()) {
-
-                $newPhoto = Photo::create([
-                    "name" => $trimmedName,
-                    "url" => $response->object()->output
-                ]);
-
-                $this->recipe->update(["photo_id" => $newPhoto->id]);
-
-            }
-
+            $newPhoto = AI::makeImageWithGermini($this->recipe->description,$this->recipe->name);
+            $this->recipe->update(["photo_id" => $newPhoto->id]);
 
             $key = "foodRecipesTodayKey_".$this->recipe->user_id;
             Cache::forget($key);

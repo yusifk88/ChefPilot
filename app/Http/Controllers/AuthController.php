@@ -309,22 +309,6 @@ class AuthController extends Controller
     }
 
 
-    /**
-     * @throws AblyException
-     */
-    public function ablyToken()
-    {
-        $ably = new AblyRest(config('broadcasting.connections.ably.key'));
-
-        $tokenRequest = $ably->auth->createTokenRequest([
-            'capability' => [
-                'private:*' => ['subscribe'],
-                '*' => ['subscribe']
-            ]
-        ]);
-
-        return response()->json($tokenRequest);
-    }
 
 
 }

@@ -2,9 +2,12 @@
 
 namespace app\Services;
 
+use App\Models\Photo;
+use App\Models\User;
 use App\Models\UserItem;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class AI
 {
@@ -80,7 +83,7 @@ Each recipe object MUST strictly follow this schema
 If no recipes can be made, return an empty JSON array [].
 PROMPT;
 
-    public static function MakeRecipe(int $userID) :array
+    public static function MakeRecipe(int $userID): array
     {
         $food = UserItem::where('user_id', $userID)->select("name", "category")->get();
 
@@ -108,6 +111,63 @@ PROMPT;
         $object = $response->object();
 
         return json_decode($object->choices[0]->message->content);
+
+    }
+
+
+    public static function makeImageWithGermini(string $description,string $name)
+    {
+        $api_key = config("germini.api_key");
+        $apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=" . $api_key;
+
+        $prompt = Utility::makeImagePrompt($description);
+
+        $data = [
+            "contents" => [
+                [
+                    "parts" => [
+                        ["text" => $prompt]
+                    ]
+                ]
+            ],
+            "generationConfig" => [
+                "responseModalities" => ["IMAGE"],
+                "imageConfig" => [
+                    "aspectRatio" => "16:9"
+                ]
+            ]
+        ];
+
+        $response = Http::post($apiUrl, $data);
+
+
+       $res=  $response->object();
+
+
+        if (isset($res->candidates[0]->content->parts[0]->inlineData))
+        {
+
+            $imageData= $res->candidates[0]->content->parts[0]->inlineData->data;
+
+            $filename = "chefpilot/recipes/" . Str::uuid() . ".png";
+
+            Storage::disk('spaces')->put(
+                $filename,
+                base64_decode($imageData),
+                'public'
+            );
+
+            $url= Storage::disk('spaces')->url($filename);
+
+            return Photo::create([
+                "url" => $url,
+                "name"=>str_replace(" ","",$name),
+            ]);
+
+        }
+
+
+        return Photo::where("name","default")->first();
 
     }
 
