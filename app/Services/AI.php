@@ -151,7 +151,7 @@ PROMPT;
 
             $filename = "chefpilot/recipes/" . Str::uuid() . ".webp";
 
-            $base64ImageData = base64_encode($imageData);
+            $base64ImageData = base64_decode($imageData);
             $source = imagecreatefromstring($base64ImageData);
 
             $newWidth = 512;
