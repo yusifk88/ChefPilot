@@ -153,6 +153,7 @@ PROMPT;
 
             $base64ImageData = base64_decode($imageData);
             $source = imagecreatefromstring($base64ImageData);
+            ob_start();
 
             $newWidth = 512;
             $newHeight = 512;
@@ -162,7 +163,6 @@ PROMPT;
 
             imagewebp($thumb, 'small_image.webp', 90);
 
-            ob_start();
 
             $compressedData = ob_get_clean();
 
