@@ -222,7 +222,7 @@ class AuthController extends Controller
             "bio" => $request->bio
         ]);
 
-        return ResponseService::SuccessResponse([], "User updated successfully");
+        return ResponseService::SuccessResponse($user, "User updated successfully");
 
     }
 
@@ -304,7 +304,7 @@ class AuthController extends Controller
 
         $user->update(["image_url" => $url]);
 
-        return ResponseService::SuccessResponse(["user" => $user], "User avatar updated successfully");
+        return ResponseService::SuccessResponse($user, "User avatar updated successfully");
 
     }
 
