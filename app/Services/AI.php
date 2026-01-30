@@ -149,11 +149,29 @@ PROMPT;
 
             $imageData= $res->candidates[0]->content->parts[0]->inlineData->data;
 
-            $filename = "chefpilot/recipes/" . Str::uuid() . ".png";
+            $filename = "chefpilot/recipes/" . Str::uuid() . ".webp";
+
+            $base64ImageData = base64_encode($imageData);
+            $source = imagecreatefromstring($base64ImageData);
+
+            $newWidth = 512;
+            $newHeight = 512;
+            $thumb = imagecreatetruecolor($newWidth, $newHeight);
+
+            imagecopyresampled($thumb, $source, 0, 0, 0, 0, $newWidth, $newHeight, imagesx($source), imagesy($source));
+
+            imagewebp($thumb, 'small_image.webp', 90);
+
+            $compressedData = ob_get_clean();
+
+            // Clean up
+            imagedestroy($source);
+            imagedestroy($thumb);
+
 
             Storage::disk('spaces')->put(
                 $filename,
-                base64_decode($imageData),
+                $compressedData,
                 'public'
             );
 
