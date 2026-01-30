@@ -162,6 +162,8 @@ PROMPT;
 
             imagewebp($thumb, 'small_image.webp', 90);
 
+            ob_start();
+
             $compressedData = ob_get_clean();
 
             // Clean up
