@@ -147,9 +147,7 @@ PROMPT;
         if (isset($res->candidates[0]->content->parts[0]->inlineData))
         {
 
-            $imageData= $res->candidates[0]->content->parts[0]->inlineData->data;
-
-            $base64 = preg_replace('#^data:image/\w+;base64,#i', '', $imageData);
+            $base64= $res->candidates[0]->content->parts[0]->inlineData->data;
 
             $base64ImageData = base64_decode($base64);
 
@@ -162,6 +160,7 @@ PROMPT;
             $tmpPath = sys_get_temp_dir() . '/' . uniqid('img_', true) . '.webp';
 
             imagewebp($source, $tmpPath, 90);
+
             imagedestroy($source);
 
 
@@ -169,13 +168,10 @@ PROMPT;
 
             ob_start();
 
-            $newWidth = 512;
-            $newHeight = 512;
-
             Storage::disk('spaces')->put(
                 $filename,
                 fopen($tmpPath, 'r'),
-                'public'
+                ['ContentType' => 'image/webp']
             );
 
             $url= Storage::disk('spaces')->url($filename);
