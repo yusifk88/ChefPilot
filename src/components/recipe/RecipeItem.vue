@@ -11,14 +11,13 @@
     <f7-card-content style="padding-top: 0!important; padding-bottom: 0!important; margin-bottom: 0!important;">
 
       <f7-link :href="`/recipe/${item.id}`" @click="setItem">
-<div class="image-wrapper">
   <img
+
       fetchpriority="high"
       loading="lazy"
-      style="border-radius: 15px;"
+      style="border-radius: 15px; width: 100%;"
       :src="item.photos && item.photos.length>0 ? item.photos[0].url : PHOTO_PLACEHOLDER"
   />
-</div>
 
 
       </f7-link>
@@ -149,6 +148,7 @@ export default {
 .image-wrap img {
   filter: blur(20px);
   transition: filter 0.4s ease;
+
 }
 
 .image-wrap img.loaded {

@@ -4,7 +4,7 @@
     <div class="grid grid-cols-2 grid-gap">
       <div class="margin-top">Dishes of the day</div>
       <div>
-        <f7-button :disabled="loadingRecipes" @click="requestRecipes" fill>Get More (+{{recipeLimit}})</f7-button>
+        <f7-button :disabled="loadingRecipes" @click="requestRecipes" fill>Get More <f7-badge color="green">+{{recipeLimit}}</f7-badge></f7-button>
       </div>
     </div>
 

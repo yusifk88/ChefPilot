@@ -109,6 +109,7 @@ import FlagIcon from 'vue3-flag-icons'
 import {FileCompressor} from "@capgo/capacitor-file-compressor";
 import {Camera} from '@capacitor/camera';
 import { Filesystem } from '@capacitor/filesystem';
+import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 
 export default {
   name: "profile",
@@ -154,7 +155,16 @@ export default {
       axios.post("/change-avatar", {
         avatar:base64Data
       })
-          .then(res => {
+          .then(async res => {
+
+            let currentUser = await CapacitorPersistentAccount.readAccount();
+
+            await  CapacitorPersistentAccount.saveAccount({data:null});
+
+            await  CapacitorPersistentAccount.saveAccount({data:{user:res.data.data,token:currentUser.data.token}});
+
+            store.dispatch("setUser",res.data.data);
+
             this.loadingAvatar=false;
             store.dispatch("initUser");
 
@@ -188,7 +198,13 @@ export default {
 
       this.loading = true;
       axios.post("/update-user", payload)
-          .then(res => {
+          .then(async res => {
+
+            let currentUser = await CapacitorPersistentAccount.readAccount();
+
+          await  CapacitorPersistentAccount.saveAccount({data:null});
+
+          await  CapacitorPersistentAccount.saveAccount({data:{user:res.data.data,token:currentUser.data.token}});
 
             this.loading = false;
             const successToast = f7.toast.create({

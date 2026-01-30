@@ -2,12 +2,8 @@ import axios from "axios";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {Capacitor} from "@capacitor/core";
 import store from "@/js/store";
-import {f7, useStore} from "framework7-vue";
+import {f7} from "framework7-vue";
 import {BASE_URL} from "@/js/utility";
-import Echo from 'laravel-echo';
-import Pusher from 'pusher-js';
-import * as Ably from 'ably';
-
 
 let TOKEN = null;
 
@@ -28,23 +24,7 @@ if (Capacitor.getPlatform().toLowerCase() === 'web') {
 }
 
 
-window.ablyClient = new Ably.Realtime({
 
-    authCallback: async (_params, callback) => {
-        try {
-            const res = await fetch(`${BASE_URL}/api/ably/token`, {
-                headers: {
-                    Authorization: `Bearer ${TOKEN}`,
-                },
-            });
-
-            callback(null, await res.json());
-
-        } catch (err) {
-            callback(err, null);
-        }
-    },
-});
 
 
 
