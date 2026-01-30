@@ -133,7 +133,7 @@ PROMPT;
             "generationConfig" => [
                 "responseModalities" => ["IMAGE"],
                 "imageConfig" => [
-                    "aspectRatio" => "4:3"
+                    "aspectRatio" => "1:1"
                 ]
             ]
         ];
