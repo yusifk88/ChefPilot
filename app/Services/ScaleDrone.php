@@ -29,7 +29,6 @@ class ScaleDrone
             "Content-Type" => "application/json"
         ])->post($url, $recipe->toArray());
 
-        Log::info("scaledrone response", ["response" => $response->body()]);
         return $response->status();
     }
 
