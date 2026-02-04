@@ -1,9 +1,8 @@
 <?php
 
-use App\Events\RecipeCreatedEvent;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemsController;
-use App\Models\Recipe;
+use App\Http\Controllers\Social\PostController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,7 +26,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/user', [AuthController::class, "user"]);
     Route::post('/set-user-theme', [AuthController::class, "setUserTheme"]);
     Route::post("update-user", [AuthController::class, "updateUser"]);
-    Route::post("change-avatar",[AuthController::class, "changeAvatar"]);
+    Route::post("change-avatar", [AuthController::class, "changeAvatar"]);
     Route::get('/ably/token', [AuthController::class, 'ablyToken']);
 
     /**
@@ -42,8 +41,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     /**
      * recipe routes
      */
-    Route::get("/gen-recipes",[ItemsController::class, "getRecipes"]);
-    Route::get("/gen-recipes-count",[ItemsController::class, "getDailyRequestCount"]);
+    Route::get("/gen-recipes", [ItemsController::class, "getRecipes"]);
+    Route::get("/gen-recipes-count", [ItemsController::class, "getDailyRequestCount"]);
 
     /**
      * recipes routes
@@ -59,5 +58,19 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
      */
     Route::get("/bookmarks", [ItemsController::class, "bookmarks"]);
     Route::get("/recent-bookmarks", [ItemsController::class, "recentBookmarks"]);
+
+
+    /**
+     * Social routes
+     */
+
+    Route::group(["prefix" => "social"], function () {
+
+        Route::get("/feed", [PostController::class, "generalFeed"]);
+        Route::get("/discover", [PostController::class, "discover"]);
+        Route::get("/following", [PostController::class, "following"]);
+        Route::get("/recommended", [PostController::class, "recommended"]);
+
+    });
 
 });
