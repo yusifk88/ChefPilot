@@ -3,6 +3,8 @@
 namespace app\Services;
 
 use App\Models\Post;
+use App\Models\PostTag;
+use App\Models\Tag;
 use Illuminate\Contracts\Pagination\CursorPaginator;
 use Illuminate\Support\Facades\DB;
 
@@ -85,6 +87,38 @@ class SocialFeed
             ->orderByDesc('created_at')
             ->cursorPaginate(20);
 
+
+    }
+
+
+    public static function AttacheTags(Post $post,$tags)
+    {
+        if ($tags){
+
+            foreach ($tags as $tag){
+                $existingTag = Tag::query()->where("name", $tag)->first();
+
+                if ($existingTag){
+
+                    PostTag::query()->create([
+                        'post_id' => $post->id,
+                        'tag_id' => $existingTag->id
+                    ]);
+
+                } else{
+
+                    $newTag = Tag::query()->create([
+                        "name" => $tag,
+                    ]);
+
+                    PostTag::create([
+                        'post_id' => $post->id,
+                        'tag_id' => $newTag->id
+                    ]);
+
+                }
+            }
+        }
 
     }
 

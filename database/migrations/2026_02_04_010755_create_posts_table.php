@@ -12,10 +12,13 @@ return new class extends Migration {
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->index();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger("recipe_id");
             $table->text("caption")->nullable();
             $table->string("visibility")->default("public")->index(); //public,private,followers
             $table->ulid();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
