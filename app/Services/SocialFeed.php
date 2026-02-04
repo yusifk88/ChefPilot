@@ -19,6 +19,7 @@ class SocialFeed
     public static function Discover(): CursorPaginator
     {
         return Post::query()
+            ->with(["recipe.photos","user"])
             ->withCount([
                 'interactions as score' => function ($q) {
                     $q->where('created_at', '>=', now()->subDays(2));
@@ -42,7 +43,7 @@ class SocialFeed
         $user = request()->user();
 
         $topTags = DB::table('interactions')
-            ->join('post_tag', 'interactions.post_id', '=', 'post_tag.post_id')
+            ->join('post_tags', 'interactions.post_id', '=', 'post_tags.post_id')
             ->where('interactions.user_id', $user->id)
             ->select('tag_id', DB::raw('count(*) as score'))
             ->groupBy('tag_id')
@@ -55,6 +56,7 @@ class SocialFeed
             ->pluck('post_id');
 
         return Post::query()
+            ->with(["recipe.photos","user"])
             ->whereHas('tags', fn($q) => $q->whereIn('tags.id', $topTags))
             ->whereNotIn('id', $seenPostIds)
             ->orderByDesc('created_at')
@@ -73,6 +75,7 @@ class SocialFeed
         $user = request()->user();
 
         return Post::query()
+            ->with(["recipe.photos","user"])
             ->whereIn('user_id', function ($q) use ($user) {
                 $q->select('following_id')
                     ->from('follows')
