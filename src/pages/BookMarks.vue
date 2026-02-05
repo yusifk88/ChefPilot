@@ -49,6 +49,7 @@ import EmptyState from "@/components/empty/EmptyState.vue";
 import {useStore} from "framework7-vue";
 import store from "@/js/store";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
+import {AUTH_HEADERS} from "@/js/utility";
 
 export default {
   name: "BookMarks",
@@ -73,11 +74,7 @@ export default {
 
       this.loading = true;
 
-      const account = await CapacitorPersistentAccount.readAccount()
-
-      const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
-
-      axios.get("/bookmarks",requestHeaders)
+      axios.get("/bookmarks",AUTH_HEADERS)
           .then(res => {
             this.loading = false;
             this.items = res.data.data

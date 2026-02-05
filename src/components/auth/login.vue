@@ -5,12 +5,8 @@
     <img width="80%" class="margin fade-in-up" src="/img/chef_cartoon.webp">
 
     <f7-block class="margin">
-      <p class="fade-in-up" style="font-size: 45px; font-weight: bolder; padding: 0; margin: 0">Plan your meals with
-        AI.</p>
-      <p class="fade-in-up">Let AI plan your next meal with your preferences and the food in your home,
-        discover new recipes, learn how to make them and share your experience with others</p>
-
-      {{ deviceInfo }}
+      <p :class="{'black-title':platformOS==='ios'}" class="fade-in-up" style="font-size: 35px; font-weight: bolder; padding: 0; margin: 0">Stop asking "What's for dinner?" Cook what you have.</p>
+      <p :class="{'black-title':platformOS==='ios'}" class="fade-in-up">Chefpilot intelligently catalogs your kitchen inventory and serves up personalized, chef-quality recipes based on exactly what's in your pantry. No more waste, no more grocery stress.</p>
 
 
       <f7-button v-if="Capacitor().getPlatform().toLowerCase()==='web'" @click="testLogin" class="fade-in-up" large fill
@@ -60,10 +56,14 @@ import {SocialLogin} from "@capgo/capacitor-social-login";
 import {CapacitorPersistentAccount} from '@capgo/capacitor-persistent-account';
 import {Capacitor} from "@capacitor/core";
 import {Device} from "@capacitor/device";
+import CapacitorApp from "@/js/capacitor-app";
 
 export default {
   name: "login",
   computed: {
+    CapacitorApp() {
+      return CapacitorApp
+    },
     useStore() {
       return useStore
     },
@@ -296,6 +296,10 @@ export default {
 
 <style scoped>
 
+.black-title{
+  color: #000000 !important;
+}
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -311,6 +315,8 @@ export default {
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
+
+
 .bg-green{
   background-color: #00ff9f;
 }

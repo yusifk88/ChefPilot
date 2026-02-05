@@ -6,6 +6,9 @@
   "webDir": "www",
   "iosClientId": "",
   "clientId": "",
+  "ios": {
+    "packageManager": "cocoapods"
+  },
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0,

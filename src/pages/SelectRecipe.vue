@@ -47,8 +47,7 @@
           PREP:{{ item?.estimatedTimeMinutes }}Min <difficulty-chip :label="item?.difficulty"></difficulty-chip>
         </p>
 
-        <f7-icon size="20" f7="arrow_2_squarepath" style="margin-left: auto !important;">
-        </f7-icon>
+        <post-button-component :item="item"></post-button-component>
 
         <share-button :item="item"></share-button>
 
@@ -98,6 +97,7 @@ import {f7, useStore} from "framework7-vue";
 import DifficultyChip from "@/components/recipe/difficultyChip.vue";
 import ShareButton from "@/components/recipe/ShareButton.vue";
 import {PHOTO_PLACEHOLDER} from "@/js/utility";
+import PostButtonComponent from "@/components/recipe/PostButtonComponent.vue";
 
 export default {
   props: {
@@ -105,7 +105,7 @@ export default {
     f7router: Object,
   },
   name: "SelectRecipe",
-  components: {ShareButton, DifficultyChip},
+  components: {PostButtonComponent, ShareButton, DifficultyChip},
 
   data() {
     return {

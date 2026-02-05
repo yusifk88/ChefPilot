@@ -63,6 +63,7 @@ import {useObservable} from "@vueuse/rxjs";
 import {db} from "@/js/db";
 import RecipeLoading from "@/components/recipe/RecipeLoading.vue";
 import axios from "axios";
+import {AUTH_HEADERS} from "@/js/utility";
 
 export default {
   name: "Recipes",
@@ -106,10 +107,8 @@ export default {
 
    async getLimit() {
 
-      const account = await CapacitorPersistentAccount.readAccount()
-      const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
 
-      axios.get("/gen-recipes-count",requestHeaders)
+      axios.get("/gen-recipes-count",AUTH_HEADERS)
           .then(res => {
             this.recipeLimit = res.data.data.count;
           })
@@ -132,8 +131,6 @@ export default {
 
     async getItems() {
 
-      const account = await CapacitorPersistentAccount.readAccount()
-
       const count = await db.recipes.count();
 
       this.loading = count === 0;
@@ -145,9 +142,7 @@ export default {
       }
 
 
-      const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
-
-      axios.get("/recipes", requestHeaders)
+      axios.get("/recipes", AUTH_HEADERS)
           .then(res => {
             const items = res.data.data;
 
@@ -164,6 +159,7 @@ export default {
     }
   },
   async mounted() {
+
     this.getLimit();
     this.getItems();
 
@@ -171,17 +167,18 @@ export default {
 
     const account = await CapacitorPersistentAccount.readAccount()
 
-    const room = drone.subscribe('RecipeCreated_' + account.data.user.id);
+    if (account.data && account.data.user) {
+      const room = drone.subscribe('RecipeCreated_' + account.data.user.id);
 
-    room.on('message', message => {
+      room.on('message', message => {
 
-      store.dispatch("stopLoadingRecipe");
+        store.dispatch("stopLoadingRecipe");
 
-      db.recipes.bulkPut([message.data])
+        db.recipes.bulkPut([message.data])
 
-      this.getLimit();
-    });
-
+        this.getLimit();
+      });
+    }
 
   }
 }

@@ -13,6 +13,7 @@
 import {useStore} from "framework7-vue";
 import store from "@/js/store";
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
+import {AUTH_HEADERS} from "@/js/utility";
 
 export default {
   name: "NotificationBellButton",
@@ -31,23 +32,14 @@ export default {
   methods: {
     async getCount() {
 
-      const account = await CapacitorPersistentAccount.readAccount()
-
-      const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
-
-
-      axios.get("/notifications/count",requestHeaders)
+      axios.get("/notifications/count",AUTH_HEADERS)
           .then(res => {
             store.dispatch("setUnreadNotificationCount", res.data.data.unread)
           })
     },
    async MarkAsRead() {
 
-      const account = await CapacitorPersistentAccount.readAccount()
-
-      const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
-
-      axios.post("/notifications/mark-as-read",requestHeaders)
+      axios.post("/notifications/mark-as-read",AUTH_HEADERS)
           .then(res => {
 
             store.dispatch("setUnreadNotificationCount", 0)
@@ -61,7 +53,7 @@ export default {
     CapacitorPersistentAccount.readAccount()
         .then(account => {
           if (account.data) {
-            axios.get("/notifications/count", {headers: {Authorization: "Bearer " + account.data.token}})
+            axios.get("/notifications/count", AUTH_HEADERS)
                 .then(res => {
                   store.dispatch("setUnreadNotificationCount", res.data.data.unread)
                 })

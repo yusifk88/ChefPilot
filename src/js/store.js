@@ -1,10 +1,10 @@
 import {createStore} from 'framework7/lite';
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {Capacitor} from "@capacitor/core";
-
 import OneSignal from "onesignal-cordova-plugin";
 import axios from "axios";
 import posthog from "posthog-js";
+import {AUTH_HEADERS} from "@/js/utility";
 
 
 const store = createStore({
@@ -122,7 +122,7 @@ const store = createStore({
                 CapacitorPersistentAccount.readAccount()
                     .then(account => {
 
-                        axios.get("/user", {headers: {Authorization: "Bearer " + localStorage.getItem("token")}})
+                        axios.get("/user", AUTH_HEADERS)
                             .then(res => {
                                 state.user = res.data.data.user;
                                 state.loginState = false

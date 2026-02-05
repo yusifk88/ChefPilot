@@ -69,10 +69,10 @@ import ListItem from "@/components/recipe/ListItem.vue";
 import {useStore} from "framework7-vue";
 import store from "@/js/store";
 import EmptyState from "@/components/empty/EmptyState.vue";
-import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {useObservable} from "@vueuse/rxjs";
 import {liveQuery} from "dexie";
 import {db} from "@/js/db";
+import {AUTH_HEADERS} from "@/js/utility";
 
 export default {
   name: "recentBookmarks",
@@ -100,11 +100,7 @@ export default {
 
       this.loading = db.recentBookmarks.count() > 0;
 
-      const account = await CapacitorPersistentAccount.readAccount()
-
-      const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
-
-      axios.get("/recent-bookmarks", requestHeaders)
+      axios.get("/recent-bookmarks", AUTH_HEADERS)
           .then(res => {
 
             const items = res.data.data

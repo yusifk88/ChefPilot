@@ -84,10 +84,10 @@ import Additem from "@/components/items/additem.vue";
 import UserItems from "@/components/items/UserItems.vue";
 import {useStore} from "framework7-vue";
 import store from "@/js/store";
-import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {useObservable} from "@vueuse/rxjs";
 import {liveQuery} from "dexie";
 import {db} from "@/js/db";
+import {AUTH_HEADERS} from "@/js/utility";
 
 export default {
   components: {UserItems, Additem},
@@ -116,13 +116,9 @@ export default {
 
     async getItems() {
 
-      const account = await CapacitorPersistentAccount.readAccount()
-
-      const requestHeaders = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: null}};
-
       this.loading = db.userItems.count()>0;
 
-      axios.get("/user-items",requestHeaders)
+      axios.get("/user-items",AUTH_HEADERS)
           .then(res => {
            const items = res.data.data;
 

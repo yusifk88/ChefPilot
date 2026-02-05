@@ -34,7 +34,7 @@
 
       </f7-list>
       <f7-list
-          v-else-if="items.length>0"
+          v-else-if="items && items.length>0"
           strong
           inset
           dividers-ios
@@ -135,7 +135,7 @@ export default {
 
     selectedItem() {
 
-      return this.filteredItems.filter(item => item.checked);
+      return this.filteredItems ? this.filteredItems.filter(item => item.checked) : [];
 
     },
 

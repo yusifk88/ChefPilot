@@ -1,20 +1,26 @@
 import relativeTime from 'dayjs/plugin/relativeTime'
 import dayjs from "dayjs";
+import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 
 const timeFromNow = (dateTime) => {
     dayjs.extend(relativeTime);
 
     return dayjs().to(dayjs(dateTime));
+
 }
 
-const formatDateTIme = (dateTime)=>{
+const formatDateTIme = (dateTime) => {
     return dayjs(dateTime).format("MMM D, YYYY HH:mA")
 }
 
-const BASE_URL = "https://cpapi.flobaze.com";
+const BASE_URL = "https://app.chefpilot.live";
 const BASE_URLA = "http://localhost:8000";
 
-const PHOTO_PLACEHOLDER="https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.png";
+const PHOTO_PLACEHOLDER = "https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.png";
+
+const account = await CapacitorPersistentAccount.readAccount()
+
+const AUTH_HEADERS = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: "Bearer 6|dN9tADKHLWwge0lFPOFoT6J3YJTSPz1O1plmNhrzfbc7af43"}};
 
 
 
@@ -23,5 +29,6 @@ export {
     timeFromNow,
     formatDateTIme,
     BASE_URL,
-    PHOTO_PLACEHOLDER
+    PHOTO_PLACEHOLDER,
+    AUTH_HEADERS
 }
