@@ -5,11 +5,14 @@ namespace app\Services;
 use App\Models\Post;
 use App\Models\PostTag;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Contracts\Pagination\CursorPaginator;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
 class SocialFeed
 {
+
 
     /**
      * Help this user discover trending posts
@@ -20,6 +23,15 @@ class SocialFeed
     {
         $user = auth()->user();
 
+        return self::postQuery($user->id)
+            ->orderByDesc('score')
+            ->orderByDesc('created_at')
+            ->cursorPaginate(20);
+
+    }
+
+    private static function postQuery(User $user): Builder
+    {
         return Post::query()
             ->select("posts.*")
             ->selectRaw(
@@ -40,31 +52,26 @@ class SocialFeed
             SELECT 1 FROM interactions
             WHERE interactions.post_id = posts.id
               AND interactions.user_id = ?
-              AND interactions.type = "like"
+              AND interactions.type = ?
         ) AS has_liked',
-                [$user->id]
+                [$user->id, 'likes']
             )
             ->selectRaw(
                 'EXISTS (
             SELECT 1 FROM interactions
             WHERE interactions.post_id = posts.id
               AND interactions.user_id = ?
-              AND interactions.type = "comment"
+              AND interactions.type = ?
         ) AS has_commented',
-                [$user->id]
+                [$user->id, 'comments']
             )
             ->with(["recipe.photos", "user"])
             ->withCount([
                 'interactions as score' => function ($q) {
                     $q->where('created_at', '>=', now()->subDays(2));
                 }
-            ])
-            ->orderByDesc('score')
-            ->orderByDesc('created_at')
-            ->cursorPaginate(20);
-
+            ]);
     }
-
 
     /**
      * recommend post for this user
@@ -89,23 +96,11 @@ class SocialFeed
             ->where('user_id', $user->id)
             ->pluck('post_id');
 
-        return Post::query()
-            ->select("posts.*")
-            ->selectRaw(
-                'EXISTS (
-            SELECT 1 FROM follows
-            WHERE follows.follower_id = ?
-              AND follows.following_id = posts.user_id
-        ) AS is_following_author',
-                [$user->id]
-            )
-            ->with(["recipe.photos", "user"])
+        return self::postQuery($user->id)
             ->whereHas('tags', fn($q) => $q->whereIn('tags.id', $topTags))
             ->whereNotIn('id', $seenPostIds)
             ->orderByDesc('created_at')
             ->cursorPaginate(20);
-
-
     }
 
 
@@ -117,27 +112,7 @@ class SocialFeed
     {
         $user = request()->user();
 
-        return Post::query()
-            ->select("posts.*")
-            ->selectRaw(
-                'EXISTS (
-            SELECT 1 FROM follows
-            WHERE follows.follower_id = ?
-              AND follows.following_id = posts.user_id
-        ) AS is_following_author',
-                [$user->id]
-            )
-            ->with(["recipe.photos", "user"])
-            ->whereIn('user_id', function ($q) use ($user) {
-                $q->select('following_id')
-                    ->from('follows')
-                    ->where('follower_id', $user->id);
-            })
-            ->withCount([
-                'interactions as interaction_score' => function ($q) use ($user) {
-                    $q->where('user_id', $user->id);
-                }
-            ])
+        return self::postQuery($user->id)
             ->orderByDesc('interaction_score')
             ->orderByDesc('created_at')
             ->cursorPaginate(20);
