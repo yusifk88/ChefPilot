@@ -17,6 +17,10 @@ class Post extends Model
     protected $table = "posts";
     protected $fillable = ["recipe_id", "user_id", "caption", "visibility", "ulid"];
 
+    protected $casts = [
+        'is_following_author' => 'boolean',
+    ];
+
     public function recipe()
     {
         return $this->belongsTo(Recipe::class, "recipe_id", "id");

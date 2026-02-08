@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
+use App\Models\Follow;
 use App\Models\Post;
 use App\Services\ResponseService;
 use app\Services\SocialFeed;
@@ -88,6 +89,32 @@ class PostController extends Controller
 
         return ResponseService::SuccessResponse(data: $post, message: "Post created successfully");
 
+    }
+
+    public function follow(Request $request)
+    {
+        $request->validate([
+            "user_id" => "required|numeric|exists:users,id",
+        ]);
+
+        if ($request->user()->id === $request->integer("user_id")) {
+
+            return ResponseService::FailedResponse("You cannot follow yourself");
+
+        }
+
+        $followed = null;
+
+        if (!Follow::where("follower_id", $request->user()->id)->where("following_id", $request->user_id)->exists()) {
+
+            $followed=  Follow::create([
+                "follower_id" => $request->user()->id,
+                "following_id" => $request->user_id
+            ]);
+        }
+
+
+        return ResponseService::SuccessResponse(data: $followed, message: "Followed");
     }
 
 

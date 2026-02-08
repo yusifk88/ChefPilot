@@ -71,6 +71,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get("/following", [PostController::class, "following"]);
         Route::get("/recommended", [PostController::class, "recommended"]);
 
+        Route::post("/follow", [PostController::class, "follow"]);
+
     });
 
 });

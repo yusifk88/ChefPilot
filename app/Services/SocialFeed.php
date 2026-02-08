@@ -18,8 +18,42 @@ class SocialFeed
 
     public static function Discover(): CursorPaginator
     {
+        $user = auth()->user();
+
         return Post::query()
-            ->with(["recipe.photos","user"])
+            ->select("posts.*")
+            ->selectRaw(
+                'EXISTS (
+            SELECT 1 FROM follows
+            WHERE follows.follower_id = ?
+              AND follows.following_id = posts.user_id
+        ) AS is_following_author',
+                [$user->id]
+            )
+            ->withCount([
+                'interactions as likes_count' => fn($q) => $q->where('type', 'like'),
+
+                'interactions as comments_count' => fn($q) => $q->where('type', 'comment')
+            ])
+            ->selectRaw(
+                'EXISTS (
+            SELECT 1 FROM interactions
+            WHERE interactions.post_id = posts.id
+              AND interactions.user_id = ?
+              AND interactions.type = "like"
+        ) AS has_liked',
+                [$user->id]
+            )
+            ->selectRaw(
+                'EXISTS (
+            SELECT 1 FROM interactions
+            WHERE interactions.post_id = posts.id
+              AND interactions.user_id = ?
+              AND interactions.type = "comment"
+        ) AS has_commented',
+                [$user->id]
+            )
+            ->with(["recipe.photos", "user"])
             ->withCount([
                 'interactions as score' => function ($q) {
                     $q->where('created_at', '>=', now()->subDays(2));
@@ -56,7 +90,16 @@ class SocialFeed
             ->pluck('post_id');
 
         return Post::query()
-            ->with(["recipe.photos","user"])
+            ->select("posts.*")
+            ->selectRaw(
+                'EXISTS (
+            SELECT 1 FROM follows
+            WHERE follows.follower_id = ?
+              AND follows.following_id = posts.user_id
+        ) AS is_following_author',
+                [$user->id]
+            )
+            ->with(["recipe.photos", "user"])
             ->whereHas('tags', fn($q) => $q->whereIn('tags.id', $topTags))
             ->whereNotIn('id', $seenPostIds)
             ->orderByDesc('created_at')
@@ -75,7 +118,16 @@ class SocialFeed
         $user = request()->user();
 
         return Post::query()
-            ->with(["recipe.photos","user"])
+            ->select("posts.*")
+            ->selectRaw(
+                'EXISTS (
+            SELECT 1 FROM follows
+            WHERE follows.follower_id = ?
+              AND follows.following_id = posts.user_id
+        ) AS is_following_author',
+                [$user->id]
+            )
+            ->with(["recipe.photos", "user"])
             ->whereIn('user_id', function ($q) use ($user) {
                 $q->select('following_id')
                     ->from('follows')
@@ -94,21 +146,21 @@ class SocialFeed
     }
 
 
-    public static function AttacheTags(Post $post,$tags)
+    public static function AttacheTags(Post $post, $tags)
     {
-        if ($tags){
+        if ($tags) {
 
-            foreach ($tags as $tag){
+            foreach ($tags as $tag) {
                 $existingTag = Tag::query()->where("name", $tag)->first();
 
-                if ($existingTag){
+                if ($existingTag) {
 
                     PostTag::query()->create([
                         'post_id' => $post->id,
                         'tag_id' => $existingTag->id
                     ]);
 
-                } else{
+                } else {
 
                     $newTag = Tag::query()->create([
                         "name" => $tag,
