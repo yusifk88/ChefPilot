@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Social;
 use App\Http\Controllers\Controller;
 use App\Models\Follow;
 use App\Models\Post;
+use App\Models\User;
+use App\Notifications\NewFollowerNotification;
 use App\Services\ResponseService;
 use app\Services\SocialFeed;
 use Illuminate\Http\JsonResponse;
@@ -107,10 +109,23 @@ class PostController extends Controller
 
         if (!Follow::where("follower_id", $request->user()->id)->where("following_id", $request->user_id)->exists()) {
 
-            $followed=  Follow::create([
+            $followed = Follow::create([
                 "follower_id" => $request->user()->id,
                 "following_id" => $request->user_id
             ]);
+
+            \Illuminate\Support\defer(function () use ($request) {
+
+                $followedUser = User::find($request->user_id);
+
+                if ($followedUser) {
+
+                $followedUser->notify(new NewFollowerNotification($request->user()));
+
+                }
+
+            });
+
         }
 
 

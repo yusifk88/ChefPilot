@@ -37,10 +37,6 @@ class MakeRecipeJob implements ShouldQueue
     {
         $response = AI::MakeRecipe($this->userID);
 
-        Log::info("user ID",["value"=>$this->userID]);
-
-        Log::info("response from AI CLass",["items"=>$response]);
-
         $user = User::find($this->userID);
 
         $key = "foodRecipesTodayKey_".$user->id;
