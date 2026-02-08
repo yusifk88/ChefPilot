@@ -1,4 +1,4 @@
-package com.chefpilot.app;
+package live.chefpilot.app;
 
 import com.getcapacitor.BridgeActivity;
 

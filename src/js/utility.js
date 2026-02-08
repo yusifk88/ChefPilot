@@ -9,12 +9,27 @@ const timeFromNow = (dateTime) => {
 
 }
 
+const formatSocialNumber =(count)=>{
+    if (count<=0){
+        return " ";
+    }
+
+    const formatter = new Intl.NumberFormat('en', {
+        notation: 'compact',
+        compactDisplay: 'short',
+        maximumFractionDigits: 1,
+    });
+
+   return formatter.format(count)
+
+}
+
 const formatDateTIme = (dateTime) => {
     return dayjs(dateTime).format("MMM D, YYYY HH:mA")
 }
 
-const BASE_URL = "https://app.chefpilot.live";
-const BASE_URLA = "http://localhost:8000";
+const BASE_URLA = "https://app.chefpilot.live";
+const BASE_URL = "http://localhost:8000";
 
 const PHOTO_PLACEHOLDER = "https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.png";
 
@@ -28,6 +43,7 @@ const AUTH_HEADERS = account.data ? {headers: {Authorization: "Bearer " + accoun
 export {
     timeFromNow,
     formatDateTIme,
+    formatSocialNumber,
     BASE_URL,
     PHOTO_PLACEHOLDER,
     AUTH_HEADERS

@@ -31,7 +31,7 @@
               class="page-content"
               :tab-active="activetab==='for-you-tab'">
         <f7-block strong>
-          <for-you></for-you>
+          <for-you v-if="currentUser"></for-you>
         </f7-block>
       </f7-tab>
 
@@ -75,13 +75,16 @@
 <script>
 import EmptyState from "@/components/empty/EmptyState.vue";
 import ForYou from "@/components/social/ForYou.vue";
+import {useStore} from "framework7-vue";
+import store from "@/js/store";
 
 export default {
   name: "discover",
   components: {ForYou, EmptyState},
   data() {
     return {
-      activetab: "for-you-tab"
+      activetab: "for-you-tab",
+      currentUser:useStore(store,"getUser")
     }
   },
   methods:{

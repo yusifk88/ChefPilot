@@ -1,5 +1,5 @@
 {
-  "appId": "com.chefpilot.app",
+  "appId": "live.chefpilot.app",
   "appName": "ChefPilot",
   "bundledWebRuntime": false,
   "npmClient": "npm",
