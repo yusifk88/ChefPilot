@@ -113,7 +113,7 @@ class SocialFeed
         $user = request()->user();
 
         return self::postQuery($user)
-            ->orderByDesc('interaction_score')
+            ->orderByDesc('score')
             ->orderByDesc('created_at')
             ->cursorPaginate(20);
 
