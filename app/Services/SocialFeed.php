@@ -23,7 +23,7 @@ class SocialFeed
     {
         $user = auth()->user();
 
-        return self::postQuery($user->id)
+        return self::postQuery($user)
             ->orderByDesc('score')
             ->orderByDesc('created_at')
             ->cursorPaginate(20);
@@ -96,7 +96,7 @@ class SocialFeed
             ->where('user_id', $user->id)
             ->pluck('post_id');
 
-        return self::postQuery($user->id)
+        return self::postQuery($user)
             ->whereHas('tags', fn($q) => $q->whereIn('tags.id', $topTags))
             ->whereNotIn('id', $seenPostIds)
             ->orderByDesc('created_at')
@@ -112,7 +112,7 @@ class SocialFeed
     {
         $user = request()->user();
 
-        return self::postQuery($user->id)
+        return self::postQuery($user)
             ->orderByDesc('interaction_score')
             ->orderByDesc('created_at')
             ->cursorPaginate(20);
