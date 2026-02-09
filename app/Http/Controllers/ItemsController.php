@@ -11,7 +11,6 @@ use app\Services\Utility;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use function tests\data;
 use function view;
 
 class ItemsController extends Controller
@@ -65,7 +64,7 @@ class ItemsController extends Controller
         }
 
 
-        $key = "foodItemsCachekey_".$user->id;
+        $key = "foodItemsCachekey_" . $user->id;
         Cache::forget($key);
 
         $userItems = UserItem::with("item")->where("user_id", $user->id)->get();
@@ -78,7 +77,7 @@ class ItemsController extends Controller
     public function userItems()
     {
 
-        $key = "foodItemsCachekey_".auth()->id();
+        $key = "foodItemsCachekey_" . auth()->id();
 
         $userItems = Cache::remember($key, 60 * 60 * 24, function () {
 
@@ -94,7 +93,7 @@ class ItemsController extends Controller
     {
         $user = auth()->user();
 
-        $key = "foodItemsCachekey_".$user->id;
+        $key = "foodItemsCachekey_" . $user->id;
         Cache::forget($key);
 
         $item = UserItem::where("id", $id)->where("user_id", $user->id)->firstOrFail();
@@ -119,9 +118,9 @@ class ItemsController extends Controller
             $today = Carbon::now();
         }
 
-        $key = "foodRecipesTodayKey_".$user->id;
+        $key = "foodRecipesTodayKey_" . $user->id;
 
-        $recipes = collect(Cache::remember($key, 60 * 60 * 24, function () use ($user,$today) {
+        $recipes = collect(Cache::remember($key, 60 * 60 * 24, function () use ($user, $today) {
 
             return Recipe::with("photos")->where("user_id", $user->id)->whereDate("created_at", $today->toDateString())->get();
 
@@ -135,7 +134,7 @@ class ItemsController extends Controller
     {
 
         $user = auth()->user();
-        $key = "bookmarkedRecipesKey_".$user->id;
+        $key = "bookmarkedRecipesKey_" . $user->id;
 
         Cache::forget($key);
 
@@ -147,9 +146,9 @@ class ItemsController extends Controller
 
     public function recentBookmarks()
     {
-        $key = "bookmarkedRecipesKey_".auth()->id();
+        $key = "bookmarkedRecipesKey_" . auth()->id();
 
-        $bookmarks =  Cache::remember($key, 60 * 60 * 24, function () {
+        $bookmarks = Cache::remember($key, 60 * 60 * 24, function () {
             return Recipe::with("photos")->where("user_id", auth()->id())
                 ->where("bookmarked", true)
                 ->limit(5)
@@ -162,9 +161,9 @@ class ItemsController extends Controller
 
     public function bookmarks()
     {
-        $key = "bookmarkedRecipesKey_".auth()->id();
+        $key = "bookmarkedRecipesKey_" . auth()->id();
 
-        $bookmarks =  Cache::remember($key, 60 * 60 * 24, function () {
+        $bookmarks = Cache::remember($key, 60 * 60 * 24, function () {
             return Recipe::with("photos")->where("user_id", auth()->id())
                 ->where("bookmarked", true)->get();
         });
@@ -204,9 +203,8 @@ class ItemsController extends Controller
 
     public function getDailyRequestCount()
     {
-        $requestCredit = Utility::getLimit(auth()->id());
 
-        return ResponseService::SuccessResponse(data:["count"=>$requestCredit],message: "Recipes request count retrieved successfully");
+        return ResponseService::SuccessResponse(data: ["count" => Utility::getLimit(auth()->id())], message: "Recipes request count retrieved successfully");
 
     }
 
@@ -217,23 +215,26 @@ class ItemsController extends Controller
         $user = auth()->user();
 
         $userItemsCount = UserItem::where("user_id", $user->id)->count();
-        if ($userItemsCount===0){
+        if ($userItemsCount === 0) {
             return ResponseService::FailedResponse(message: "Your food inventory is empty add food to get personalised recipes");
 
         }
 
-        $requestCredit = Utility::getLimit(auth()->id());
 
-
-        if ($user->id!=2 and $requestCredit<=0) {
+        if (!Utility::canGenerate($user->id)) {
 
             return ResponseService::FailedResponse(message: "You have exceeded your daily limits for the day, try again tomorrow");
         }
 
-        $key = "foodItemsCachekey_".$user->id;
+        Utility::captureAttempt($user->id);
+
+
+        $key = "foodItemsCachekey_" . $user->id;
         Cache::forget($key);
 
         MakeRecipeJob::dispatch($user->id);
+
+        return ResponseService::SuccessResponse(message: "Recipes are being processed");
 
 
     }
