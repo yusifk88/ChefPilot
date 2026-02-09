@@ -204,7 +204,7 @@ class ItemsController extends Controller
     public function getDailyRequestCount()
     {
 
-        return ResponseService::SuccessResponse(data: ["count" => Utility::getLimit(auth()->id())], message: "Recipes request count retrieved successfully");
+        return ResponseService::SuccessResponse(data: ["count" => Utility::availableAttempts(auth()->id())], message: "Recipes request count retrieved successfully");
 
     }
 

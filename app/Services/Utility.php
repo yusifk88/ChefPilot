@@ -40,22 +40,19 @@ class Utility
      */
     public static function canGenerate(int $userID): bool
     {
-        return self::getLimit($userID) <= self::maxLimit();
+        return self::availableAttempts($userID) > 0;
 
     }
 
-
     /**
-     * get the available limit
-     * @param int $userId
+     * get the current available attempt for the user to limit abuse
+     * @param int $userID
      * @return int
      */
-    public static function getLimit(int $userId): int
+    public static function availableAttempts(int $userID): int
     {
-        $attempts = Attempt::query()->where("user_id", $userId)
-            ->whereDate("created_at", Carbon::now()->toDateString())->first();
+        return self::maxLimit() - self::getLimit($userID);
 
-        return $attempts ? $attempts->count : 1;
     }
 
     /**
@@ -73,14 +70,16 @@ class Utility
     }
 
     /**
-     * get the current available attempt for the user to limit abuse
-     * @param int $userID
+     * get the available limit
+     * @param int $userId
      * @return int
      */
-    public static function availableAttempts(int $userID): int
+    public static function getLimit(int $userId): int
     {
-        return self::maxLimit() - self::getLimit($userID);
+        $attempts = Attempt::query()->where("user_id", $userId)
+            ->whereDate("created_at", Carbon::now()->toDateString())->first();
 
+        return $attempts ? $attempts->count : 1;
     }
 
     public static function updateItems()
