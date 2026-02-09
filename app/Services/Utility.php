@@ -79,7 +79,7 @@ class Utility
         $attempts = Attempt::query()->where("user_id", $userId)
             ->whereDate("created_at", Carbon::now()->toDateString())->first();
 
-        return $attempts ? $attempts->count : 1;
+        return $attempts ? $attempts->count : 0;
     }
 
     public static function updateItems()
