@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\Photo;
 use App\Models\Recipe;
 use App\Models\User;
+use App\Models\UserItem;
 use App\Notifications\RecipeCreated;
 use app\Services\AI;
 use app\Services\ScaleDrone;
@@ -14,7 +15,6 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class MakeImage implements ShouldQueue
 {
@@ -46,43 +46,47 @@ class MakeImage implements ShouldQueue
 
             $this->recipe->update(["photo_id" => $existingImage->id]);
 
-
         } else {
 
-//            $prompt = Utility::makeImagePrompt($this->recipe->description);
-//
-//            $response = Http::withHeaders([
-//                "content-type" => "application/json",
-//                "Ocp-Apim-Subscription-Key" => config("pixazo.api_key")
-//            ])->post(config("pixazo.api_url"), [
-//                "prompt" => $prompt,
-//                "num_steps" => 8,
-//                "seed" => 60,
-//                "height" => 512,
-//                "width" => 512,
-//            ]);
-//
-//
-//            if ($response->successful()) {
-//
-//                $newPhoto = Photo::create([
-//                    "name" => $trimmedName,
-//                    "url" => $response->object()->output
-//                ]);
-//
-//                $this->recipe->update(["photo_id" => $newPhoto->id]);
-//
-//            }
+            if (!UserItem::where("user_id", $this->recipe->user_id)->exists()) {
+
+                $prompt = Utility::makeImagePrompt($this->recipe->description);
+
+                $response = Http::withHeaders([
+                    "content-type" => "application/json",
+                    "Ocp-Apim-Subscription-Key" => config("pixazo.api_key")
+                ])->post(config("pixazo.api_url"), [
+                    "prompt" => $prompt,
+                    "num_steps" => 8,
+                    "seed" => 60,
+                    "height" => 512,
+                    "width" => 512,
+                ]);
 
 
-            $newPhoto = AI::makeImageWithGermini($this->recipe->description,$this->recipe->name);
-            $this->recipe->update(["photo_id" => $newPhoto->id]);
+                if ($response->successful()) {
 
-            $key = "foodRecipesTodayKey_".$this->recipe->user_id;
+                    $newPhoto = Photo::create([
+                        "name" => $trimmedName,
+                        "url" => $response->object()->output
+                    ]);
+
+                    $this->recipe->update(["photo_id" => $newPhoto->id]);
+
+                }
+
+            } else {
+
+                $newPhoto = AI::makeImageWithGermini($this->recipe->description, $this->recipe->name);
+                $this->recipe->update(["photo_id" => $newPhoto->id]);
+
+            }
+
+
+            $key = "foodRecipesTodayKey_" . $this->recipe->user_id;
             Cache::forget($key);
 
             $user = User::find($this->recipe->user_id);
-
 
             $user->notify(new RecipeCreated($this->recipe));
 
@@ -90,7 +94,7 @@ class MakeImage implements ShouldQueue
 
             ScaleDrone::recipeCreated(user: $user, recipe: $recipeWithPhoto);
 
-
         }
+
     }
 }
