@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
 use App\Models\Follow;
+use App\Models\Interaction;
 use App\Models\Post;
 use App\Models\User;
 use App\Notifications\NewFollowerNotification;
+use App\Notifications\PostInteractionNotification;
 use App\Services\ResponseService;
 use app\Services\SocialFeed;
 use Illuminate\Http\JsonResponse;
@@ -154,6 +156,51 @@ class PostController extends Controller
 
 
         return ResponseService::SuccessResponse(data: [], message: "Unfollowed successfully");
+
+    }
+
+
+    public function like(Request $request)
+    {
+        $request->validate([
+            "post_id" => "required|numeric|exists:posts,id"
+        ]);
+
+
+        if (!Interaction::query()->where("post_id", $request->post_id)->where("user_id", $request->user()->id)->where("type", Interaction::LIKES)->exists()) {
+
+            Interaction::create([
+                "post_id" => $request->post_id,
+                "user_id" => $request->user()->id,
+                "type" => Interaction::LIKES
+            ]);
+
+            $post = Post::query()->with("user")->find($request->post_id);
+
+            $post->user->notify(new PostInteractionNotification(post: $post, type: Interaction::LIKES, user: $request->user()));
+
+        }
+
+        return ResponseService::SuccessResponse(data: [], message: "Post Liked");
+
+    }
+
+
+    public function unlike(Request $request)
+    {
+        $request->validate([
+            "post_id" => "required|numeric|exists:posts,id"
+        ]);
+
+
+        if (Interaction::query()->where("post_id", $request->post_id)->where("user_id", $request->user()->id)->where("type", Interaction::LIKES)->exists()) {
+
+
+            Interaction::where("post_id", $request->post_id)->where("user_id", $request->user()->id)->where("type", Interaction::LIKES)->delete();
+
+        }
+
+        return ResponseService::SuccessResponse(data: [], message: "Post Unliked");
 
     }
 

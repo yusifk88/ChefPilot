@@ -43,7 +43,7 @@ class SocialFeed
                 [$user->id]
             )
             ->withCount([
-                'interactions as likes_count' => fn($q) => $q->where('type', 'like'),
+                'interactions as likes_count' => fn($q) => $q->where('type', 'likes'),
 
                 'interactions as comments_count' => fn($q) => $q->where('type', 'comment')
             ])

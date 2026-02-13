@@ -73,6 +73,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
         Route::post("/follow", [PostController::class, "follow"]);
         Route::post("/unfollow", [PostController::class, "unfollow"]);
+        Route::post("/like", [PostController::class, "like"]);
+        Route::post("/unlike", [PostController::class, "unlike"]);
 
     });
 
