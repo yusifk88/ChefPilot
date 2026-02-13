@@ -169,15 +169,22 @@ class PostController extends Controller
 
         if (!Interaction::query()->where("post_id", $request->post_id)->where("user_id", $request->user()->id)->where("type", Interaction::LIKES)->exists()) {
 
+
+            $post = Post::query()->with("user")->find($request->post_id);
+
+
             Interaction::create([
                 "post_id" => $request->post_id,
                 "user_id" => $request->user()->id,
                 "type" => Interaction::LIKES
             ]);
 
-            $post = Post::query()->with("user")->find($request->post_id);
+            if ($post->user_id !== $request->user()->id) {
 
-            $post->user->notify(new PostInteractionNotification(post: $post, type: Interaction::LIKES, user: $request->user()));
+                $post->user->notify(new PostInteractionNotification(post: $post, type: Interaction::LIKES, user: $request->user()));
+
+            }
+
 
         }
 
