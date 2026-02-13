@@ -24,7 +24,6 @@ class SocialFeed
         $user = auth()->user();
 
         return self::postQuery($user)
-            ->whereNot("user_id", $user->id)
             ->orderByDesc('score')
             ->orderByDesc('created_at')
             ->cursorPaginate(20);

@@ -120,7 +120,7 @@ class PostController extends Controller
 
                 if ($followedUser) {
 
-                $followedUser->notify(new NewFollowerNotification($request->user()));
+                    $followedUser->notify(new NewFollowerNotification($request->user()));
 
                 }
 
@@ -132,5 +132,29 @@ class PostController extends Controller
         return ResponseService::SuccessResponse(data: $followed, message: "Followed");
     }
 
+
+    public function unfollow(Request $request)
+    {
+        $request->validate([
+            "user_id" => "required|numeric|exists:users,id",
+        ]);
+
+        if ($request->user()->id === $request->integer("user_id")) {
+
+            return ResponseService::FailedResponse("You cannot unfollow yourself");
+
+        }
+
+        if (Follow::where("follower_id", $request->user()->id)->where("following_id", $request->user_id)->exists()) {
+
+            Follow::query()->where("follower_id", $request->user()->id)->where("following_id", $request->user_id)->delete();
+
+
+        }
+
+
+        return ResponseService::SuccessResponse(data: [], message: "Unfollowed successfully");
+
+    }
 
 }

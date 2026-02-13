@@ -65,13 +65,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
      */
 
     Route::group(["prefix" => "social"], function () {
-        Route::post("/post",[PostController::class, "store"]);
+        Route::post("/post", [PostController::class, "store"]);
         Route::get("/feed", [PostController::class, "generalFeed"]);
         Route::get("/discover", [PostController::class, "discover"]);
         Route::get("/following", [PostController::class, "following"]);
         Route::get("/recommended", [PostController::class, "recommended"]);
 
         Route::post("/follow", [PostController::class, "follow"]);
+        Route::post("/unfollow", [PostController::class, "unfollow"]);
 
     });
 
