@@ -28,15 +28,14 @@ const formatDateTIme = (dateTime) => {
     return dayjs(dateTime).format("MMM D, YYYY HH:mA")
 }
 
-const BASE_URLA = "https://app.chefpilot.live";
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "https://app.chefpilot.live";
+const BASE_URLA = "http://localhost:8000";
 
 const PHOTO_PLACEHOLDER = "https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.png";
 
 const account = await CapacitorPersistentAccount.readAccount()
 
-const AUTH_HEADERS = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: "Bearer 6|dN9tADKHLWwge0lFPOFoT6J3YJTSPz1O1plmNhrzfbc7af43"}};
-
+const AUTH_HEADERS = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: "Bearer 7|FsuRNUL37h3oD7SWfwuWHmuNUuSq47bfO2Gd6dRza84df063"}};
 
 
 

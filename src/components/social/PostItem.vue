@@ -3,13 +3,19 @@
     <f7-card class="no-padding no-margin margin-top">
       <f7-card-header class="no-margin no-padding">
         <div class="row">
-          <p class="col-1"><img v-if="post.user" class="message-avatar no-margin" style="scale: 1.2;" :src="post.user.image_url">
+          <p class="col-1"><img
+              v-if="post.user" class="message-avatar no-margin"
+              style="scale: 1.2;"
+              :src="post.user.image_url"
+              onerror="this.onerror=null; this.src='https://flobaze.atl1.cdn.digitaloceanspaces.com/public/avatar.webp';"
+          >
           </p>
           <div class="col-8 no-margin">
             <div class="no-padding no-margin margin-left margin-top">
               <div style="font-weight: bolder; font-size: 15px">
                 {{ post.user.name }}
                 <f7-button @click="followUser" v-if="!following" style="display: inline">Follow</f7-button>
+                <f7-button @click="unfollowUser" v-else-if="!IS_SAME_USER" style="display: inline; font-size: 10px">Following</f7-button>
               </div>
               <small style="display: block; font-size: 12px">
                 <visibility-icon :type="post.visibility"></visibility-icon>
@@ -22,7 +28,13 @@
       <p class="no-margin no-padding" v-html="post.caption"></p>
       <recipe-card :item="post.recipe"></recipe-card>
 
-      <social-item-footer></social-item-footer>
+      <social-item-footer
+      :comment_count="post.comments_count"
+      :has_commented="post.has_commented"
+      :has_liked="post.has_liked"
+      :like_count="post.likes_count"
+      :post_id="post.id"
+      ></social-item-footer>
     </f7-card>
   </f7-block>
 
@@ -54,8 +66,27 @@ export default {
       currentUser: useStore(store, "getUser")
     }
   },
+  computed:{
+    IS_SAME_USER(){
+      return Number(this.currentUser.id) === Number(this.post.user_id);
+    }
+  },
   methods: {
     timeFromNow,
+    unfollowUser(){
+      this.following=false;
+      axios.post("/social/unfollow", {
+        user_id: this.post.user_id
+      })
+          .then(res => {
+            const successToast = f7.toast.create({
+              text: "You unfollowed " + this.post.user.name,
+              closeTimeout: 2000
+            });
+            successToast.open();
+
+          })
+    },
     followUser() {
 
       this.following=true;
@@ -74,8 +105,7 @@ export default {
   },
 
   mounted() {
-    this.following = this.post.is_following_author;
-    this.following =  Number(this.currentUser.id) === Number(this.post.user_id);
+    this.following = this.post.is_following_author || this.IS_SAME_USER;
   }
 }
 </script>

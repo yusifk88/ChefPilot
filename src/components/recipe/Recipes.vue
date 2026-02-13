@@ -4,7 +4,7 @@
     <div class="grid grid-cols-2 grid-gap">
       <div class="margin-top">Dishes of the day</div>
       <div>
-        <f7-button :disabled="loadingRecipes" @click="requestRecipes" fill>Get More <f7-badge color="green">+{{recipeLimit}}</f7-badge></f7-button>
+        <f7-button :disabled="loadingRecipes" @click="requestRecipes" fill>Get Recipes <f7-badge color="green">+{{recipeLimit}}</f7-badge></f7-button>
       </div>
     </div>
 
@@ -16,7 +16,6 @@
 
     <f7-card
         v-if="loading"
-
         class="skeleton-text no-margin skeleton-effect-pulse"
         title="Card Header"
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis et massa ac interdum. Cras consequat felis at consequat hendrerit."

@@ -17,6 +17,8 @@
                       style="border-radius: 8px"
                       :src="user.image_url"
                       width="44"
+                      onerror="this.onerror=null; this.src='https://flobaze.atl1.cdn.digitaloceanspaces.com/public/avatar.webp';"
+
                   />
                 </template>
               </f7-list-item>
@@ -94,12 +96,27 @@
     <f7-views tabs class="safe-areas">
       <f7-toolbar tabbar icons bottom>
         <f7-toolbar-pane>
-          <f7-link tab-link="#view-home" tab-link-active icon-ios="f7:house-outline" icon-md="f7:house-outline"
-                   text="Home"></f7-link>
-          <f7-link tab-link="#view-bookmarks" icon-ios="f7:bookmark-outline" icon-md="f7:bookmark-outline"
-                   text="Bookmarks"></f7-link>
-          <f7-link tab-link="#view-discover" icon-ios="f7:person_2" icon-md="f7:person_2"
-                   text="Discover"></f7-link>
+          <f7-link tab-link="#view-home"
+                   tab-link-active
+                   icon-ios="f7:house-outline"
+                   icon-md="f7:house-outline"
+                   text="Home"
+                   @click="setTab('home')"
+          ></f7-link>
+          <f7-link
+              tab-link="#view-bookmarks"
+              icon-ios="f7:bookmark-outline"
+              icon-md="f7:bookmark-outline"
+              text="Bookmarks"
+              @click="setTab('bookmarks')"
+          ></f7-link>
+          <f7-link
+              tab-link="#view-discover"
+              icon-ios="f7:person_2"
+              icon-md="f7:person_2"
+              text="Discover"
+              @click="setTab('discover')"
+          ></f7-link>
         </f7-toolbar-pane>
       </f7-toolbar>
 
@@ -170,8 +187,14 @@ export default {
 
     const currentTheme = ref(user.theme);
 
-
     const device = getDevice();
+
+    const currentTab = useStore(store,"getMainTab");
+
+    const setTab = (tab)=>{
+      store.dispatch("setMainTab",tab)
+
+    };
     // Framework7 Parameters
     const f7params = {
       name: 'ChefPilot', // App name
@@ -415,12 +438,14 @@ export default {
       sheetOpened,
       currentTheme,
       effect,
+      currentTab,
       expand,
       alertLoginData,
       showLogOutDialog,
       setDarkTheme,
       setThemeColor,
       handleThemeChange,
+      setTab,
       store
     }
   }

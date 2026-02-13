@@ -3,18 +3,18 @@
 
     <div class="row">
       <div class="col-2">
-        {{formatSocialNumber(likeCount)}}
         <f7-icon
             @click="likePost"
             :f7="hasLiked ? 'heart_filled' : 'heart'"
             :color="hasLiked ? 'red' : ''"
         ></f7-icon>
+        {{ formatSocialNumber(likeCount) }}
       </div>
       <div class="col-2">
-        {{formatSocialNumber(commentCount)}}
         <f7-icon
             f7="chat_bubble"
         ></f7-icon>
+        {{ formatSocialNumber(commentCount) }}
       </div>
       <div class="col-4">
 
@@ -50,6 +50,9 @@ export default {
     comment_count: {
       type: Number,
       default: 0
+    },
+    post_id: {
+      type: Number
     }
   },
   name: "SocialItemFooter",
@@ -61,15 +64,28 @@ export default {
       hasCommented: false
     }
   },
-  methods: {formatSocialNumber,
-  likePost(){
-    this.hasLiked = !this.hasLiked;
-    if (this.hasLiked){
-      this.likeCount+=1;
-    }else{
-      this.likeCount-=1;
+  methods: {
+    formatSocialNumber,
+    likePost() {
+      this.hasLiked = !this.hasLiked;
+      if (this.hasLiked) {
+        this.likeCount += 1;
+      } else {
+        this.likeCount -= 1;
+      }
+
+      if (this.hasLiked) {
+
+
+        axios.post("social/like", {
+          post_id: this.post_id
+        })
+      }else {
+        axios.post("social/unlike", {
+          post_id: this.post_id
+        })
+      }
     }
-  }
   },
   mounted() {
     this.likeCount = this.like_count;

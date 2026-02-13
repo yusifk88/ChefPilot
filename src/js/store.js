@@ -16,6 +16,8 @@ const store = createStore({
         refresh: false,
         loadingRecipes: false,
         mainPanelEffect: 'push',
+        mainTab: "home",
+        reloadForYou: false,
         bookmarkChanged: false,
         initializingAccount: false,
         unreadNotificationsCount: 0,
@@ -27,6 +29,13 @@ const store = createStore({
     },
     getters: {
 
+        getReloadForYou({state}) {
+
+            return state.reloadForYou;
+        },
+        getMainTab({state}) {
+            return state.mainTab;
+        },
         loadingRecipesState({state}) {
             return state.loadingRecipes;
         },
@@ -69,11 +78,19 @@ const store = createStore({
     },
     actions: {
 
-        stopLoadingRecipe({state}){
-            state.loadingRecipes=false;
+        toggleReloadForYou({state}) {
+
+            state.reloadForYou = !state.reloadForYou
+
         },
-        startLoadingRecipe({state}){
-            state.loadingRecipes=true;
+        setMainTab({state, tab}) {
+            state.mainTab = tab;
+        },
+        stopLoadingRecipe({state}) {
+            state.loadingRecipes = false;
+        },
+        startLoadingRecipe({state}) {
+            state.loadingRecipes = true;
         },
 
         endAccountInitState({state}) {
