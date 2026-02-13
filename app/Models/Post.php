@@ -19,6 +19,8 @@ class Post extends Model
 
     protected $casts = [
         'is_following_author' => 'boolean',
+        'has_commented'=>'boolean',
+        'has_liked'=>'boolean',
     ];
 
     public function recipe()
