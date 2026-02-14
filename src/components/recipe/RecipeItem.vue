@@ -1,5 +1,5 @@
 <template>
-  <f7-card flat class="no-margin">
+  <f7-card flat class="no-margin no-padding">
 
     <f7-card-header class="card-title">
       {{item.name}}
@@ -10,16 +10,17 @@
     <!--    >-->
     <f7-card-content style="padding-top: 0!important; padding-bottom: 0!important; margin-bottom: 0!important;">
 
-      <f7-link :href="`/recipe/${item.id}`" @click="setItem">
-  <img
+      <f7-link :href="`/recipe/${item.id}`" @click="setItem" class="no-padding">
+<!--  <img-->
 
-      fetchpriority="high"
-      loading="lazy"
-      style="border-radius: 15px; width: 100%;"
-      :src="item.photos && item.photos.length>0 ? item.photos[0].url : PHOTO_PLACEHOLDER"
-      onerror="this.onerror=null; this.src='https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.webp';"
-  />
+<!--      fetchpriority="high"-->
+<!--      loading="lazy"-->
+<!--      style="border-radius: 15px; width: 100%;"-->
+<!--      :src="item.photos && item.photos.length>0 ? item.photos[0].url : PHOTO_PLACEHOLDER"-->
+<!--      onerror="this.onerror=null; this.src='https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.webp';"-->
+<!--  />-->
 
+        <Image :src="item.photos[0].url"></Image>
 
       </f7-link>
 
@@ -72,9 +73,10 @@ import store from "@/js/store";
 import ShareButton from "@/components/recipe/ShareButton.vue";
 import {PHOTO_PLACEHOLDER} from "@/js/utility";
 import PostButtonComponent from "@/components/recipe/PostButtonComponent.vue";
+import Image from "@/components/Image.vue";
 
 export default {
-  components: {PostButtonComponent, ShareButton, DifficultyChip},
+  components: {Image, PostButtonComponent, ShareButton, DifficultyChip},
   props: {
     item: {
       type: Object

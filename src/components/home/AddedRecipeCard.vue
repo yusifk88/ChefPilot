@@ -5,7 +5,8 @@
     <div>
       <h3>Add your food store</h3>
       <p>Add raw food to get personalised meal recipes </p>
-      <f7-button large @click="sheetOpened=true; refreshItems=!refreshItems" fill style="color: #000000!important;">Add Food</f7-button>
+      <f7-button large @click="sheetOpened=true; refreshItems=!refreshItems"
+                 fill style="color: #000000!important;">Add Food</f7-button>
     </div>
     <div>
       <img width="100%" src="/img/chef_hat_food.png">

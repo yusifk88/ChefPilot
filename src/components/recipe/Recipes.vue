@@ -130,6 +130,8 @@ export default {
 
     async getItems() {
 
+      this.loading=true;
+
       const count = await db.recipes.count();
 
       this.loading = count === 0;

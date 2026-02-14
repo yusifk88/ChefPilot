@@ -25,7 +25,7 @@
       </f7-toolbar-pane>
     </f7-toolbar>
 
-    <f7-tabs animated class="no-margin" id="tabsContainer">
+    <f7-tabs :swipeable="true" animated class="no-margin" id="tabsContainer">
 
       <f7-tab id="for-you-tab"
               class="page-content "
