@@ -178,7 +178,7 @@
 <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 pb-6 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] z-50">
     <div class="flex items-center gap-4">
         <div class="bg-emerald-600 w-10 h-10 rounded-lg flex items-center justify-center shrink-0">
-            <i data-lucide="chef-hat" class="w-6 h-6 text-white"></i>
+            <img src="https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/chefpilot_icon.png">
         </div>
         <div class="flex-1">
             <p class="font-bold text-gray-900 text-sm">Get the full experience</p>
