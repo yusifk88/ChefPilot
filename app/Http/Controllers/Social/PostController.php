@@ -211,4 +211,13 @@ class PostController extends Controller
 
     }
 
+    public function publicPost(string $ulid)
+    {
+        $post = Post::query()->with(["user", "recipe.photos"])->where("ulid",$ulid)->firstOrFail();
+
+      //  dd($post->recipe);
+
+        return view("social.post", ["post"=>$post]);
+    }
+
 }

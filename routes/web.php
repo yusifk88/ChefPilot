@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\Social\PostController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -11,7 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('/res/{ulid}', [ItemsController::class, 'publicPost'])->name('recipe.publicPost');
-
+Route::get('/p/{ulid}' , [PostController::class, "publicPost"])->name('post.publicPost');
 
 Route::get("/.well-known/assetlinks.json", function () {
 
