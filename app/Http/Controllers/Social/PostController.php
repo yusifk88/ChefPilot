@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Follow;
 use App\Models\Interaction;
 use App\Models\Post;
+use App\Models\PostComment;
 use App\Models\User;
 use App\Notifications\NewFollowerNotification;
 use App\Notifications\PostInteractionNotification;
@@ -213,11 +214,76 @@ class PostController extends Controller
 
     public function publicPost(string $ulid)
     {
-        $post = Post::query()->with(["user", "recipe.photos"])->where("ulid",$ulid)->firstOrFail();
+        $post = Post::query()->with(["user", "recipe.photos"])->where("ulid", $ulid)->firstOrFail();
 
-      //  dd($post->recipe);
+        return view("social.post", ["post" => $post]);
+    }
 
-        return view("social.post", ["post"=>$post]);
+    public function comment(Request $request)
+    {
+        $request->validate([
+            "post_ulid" => "required|string|exists:posts,ulid",
+            "comment" => "required|string",
+        ]);
+
+        $post = Post::where("ulid", $request->post_ulid)->firstOrFail();
+        $newComment = new PostComment([
+            "post_id" => $post->id,
+            "comment" => $request->comment,
+            "user_id" => $request->user()->id
+        ]);
+
+        $newComment->save();
+
+        $newComment->load("commenter");
+        $newComment->refresh();
+        Interaction::create([
+            "post_id" => $post->id,
+            "user_id" => $request->user()->id,
+            "type" => Interaction::COMMENTS
+        ]);
+
+        if ($post->user_id !== $request->user()->id) {
+
+            \Illuminate\Support\defer(function () use ($newComment) {
+
+                $newComment->load(["post.user", "commenter"]);
+                $newComment->refresh();
+                $newComment->user->notify(new PostInteractionNotification(post: $newComment->post, type: Interaction::COMMENTS, user: $newComment->post->user));
+
+
+            });
+
+        }
+
+        return ResponseService::SuccessResponse(data: $newComment, message: "Comment posted successfully");
+
+    }
+
+
+    public function comments(string $ulid)
+    {
+        $post = Post::where("ulid", $ulid)->firstOrFail();
+        $comments = PostComment::with("commenter")->where("post_id", $post->id)
+            ->orderBy("id", "DESC")->cursorPaginate(30);
+
+        return ResponseService::SuccessResponse(data: $comments, message: "Comments");
+    }
+
+    public function show(string $ulid)
+    {
+
+        $post = Post::with(["user", "recipe.photos"])->where("ulid", $ulid)->firstOrFail();
+
+        return ResponseService::SuccessResponse(data: $post, message: "Post retrieved successfully");
+    }
+
+    public function deleteComment(int $id)
+    {
+        $comment = PostComment::where("id", $id)->where("user_id", auth()->id())->firstOrFail();
+
+        $comment->delete();
+        return ResponseService::SuccessResponse(data: $comment, message: "Comment deleted successfully");
     }
 
 }

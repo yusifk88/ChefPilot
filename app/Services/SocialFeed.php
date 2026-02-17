@@ -2,6 +2,7 @@
 
 namespace app\Services;
 
+use App\Models\Interaction;
 use App\Models\Post;
 use App\Models\PostTag;
 use App\Models\Tag;
@@ -43,9 +44,8 @@ class SocialFeed
                 [$user->id]
             )
             ->withCount([
-                'interactions as likes_count' => fn($q) => $q->where('type', 'likes'),
-
-                'interactions as comments_count' => fn($q) => $q->where('type', 'comment')
+                'interactions as likes_count' => fn($q) => $q->where('type', Interaction::LIKES),
+                'interactions as comments_count' => fn($q) => $q->where('type', Interaction::COMMENTS)
             ])
             ->selectRaw(
                 'EXISTS (
@@ -54,7 +54,7 @@ class SocialFeed
               AND interactions.user_id = ?
               AND interactions.type = ?
         ) AS has_liked',
-                [$user->id, 'likes']
+                [$user->id, Interaction::LIKES]
             )
             ->selectRaw(
                 'EXISTS (
@@ -63,7 +63,7 @@ class SocialFeed
               AND interactions.user_id = ?
               AND interactions.type = ?
         ) AS has_commented',
-                [$user->id, 'comments']
+                [$user->id, Interaction::COMMENTS]
             )
             ->with(["recipe.photos", "user"])
             ->withCount([

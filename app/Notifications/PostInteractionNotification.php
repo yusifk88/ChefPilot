@@ -37,8 +37,8 @@ class PostInteractionNotification extends Notification
     {
 
         return OneSignalMessage::create()
-            ->setSubject("Someone liked your post")
-            ->setBody($this->user->name . " liked your recipe post")
+            ->setSubject($this->customDetails()->title)
+            ->setBody($this->customDetails()->description)
             ->setData('recipe_id', $this->post->ulid)
             ->setIcon('ic_stat_onesignal_default')
             ->webButton(
@@ -51,6 +51,39 @@ class PostInteractionNotification extends Notification
     }
 
     /**
+     * @return object
+     * get customer properties for notifications
+     */
+    private function customDetails(): object
+    {
+        $type = match ($this->type) {
+            "likes" => "like_interaction",
+            "comments" => "comment_interaction",
+            default => "interaction"
+        };
+
+
+        $title = match ($this->type) {
+            "likes" => "Someone liked your recipe post",
+            "comments" => "Someone commented on your recipe post",
+            default => "Your post is gaining attention, check it out!"
+        };
+
+        $description = match ($this->type) {
+            "likes" => "{$this->user->name} liked your recipe post",
+            "comments" => "{$this->user->name} commented on your recipe post",
+            default => "Your post is gaining attention, check it out!"
+        };
+
+
+        return (object)[
+            "type" => $type,
+            "title" => $title,
+            "description" => $description,
+        ];
+    }
+
+    /**
      * Get the notification's delivery channels.
      *
      * @return array<int, string>
@@ -60,19 +93,17 @@ class PostInteractionNotification extends Notification
         return [OneSignalChannel::class, "database"];
     }
 
-
     public function toDatabase(object $notifiable): array
     {
         return [
             "post_id" => $this->post->id,
             "post_ulid" => $this->post->ulid,
-            "message" => "Someone liked your post",
-            "description" => $this->user->name . " liked your recipe post",
-            "type" => "like_interaction",
+            "message" => $this->customDetails()->title,
+            "description" => $this->customDetails()->description,
+            "type" => $this->customDetails()->type,
         ];
 
     }
-
 
     /**
      * Get the mail representation of the notification.

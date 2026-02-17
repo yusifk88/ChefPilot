@@ -10,4 +10,5 @@ class Interaction extends Model
     protected $fillable=["post_id","user_id","type"];
 
     const LIKES ='likes';
+    const COMMENTS ='comments';
 }

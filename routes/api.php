@@ -70,11 +70,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get("/discover", [PostController::class, "discover"]);
         Route::get("/following", [PostController::class, "following"]);
         Route::get("/recommended", [PostController::class, "recommended"]);
-
         Route::post("/follow", [PostController::class, "follow"]);
         Route::post("/unfollow", [PostController::class, "unfollow"]);
         Route::post("/like", [PostController::class, "like"]);
         Route::post("/unlike", [PostController::class, "unlike"]);
+        Route::post("comment", [PostController::class, "comment"]);
+        Route::delete("comment/{id}", [PostController::class, "deleteComment"]);
+        Route::get("posts/{ulid}", [PostController::class, "show"]);
+        Route::get("posts/{ulid}/comments", [PostController::class, "comments"]);
 
     });
 
