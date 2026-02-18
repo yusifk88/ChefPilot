@@ -243,7 +243,7 @@ class PostController extends Controller
             "type" => Interaction::COMMENTS
         ]);
 
-        if ($post->user_id !== $request->user()->id) {
+       // if ($post->user_id !== $request->user()->id) {
 
             \Illuminate\Support\defer(function () use ($newComment) {
 
@@ -254,7 +254,7 @@ class PostController extends Controller
 
             });
 
-        }
+       // }
 
         return ResponseService::SuccessResponse(data: $newComment, message: "Comment posted successfully");
 
@@ -273,7 +273,48 @@ class PostController extends Controller
     public function show(string $ulid)
     {
 
-        $post = Post::with(["user", "recipe.photos"])->where("ulid", $ulid)->firstOrFail();
+        $user = auth()->user();
+
+        $post = Post::query()
+            ->where("ulid", $ulid)
+            ->select("posts.*")
+            ->selectRaw(
+                'EXISTS (
+            SELECT 1 FROM follows
+            WHERE follows.follower_id = ?
+              AND follows.following_id = posts.user_id
+        ) AS is_following_author',
+                [$user->id]
+            )
+            ->withCount([
+                'interactions as likes_count' => fn($q) => $q->where('type', Interaction::LIKES),
+                'interactions as comments_count' => fn($q) => $q->where('type', Interaction::COMMENTS)
+            ])
+            ->selectRaw(
+                'EXISTS (
+            SELECT 1 FROM interactions
+            WHERE interactions.post_id = posts.id
+              AND interactions.user_id = ?
+              AND interactions.type = ?
+        ) AS has_liked',
+                [$user->id, Interaction::LIKES]
+            )
+            ->selectRaw(
+                'EXISTS (
+            SELECT 1 FROM interactions
+            WHERE interactions.post_id = posts.id
+              AND interactions.user_id = ?
+              AND interactions.type = ?
+        ) AS has_commented',
+                [$user->id, Interaction::COMMENTS]
+            )
+            ->with(["recipe.photos", "user"])
+            ->withCount([
+                'interactions as score' => function ($q) {
+                    $q->where('created_at', '>=', now()->subDays(2));
+                }
+            ])->first();
+
 
         return ResponseService::SuccessResponse(data: $post, message: "Post retrieved successfully");
     }

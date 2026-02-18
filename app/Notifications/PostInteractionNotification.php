@@ -45,7 +45,7 @@ class PostInteractionNotification extends Notification
                 OneSignalWebButton::create('view-follower-details')
                     ->text('View Details')
                     ->icon('https://flobaze.atl1.cdn.digitaloceanspaces.com/public/chefpilot_icon.png')
-                    ->url(config('app.url'))
+                    ->url(config('app.url') . "/p" . $this->post->ulid)
             );
 
     }
