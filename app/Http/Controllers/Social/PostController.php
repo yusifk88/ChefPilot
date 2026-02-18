@@ -249,7 +249,7 @@ class PostController extends Controller
 
                 $newComment->load(["post.user", "commenter"]);
                 $newComment->refresh();
-                $newComment->post->user->notify(new PostInteractionNotification(post: $newComment->post, type: Interaction::COMMENTS, user: $newComment->post->user));
+                $newComment->post->user->notify(new PostInteractionNotification(post: $newComment->post, type: Interaction::COMMENTS, user: $newComment->commenter));
 
 
             });
