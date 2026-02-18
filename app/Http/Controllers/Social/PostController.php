@@ -235,7 +235,7 @@ class PostController extends Controller
 
         $newComment->save();
 
-        $newComment->load("commenter");
+        $newComment->load(["commenter","post.user"]);
         $newComment->refresh();
         Interaction::create([
             "post_id" => $post->id,
@@ -249,7 +249,7 @@ class PostController extends Controller
 
                 $newComment->load(["post.user", "commenter"]);
                 $newComment->refresh();
-                $newComment->user->notify(new PostInteractionNotification(post: $newComment->post, type: Interaction::COMMENTS, user: $newComment->post->user));
+                $newComment->post->user->notify(new PostInteractionNotification(post: $newComment->post, type: Interaction::COMMENTS, user: $newComment->post->user));
 
 
             });
