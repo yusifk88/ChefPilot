@@ -2,16 +2,18 @@
   <f7-card-footer style="padding-top: 0!important;margin-top: 0!important;">
 
     <div class="row">
-      <div class="col-2">
+      <div class="col-1">
         <f7-icon
+            size="20"
             @click="likePost"
             :f7="hasLiked ? 'heart_filled' : 'heart'"
             :color="hasLiked ? 'red' : ''"
         ></f7-icon>
         {{ formatSocialNumber(likeCount) }}
       </div>
-      <div class="col-2">
+      <div class="col-1">
         <f7-icon
+            size="20"
             f7="chat_bubble"
         ></f7-icon>
         {{ formatSocialNumber(commentCount) }}
@@ -19,6 +21,8 @@
       <div class="col-4">
 
         <f7-icon
+            @click="share"
+            size="20"
             f7="square_arrow_up"
             md="material:share"
         ></f7-icon>
@@ -31,7 +35,8 @@
 </template>
 
 <script>
-import {formatSocialNumber} from "../../js/utility";
+import {BASE_URL, formatSocialNumber} from "@/js/utility";
+import {Share} from "@capacitor/share";
 
 export default {
   props: {
@@ -53,6 +58,9 @@ export default {
     },
     post_id: {
       type: Number
+    },
+    post_ulid: {
+      type: String
     }
   },
   name: "SocialItemFooter",
@@ -64,8 +72,33 @@ export default {
       hasCommented: false
     }
   },
+  watch:{
+    like_count(){
+      this.likeCount = this.like_count;
+    },
+    comment_count(){
+      this.commentCount = this.comment_count;
+
+    },
+    has_commented(){
+      this.hasCommented = this.has_commented;
+
+    },
+    has_liked(){
+      this.hasLiked = this.has_liked;
+    }
+  },
   methods: {
     formatSocialNumber,
+    async share() {
+
+     const URL=BASE_URL+"/p/"+ this.post_ulid
+
+      await Share.share({
+        url:URL
+      })
+
+    },
     likePost() {
       this.hasLiked = !this.hasLiked;
       if (this.hasLiked) {
@@ -80,7 +113,7 @@ export default {
         axios.post("social/like", {
           post_id: this.post_id
         })
-      }else {
+      } else {
         axios.post("social/unlike", {
           post_id: this.post_id
         })

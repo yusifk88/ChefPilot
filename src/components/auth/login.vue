@@ -318,7 +318,7 @@ export default {
 
 
 .bg-green{
-  background-color: #00ff9f;
+  background-color: #1abd80;
 }
 
 </style>

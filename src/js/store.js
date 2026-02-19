@@ -10,9 +10,11 @@ import {AUTH_HEADERS} from "@/js/utility";
 const store = createStore({
     state: {
         selectedRecipe: null,
+        selectedPost: null,
         user: null,
         showLogin: true,
         loginState: false,
+        showMainTabs: true,
         refresh: false,
         loadingRecipes: false,
         mainPanelEffect: 'push',
@@ -29,6 +31,12 @@ const store = createStore({
     },
     getters: {
 
+        getMainTabVisibilityState({state}) {
+            return state.showMainTabs;
+        },
+        getSelectedPost({state}) {
+            return state.selectedPost
+        },
         getReloadForYou({state}) {
 
             return state.reloadForYou;
@@ -78,10 +86,21 @@ const store = createStore({
     },
     actions: {
 
+        showMainTab({state}) {
+            state.showMainTabs=true;
+        },
+         hideMainTab({state}) {
+            state.showMainTabs=false;
+        },
+
         toggleReloadForYou({state}) {
 
             state.reloadForYou = !state.reloadForYou
 
+        },
+
+        setSelectedPost({state}, post) {
+            state.selectedPost = post
         },
         setMainTab({state, tab}) {
             state.mainTab = tab;
@@ -186,28 +205,6 @@ const store = createStore({
 
                             }
 
-
-                            // axios.get("/user", {headers: {Authorization: "Bearer " + account.data.token}})
-                            //     .then(res => {
-                            //         state.user = res.data.data.user;
-                            //         state.loginState = false
-                            //         state.refresh = !state.refresh;
-                            //
-                            //         if (Capacitor.getPlatform() === 'android') {
-                            //
-                            //             OneSignal.login(state.user.id.toString());
-                            //
-                            //         }
-                            //
-                            //     })
-                            //     .catch(error => {
-                            //         state.user = null;
-                            //         state.loginState = true;
-                            //       //  state.initializingAccount = false;
-                            //         // await CapacitorPersistentAccount.saveAccount({data:null});
-                            //         //  window.location.reload();
-                            //
-                            //     })
 
                         } else {
 

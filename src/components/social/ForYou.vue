@@ -25,6 +25,8 @@
         v-for="post in posts"
         :key="post.id"
         :post="post"
+        @postDeleted="getFeed"
+
     >
     </post-item>
 

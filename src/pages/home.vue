@@ -4,7 +4,7 @@
     <f7-navbar :sliding="false">
       <f7-nav-left>
         <f7-link panel-open="left">
-        <img v-if="user" class="message-avatar" :src="user.image_url">
+        <img style="margin-bottom: 7px" v-if="user" class="message-avatar" :src="user.image_url">
         </f7-link>
       </f7-nav-left>
 

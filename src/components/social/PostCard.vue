@@ -1,14 +1,11 @@
 <template>
   <f7-page>
-    <f7-navbar style="height: 45px">
-      <f7-nav-left>
-        <avatar></avatar>
-      </f7-nav-left>
-      <f7-nav-right>
-        <f7-link @click="close()">
+    <f7-navbar >
+
+      <f7-nav-right style="height: 40px">
+        <f7-link  @click="close()">
           <f7-icon f7="pencil_slash"></f7-icon>
         </f7-link>
-
       </f7-nav-right>
     </f7-navbar>
     <f7-block strong inset class="no-margin-top">

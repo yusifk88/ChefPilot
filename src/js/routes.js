@@ -7,6 +7,7 @@ import sharedRecipe from "@/pages/SharedRecipe.vue";
 import notifications from "@/pages/notifications.vue";
 import profile from "@/pages/profile.vue";
 import discover from "@/pages/discover.vue";
+import post from "@/pages/post.vue";
 
 var routes = [
     {
@@ -22,25 +23,29 @@ var routes = [
         component: ProductPage,
     },
     {
-      path: '/recipe/:id',
-      component: selectRecipe
+        path: '/recipe/:id',
+        component: selectRecipe
     },
     {
-      path: '/profile',
-      component: profile
+        path: '/profile',
+        component: profile
     },
     {
-      path:"/discover",
-      component: discover
+        path: '/posts/:ulid',
+        component: post
     },
     {
-      path: '/notifications',
-      component: notifications
+        path: "/discover",
+        component: discover
+    },
+    {
+        path: '/notifications',
+        component: notifications
     },
 
     {
-      path: "/shared-recipe/:ulid",
-      component: sharedRecipe
+        path: "/shared-recipe/:ulid",
+        component: sharedRecipe
     },
     {
         path: '(.*)',

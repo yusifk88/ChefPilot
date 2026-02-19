@@ -2,9 +2,9 @@
   <f7-block-title>
 
     <div class="grid grid-cols-2 grid-gap">
-      <div class="margin-top">Dishes of the day</div>
+      <div style="margin-top: 8px">Dishes of the day</div>
       <div>
-        <f7-button :disabled="loadingRecipes" @click="requestRecipes" fill>Get Recipes <f7-badge color="green">+{{recipeLimit}}</f7-badge></f7-button>
+        <f7-button :disabled="loadingRecipes" @click="requestRecipes" fill>Get Recipes &nbsp;<f7-badge color="red">+{{recipeLimit}}</f7-badge></f7-button>
       </div>
     </div>
 
@@ -12,7 +12,7 @@
   </f7-block-title>
 
   <recipe-loading v-if="loadingRecipes"></recipe-loading>
-  <f7-block strong v-else>
+  <f7-block inset strong v-else>
 
     <f7-card
         v-if="loading"

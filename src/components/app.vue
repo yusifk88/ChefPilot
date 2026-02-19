@@ -94,7 +94,7 @@
 
 
     <f7-views tabs class="safe-areas">
-      <f7-toolbar tabbar icons bottom>
+      <f7-toolbar tabbar icons bottom v-show="showMainTabs">
         <f7-toolbar-pane>
           <f7-link tab-link="#view-home"
                    tab-link-active
@@ -121,7 +121,6 @@
       </f7-toolbar>
 
       <f7-view id="view-home" main tab tab-active url="/"></f7-view>
-
 
       <f7-view id="view-bookmarks" name="favorites" tab url="/bookmarks/"></f7-view>
 
@@ -182,6 +181,8 @@ export default {
     const sheetOpened = ref(false);
     const sharedUlid = ref(null);
 
+   const showMainTabs = ref(useStore(store,"getMainTabVisibilityState"))
+
     const showLogin = useStore(store, "loginState");
     const user = useStore(store, "getUser");
 
@@ -200,7 +201,7 @@ export default {
       name: 'ChefPilot', // App name
       theme: 'auto', // Automatic theme detection
       colors: {
-        primary: '#00ff9f',
+        primary: '#1abd80',
       },
 
       // App store
@@ -396,7 +397,16 @@ export default {
 
         const ulid = pathArr[pathArr.length - 1];
 
-        sharedUlid.value = "/shared-recipe/" + ulid;
+        const type = pathArr[pathArr.length - 2]
+
+        if (type==='res'){
+          sharedUlid.value = "/shared-recipe/" + ulid;
+
+        }
+        if (type==='p'){
+          sharedUlid.value = "/posts/" + ulid;
+
+        }
 
         f7.views.main.router.navigate(sharedUlid.value);
 
@@ -439,6 +449,7 @@ export default {
       currentTheme,
       effect,
       currentTab,
+      showMainTabs,
       expand,
       alertLoginData,
       showLogOutDialog,

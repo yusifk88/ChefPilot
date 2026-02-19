@@ -1,7 +1,7 @@
 <template>
   <f7-block-title style="margin-top: 0!important;" class=" no-margin-top">Recent Bookmarks</f7-block-title>
 
-  <f7-block strong class="">
+  <f7-block inset strong class="">
 
     <f7-list strong inset dividers-ios media-list class="skeleton-text"
              v-if="loading">

@@ -2,11 +2,14 @@
   <f7-page id="mainPage"  :page-content="false" :ptr-mousewheel="true" ptr @ptr:refresh="refresh">
     <f7-navbar title="Discover Recipes" class="no-margin-bottom no-padding-bottom">
       <f7-nav-right>
-        <f7-link style="transition: 0.3s ease-in-out">
+        <f7-link>
           <f7-icon f7="search"></f7-icon>
         </f7-link>
 
+        <avatar></avatar>
+
       </f7-nav-right>
+
     </f7-navbar>
     <f7-toolbar top tabbar class="no-margin-top no-padding-top">
       <f7-toolbar-pane>
@@ -25,7 +28,7 @@
       </f7-toolbar-pane>
     </f7-toolbar>
 
-    <f7-tabs :swipeable="true" animated class="no-margin" id="tabsContainer">
+    <f7-tabs :swipeable="true" animated  id="tabsContainer">
 
       <f7-tab id="for-you-tab"
               class="page-content "
@@ -70,10 +73,11 @@ import store from "@/js/store";
 import Recommended from "@/components/social/Recommended.vue";
 import Explore from "@/components/social/Explore.vue";
 import Following from "@/components/social/Following.vue";
+import Avatar from "@/components/social/Avatar.vue";
 
 export default {
   name: "discover",
-  components: {Following, Explore, Recommended, ForYou, EmptyState},
+  components: {Avatar, Following, Explore, Recommended, ForYou, EmptyState},
   data() {
     return {
       activetab: "for-you-tab",
