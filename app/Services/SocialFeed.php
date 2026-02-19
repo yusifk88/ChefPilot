@@ -70,7 +70,7 @@ class SocialFeed
                 'interactions as score' => function ($q) {
                     $q->where('created_at', '>=', now()->subDays(2));
                 }
-            ]);
+            ])->whereNull("deleted_at");
     }
 
     /**

@@ -314,7 +314,7 @@ class PostController extends Controller
                 'interactions as score' => function ($q) {
                     $q->where('created_at', '>=', now()->subDays(2));
                 }
-            ])->first();
+            ])->whereNull("deleted_at")->first();
 
 
         return ResponseService::SuccessResponse(data: $post, message: "Post retrieved successfully");
