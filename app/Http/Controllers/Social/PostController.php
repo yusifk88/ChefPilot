@@ -15,6 +15,7 @@ use app\Services\SocialFeed;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use function React\Promise\Stream\first;
 
 class PostController extends Controller
 {
@@ -323,8 +324,21 @@ class PostController extends Controller
     {
         $comment = PostComment::where("id", $id)->where("user_id", auth()->id())->firstOrFail();
 
+        Interaction::where("post_id", $comment->post_id)
+            ->where("user_id",auth()->id())
+            ->where("type",Interaction::COMMENTS)->first()?->delete();
+
         $comment->delete();
         return ResponseService::SuccessResponse(data: $comment, message: "Comment deleted successfully");
+    }
+
+    public function deletePost(string $id)
+    {
+
+        $post = Post::where("id", $id)->where("user_id",auth()->id())->firstOrFail();
+
+        $post->delete();
+        return ResponseService::SuccessResponse(data: $post, message: "Post deleted successfully");
     }
 
 }
