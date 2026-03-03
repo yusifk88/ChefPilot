@@ -4,7 +4,7 @@
     <div class="grid grid-cols-2 grid-gap">
       <div style="margin-top: 8px">Dishes of the day</div>
       <div>
-        <f7-button :disabled="loadingRecipes" @click="requestRecipes" fill>Get Recipes &nbsp;<f7-badge color="red">+{{recipeLimit}}</f7-badge></f7-button>
+        <f7-button :disabled="loadingRecipes" @click="showSheet=true" fill>Get Recipes &nbsp;<f7-badge color="red">+{{recipeLimit}}</f7-badge></f7-button>
       </div>
     </div>
 
@@ -49,6 +49,40 @@
     </span>
 
   </f7-block>
+
+  <f7-sheet
+      swipe-to-close
+      style="height: 60%"
+      v-model:opened="showSheet"
+      class="user-items-sheet"
+  >
+    <div class="swipe-handler" style="background-color: transparent"></div>
+    <f7-toolbar
+        style="height: 65px"
+    >
+      <div class="left"></div>
+
+      <div class="right">
+        <f7-link sheet-close><i class="icon icon-close"></i></f7-link>
+      </div>
+    </f7-toolbar>
+
+    <f7-page-content>
+
+    <f7-block  class="margin-top">
+        <vue3-lottie width="300px" :animation-data="chef"></vue3-lottie>
+        <h3 style="text-align: center" class="no-padding no-margin">
+          <strong>Confirm your food pantry</strong>
+        </h3>
+        <p style="text-align: center">
+          To get accurate recipes make sure to update your food pantry before you continue.
+        </p>
+        <f7-button @click="requestRecipes(); showSheet=false;" large class="margin-top" fill  block>Request Recipes</f7-button>
+        <f7-button @click="showSheet=false" large fill class="margin-top" color="red"  block>Cancel</f7-button>
+    </f7-block>
+    </f7-page-content>
+  </f7-sheet>
+
 </template>
 
 <script>
@@ -63,17 +97,22 @@ import {db} from "@/js/db";
 import RecipeLoading from "@/components/recipe/RecipeLoading.vue";
 import axios from "axios";
 import {AUTH_HEADERS} from "@/js/utility";
+import {Vue3Lottie} from "vue3-lottie";
+
+import chef from "@/js/animation/chef.json";
 
 export default {
   name: "Recipes",
-  components: {RecipeLoading, EmptyState, RecipeItem},
+  components: {Vue3Lottie, RecipeLoading, EmptyState, RecipeItem},
   data() {
     return {
       items: useObservable(liveQuery(() => db.recipes.orderBy("id").reverse().toArray())),
       shouldRefresh: useStore(store, "getRefresh"),
       loading: false,
       loadingRecipes: useStore(store, "loadingRecipesState"),
-      recipeLimit: 0
+      recipeLimit: 0,
+      showSheet:false,
+      chef:chef
     }
   },
 

@@ -14,12 +14,12 @@
   <div
       v-else-if="posts.length"
   >
-    <div style="padding: 10px; background-color: #00ff9f; border-radius: 15px!important; color: #000000!important;">
-      The discover feature helps you discover recipes from the ChefPilot community and their thoughts and experiences on
-      some recipes. It is work in progress so we will be improving it as time goes on.
-      Please check out for updates as we improve it.<br>
-      Thank you for try it out and happy cooking!
-    </div>
+<!--    <div style="padding: 10px; background-color: #00ff9f; border-radius: 15px!important; color: #000000!important;">-->
+<!--      The discover feature helps you discover recipes from the ChefPilot community and their thoughts and experiences on-->
+<!--      some recipes. It is work in progress so we will be improving it as time goes on.-->
+<!--      Please check out for updates as we improve it.<br>-->
+<!--      Thank you for try it out and happy cooking!-->
+<!--    </div>-->
     <f7-button @click="getFeed">Load More</f7-button>
 
     <post-item

@@ -64,7 +64,9 @@
 
   <f7-sheet
       style="height: 70%"
-      v-model:opened="showUserItems" class="user-items-sheet">
+      v-model:opened="showUserItems"
+      class="user-items-sheet"
+  >
     <div class="swipe-handler" style="background-color: transparent"></div>
     <f7-toolbar>
       <div class="left">

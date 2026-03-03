@@ -110,7 +110,7 @@ export default {
   data() {
     return {
       bookmarked:this.item ? this.item.bookmarked : false,
-      itemID:this.f7route.params.id,
+      itemID:this.f7route?.params?.id,
       loadingUpdate:false,
       item: useStore(store, "selectedItem")
     }

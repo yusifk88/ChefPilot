@@ -15,6 +15,7 @@
         <f7-icon
             size="20"
             f7="chat_bubble"
+            @click="goToPost"
         ></f7-icon>
         {{ formatSocialNumber(commentCount) }}
       </div>
@@ -37,6 +38,8 @@
 <script>
 import {BASE_URL, formatSocialNumber} from "@/js/utility";
 import {Share} from "@capacitor/share";
+import {f7} from "framework7-vue";
+import store from "@/js/store";
 
 export default {
   props: {
@@ -61,6 +64,9 @@ export default {
     },
     post_ulid: {
       type: String
+    },
+    post:{
+      type:Object
     }
   },
   name: "SocialItemFooter",
@@ -71,6 +77,12 @@ export default {
       hasLiked: false,
       hasCommented: false
     }
+  },
+  computed:{
+    postRoute() {
+      return '/posts/' + this.post_ulid
+    },
+
   },
   watch:{
     like_count(){
@@ -90,6 +102,14 @@ export default {
   },
   methods: {
     formatSocialNumber,
+
+    goToPost() {
+
+      // f7.views.main.router.navigate(this.postRoute);
+      f7.views.current.router.navigate(this.postRoute)
+
+     store.dispatch("setSelectedPost", this.post)
+    },
     async share() {
 
      const URL=BASE_URL+"/p/"+ this.post_ulid

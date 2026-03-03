@@ -2,9 +2,9 @@
   <f7-page id="mainPage"  :page-content="false" :ptr-mousewheel="true" ptr @ptr:refresh="refresh">
     <f7-navbar title="Discover Recipes" class="no-margin-bottom no-padding-bottom">
       <f7-nav-right>
-        <f7-link>
-          <f7-icon f7="search"></f7-icon>
-        </f7-link>
+<!--        <f7-link>-->
+<!--          <f7-icon f7="search"></f7-icon>-->
+<!--        </f7-link>-->
 
         <avatar></avatar>
 

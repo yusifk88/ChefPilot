@@ -40,10 +40,13 @@ export default {
         const URL = "/social/posts/"+this.post.id;
         axios.delete(URL)
             .then(res=>{
+              this.$emit("deleted", this.post);
               f7.progressbar.hide()
               this.loading=false;
+            })
+            .catch(error=>{
+              this.loading=false;
 
-              this.$emit("deleted", res.data.data);
             })
       });
     },

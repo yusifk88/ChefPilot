@@ -19,11 +19,11 @@
   ></f7-card>
 </span>
     <f7-block v-else strong inset class="no-margin-top">
-      <f7-card class="no-padding no-margin margin-top">
+      <f7-card  class="no-padding no-margin margin-top">
 
           <p class="no-margin no-padding" v-html="post.caption"></p>
 
-          <recipe-card :recipeRoute="'/shared-recipe/'+post.recipe.ulid" :item="post.recipe"></recipe-card>
+          <recipe-card @click="viewRecipe(post.recipe)" :item="post.recipe"></recipe-card>
 
         <social-item-footer
             :comment_count="post.comments_count"
@@ -40,7 +40,28 @@
     @posted="getPost"
     ></comments-component>
 
+
+    <f7-sheet
+        swipe-to-close
+        style="height: 95%"
+        v-model:opened="showSheet"
+    >
+      <f7-toolbar
+          style="height: 65px"
+      >
+        <div class="left"></div>
+
+        <div class="right">
+          <f7-link sheet-close><i class="icon icon-close"></i></f7-link>
+        </div>
+      </f7-toolbar>
+      <f7-page>
+        <shared-recipe-component hideShareButton @photoTapped="showSheet=false" :item="post.recipe"></shared-recipe-component>
+      </f7-page>
+    </f7-sheet>
+
   </f7-page>
+
 </template>
 
 <script>
@@ -51,10 +72,12 @@ import {timeFromNow} from "@/js/utility";
 import SocialItemFooter from "@/components/social/SocialItemFooter.vue";
 import RecipeCard from "@/components/social/RecipeCard.vue";
 import CommentsComponent from "@/components/social/CommentsComponent.vue";
+import SelectRecipe from "@/pages/SelectRecipe.vue";
+import SharedRecipeComponent from "@/components/recipe/SharedRecipeComponent.vue";
 
 export default {
   name: "post",
-  components: {CommentsComponent, RecipeCard, SocialItemFooter, Avatar},
+  components: {SharedRecipeComponent, SelectRecipe, CommentsComponent, RecipeCard, SocialItemFooter, Avatar},
   props: {
     f7route: Object,
     f7router: Object,
@@ -62,7 +85,8 @@ export default {
   data() {
     return {
       post: useStore(store, "getSelectedPost"),
-      loading: false
+      loading: false,
+      showSheet:false,
     }
   },
   computed: {
@@ -73,6 +97,11 @@ export default {
   methods: {
     timeFromNow,
 
+    viewRecipe(recipe){
+
+      store.dispatch("setRecipeItem",recipe);
+      this.showSheet=true;
+    },
     showNav() {
       store.dispatch("showMainTab");
 

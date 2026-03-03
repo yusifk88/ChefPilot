@@ -52,6 +52,7 @@ export default {
       return PHOTO_PLACEHOLDER
     },
     viewRecipe() {
+      this.$emit("click");
       if (this.recipeRoute) {
         f7.views.main.navigate(this.recipeRoute)
       }

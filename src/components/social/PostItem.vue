@@ -1,5 +1,5 @@
 <template>
-  <f7-block inset class="no-margin-top no-padding-top no-margin no-padding" strong>
+  <f7-block inset class=" no-padding-top no-margin no-padding" strong>
 
     <f7-card class="no-padding">
       <f7-card-header class="no-margin no-padding">
@@ -26,13 +26,13 @@
             </div>
           </div>
           <div class="col-2">
-            <post-card-options-component @deleted="$emit('postDeleted')" :post="post"></post-card-options-component>
+            <post-card-options-component @deleted="postDeleted" :post="post"></post-card-options-component>
           </div>
         </div>
       </f7-card-header>
 
 
-      <span @click="goToPost":href="postRoute">
+      <span @click="goToPost" :href="postRoute">
         <p class="no-margin no-padding" v-html="post.caption"></p>
 
         <recipe-card :item="post.recipe"></recipe-card>
@@ -45,6 +45,7 @@
           :like_count="post.likes_count"
           :post_id="post.id"
           :post_ulid="post.ulid"
+          :post="post"
       ></social-item-footer>
     </f7-card>
   </f7-block>
@@ -56,7 +57,7 @@ import RecipeCard from "@/components/social/RecipeCard.vue";
 import Avatar from "@/components/social/Avatar.vue";
 import {timeFromNow} from "@/js/utility";
 import VisibilityIcon from "@/components/social/VisibilityIcon.vue";
-import {f7, f7App, useStore} from "framework7-vue";
+import {f7, useStore} from "framework7-vue";
 import store from "@/js/store";
 import ShareButton from "@/components/recipe/ShareButton.vue";
 import DifficultyChip from "@/components/recipe/difficultyChip.vue";
@@ -65,10 +66,11 @@ import SocialItemFooter from "@/components/social/SocialItemFooter.vue";
 import PostCardOptionsComponent from "@/components/social/PostCardOptionsComponent.vue";
 
 export default {
-  emits:["postDeleted"],
+  emits: ["postDeleted"],
   components: {
     PostCardOptionsComponent,
-    SocialItemFooter, PostButtonComponent, DifficultyChip, ShareButton, VisibilityIcon, Avatar, RecipeCard},
+    SocialItemFooter, PostButtonComponent, DifficultyChip, ShareButton, VisibilityIcon, Avatar, RecipeCard
+  },
   props: {
     post: {
       type: Object
@@ -85,18 +87,21 @@ export default {
     IS_SAME_USER() {
       return Number(this.currentUser.id) === Number(this.post.user_id);
     },
-    dark(){
+    dark() {
       return f7.darkMode
     },
-    postRoute(){
-      return '/posts/'+this.post.ulid
+    postRoute() {
+      return '/posts/' + this.post.ulid
     }
   },
   methods: {
     timeFromNow,
+    postDeleted(post) {
+      this.$emit('postDeleted', post);
+    },
     goToPost() {
 
-     // f7.views.main.router.navigate(this.postRoute);
+      // f7.views.main.router.navigate(this.postRoute);
       f7.views.current.router.navigate(this.postRoute)
 
       store.dispatch("setSelectedPost", this.post)

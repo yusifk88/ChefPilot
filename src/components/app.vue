@@ -161,7 +161,7 @@ import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
 import {App} from '@capacitor/app';
 
 
-import OneSignal from "onesignal-cordova-plugin";
+//import OneSignal from "onesignal-cordova-plugin";
 
 import {Capacitor} from "@capacitor/core";
 

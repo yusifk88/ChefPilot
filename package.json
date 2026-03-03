@@ -22,12 +22,12 @@
   "dependencies": {
     "@capacitor/android": "^8.0.0",
     "@capacitor/app": "^8.0.0",
-    "@capacitor/ios": "^8.0.0",
-    "@capacitor/core": "^8.0.0",
-    "@capacitor/device": "^8.0.0",
     "@capacitor/browser": "^8.0.0",
     "@capacitor/camera": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/device": "^8.0.0",
     "@capacitor/filesystem": "^8.1.0",
+    "@capacitor/ios": "^8.0.0",
     "@capacitor/keyboard": "^8.0.0",
     "@capacitor/share": "^8.0.0",
     "@capacitor/splash-screen": "^8.0.0",
@@ -44,7 +44,6 @@
     "framework7-icons": "^5.0.5",
     "framework7-vue": "^9.0.2",
     "material-icons": "^1.13.14",
-    "onesignal-cordova-plugin": "^5.3.1",
     "posthog-js": "^1.335.3",
     "rxjs": "^7.8.2",
     "scaledrone-node": "^1.5.0",
@@ -53,9 +52,11 @@
     "system-theme-color": "file:system-theme-color",
     "update": "^0.7.4",
     "vue": "^3.5.25",
-    "vue3-flag-icons": "^0.0.3"
+    "vue3-flag-icons": "^0.0.3",
+    "vue3-lottie": "^3.3.1"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "^8.0.0",
     "@vitejs/plugin-vue": "^6.0.2",
     "@vue/compiler-sfc": "^3.5.25",

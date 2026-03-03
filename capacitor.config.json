@@ -7,9 +7,15 @@
   "iosClientId": "",
   "clientId": "",
   "ios": {
-    "packageManager": "cocoapods"
+    "packageManager": "cocoapods",
+    "OneSignal": {
+      "ios": false
+    }
   },
   "plugins": {
+    "OneSignal": {
+      "ios": false
+    },
     "SplashScreen": {
       "launchShowDuration": 0,
       "launchAutoHide": true,

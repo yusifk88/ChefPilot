@@ -3,7 +3,7 @@
     <f7-card-header
         valign="bottom"
         :style="'background-image: url('+photo_url+'); background-size: cover; height: 40vh;'"
-        @click="$refs.standalone.open()"
+        @click="$refs.standalone.open(); $emit('photoTapped')"
     >
     </f7-card-header>
 
@@ -38,18 +38,8 @@
         <difficulty-chip :label="item.difficulty"></difficulty-chip>
       </p>
 
-      <f7-icon size="20" f7="arrow_2_squarepath" style="margin-left: auto !important;">
-      </f7-icon>
 
-      <share-button :item="item"></share-button>
-
-<!--      <f7-icon-->
-<!--          size="20"-->
-<!--          @click="bookMark"-->
-<!--          :color="bookmarked ? 'blue' : ''"-->
-<!--          :ios="bookmarked ? 'f7:bookmark_filled' : 'f7:bookmark'"-->
-<!--          :md="bookmarked?'material:bookmark_filled' : 'material:bookmark'"-->
-<!--      ></f7-icon>-->
+      <share-button v-if="!hideShareButton" :item="item"></share-button>
 
     </f7-card-footer>
 
@@ -85,8 +75,17 @@ import ShareButton from "@/components/recipe/ShareButton.vue";
 import {PHOTO_PLACEHOLDER} from "@/js/utility";
 
 export default {
+  emits:["photoTapped"],
   props: {
-    item: Object
+    item: Object,
+    hideShareButton:{
+      type:Boolean,
+      default:false
+    },
+    hideRepostSystem:{
+      type:Boolean,
+      default: false
+    }
   },
   name: "SharedRecipeComponent",
   components: {ShareButton, DifficultyChip},
