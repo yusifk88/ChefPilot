@@ -48,7 +48,7 @@ class MakeImage implements ShouldQueue
 
         } else {
 
-            if (!UserItem::where("user_id", $this->recipe->user_id)->exists()) {
+//            if (!UserItem::where("user_id", $this->recipe->user_id)->exists()) {
 
                 $prompt = Utility::makeImagePrompt($this->recipe->description);
 
@@ -75,12 +75,12 @@ class MakeImage implements ShouldQueue
 
                 }
 
-            } else {
-
-                $newPhoto = AI::makeImageWithGermini($this->recipe->description, $this->recipe->name);
-                $this->recipe->update(["photo_id" => $newPhoto->id]);
-
-            }
+//            } else {
+//
+//                $newPhoto = AI::makeImageWithGermini($this->recipe->description, $this->recipe->name);
+//                $this->recipe->update(["photo_id" => $newPhoto->id]);
+//
+//            }
 
 
             $key = "foodRecipesTodayKey_" . $this->recipe->user_id;

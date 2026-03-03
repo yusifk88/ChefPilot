@@ -38,7 +38,7 @@ Route::get("/.well-known/apple-app-site-association", function () {
     "apps": [],
     "details": [
       {
-        "appID": "TEAMID.com.myapp.app",
+        "appID": "867V9A5X6U.live.chefpilot.app",
         "paths": ["*"]
       }
     ]

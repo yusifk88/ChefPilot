@@ -15,7 +15,7 @@ class Post extends Model
     public const string VISIBILITY_PRIVATE = "private";
     public const string VISIBILITY_FOLLOWERS = "followers";
     protected $table = "posts";
-    protected $fillable = ["recipe_id", "user_id", "caption", "visibility", "ulid"];
+    protected $fillable = ["recipe_id", "user_id", "caption", "visibility", "ulid","created_at", "updated_at","deleted_at"];
 
     protected $casts = [
         'is_following_author' => 'boolean',

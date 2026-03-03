@@ -278,6 +278,7 @@ class PostController extends Controller
 
         $post = Post::query()
             ->where("ulid", $ulid)
+            ->whereNull("deleted_at")
             ->select("posts.*")
             ->selectRaw(
                 'EXISTS (
@@ -314,7 +315,7 @@ class PostController extends Controller
                 'interactions as score' => function ($q) {
                     $q->where('created_at', '>=', now()->subDays(2));
                 }
-            ])->whereNull("deleted_at")->first();
+            ])->first();
 
 
         return ResponseService::SuccessResponse(data: $post, message: "Post retrieved successfully");
@@ -332,7 +333,7 @@ class PostController extends Controller
         return ResponseService::SuccessResponse(data: $comment, message: "Comment deleted successfully");
     }
 
-    public function deletePost(string $id)
+    public function deletePost(int $id)
     {
 
         $post = Post::where("id", $id)->where("user_id",auth()->id())->firstOrFail();
