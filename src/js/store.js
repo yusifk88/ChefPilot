@@ -179,9 +179,7 @@ const store = createStore({
                             .catch(error => {
                                 state.user = null;
                                 state.loginState = true;
-                                //  state.initializingAccount = false;
-
-
+                                  state.initializingAccount = false;
                             })
                     });
 
@@ -201,7 +199,7 @@ const store = createStore({
 
                             if (Capacitor.getPlatform() === 'android') {
 
-                                OneSignal.login(state.user.id.toString());
+                             // OneSignal.login(state.user.id.toString());
 
                             }
 
@@ -209,9 +207,13 @@ const store = createStore({
                         } else {
 
                             state.loginState = true;
+                            state.initializingAccount = false;
+
 
                         }
 
+                    })
+                    .catch(error=>{
                     })
             }
 

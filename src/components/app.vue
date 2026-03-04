@@ -29,39 +29,39 @@
           <f7-block class="no-padding" inset strong>
 
             <f7-list inset-ios media-list dividers-ios strong style="border-radius: 15px !important;">
-              <f7-list-item
+<!--              <f7-list-item-->
 
-                  link
-                  title="About"
+<!--                  link-->
+<!--                  title="About"-->
 
-              >
-              </f7-list-item>
+<!--              >-->
+<!--              </f7-list-item>-->
 
-              <f7-list-item
-                  link
-                  title="Terms & Conditions"
-              >
-              </f7-list-item>
+<!--              <f7-list-item-->
+<!--                  link-->
+<!--                  title="Terms & Conditions"-->
+<!--              >-->
+<!--              </f7-list-item>-->
 
-              <f7-list-item
-                  link
-                  title="How it works"
-              >
-              </f7-list-item>
-
-
-              <f7-list-item
-                  link
-                  title="Share"
-              >
-              </f7-list-item>
+<!--              <f7-list-item-->
+<!--                  link-->
+<!--                  title="How it works"-->
+<!--              >-->
+<!--              </f7-list-item>-->
 
 
-              <f7-list-item
-                  link
-                  title="Privacy Policy"
-              >
-              </f7-list-item>
+<!--              <f7-list-item-->
+<!--                  link-->
+<!--                  title="Share"-->
+<!--              >-->
+<!--              </f7-list-item>-->
+
+
+<!--              <f7-list-item-->
+<!--                  link-->
+<!--                  title="Privacy Policy"-->
+<!--              >-->
+<!--              </f7-list-item>-->
 
 
               <f7-list-item
@@ -358,22 +358,23 @@ export default {
           setThemeColor();
 
 
-          OneSignal.initialize("104eb6bd-20ec-4d84-a426-b076741fb531");
+          // OneSignal.initialize("104eb6bd-20ec-4d84-a426-b076741fb531");
+          //
+          // OneSignal.Notifications.requestPermission(true).then((success) => {
+          //
+          //   console.log("Notification permission status:", success);
+          // });
+          //
+          // OneSignal.Notifications.addEventListener('click', (event) => {
+          //   //alert('Notification clicked:'+ JSON.stringify(event.notification.additionalData));
+          //
+          //   const recipeRoute = "/recipe/" + event.notification.additionalData.recipe_id;
+          //
+          //   f7.views.main.router.navigate(recipeRoute);
+          //
+          //
+          // });
 
-          OneSignal.Notifications.requestPermission(true).then((success) => {
-
-            console.log("Notification permission status:", success);
-          });
-
-          OneSignal.Notifications.addEventListener('click', (event) => {
-            //alert('Notification clicked:'+ JSON.stringify(event.notification.additionalData));
-
-            const recipeRoute = "/recipe/" + event.notification.additionalData.recipe_id;
-
-            f7.views.main.router.navigate(recipeRoute);
-
-
-          });
         }
 
 

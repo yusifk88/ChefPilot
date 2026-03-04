@@ -110,9 +110,10 @@ export default {
       shouldRefresh: useStore(store, "getRefresh"),
       loading: false,
       loadingRecipes: useStore(store, "loadingRecipesState"),
+      currentUser: useStore(store, "getUser"),
       recipeLimit: 0,
-      showSheet:false,
-      chef:chef
+      showSheet: false,
+      chef: chef
     }
   },
 
@@ -143,14 +144,14 @@ export default {
   },
   methods: {
 
-   async getLimit() {
+    async getLimit() {
 
 
-      axios.get("/gen-recipes-count",AUTH_HEADERS)
+      axios.get("/gen-recipes-count", AUTH_HEADERS)
           .then(res => {
             this.recipeLimit = res.data.data.count;
           })
-          .catch(error=>{
+          .catch(error => {
           })
     },
     requestRecipes() {
@@ -169,7 +170,7 @@ export default {
 
     async getItems() {
 
-      this.loading=true;
+      this.loading = true;
 
       const count = await db.recipes.count();
 
@@ -196,19 +197,18 @@ export default {
 
 
           })
-    }
-  },
-  async mounted() {
+    },
 
-    this.getLimit();
-    this.getItems();
+    listenForEvents() {
 
-    const drone = new Scaledrone('Yh4KOdyE8eyesTXu');
+      const drone = new Scaledrone('Yh4KOdyE8eyesTXu');
 
-    const account = await CapacitorPersistentAccount.readAccount()
+      //const account = await CapacitorPersistentAccount.readAccount()
 
-    if (account.data && account.data.user) {
-      const room = drone.subscribe('RecipeCreated_' + account.data.user.id);
+      //if (account.data && account.data.user) {
+
+      //alert("hello test")
+      const room = drone.subscribe('RecipeCreated_' + this.currentUser.id);
 
       room.on('message', message => {
 
@@ -218,7 +218,19 @@ export default {
 
         this.getLimit();
       });
+
+      // }
+
+
     }
+
+  },
+
+  mounted() {
+
+    this.getLimit();
+    this.getItems();
+    this.listenForEvents();
 
   }
 }

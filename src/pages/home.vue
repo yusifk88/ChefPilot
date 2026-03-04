@@ -9,12 +9,11 @@
       </f7-nav-left>
 
       <f7-nav-title sliding>ChefPilot</f7-nav-title>
-      <f7-nav-title-large> 👋🏻 {{ user?.name ? "Hi " + user?.name + "," : "" }}</f7-nav-title-large>
+      <f7-nav-title-large> 👋🏻 {{ user?.name ? "Hi " + user?.name.split(" ")[0] + "," : "" }}</f7-nav-title-large>
       <f7-nav-right>
     <notification-bell-button></notification-bell-button>
       </f7-nav-right>
     </f7-navbar>
-
 
     <f7-block-title style="margin-top: 0!important;">Your Food Inventory</f7-block-title>
 
@@ -23,7 +22,7 @@
       <added-recipe-card v-if="user"></added-recipe-card>
     </f7-block>
 
-    <recipes></recipes>
+    <recipes v-if="user"></recipes>
 
     <recent-bookmarks></recent-bookmarks>
 
