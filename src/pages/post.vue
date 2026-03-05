@@ -18,10 +18,10 @@
       style="height: 400px"
   ></f7-card>
 </span>
-    <f7-block v-else strong inset class="no-margin-top">
+    <f7-block v-else-if="post" strong inset class="no-margin-top">
       <f7-card  class="no-padding no-margin margin-top">
 
-          <p class="no-margin no-padding" v-html="post.caption"></p>
+          <p class="no-margin no-padding" v-html="post?.caption"></p>
 
           <recipe-card @click="viewRecipe(post.recipe)" :item="post.recipe"></recipe-card>
 

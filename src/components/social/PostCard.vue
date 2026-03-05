@@ -10,11 +10,11 @@
     </f7-navbar>
     <f7-block strong inset class="no-margin-top">
       <f7-card class="no-padding no-margin">
-        <f7-card-header class="no-margin no-padding">
+<!--        <f7-card-header class="no-margin no-padding">-->
 <!--          <f7-button outline small actions-open="#show-visibility-action">{{ visibility }}-->
 <!--            <f7-icon size="20" f7="chevron_down"></f7-icon>-->
 <!--          </f7-button>-->
-        </f7-card-header>
+<!--        </f7-card-header>-->
         <f7-card-content class="no-padding no-margin">
 
           <f7-text-editor

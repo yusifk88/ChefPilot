@@ -20,7 +20,7 @@
 <!--      onerror="this.onerror=null; this.src='https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.webp';"-->
 <!--  />-->
 
-        <Image :src="item.photos[0].url"></Image>
+        <Image style="width: 100%" :src="item.photos[0].url"></Image>
 
       </f7-link>
 
