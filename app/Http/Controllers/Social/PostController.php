@@ -265,6 +265,7 @@ class PostController extends Controller
     public function comments(string $ulid)
     {
         $post = Post::where("ulid", $ulid)->firstOrFail();
+
         $comments = PostComment::with("commenter")->where("post_id", $post->id)
             ->orderBy("id", "DESC")->cursorPaginate(30);
 

@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Ably\AblyRest;
-use Ably\Exceptions\AblyException;
+use App\Mail\AccessCode;
+use App\Models\Attempt;
+use App\Models\Interaction;
+use App\Models\Post;
+use App\Models\PostComment;
+use App\Models\Recipe;
 use App\Models\User;
+use App\Models\UserItem;
 use App\Services\ResponseService;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -298,7 +305,7 @@ class AuthController extends Controller
             'public'
         );
 
-        $url= Storage::disk('spaces')->url($filename);
+        $url = Storage::disk('spaces')->url($filename);
 
         $user = $request->user();
 
@@ -308,7 +315,46 @@ class AuthController extends Controller
 
     }
 
+    public function requestCode()
+    {
 
+        $code = substr(Str::ulid(), -6);
+        $user = auth()->user();
+
+        Cache::put("authCode" . $user->id, $code, now()->addMinutes(15));
+
+        Mail::to($user->email)->send(new AccessCode($code));
+
+    }
+
+    public function deleteAccount(Request $request)
+    {
+
+        $request->validate([
+            "code" => "required|string|min:6"
+        ]);
+
+        $user = $request->user();
+
+        if (Cache::get("authCode" . $user->id) != $request->code) {
+
+            return ResponseService::FailedResponse(message: "Invalid code or code expired");
+        }
+
+        Recipe::query()->where("user_id", $user->id)->delete();
+        Post::query()->where("user_id", $user->id)->delete();
+        UserItem::query()->where("user_id", $user->id)->delete();
+        PostComment::query()->where("user_id", $user->id)->delete();
+        Interaction::query()->where("user_id", $user->id)->delete();
+        Attempt::query()->where("user_id", $user->id)->delete();
+
+        $user->tokens()->delete();
+        Schema::disableForeignKeyConstraints();
+        $user->delete();
+
+        return ResponseService::SuccessResponse(message: "Your account has been deleted, thank you for trying Chefpilot");
+
+    }
 
 
 }
