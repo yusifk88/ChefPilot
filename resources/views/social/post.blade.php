@@ -142,7 +142,7 @@
                 <!-- Blur Overlay & CTA -->
                 <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-gray-50 via-gray-50/90 to-transparent flex flex-col items-center justify-end pb-6">
                     <div class="text-center px-4">
-                        <p class="text-gray-600 font-medium mb-3">Join the conversation to see 87 more comments</p>
+                        <p class="text-gray-600 font-medium mb-3">Join the conversation</p>
                         <button class="bg-white text-emerald-600 border border-emerald-200 px-6 py-2 rounded-full font-bold shadow-sm hover:bg-emerald-50 transition-colors text-sm">
                             Open in App
                         </button>
