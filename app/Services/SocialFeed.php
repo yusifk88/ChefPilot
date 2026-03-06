@@ -15,6 +15,29 @@ class SocialFeed
 {
 
 
+
+    public static function publicPostQuery(): Builder
+    {
+        return Post::query()
+            ->select("posts.*")
+            ->withCount([
+                'interactions as likes_count' => fn($q) => $q->where('type', Interaction::LIKES),
+                'interactions as comments_count' => fn($q) => $q->where('type', Interaction::COMMENTS)
+            ])
+            ->with(["recipe.photos", "user"])
+            ->withCount([
+                'interactions as score' => function ($q) {
+                    $q->where('created_at', '>=', now()->subDays(2));
+                }
+            ])->whereNull("deleted_at");
+    }
+
+
+
+
+
+
+
     /**
      * Help this user discover trending posts
      * @return CursorPaginator
@@ -152,5 +175,8 @@ class SocialFeed
         }
 
     }
+
+
+
 
 }

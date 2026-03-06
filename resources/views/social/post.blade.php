@@ -127,11 +127,11 @@
                 <div class="flex items-center gap-6">
                     <button id="like-btn" class="flex items-center gap-2 text-gray-500 hover:text-red-500 transition-colors group">
                         <i data-lucide="heart" class="w-6 h-6 group-hover:fill-red-500 transition-all"></i>
-                        <span id="like-count" class="font-semibold">1243</span>
+                        <span id="like-count" class="font-semibold">{{$post->likes_count}}</span>
                     </button>
                     <button class="flex items-center gap-2 text-gray-500 hover:text-emerald-600 transition-colors">
                         <i data-lucide="message-circle" class="w-6 h-6"></i>
-                        <span class="font-semibold">89</span>
+                        <span class="font-semibold">{{$post->comments_count}}</span>
                     </button>
                 </div>
 {{--                <span class="text-xs text-gray-400 font-medium">12k views</span>--}}
@@ -139,27 +139,6 @@
 
             <!-- Comments Preview Section (Teaser) -->
             <div class="bg-gray-50 px-6 py-6 border-t border-gray-200 relative">
-                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Top Comments</h4>
-
-                <div class="space-y-4">
-                    <!-- Comment 1 -->
-                    <div class="flex gap-3">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100" alt="MikeRoss" class="w-8 h-8 rounded-full">
-                        <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-gray-100 flex-1">
-                            <span class="font-bold text-sm text-gray-900 block mb-0.5">MikeRoss</span>
-                            <p class="text-sm text-gray-600">Okay, I need to try this dressing! 😍</p>
-                        </div>
-                    </div>
-                    <!-- Comment 2 -->
-                    <div class="flex gap-3">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="Jessica_W" class="w-8 h-8 rounded-full">
-                        <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-gray-100 flex-1">
-                            <span class="font-bold text-sm text-gray-900 block mb-0.5">Jessica_W</span>
-                            <p class="text-sm text-gray-600">Does this work with canned lentils too?</p>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Blur Overlay & CTA -->
                 <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-gray-50 via-gray-50/90 to-transparent flex flex-col items-center justify-end pb-6">
                     <div class="text-center px-4">

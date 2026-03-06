@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
         if (app()->environment() !== 'production') {
 
             User::factory(1)->create();
-            $this->call(DefaultPhotoSeeder::class);
-            $this->call(FoodStuffSeeder::class);
+//            $this->call(DefaultPhotoSeeder::class);
+//            $this->call(FoodStuffSeeder::class);
         }
     }
 }

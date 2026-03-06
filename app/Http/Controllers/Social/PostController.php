@@ -215,7 +215,7 @@ class PostController extends Controller
 
     public function publicPost(string $ulid)
     {
-        $post = Post::query()->with(["user", "recipe.photos"])->where("ulid", $ulid)->firstOrFail();
+        $post = SocialFeed::publicPostQuery()->where("ulid", $ulid)->firstOrFail();
 
         return view("social.post", ["post" => $post]);
     }
