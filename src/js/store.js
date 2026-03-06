@@ -199,7 +199,7 @@ const store = createStore({
 
                             if (Capacitor.getPlatform() === 'android') {
 
-                             // OneSignal.login(state.user.id.toString());
+                              OneSignal.login(state.user.id.toString());
 
                             }
 

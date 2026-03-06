@@ -64,9 +64,6 @@ export default {
   },
   methods: {
     goToDetails() {
-
-      alert(this.detailRoute);
-
       f7.views.current.router.navigate(this.detailRoute)
     }
   }

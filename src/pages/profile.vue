@@ -9,7 +9,8 @@
         <f7-button
             preloader
             :loading="loadingAvatar"
-            :disabled="loadingAvatar" @click="triggerSelect">Change</f7-button>
+            :disabled="loadingAvatar" @click="triggerSelect">Change
+        </f7-button>
 
       </div>
 
@@ -58,6 +59,60 @@
         <f7-button @click="setUser" sheet-open=".update-profile-sheet">Update</f7-button>
       </div>
     </f7-block>
+
+    <f7-button sheet-open=".delete-sheet" color="red">Delete Account</f7-button>
+
+    <f7-sheet
+        class="delete-sheet"
+        style="height: auto"
+        swipe-to-close
+        backdrop>
+      <div class="swipe-handler"></div>
+      <f7-content>
+        <f7-block strong-ios dividers-ios inset-ios>
+
+          <div
+              style="background-color: rgba(255,0,0,0.13); padding: 10px; color: red; border: 1px solid red; border-radius: 10px">
+            <strong>Danger</strong>
+            <p>
+              You are about to delete your user account permanently. All your posts, recipes, food pantry and
+              preferences will be deleted permanently.
+            </p>
+
+            <span v-if="!codeSent">
+            <f7-button preloader color="red" @click="sendOTPCode" :loading="sendingCode">Delete Account</f7-button>
+            <f7-button sheet-close=".delete-sheet" color="green" class="margin-top" fill>Cancel</f7-button>
+            </span>
+
+          </div>
+
+          <span v-if="codeSent">
+          <p>
+            We have sent a verification code to your email, enter the code here to continue.
+          </p>
+          <f7-list class="no-padding no-margin">
+            <label for="codeInput" class="margin-left">Verification Code</label>
+            <f7-list-input
+                class="no-margin no-padding"
+                id="codeInput"
+                type="text"
+                outline
+                auto-focus
+                :value="code"
+                @input="v=>code=v.target.value"
+                placeholder="Enter the verification code here"
+            />
+          </f7-list>
+
+            <f7-button :disabled="!code" preloader :loading="deletingAccount" color="red" @click="deleteAccount"
+                       fill>Delete Account</f7-button>
+            <f7-button fill class="margin-top" @click="codeSent=false">Back</f7-button>
+          </span>
+
+        </f7-block>
+      </f7-content>
+
+    </f7-sheet>
 
     <f7-sheet class="update-profile-sheet" style="height: auto" swipe-to-close backdrop>
       <div class="swipe-handler"></div>
@@ -108,8 +163,9 @@ import 'vue3-flag-icons/styles'
 import FlagIcon from 'vue3-flag-icons'
 import {FileCompressor} from "@capgo/capacitor-file-compressor";
 import {Camera} from '@capacitor/camera';
-import { Filesystem } from '@capacitor/filesystem';
+import {Filesystem} from '@capacitor/filesystem';
 import {CapacitorPersistentAccount} from "@capgo/capacitor-persistent-account";
+import {db} from "@/js/db";
 
 export default {
   name: "profile",
@@ -123,11 +179,50 @@ export default {
       bio: null,
       loading: false,
       selectedPhoto: null,
-      loadingAvatar:false
+      loadingAvatar: false,
+      sendingCode: false,
+      codeSent: false,
+      deletingAccount: false,
+      code: ""
     }
   },
   methods: {
     formatDateTIme,
+
+    deleteAccount() {
+      const URL = "/delete-account";
+      this.deletingAccount = true;
+
+      axios.post(URL, {
+        code: this.code
+      })
+          .then(async res => {
+
+            await CapacitorPersistentAccount.saveAccount({data: null});
+            store.dispatch("showLogin");
+            window.location.reload();
+
+            db.delete();
+
+            this.deletingAccount = false;
+
+          })
+          .catch(error => {
+            this.deletingAccount = false;
+          })
+    },
+    sendOTPCode() {
+      this.sendingCode = true;
+      axios.get("request-code")
+          .then(res => {
+            this.sendingCode = false;
+            this.codeSent = true;
+          })
+          .catch(error => {
+            this.sendingCode = false;
+          })
+
+    },
     async triggerSelect() {
 
 
@@ -150,27 +245,27 @@ export default {
 
       const base64Data = readFile.data;
 
-      this.loadingAvatar=true;
+      this.loadingAvatar = true;
 
       axios.post("/change-avatar", {
-        avatar:base64Data
+        avatar: base64Data
       })
           .then(async res => {
 
             let currentUser = await CapacitorPersistentAccount.readAccount();
 
-            await  CapacitorPersistentAccount.saveAccount({data:null});
+            await CapacitorPersistentAccount.saveAccount({data: null});
 
-            await  CapacitorPersistentAccount.saveAccount({data:{user:res.data.data,token:currentUser.data.token}});
+            await CapacitorPersistentAccount.saveAccount({data: {user: res.data.data, token: currentUser.data.token}});
 
-            store.dispatch("setUser",res.data.data);
+            store.dispatch("setUser", res.data.data);
 
-            this.loadingAvatar=false;
+            this.loadingAvatar = false;
             store.dispatch("initUser");
 
           })
-          .catch(error=>{
-            this.loadingAvatar=false;
+          .catch(error => {
+            this.loadingAvatar = false;
 
           })
     },
@@ -202,9 +297,9 @@ export default {
 
             let currentUser = await CapacitorPersistentAccount.readAccount();
 
-          await  CapacitorPersistentAccount.saveAccount({data:null});
+            await CapacitorPersistentAccount.saveAccount({data: null});
 
-          await  CapacitorPersistentAccount.saveAccount({data:{user:res.data.data,token:currentUser.data.token}});
+            await CapacitorPersistentAccount.saveAccount({data: {user: res.data.data, token: currentUser.data.token}});
 
             this.loading = false;
             const successToast = f7.toast.create({

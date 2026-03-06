@@ -35,7 +35,7 @@ const PHOTO_PLACEHOLDER = "https://flobaze.atl1.cdn.digitaloceanspaces.com/chefp
 
 const account = await CapacitorPersistentAccount.readAccount()
 
-const AUTH_HEADERS = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: "Bearer 8|sEvtsO2RomSh3b6DDMIPM56AvY73uC1rrsW6XnWw412ac498"}};
+const AUTH_HEADERS = account.data ? {headers: {Authorization: "Bearer " + account.data.token}} : {headers: {Authorization: "Bearer 14|LmA6ZwrNoWz3JtDe6IJo6E8ZXk6FmUpMe39RtIrN6f436113"}};
 
 
 

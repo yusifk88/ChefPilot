@@ -281,7 +281,12 @@ export default {
         f7.dialog.preloader('Please wait..');
 
         await CapacitorPersistentAccount.saveAccount({data: null});
+
         db.delete();
+
+
+        //OneSignal.logout();
+
         // db.recentBookmarks.clear();
         // db.recipes.clear();
         // db.items.clear();
