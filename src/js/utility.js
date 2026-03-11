@@ -28,8 +28,8 @@ const formatDateTIme = (dateTime) => {
     return dayjs(dateTime).format("MMM D, YYYY HH:mA")
 }
 
-const BASE_URLA = "https://app.chefpilot.live";
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "https://app.chefpilot.live";
+const BASE_URLA = "http://localhost:8000";
 
 const PHOTO_PLACEHOLDER = "https://flobaze.atl1.cdn.digitaloceanspaces.com/chefpilot/photos/placeholder.png";
 

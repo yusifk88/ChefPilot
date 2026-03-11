@@ -285,7 +285,7 @@ export default {
         db.delete();
 
 
-        //OneSignal.logout();
+      //  OneSignal.logout();
 
         // db.recentBookmarks.clear();
         // db.recipes.clear();

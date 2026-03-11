@@ -9,7 +9,11 @@
       <p :class="{'black-title':platformOS==='ios'}" class="fade-in-up">Chefpilot intelligently catalogs your kitchen inventory and serves up personalized, chef-quality recipes based on exactly what's in your pantry. No more waste, no more grocery stress.</p>
 
 
-      <f7-button v-if="Capacitor().getPlatform().toLowerCase()==='web'" @click="testLogin" class="fade-in-up" large fill
+      <f7-button
+          preloader
+          :loading="loading || accountInitializing"
+          :disabled="accountInitializing"
+          v-if="Capacitor().getPlatform().toLowerCase()==='ios' || !currentAccount" @click="appLogin" class="fade-in-up" large fill
                  color="black">Continue with &nbsp;
         <app-logo></app-logo>
       </f7-button>
@@ -88,6 +92,63 @@ export default {
     },
     store() {
       return store
+    },
+
+   async appLogin(){
+
+      try {
+        this.loading=true;
+
+     const res = await SocialLogin.login({
+       provider: 'apple',
+       options: {}
+     });
+
+
+     const profile = res.result.profile;
+
+     const image_url = "https://flobaze.atl1.cdn.digitaloceanspaces.com/public/avatar.webp";
+     const deviceInfo = await this.getDeviceInfo();
+
+     const payload = {
+       name: profile.givenName+" "+profile.familyName,
+       email: profile.email,
+       id: profile.user,
+       imageUrl: image_url,
+       device_name:deviceInfo.name,
+       device_model:deviceInfo.model,
+       device_os:deviceInfo.os,
+       country:deviceInfo.country,
+       timezone:deviceInfo.timeZone
+     };
+
+
+
+     axios.post("/signup", payload)
+         .then(async res => {
+
+           const account = {
+             user: res.data.data.user,
+             token: res.data.data.token
+           };
+
+
+           await CapacitorPersistentAccount.saveAccount({data: account})
+
+           await store.dispatch("initUser")
+
+           window.location.reload();
+
+         })
+         .catch(error => {
+           this.loading = false;
+
+         })
+      } catch {
+
+        this.loading=false;
+
+      }
     },
 
     async testLogin() {
@@ -288,6 +349,14 @@ export default {
   mounted() {
 
     this.getPersistentAccount();
+
+    if (this.platformOS==='ios'){
+
+      SocialLogin.initialize({
+        apple: {}
+      });
+
+    }
 
   }
 }
