@@ -160,8 +160,7 @@ class AuthController extends Controller
         ]);
 
 
-        $existingUser = User::where('email', $request->email)
-            ->where("google_user_id", $request->id)->first();
+        $existingUser = User::where('email', $request->email)->first();
 
         /**
          * if the user already exist
