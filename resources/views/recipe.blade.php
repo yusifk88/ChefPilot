@@ -110,7 +110,7 @@
 
             <div class="flex flex-col gap-3 px-6">
                 <!-- App Store Button -->
-                <a href="#" class="cta-button flex items-center justify-center gap-3 bg-black text-white py-3 px-6 rounded-xl hover:bg-gray-800 shadow-lg">
+                <a href="https://apps.apple.com/us/app/chefpilot/id6759763909" class="cta-button flex items-center justify-center gap-3 bg-black text-white py-3 px-6 rounded-xl hover:bg-gray-800 shadow-lg">
                     <svg class="w-6 h-6" viewBox="0 0 384 512" fill="currentColor">
                         <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-83.6-20.1-42.9.6-82.7 24.4-104.6 63.3-44.9 77.7-11.5 191.7 31.2 255.2 20.9 30 45.9 63.5 77.3 62.6 31.1-.8 42.1-19.8 81.3-19.8 38.9 0 49.4 19.8 82 19.2 32.5-.5 54.4-30.2 74.3-59.5 21.3-31.1 30.1-61.1 30.4-62.7-.8-.3-58.6-22.5-59.7-88.6zm-58.5-174.9c15.2-18.4 25.1-44.1 22.3-69.7-22.1 1.2-48.8 15.3-64.5 33.6-14 16.2-26.3 42.1-23.1 67.2 24.6 1.9 49.8-12.7 65.3-31.1z"/>
                     </svg>
