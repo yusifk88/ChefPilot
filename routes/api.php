@@ -87,8 +87,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
      * Account routes
      */
 
-    Route::get("request-code",[AuthController::class, "requestCode"]);
-    Route::post("delete-account",[AuthController::class, "deleteAccount"]);
+    Route::get("request-code", [AuthController::class, "requestCode"]);
+    Route::post("delete-account", [AuthController::class, "deleteAccount"]);
 
+
+    /**
+     * subscription routes
+     */
+    Route::get("subscriptions/intent", [AuthController::class, "subscriptionIntent"]);
 
 });

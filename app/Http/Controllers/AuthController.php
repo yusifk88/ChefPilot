@@ -356,4 +356,14 @@ class AuthController extends Controller
     }
 
 
+    public function subscriptionIntent()
+    {
+
+        $secret = \request()->user()->createSetupIntent()->client_secret;
+
+        return ResponseService::SuccessResponse(data: ["secret" => $secret], message: "Subscription intent secret created successfully");
+
+    }
+
+
 }
